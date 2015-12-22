@@ -12,6 +12,8 @@ class Tipster : public BTextView
 {
 	public:
 		Tipster(BRect frame);
+		
+		void MouseDown(BPoint pt);
 	
 	private:
 		void UpdateTip(void);

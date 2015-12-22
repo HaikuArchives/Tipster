@@ -74,6 +74,8 @@ void MainWindow::MessageReceived(BMessage *msg)
 			about->AddCopyright(2015, "Vale Tolpegin");
 			
 			about->Show();
+			
+			break;
 		}
 		default:
 		{
