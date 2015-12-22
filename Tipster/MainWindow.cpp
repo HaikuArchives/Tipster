@@ -15,6 +15,8 @@
 #include <MenuBar.h>
 #include <MenuItem.h>
 
+#include <private/interface/AboutWindow.h>
+
 enum
 {
 	SHOW_ABOUT = 'swat',
@@ -63,6 +65,16 @@ void MainWindow::MessageReceived(BMessage *msg)
 {
 	switch(msg->what)
 	{
+		case SHOW_ABOUT:
+		{
+			BAboutWindow *about = new BAboutWindow("Tipster",
+				"application/x-vnd.tipster");
+			
+			about->AddDescription("An application to show usability tips for Haiku");
+			about->AddCopyright(2015, "Vale Tolpegin");
+			
+			about->Show();
+		}
 		default:
 		{
 			BWindow::MessageReceived(msg);
