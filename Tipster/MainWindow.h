@@ -5,7 +5,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "TipsterView.h"
+#include "Tipster.h"
 
 #include <Window.h>
 #include <View.h>
@@ -16,12 +16,15 @@ class MainWindow : public BWindow
 	public:
 		MainWindow(void);
 		
+		bool QuitRequested(void);
+		void MessageReceived(BMessage *msg);
+
 	private:
 		void BuildLayout(void);
 		
-		BView *f_tipsterViewContainer;
+		BView *fTipsterViewContainer;
 
-		TipsterView *f_tipsterView;
+		Tipster *fTipsterView;
 };
 
 #endif

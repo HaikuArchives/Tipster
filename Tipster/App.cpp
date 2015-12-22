@@ -3,6 +3,12 @@
  * All rights reserved. Distributed under the terms of the MIT license.
  */
 
+
+#include "MainWindow.h"
+
+#include <Application.h>
+
+
 class App : public BApplication
 {
 	public:
@@ -19,7 +25,7 @@ App::App(void)
 
 int main(void)
 {
-	App app = new App();
+	App app;
 	app.Run();
 	return 0;
 }
