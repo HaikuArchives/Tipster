@@ -25,7 +25,7 @@ enum
 
 
 MainWindow::MainWindow(void)
-	: BWindow(BRect(100,100,700,300), "Tipster", B_TITLED_WINDOW,
+	: BWindow(BRect(100,100,900,200), "Tipster", B_TITLED_WINDOW,
 		B_ASYNCHRONOUS_CONTROLS)
 {
 	BuildLayout();
@@ -46,7 +46,7 @@ MainWindow::BuildLayout(void)
 	
 	fMenuBar->AddItem(fSettingsMenu);
 	
-	fTipsterViewContainer = new BView(BRect(0,0,700,300),
+	fTipsterViewContainer = new BView(BRect(0,0,900,200),
 		"tipster_container", B_FOLLOW_ALL, B_WILL_DRAW);
 	
 	fTipsterView = new Tipster(fTipsterViewContainer->Frame());
