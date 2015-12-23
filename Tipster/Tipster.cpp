@@ -121,6 +121,8 @@ Tipster::GetTipsFile(void)
 	
 	if (paths.IsEmpty() || status != B_OK)
 	{	
+		printf("STATUS IS NOT B_OK\n");
+		
 		BEntry entry("tipster-tips.txt");
 		entry_ref ref;
 		entry.GetRef(&ref);
@@ -128,23 +130,15 @@ Tipster::GetTipsFile(void)
 		return ref;
 	}
 	
-	BPath fullPath;
 	for (int32 i = 0; i < paths.CountStrings(); i++)
 	{
-		BDirectory directory(paths.StringAt(i).String());
-		if (directory.InitCheck() != B_OK)
-			continue;
-		
-		fullPath = paths.StringAt(i).String();
-		fullPath.Append("tipster-tips.txt");
-		
-		BEntry entry(fullPath.Path());
+		BEntry data_entry(paths.StringAt(i).String());
 		entry_ref ref;
-		entry.GetRef(&ref);
+		data_entry.GetRef(&ref);
 		
 		return ref;
 	}
-	
+
 	BEntry entry("tipster-tips.txt");
 	entry_ref ref;
 	entry.GetRef(&ref);
@@ -160,6 +154,8 @@ Tipster::LoadTips(entry_ref ref)
 	if (file.InitCheck() != B_OK)
 		return;
 	
+	fTipsList.MakeEmpty();
+	
 	BString fTips;
 	off_t size = 0;
 	file.GetSize(&size);
@@ -169,7 +165,7 @@ Tipster::LoadTips(entry_ref ref)
 	fTips.UnlockBuffer(size);
 	
 	fTips.Split("\n", true, fTipsList);
-	fTipNumber = (random() % (fTipsList.CountStrings() / 4)) * 4;
+	fTipNumber = (random() % (fTipsList.CountStrings() / 3)) * 3;
 	
 	BString *text = new BString(fTipsList.StringAt(fTipNumber));
 	text->Append("\n");
