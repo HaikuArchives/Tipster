@@ -27,7 +27,7 @@ enum
 
 
 Tipster::Tipster(BRect frame)
-	: BTextView(frame, "TipView", B_FOLLOW_ALL, B_WILL_DRAW)
+	: BTextView("TipView")
 {
 	fTipsList = BStringList();
 	
@@ -120,7 +120,7 @@ Tipster::GetTipsFile(void)
 		"tipster-tips.txt", paths);
 	
 	if (paths.IsEmpty() || status != B_OK)
-	{	
+	{
 		printf("STATUS IS NOT B_OK\n");
 		
 		BEntry entry("tipster-tips.txt");

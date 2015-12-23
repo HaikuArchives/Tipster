@@ -7,13 +7,13 @@
 #include "MainWindow.h"
 
 #include <Application.h>
-#include <LayoutBuilder.h>
 #include <GroupLayout.h>
 #include <GroupLayoutBuilder.h>
-#include <Messenger.h>
+#include <LayoutBuilder.h>
 #include <Menu.h>
 #include <MenuBar.h>
 #include <MenuItem.h>
+#include <Messenger.h>
 
 #include <private/interface/AboutWindow.h>
 
@@ -34,23 +34,25 @@ MainWindow::MainWindow(void)
 
 void
 MainWindow::BuildLayout(void)
-{
-	BRect r(Bounds());
-	r.bottom = 20;
+{	
+	BMenuBar *fMenuBar = new BMenuBar("menubar");
+	BMenu *fTipsterMenu = new BMenu("Tipster");
 	
-	BMenuBar *fMenuBar = new BMenuBar(r, "menubar");
-	BMenu *fSettingsMenu = new BMenu("Settings");
-	
-	fSettingsMenu->AddItem(new BMenuItem("About", new BMessage(SHOW_ABOUT),
+	fTipsterMenu->AddItem(new BMenuItem("About", new BMessage(SHOW_ABOUT),
 		'A', B_COMMAND_KEY));
 	
-	fMenuBar->AddItem(fSettingsMenu);
+	fMenuBar->AddItem(fTipsterMenu);
 	
-	fTipsterViewContainer = new BView(BRect(0,0,900,200),
-		"tipster_container", B_FOLLOW_ALL, B_WILL_DRAW);
+	fTipsterViewContainer = new BView("tipster_container",
+		B_SUPPORTS_LAYOUT);
 	
 	fTipsterView = new Tipster(fTipsterViewContainer->Frame());
 	fTipsterViewContainer->AddChild(fTipsterView);
+	
+	BGroupLayout *layout = new BGroupLayout(B_VERTICAL);
+	layout->SetInsets(10,0,10,0);
+	
+	fTipsterViewContainer->SetLayout(layout);
 	
 	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
 		.Add(fMenuBar)
@@ -76,7 +78,8 @@ MainWindow::MessageReceived(BMessage *msg)
 			BAboutWindow *about = new BAboutWindow("Tipster",
 				"application/x-vnd.tipster");
 			
-			about->AddDescription("An application to show usability tips for Haiku");
+			about->AddDescription("An application to show usability tips \
+for Haiku");
 			about->AddCopyright(2015, "Vale Tolpegin");
 			
 			about->Show();
