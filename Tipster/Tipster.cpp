@@ -6,11 +6,17 @@
 
 #include "Tipster.h"
 
+#include <Application.h>
 #include <Catalog.h>
+#include <Directory.h>
 #include <Entry.h>
 #include <File.h>
+#include <FindDirectory.h>
+#include <Path.h>
+#include <PathFinder.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <StringList.h>
 #include <TranslationUtils.h>
 
 enum
@@ -29,6 +35,13 @@ Tipster::Tipster(BRect frame)
 	UpdateTip();
 	
 	MakeEditable(false);
+}
+
+
+bool
+Tipster::QuitRequested(void)
+{
+	return true;
 }
 
 
@@ -102,18 +115,47 @@ Tipster::UpdateTip(void)
 entry_ref
 Tipster::GetTipsFile(void)
 {
+	BStringList paths;
+	status_t status = BPathFinder::FindPaths(B_FIND_PATH_DATA_DIRECTORY,
+		"tipster-tips.txt", paths);
 	
-	BEntry entry("tips.txt");
+	if (paths.IsEmpty() || status != B_OK)
+	{	
+		BEntry entry("tipster-tips.txt");
+		entry_ref ref;
+		entry.GetRef(&ref);
+
+		return ref;
+	}
+	
+	BPath fullPath;
+	for (int32 i = 0; i < paths.CountStrings(); i++)
+	{
+		BDirectory directory(paths.StringAt(i).String());
+		if (directory.InitCheck() != B_OK)
+			continue;
+		
+		fullPath = paths.StringAt(i).String();
+		fullPath.Append("tipster-tips.txt");
+		
+		BEntry entry(fullPath.Path());
+		entry_ref ref;
+		entry.GetRef(&ref);
+		
+		return ref;
+	}
+	
+	BEntry entry("tipster-tips.txt");
 	entry_ref ref;
 	entry.GetRef(&ref);
-	
+
 	return ref;
 }
 
 
 void
 Tipster::LoadTips(entry_ref ref)
-{	
+{
 	BFile file(&ref, B_READ_ONLY);
 	if (file.InitCheck() != B_OK)
 		return;

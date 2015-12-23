@@ -16,6 +16,8 @@ class Tipster : public BTextView
 	public:
 		Tipster(BRect frame);
 		
+		bool QuitRequested(void);
+		
 		void MouseDown(BPoint pt);
 		void MessageReceived(BMessage *msg);
 		void AttachedToWindow();
