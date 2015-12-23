@@ -25,13 +25,15 @@ enum
 
 
 MainWindow::MainWindow(void)
-	: BWindow(BRect(100,100,500,500), "Tipster", B_TITLED_WINDOW,
+	: BWindow(BRect(100,100,700,300), "Tipster", B_TITLED_WINDOW,
 		B_ASYNCHRONOUS_CONTROLS)
 {
 	BuildLayout();
 }
 
-void MainWindow::BuildLayout(void)
+
+void
+MainWindow::BuildLayout(void)
 {
 	BRect r(Bounds());
 	r.bottom = 20;
@@ -44,7 +46,7 @@ void MainWindow::BuildLayout(void)
 	
 	fMenuBar->AddItem(fSettingsMenu);
 	
-	fTipsterViewContainer = new BView(BRect(0,0,500,500),
+	fTipsterViewContainer = new BView(BRect(0,0,700,300),
 		"tipster_container", B_FOLLOW_ALL, B_WILL_DRAW);
 	
 	fTipsterView = new Tipster(fTipsterViewContainer->Frame());
@@ -55,13 +57,17 @@ void MainWindow::BuildLayout(void)
 		.Add(fTipsterViewContainer);
 }
 
-bool MainWindow::QuitRequested(void)
+
+bool
+MainWindow::QuitRequested(void)
 {
 	be_app->PostMessage(B_QUIT_REQUESTED);
 	return true;
 }
 
-void MainWindow::MessageReceived(BMessage *msg)
+
+void
+MainWindow::MessageReceived(BMessage *msg)
 {
 	switch(msg->what)
 	{

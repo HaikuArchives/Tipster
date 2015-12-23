@@ -6,6 +6,8 @@
 #define TIPSTER_H
 
 #include <TextView.h>
+#include <String.h>
+#include <StringList.h>
 
 
 class Tipster : public BTextView
@@ -17,6 +19,14 @@ class Tipster : public BTextView
 	
 	private:
 		void UpdateTip(void);
+		void LoadTips(entry_ref ref);
+
+		entry_ref GetTipsFile(void);
+
+		uint32 fTipNumber;
+		BStringList fTipsList;
+		
+		BString *fRandomTip;
 };
 
 #endif
