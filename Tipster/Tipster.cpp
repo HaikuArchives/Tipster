@@ -6,11 +6,18 @@
 
 #include "Tipster.h"
 
+#include <Catalog.h>
 #include <Entry.h>
 #include <File.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <TranslationUtils.h>
+
+enum
+{
+	M_UPDATE_TIP = 'uptp',
+	M_CHECK_TIME = 'cktm'
+};
 
 
 Tipster::Tipster(BRect frame)
@@ -18,8 +25,52 @@ Tipster::Tipster(BRect frame)
 {
 	fTipsList = BStringList();
 	
-	SetText("TEST");
+	SetText("");
+	UpdateTip();
+	
 	MakeEditable(false);
+}
+
+
+void
+Tipster::AttachedToWindow()
+{
+	BMessage message(M_CHECK_TIME);
+	fRunner = new BMessageRunner(this, &message, 1000000);
+
+	BTextView::AttachedToWindow();
+}
+
+
+void
+Tipster::MessageReceived(BMessage *msg)
+{
+	switch (msg->what)
+	{
+		case M_CHECK_TIME:
+		{
+			if (time + 60000000 < system_time())
+			{
+				//Update the tip every 60 seconds
+				
+				UpdateTip();
+			}
+			
+			break;
+		}
+		case M_UPDATE_TIP:
+		{
+			UpdateTip();
+			
+			break;
+		}
+		default:
+		{
+			BTextView::MessageReceived(msg);
+			
+			break;
+		}
+	}
 }
 
 
@@ -84,4 +135,6 @@ Tipster::LoadTips(entry_ref ref)
 	text->Append("\n");
 	text->Append(fTipsList.StringAt(fTipNumber + 2));
 	SetText(text->String());
+	
+	time = system_time();
 }

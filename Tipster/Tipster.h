@@ -5,6 +5,7 @@
 #ifndef TIPSTER_H
 #define TIPSTER_H
 
+#include <MessageRunner.h>
 #include <TextView.h>
 #include <String.h>
 #include <StringList.h>
@@ -16,6 +17,8 @@ class Tipster : public BTextView
 		Tipster(BRect frame);
 		
 		void MouseDown(BPoint pt);
+		void MessageReceived(BMessage *msg);
+		void AttachedToWindow();
 	
 	private:
 		void UpdateTip(void);
@@ -27,6 +30,9 @@ class Tipster : public BTextView
 		BStringList fTipsList;
 		
 		BString *fRandomTip;
+		
+		bigtime_t time;
+		BMessageRunner *fRunner;
 };
 
 #endif
