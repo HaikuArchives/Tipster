@@ -25,7 +25,8 @@ enum
 
 
 MainWindow::MainWindow(void)
-	: BWindow(BRect(100,100,900,200), "Tipster", B_TITLED_WINDOW,
+	:
+	BWindow(BRect(100,100,900,200), "Tipster", B_TITLED_WINDOW,
 		B_ASYNCHRONOUS_CONTROLS)
 {
 	BuildLayout();
@@ -35,8 +36,8 @@ MainWindow::MainWindow(void)
 void
 MainWindow::BuildLayout(void)
 {	
-	BMenuBar *fMenuBar = new BMenuBar("menubar");
-	BMenu *fTipsterMenu = new BMenu("Tipster");
+	BMenuBar* fMenuBar = new BMenuBar("menubar");
+	BMenu* fTipsterMenu = new BMenu("Tipster");
 	
 	fTipsterMenu->AddItem(new BMenuItem("About", new BMessage(SHOW_ABOUT),
 		'A', B_COMMAND_KEY));
@@ -49,7 +50,7 @@ MainWindow::BuildLayout(void)
 	fTipsterView = new Tipster(fTipsterViewContainer->Frame());
 	fTipsterViewContainer->AddChild(fTipsterView);
 	
-	BGroupLayout *layout = new BGroupLayout(B_VERTICAL);
+	BGroupLayout* layout = new BGroupLayout(B_VERTICAL);
 	layout->SetInsets(10,0,10,0);
 	
 	fTipsterViewContainer->SetLayout(layout);
@@ -69,13 +70,13 @@ MainWindow::QuitRequested(void)
 
 
 void
-MainWindow::MessageReceived(BMessage *msg)
+MainWindow::MessageReceived(BMessage* msg)
 {
 	switch(msg->what)
 	{
 		case SHOW_ABOUT:
 		{
-			BAboutWindow *about = new BAboutWindow("Tipster",
+			BAboutWindow* about = new BAboutWindow("Tipster",
 				"application/x-vnd.tipster");
 			
 			about->AddDescription("An application to show usability tips \
@@ -86,10 +87,9 @@ for Haiku");
 			
 			break;
 		}
+		
 		default:
-		{
 			BWindow::MessageReceived(msg);
 			break;
-		}
 	}
 }

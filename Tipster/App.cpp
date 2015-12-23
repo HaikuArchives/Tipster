@@ -18,7 +18,7 @@ class App : public BApplication
 App::App(void)
 	: BApplication("application/x-vnd.tipster")
 {
-	MainWindow *win = new MainWindow();
+	MainWindow* win = new MainWindow();
 	
 	win->Show();
 }

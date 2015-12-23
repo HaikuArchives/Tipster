@@ -17,14 +17,14 @@ class MainWindow : public BWindow
 		MainWindow(void);
 		
 		bool QuitRequested(void);
-		void MessageReceived(BMessage *msg);
+		void MessageReceived(BMessage* msg);
 
 	private:
 		void BuildLayout(void);
 		
-		BView *fTipsterViewContainer;
+		BView*fTipsterViewContainer;
 
-		Tipster *fTipsterView;
+		Tipster* fTipsterView;
 };
 
 #endif

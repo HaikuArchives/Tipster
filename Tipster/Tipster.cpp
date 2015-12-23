@@ -56,7 +56,7 @@ Tipster::AttachedToWindow()
 
 
 void
-Tipster::MessageReceived(BMessage *msg)
+Tipster::MessageReceived(BMessage* msg)
 {
 	switch (msg->what)
 	{
@@ -80,7 +80,6 @@ Tipster::MessageReceived(BMessage *msg)
 		default:
 		{
 			BTextView::MessageReceived(msg);
-			
 			break;
 		}
 	}
@@ -93,10 +92,8 @@ void Tipster::MouseDown(BPoint pt)
 	uint32 buttons;
 	GetMouse(&temp, &buttons);
 	
-	if (Bounds().Contains(temp))
-	{
-		if (buttons == 1)
-		{
+	if (Bounds().Contains(temp)) {
+		if (buttons == 1) {
 			//1 = left mouse button
 			UpdateTip();
 		}
@@ -115,32 +112,29 @@ Tipster::UpdateTip(void)
 entry_ref
 Tipster::GetTipsFile(void)
 {
+	entry_ref ref;
 	BStringList paths;
+	
 	status_t status = BPathFinder::FindPaths(B_FIND_PATH_DATA_DIRECTORY,
 		"tipster-tips.txt", paths);
 	
-	if (paths.IsEmpty() || status != B_OK)
-	{
+	if (paths.IsEmpty() || status != B_OK) {
 		printf("STATUS IS NOT B_OK\n");
 		
 		BEntry entry("tipster-tips.txt");
-		entry_ref ref;
 		entry.GetRef(&ref);
 
 		return ref;
 	}
 	
-	for (int32 i = 0; i < paths.CountStrings(); i++)
-	{
+	for (int32 i = 0; i < paths.CountStrings(); i++) {
 		BEntry data_entry(paths.StringAt(i).String());
-		entry_ref ref;
 		data_entry.GetRef(&ref);
 		
 		return ref;
 	}
 
 	BEntry entry("tipster-tips.txt");
-	entry_ref ref;
 	entry.GetRef(&ref);
 
 	return ref;
@@ -160,19 +154,19 @@ Tipster::LoadTips(entry_ref ref)
 	off_t size = 0;
 	file.GetSize(&size);
 	
-	char *buf = fTips.LockBuffer(size);
+	char* buf = fTips.LockBuffer(size);
 	file.Read(buf, size);
 	fTips.UnlockBuffer(size);
 	
 	fTips.Split("\n", true, fTipsList);
 	fTipNumber = (random() % (fTipsList.CountStrings() / 3)) * 3;
 	
-	BString *text = new BString(fTipsList.StringAt(fTipNumber));
-	text->Append("\n");
-	text->Append(fTipsList.StringAt(fTipNumber + 1));
-	text->Append("\n");
-	text->Append(fTipsList.StringAt(fTipNumber + 2));
-	SetText(text->String());
+	BString text(fTipsList.StringAt(fTipNumber));
+	text.Append("\n");
+	text.Append(fTipsList.StringAt(fTipNumber + 1));
+	text.Append("\n");
+	text.Append(fTipsList.StringAt(fTipNumber + 2));
+	SetText(text.String());
 	
 	time = system_time();
 }
