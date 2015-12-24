@@ -157,15 +157,11 @@ Tipster::LoadTips(entry_ref ref)
 	char* buf = fTips.LockBuffer(size);
 	file.Read(buf, size);
 	fTips.UnlockBuffer(size);
-	
-	fTips.Split("\n", true, fTipsList);
-	fTipNumber = (random() % (fTipsList.CountStrings() / 3)) * 3;
+
+	fTips.Split("%\n", true, fTipsList);
+	fTipNumber = random() % fTipsList.CountStrings();
 	
 	BString text(fTipsList.StringAt(fTipNumber));
-	text.Append("\n");
-	text.Append(fTipsList.StringAt(fTipNumber + 1));
-	text.Append("\n");
-	text.Append(fTipsList.StringAt(fTipNumber + 2));
 	SetText(text.String());
 	
 	time = system_time();

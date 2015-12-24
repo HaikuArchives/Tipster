@@ -1,67 +1,68 @@
+
 Terminal
 Open a file, path, or URL in Terminal by clicking on it while holding the ALT key.
 https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#shortcuts
-
+%
 GUI
 Stack and tile windows by holding the OPT key while moving their borders next to, or title tab on top of each other.
 https://www.haiku-os.org/docs/userguide/en/gui.html#move-resize
-
+%
 GUI
 By holding ALT + CTRL keys you can conveniently move windows (left mouse-button) and resize them (right mouse-button).
 https://www.haiku-os.org/docs/userguide/en/gui.html#move-resize
-
+%
 GUI
 Use Workspaces - virtual desktops - to spread your work to up to 32 desktops.
 https://www.haiku-os.org/docs/userguide/en/workspaces.html
-
+%
 GUI
 Right-clicking window tabs (or anywhere while holding ALT + CTRL keys) will send a window to the back, double-clicking minimizes it to the Deskbar.
 https://www.haiku-os.org/docs/userguide/en/gui.html
-
+%
 Preferences
 Accelerate your workflow by creating keyboard shortcuts with the Shortcuts preferences.
 https://www.haiku-os.org/docs/userguide/en/keyboard-shortcuts.html
-
+%
 Appliction
 Set an audio file for "Vision Nick Notification" in the Sounds preferences to get a ring every time your name's being said in the IRC client Vision.
 https://www.haiku-os.org/docs/userguide/en/applications/vision.html
-
+%
 Application
 The tab key does command and path completion in the Terminal and nickname completion in Vision. Just start typing and press tab to find a match.
 
-
+%
 Miscellaneous
 The Haiku source is an excellent resource for examples of the Haiku API in action. Search it for your favourite class.
 http://xref.plausible.coop/source/
-
+%
 Miscellaneous
 Quickly tap CTRL + Tab to switch between two applications, hold the key combo to see all running apps in the Twitcher.
 https://www.haiku-os.org/docs/userguide/en/twitcher.html
-
+%
 Preferences
 With type-ahead filtering, Tracker only displays the files you're interested in.
 https://www.haiku-os.org/docs/userguide/en/tracker.html#tracker-preferences
-
+%
 Preferences
 If you think you must use the inferior Linux/Windows shortcut key mapping (ALT <-> CTRL), you can change that and more with the Keymap preferences.
 https://www.haiku-os.org/docs/userguide/en/preferences/keymap.html
-
+%
 Terminal
 Dropping a file into Terminal inserts the path to it, doing that with the right mouse-button offers other useful actions.
 https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#hints
-
+%
 Terminal
 In Terminal, the "open" command opens any file with its preferred application. With "." and ".." it opens the current/parent folder in Tracker.
 https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#hints
-
+%
 Miscellaneous
 If your favourite program is missing from HaikuDepot, you may have to add another repository. See WebPositive's bookmarks under "Software".
 
-
+%
 Miscellaneous
 If a some program consumes all of your CPU resources, try lowering its priority through ProcessController in your Deskbar.
 https://www.haiku-os.org/docs/userguide/en/desktop-applets/processcontroller.html
-
+%
 Terminal
 In Terminal you can select any text with the mouse and insert it at the prompt with a right-click.
 https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#hints
