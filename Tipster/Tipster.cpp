@@ -26,8 +26,9 @@ enum
 };
 
 
-Tipster::Tipster(BRect frame)
-	: BTextView("TipView")
+Tipster::Tipster()
+	:
+	BTextView("TipView")
 {
 	fTipsList = BStringList();
 	
@@ -62,19 +63,17 @@ Tipster::MessageReceived(BMessage* msg)
 	{
 		case M_CHECK_TIME:
 		{
-			if (time + 60000000 < system_time())
+			if (fTime + 60000000 < system_time())
 			{
 				//Update the tip every 60 seconds
 				
 				UpdateTip();
 			}
-			
 			break;
 		}
 		case M_UPDATE_TIP:
 		{
 			UpdateTip();
-			
 			break;
 		}
 		default:
@@ -86,7 +85,8 @@ Tipster::MessageReceived(BMessage* msg)
 }
 
 
-void Tipster::MouseDown(BPoint pt)
+void
+Tipster::MouseDown(BPoint pt)
 {
 	BPoint temp;
 	uint32 buttons;
@@ -102,7 +102,7 @@ void Tipster::MouseDown(BPoint pt)
 
 
 void
-Tipster::UpdateTip(void)
+Tipster::UpdateTip()
 {
 	entry_ref ref = GetTipsFile();
 	LoadTips(ref);
@@ -110,7 +110,7 @@ Tipster::UpdateTip(void)
 
 
 entry_ref
-Tipster::GetTipsFile(void)
+Tipster::GetTipsFile()
 {
 	entry_ref ref;
 	BStringList paths;
@@ -118,20 +118,13 @@ Tipster::GetTipsFile(void)
 	status_t status = BPathFinder::FindPaths(B_FIND_PATH_DATA_DIRECTORY,
 		"tipster-tips.txt", paths);
 	
-	if (paths.IsEmpty() || status != B_OK) {
-		printf("STATUS IS NOT B_OK\n");
+	if (!paths.IsEmpty() && status == B_OK) {	
+		for (int32 i = 0; i < paths.CountStrings(); i++) {
+			BEntry data_entry(paths.StringAt(i).String());
+			data_entry.GetRef(&ref);
 		
-		BEntry entry("tipster-tips.txt");
-		entry.GetRef(&ref);
-
-		return ref;
-	}
-	
-	for (int32 i = 0; i < paths.CountStrings(); i++) {
-		BEntry data_entry(paths.StringAt(i).String());
-		data_entry.GetRef(&ref);
-		
-		return ref;
+			return ref;
+		}
 	}
 
 	BEntry entry("tipster-tips.txt");
@@ -158,11 +151,15 @@ Tipster::LoadTips(entry_ref ref)
 	file.Read(buf, size);
 	fTips.UnlockBuffer(size);
 
-	fTips.Split("%\n", true, fTipsList);
+	fTips.Split("\n%\n", false, fTipsList);
 	fTipNumber = random() % fTipsList.CountStrings();
 	
-	BString text(fTipsList.StringAt(fTipNumber));
+	BStringList fUpdatedList;
+	fTipsList.StringAt(fTipNumber).Split("\n", false, fUpdatedList);
+	fUpdatedList.Remove(0);
+	
+	BString text(fUpdatedList.Join("\n"));
 	SetText(text.String());
 	
-	time = system_time();
+	fTime = system_time();
 }

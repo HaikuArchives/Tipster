@@ -1,4 +1,4 @@
-
+%
 Terminal
 Open a file, path, or URL in Terminal by clicking on it while holding the ALT key.
 https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#shortcuts

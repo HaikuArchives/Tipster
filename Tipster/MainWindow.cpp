@@ -47,7 +47,7 @@ MainWindow::BuildLayout(void)
 	fTipsterViewContainer = new BView("tipster_container",
 		B_SUPPORTS_LAYOUT);
 	
-	fTipsterView = new Tipster(fTipsterViewContainer->Frame());
+	fTipsterView = new Tipster();
 	fTipsterViewContainer->AddChild(fTipsterView);
 	
 	BGroupLayout* layout = new BGroupLayout(B_VERTICAL);

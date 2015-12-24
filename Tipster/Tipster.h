@@ -14,7 +14,7 @@
 class Tipster : public BTextView
 {
 	public:
-		Tipster(BRect frame);
+		Tipster(void);
 		
 		bool QuitRequested(void);
 		
@@ -33,7 +33,7 @@ class Tipster : public BTextView
 		
 		BString *fRandomTip;
 		
-		bigtime_t time;
+		bigtime_t fTime;
 		BMessageRunner *fRunner;
 };
 
