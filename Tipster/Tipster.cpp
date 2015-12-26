@@ -116,7 +116,7 @@ Tipster::GetTipsFile()
 	BStringList paths;
 	
 	status_t status = BPathFinder::FindPaths(B_FIND_PATH_DATA_DIRECTORY,
-		"tipster-tips.txt", paths);
+		"tipster-tips.txt", B_FIND_PATH_EXISTING_ONLY, paths);
 	
 	if (!paths.IsEmpty() && status == B_OK) {	
 		for (int32 i = 0; i < paths.CountStrings(); i++) {
