@@ -28,7 +28,7 @@ enum
 	UPDATE_ICON = 'upin'
 };
 
-#define BROWSER_MIME_WEBPOSITIVE "application/x-vnd.Haiku-WebPositive"\
+#define BROWSER_MIME_WEBPOSITIVE "application/x-vnd.Haiku-WebPositive"
 
 text_run_array Tipster::linkStyle;
 
@@ -138,8 +138,39 @@ Tipster::MouseDown(BPoint pt)
 void
 Tipster::UpdateTip()
 {
-	entry_ref ref = GetTipsFile();
-	LoadTips(ref);
+	if (fTipsList.IsEmpty()) {
+		entry_ref ref = GetTipsFile();
+		LoadTips(ref);
+	}
+	
+	SetText("");
+	fTipNumber = random() % fTipsList.CountStrings();
+	
+	BStringList fUpdatedList;
+	fTipsList.StringAt(fTipNumber).Split("\n", false, fUpdatedList);
+	fUpdatedList.Remove(0);
+	
+	BString link = fUpdatedList.StringAt(2);
+	//int32 linkoffset = TextLength();
+	//int32 linklen = link.Length();
+	//links.AddItem(new tLink(linkoffset, linklen, link));
+
+	//Insert(fUpdatedList.StringAt(0));
+	//Insert("\n");
+	Insert(fUpdatedList.StringAt(1));
+	//Insert("\n");
+	//Insert(fUpdatedList.StringAt(2));
+	//Insert(link.String(), &linkStyle);
+	
+	fTipsList.Remove(fTipNumber);
+	
+	BMessage message(UPDATE_ICON);
+	message.AddString("url", link);
+	message.AddString("artwork",
+		GetArtworkTitle(fUpdatedList.StringAt(0)));
+	messenger->SendMessage(&message);
+	
+	fTime = system_time();
 }
 
 
@@ -168,7 +199,7 @@ Tipster::GetTipsFile()
 }
 
 
-Tipster::tLink*
+/*Tipster::tLink*
 Tipster::GetLinkAt(BPoint point)
 {
 	int32 offset = OffsetAt(point);
@@ -183,7 +214,7 @@ Tipster::GetLinkAt(BPoint point)
 		}
 	}
 	return NULL;
-}
+}*/
 
 
 void
@@ -194,7 +225,6 @@ Tipster::LoadTips(entry_ref ref)
 		return;
 	
 	fTipsList.MakeEmpty();
-	SetText("");
 	
 	BString fTips;
 	off_t size = 0;
@@ -205,33 +235,6 @@ Tipster::LoadTips(entry_ref ref)
 	fTips.UnlockBuffer(size);
 
 	fTips.Split("\n%\n", false, fTipsList);
-	fTipsLength = fTipsList.CountStrings();
-	fTipNumber = random() % fTipsList.CountStrings();
-	
-	BStringList fUpdatedList;
-	fTipsList.StringAt(fTipNumber).Split("\n", false, fUpdatedList);
-	fUpdatedList.Remove(0);
-	
-	BString link = fUpdatedList.StringAt(fUpdatedList.CountStrings() - 1);
-	int32 linkoffset = TextLength();
-	int32 linklen = link.Length();
-	links.AddItem(new tLink(linkoffset, linklen, link));
-
-	//Insert(fUpdatedList.StringAt(0));
-	//Insert("\n");
-	Insert(fUpdatedList.StringAt(1));
-	//Insert("\n");
-	//Insert(fUpdatedList.StringAt(2));
-	//Insert(link.String(), &linkStyle);
-	
-	BMessage message(UPDATE_ICON);
-	message.AddString("url", link);
-	message.AddString("artwork",
-		GetArtworkTitle(fUpdatedList.StringAt(0)));
-	
-	messenger->SendMessage(&message);
-	
-	fTime = system_time();
 }
 
 
