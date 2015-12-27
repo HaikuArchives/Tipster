@@ -7,6 +7,7 @@
 #include "MainWindow.h"
 
 #include <Application.h>
+#include <ControlLook.h>
 #include <GroupLayout.h>
 #include <GroupLayoutBuilder.h>
 #include <LayoutBuilder.h>
@@ -14,13 +15,17 @@
 #include <MenuBar.h>
 #include <MenuItem.h>
 #include <Messenger.h>
+#include <Path.h>
+#include <stdio.h>
+#include <TranslationUtils.h>
 
 #include <private/interface/AboutWindow.h>
 
 enum
 {
 	SHOW_ABOUT = 'swat',
-	UPDATE_TIP = 'uptp'
+	UPDATE_ICON = 'upin',
+	OPEN_URL = 'opur'
 };
 
 
@@ -30,6 +35,8 @@ MainWindow::MainWindow(void)
 		B_ASYNCHRONOUS_CONTROLS)
 {
 	BuildLayout();
+	
+	url = new BString("");
 }
 
 
@@ -55,9 +62,23 @@ MainWindow::BuildLayout(void)
 	
 	fTipsterViewContainer->SetLayout(layout);
 	
+	icon = new BButton("icon", "", new BMessage(OPEN_URL));
+	icon->SetFlat(true);
+	
+	static const float spacing = be_control_look->DefaultItemSpacing() / 2;
+	fMainSplitView = 
+		BLayoutBuilder::Split<>(B_HORIZONTAL)
+			.AddGroup(B_VERTICAL)
+				.Add(icon)
+			.End()
+			.AddGroup(B_VERTICAL)
+				.Add(fTipsterViewContainer)
+			.End()
+		.View();
+	
 	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
 		.Add(fMenuBar)
-		.Add(fTipsterViewContainer);
+		.Add(fMainSplitView);
 }
 
 
@@ -84,6 +105,31 @@ for Haiku");
 			about->AddCopyright(2015, "Vale Tolpegin");
 			
 			about->Show();
+			
+			break;
+		}
+		case UPDATE_ICON:
+		{
+			status_t status = msg->FindString("url", url);
+			
+			if (status == B_OK) {
+				BString artwork("");
+				
+				msg->FindString("artwork", &artwork);
+				
+				BPath path("artwork");
+				path.Append(artwork);
+				
+				icon_bitmap = BTranslationUtils::GetBitmap(path.Path());
+				
+				icon->SetIcon(icon_bitmap);
+			}
+			
+			break;
+		}
+		case OPEN_URL:
+		{
+			fTipsterView->OpenURL(url);
 			
 			break;
 		}

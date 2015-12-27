@@ -21,6 +21,8 @@ class Tipster : public BTextView
 		void MouseDown(BPoint pt);
 		void MessageReceived(BMessage *msg);
 		void AttachedToWindow();
+		
+		void OpenURL(BString* url);
 	
 	private:
 		struct tLink {
@@ -39,10 +41,10 @@ class Tipster : public BTextView
 		
 		void UpdateTip(void);
 		void LoadTips(entry_ref ref);
-		void OpenURL(BString url);
 		
 		entry_ref GetTipsFile(void);
 		tLink* GetLinkAt(BPoint point);
+		const char* GetArtworkTitle(BString category);
 		
 		BList links;
 		BList fTipsUsed;
@@ -55,6 +57,8 @@ class Tipster : public BTextView
 		
 		bigtime_t fTime;
 		BMessageRunner *fRunner;
+		
+		BMessenger* messenger;
 		
 		static text_run_array linkStyle;
 };

@@ -12,6 +12,7 @@
 #include <Entry.h>
 #include <File.h>
 #include <FindDirectory.h>
+#include <Messenger.h>
 #include <Path.h>
 #include <PathFinder.h>
 #include <Roster.h>
@@ -23,7 +24,8 @@
 enum
 {
 	M_UPDATE_TIP = 'uptp',
-	M_CHECK_TIME = 'cktm'
+	M_CHECK_TIME = 'cktm',
+	UPDATE_ICON = 'upin'
 };
 
 #define BROWSER_MIME_WEBPOSITIVE "application/x-vnd.Haiku-WebPositive"\
@@ -65,6 +67,7 @@ Tipster::AttachedToWindow()
 	linkStyle.runs[0].font = linkfont;
 	linkStyle.runs[0].color = make_color(0,0,255);
 
+	messenger = new BMessenger(this->Parent());
 	UpdateTip();
 
 	BTextView::AttachedToWindow();
@@ -102,14 +105,14 @@ Tipster::MessageReceived(BMessage* msg)
 
 //Written by PulkoMandy
 void
-Tipster::OpenURL(BString url)
+Tipster::OpenURL(BString* url)
 {
 	char *argv[2];
 	BString app;
 
 	app = BROWSER_MIME_WEBPOSITIVE;
 
-	argv[0] = (char*)url.String();
+	argv[0] = (char*)url->String();
 	argv[1] = 0;
 
 	status_t status = be_roster->Launch( app.String(), 1, argv );
@@ -123,13 +126,8 @@ Tipster::MouseDown(BPoint pt)
 	uint32 buttons;
 	GetMouse(&temp, &buttons);
 	
-	if (Bounds().Contains(temp)) {
-		tLink* aLink = GetLinkAt(pt);
-		
-		if (aLink) {
-			OpenURL(aLink->target);
-		}
-		else if (buttons == 1) {
+	if (Bounds().Contains(temp)) {		
+		if (buttons == 1) {
 			//1 = left mouse button
 			UpdateTip();
 		}
@@ -218,14 +216,37 @@ Tipster::LoadTips(entry_ref ref)
 	int32 linkoffset = TextLength();
 	int32 linklen = link.Length();
 	links.AddItem(new tLink(linkoffset, linklen, link));
-	
-	fUpdatedList.Remove(fUpdatedList.CountStrings() - 1);
 
-	Insert(fUpdatedList.StringAt(0));
-	Insert("\n");
+	//Insert(fUpdatedList.StringAt(0));
+	//Insert("\n");
 	Insert(fUpdatedList.StringAt(1));
-	Insert("\n");
-	Insert(link.String(), &linkStyle);
+	//Insert("\n");
+	//Insert(fUpdatedList.StringAt(2));
+	//Insert(link.String(), &linkStyle);
+	
+	BMessage message(UPDATE_ICON);
+	message.AddString("url", link);
+	message.AddString("artwork",
+		GetArtworkTitle(fUpdatedList.StringAt(0)));
+	
+	messenger->SendMessage(&message);
 	
 	fTime = system_time();
+}
+
+
+const char * 
+Tipster::GetArtworkTitle(BString category)
+{
+	if (category == "GUI") {
+		return "App_About";
+	}
+	else if (category == "Terminal") {
+		return "App_Terminal";
+	}
+	else if (category == "Preferences") {
+		return "App_Workspaces";
+	}
+	
+	return "App_Info";
 }
