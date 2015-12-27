@@ -14,6 +14,7 @@
 #include <FindDirectory.h>
 #include <Path.h>
 #include <PathFinder.h>
+#include <Roster.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <StringList.h>
@@ -25,17 +26,21 @@ enum
 	M_CHECK_TIME = 'cktm'
 };
 
+#define BROWSER_MIME_WEBPOSITIVE "application/x-vnd.Haiku-WebPositive"\
+
+text_run_array Tipster::linkStyle;
+
 
 Tipster::Tipster()
 	:
 	BTextView("TipView")
 {
+	MakeEditable(false);
+	SetStylable(true);
+	
 	fTipsList = BStringList();
 	
 	SetText("");
-	UpdateTip();
-	
-	MakeEditable(false);
 }
 
 
@@ -51,6 +56,16 @@ Tipster::AttachedToWindow()
 {
 	BMessage message(M_CHECK_TIME);
 	fRunner = new BMessageRunner(this, &message, 1000000);
+	
+	BFont linkfont(be_plain_font);
+	linkfont.SetFace(B_UNDERSCORE_FACE);
+	
+	linkStyle.count = 1;
+	linkStyle.runs[0].offset = 0;
+	linkStyle.runs[0].font = linkfont;
+	linkStyle.runs[0].color = make_color(0,0,255);
+
+	UpdateTip();
 
 	BTextView::AttachedToWindow();
 }
@@ -85,6 +100,22 @@ Tipster::MessageReceived(BMessage* msg)
 }
 
 
+//Written by PulkoMandy
+void
+Tipster::OpenURL(BString url)
+{
+	char *argv[2];
+	BString app;
+
+	app = BROWSER_MIME_WEBPOSITIVE;
+
+	argv[0] = (char*)url.String();
+	argv[1] = 0;
+
+	status_t status = be_roster->Launch( app.String(), 1, argv );
+}
+
+
 void
 Tipster::MouseDown(BPoint pt)
 {
@@ -93,7 +124,12 @@ Tipster::MouseDown(BPoint pt)
 	GetMouse(&temp, &buttons);
 	
 	if (Bounds().Contains(temp)) {
-		if (buttons == 1) {
+		tLink* aLink = GetLinkAt(pt);
+		
+		if (aLink) {
+			OpenURL(aLink->target);
+		}
+		else if (buttons == 1) {
 			//1 = left mouse button
 			UpdateTip();
 		}
@@ -118,7 +154,7 @@ Tipster::GetTipsFile()
 	status_t status = BPathFinder::FindPaths(B_FIND_PATH_DATA_DIRECTORY,
 		"tipster-tips.txt", B_FIND_PATH_EXISTING_ONLY, paths);
 	
-	if (!paths.IsEmpty() && status == B_OK) {	
+	if (!paths.IsEmpty() && status == B_OK) {
 		for (int32 i = 0; i < paths.CountStrings(); i++) {
 			BEntry data_entry(paths.StringAt(i).String());
 			data_entry.GetRef(&ref);
@@ -134,6 +170,24 @@ Tipster::GetTipsFile()
 }
 
 
+Tipster::tLink*
+Tipster::GetLinkAt(BPoint point)
+{
+	int32 offset = OffsetAt(point);
+	
+	tLink* aLink;
+
+	for (int i = 0; (aLink = (tLink*)links.ItemAt(i)); i++)
+	{
+		if (offset >= aLink->linkoffset
+			&& offset < aLink->linkoffset + aLink->linklen) {
+			return aLink;
+		}
+	}
+	return NULL;
+}
+
+
 void
 Tipster::LoadTips(entry_ref ref)
 {
@@ -142,6 +196,7 @@ Tipster::LoadTips(entry_ref ref)
 		return;
 	
 	fTipsList.MakeEmpty();
+	SetText("");
 	
 	BString fTips;
 	off_t size = 0;
@@ -152,14 +207,25 @@ Tipster::LoadTips(entry_ref ref)
 	fTips.UnlockBuffer(size);
 
 	fTips.Split("\n%\n", false, fTipsList);
+	fTipsLength = fTipsList.CountStrings();
 	fTipNumber = random() % fTipsList.CountStrings();
 	
 	BStringList fUpdatedList;
 	fTipsList.StringAt(fTipNumber).Split("\n", false, fUpdatedList);
 	fUpdatedList.Remove(0);
 	
-	BString text(fUpdatedList.Join("\n"));
-	SetText(text.String());
+	BString link = fUpdatedList.StringAt(fUpdatedList.CountStrings() - 1);
+	int32 linkoffset = TextLength();
+	int32 linklen = link.Length();
+	links.AddItem(new tLink(linkoffset, linklen, link));
+	
+	fUpdatedList.Remove(fUpdatedList.CountStrings() - 1);
+
+	Insert(fUpdatedList.StringAt(0));
+	Insert("\n");
+	Insert(fUpdatedList.StringAt(1));
+	Insert("\n");
+	Insert(link.String(), &linkStyle);
 	
 	fTime = system_time();
 }
