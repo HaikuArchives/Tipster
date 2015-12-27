@@ -248,5 +248,5 @@ Tipster::GetArtworkTitle(BString category)
 		return "App_Workspaces";
 	}
 	
-	return "App_Info";
+	return "Alert_Info";
 }
