@@ -30,8 +30,6 @@ enum
 
 #define BROWSER_MIME_WEBPOSITIVE "application/x-vnd.Haiku-WebPositive"
 
-text_run_array Tipster::linkStyle;
-
 
 Tipster::Tipster()
 	:
@@ -126,7 +124,7 @@ Tipster::MouseDown(BPoint pt)
 	uint32 buttons;
 	GetMouse(&temp, &buttons);
 	
-	if (Bounds().Contains(temp)) {		
+	if (Bounds().Contains(temp)) {
 		if (buttons == 1) {
 			//1 = left mouse button
 			UpdateTip();
@@ -151,16 +149,8 @@ Tipster::UpdateTip()
 	fUpdatedList.Remove(0);
 	
 	BString link = fUpdatedList.StringAt(2);
-	//int32 linkoffset = TextLength();
-	//int32 linklen = link.Length();
-	//links.AddItem(new tLink(linkoffset, linklen, link));
 
-	//Insert(fUpdatedList.StringAt(0));
-	//Insert("\n");
 	Insert(fUpdatedList.StringAt(1));
-	//Insert("\n");
-	//Insert(fUpdatedList.StringAt(2));
-	//Insert(link.String(), &linkStyle);
 	
 	fTipsList.Remove(fTipNumber);
 	
@@ -197,24 +187,6 @@ Tipster::GetTipsFile()
 
 	return ref;
 }
-
-
-/*Tipster::tLink*
-Tipster::GetLinkAt(BPoint point)
-{
-	int32 offset = OffsetAt(point);
-	
-	tLink* aLink;
-
-	for (int i = 0; (aLink = (tLink*)links.ItemAt(i)); i++)
-	{
-		if (offset >= aLink->linkoffset
-			&& offset < aLink->linkoffset + aLink->linklen) {
-			return aLink;
-		}
-	}
-	return NULL;
-}*/
 
 
 void

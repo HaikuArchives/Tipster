@@ -15,21 +15,21 @@ class Tipster : public BTextView
 {
 	public:
 		Tipster(void);
-		
+
 		bool QuitRequested(void);
-		
+
 		void MouseDown(BPoint pt);
 		void MessageReceived(BMessage *msg);
 		void AttachedToWindow();
-		
+
 		void OpenURL(BString* url);
-	
+
 	private:
 		struct tLink {
 			const int32 linkoffset;
 			const int32 linklen;
 			const BString target;
-			
+
 			tLink(int32 off, int32 len, BString trg)
 				:
 				linkoffset(off),
@@ -41,26 +41,26 @@ class Tipster : public BTextView
 		
 		void UpdateTip(void);
 		void LoadTips(entry_ref ref);
-		
+
 		entry_ref GetTipsFile(void);
 		tLink* GetLinkAt(BPoint point);
 		const char* GetArtworkTitle(BString category);
-		
+
 		BList links;
 		BList fTipsUsed;
 
 		uint32 fTipNumber;
 		BStringList fTipsList;
 		int32 fTipsLength;
-		
+
 		BString *fRandomTip;
-		
+
 		bigtime_t fTime;
 		BMessageRunner *fRunner;
-		
+
 		BMessenger* messenger;
-		
-		static text_run_array linkStyle;
+
+		text_run_array linkStyle;
 };
 
 #endif

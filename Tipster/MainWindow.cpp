@@ -36,7 +36,7 @@ MainWindow::MainWindow(void)
 {
 	BuildLayout();
 	
-	url = new BString("");
+	url = new BString();
 }
 
 
@@ -46,8 +46,7 @@ MainWindow::BuildLayout(void)
 	BMenuBar* fMenuBar = new BMenuBar("menubar");
 	BMenu* fTipsterMenu = new BMenu("Tipster");
 	
-	fTipsterMenu->AddItem(new BMenuItem("About", new BMessage(SHOW_ABOUT),
-		'A', B_COMMAND_KEY));
+	fTipsterMenu->AddItem(new BMenuItem("About", new BMessage(SHOW_ABOUT)));
 	
 	fMenuBar->AddItem(fTipsterMenu);
 	
@@ -113,7 +112,7 @@ for Haiku");
 			status_t status = msg->FindString("url", url);
 			
 			if (status == B_OK) {
-				BString artwork("");
+				BString artwork;
 				
 				msg->FindString("artwork", &artwork);
 				
