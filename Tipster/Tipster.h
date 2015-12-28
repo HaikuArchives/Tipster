@@ -41,6 +41,7 @@ class Tipster : public BTextView
 		
 		void UpdateTip();
 		void LoadTips(entry_ref ref);
+		void AddBeginningTip();
 
 		entry_ref GetTipsFile();
 		tLink* GetLinkAt(BPoint point);
@@ -53,7 +54,8 @@ class Tipster : public BTextView
 		BStringList fTipsList;
 		int32 fTipsLength;
 
-		BString *fRandomTip;
+		BString* fRandomTip;
+		BString* fIntroductionTip;
 
 		bigtime_t fTime;
 		BMessageRunner *fRunner;

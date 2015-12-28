@@ -124,12 +124,8 @@ for Haiku");
 					
 					if (iconStatus == B_OK) {
 						fIcon->SetIcon(fIconBitmap);
-						
-						delete iconData;
-					} else
-						printf("Icon did not load properly\n");
-				} else
-					printf("Icon did not load properly\n");
+					}
+				}
 			}
 			break;
 		}

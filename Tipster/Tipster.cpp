@@ -38,6 +38,7 @@ Tipster::Tipster()
 	SetStylable(true);
 	
 	fTipsList = BStringList();
+	fIntroductionTip = new BString();
 	
 	SetText("");
 }
@@ -65,10 +66,59 @@ Tipster::AttachedToWindow()
 	linkStyle.runs[0].color = make_color(0, 0, 255);
 
 	messenger = new BMessenger(this->Parent());
-	UpdateTip();
+	
+	AddBeginningTip();
 
 	BTextView::AttachedToWindow();
 }
+
+
+void
+Tipster::AddBeginningTip()
+{
+	entry_ref ref = GetTipsFile();
+	
+	BFile file(&ref, B_READ_ONLY);
+	if (file.InitCheck() != B_OK)
+		return;
+
+	BString fTip;
+	off_t size = 0;
+	file.GetSize(&size);
+	
+	char* buf = fTip.LockBuffer(size);
+	file.Read(buf, size);
+	fTip.UnlockBuffer(size);
+	
+	BStringList fUpdatedList;
+	fTip.Split("\n", false, fUpdatedList);
+	BString link = fUpdatedList.StringAt(2);
+	
+	Insert(fUpdatedList.StringAt(1));
+	Insert("\n\n<-- Click on the icon to open the URL");
+	
+	BString additionalTip("%\n");
+	additionalTip.Append(fUpdatedList.StringAt(0).String());
+	additionalTip.Append("\n");
+	additionalTip.Append(fUpdatedList.StringAt(1).String());
+	additionalTip.Append("\n");
+	additionalTip.Append(link);
+	fIntroductionTip = new BString(additionalTip.String());
+	
+	BMessage message(UPDATE_ICON);
+	message.AddString("url", link);
+	message.AddString("artwork",
+		GetArtworkTitle(fUpdatedList.StringAt(0)));
+	messenger->SendMessage(&message);
+	
+	fTime = system_time();
+}
+
+
+/*void
+Tipster::OnResize()
+{
+}*/	
 
 
 void
@@ -207,6 +257,10 @@ Tipster::LoadTips(entry_ref ref)
 	fTips.UnlockBuffer(size);
 
 	fTips.Split("\n%\n", false, fTipsList);
+	fTipsList.Remove(0);
+	
+	BString additionalTip(fIntroductionTip->String());
+	fTipsList.Add(additionalTip);
 }
 
 
@@ -214,13 +268,13 @@ const char *
 Tipster::GetArtworkTitle(BString category)
 {
 	if (category == "GUI")
-		return "Misc_Deskbar_Group";
+		return "GUI";
 	else if (category == "Terminal")
-		return "App_Terminal";
+		return "Terminal";
 	else if (category == "Preferences")
-		return "App_Deskbar";
+		return "Preferences";
 	else if (category == "Application")
-		return "App_Generic_2";
-	else if (category == "Miscellaneous")
-		return "Alert_Idea";
+		return "Application";
+	
+	return "Miscellaneous";
 }
