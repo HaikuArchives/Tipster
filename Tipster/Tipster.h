@@ -14,9 +14,9 @@
 class Tipster : public BTextView
 {
 	public:
-		Tipster(void);
+		Tipster();
 
-		bool QuitRequested(void);
+		bool QuitRequested();
 
 		void MouseDown(BPoint pt);
 		void MessageReceived(BMessage *msg);
@@ -39,10 +39,10 @@ class Tipster : public BTextView
 			}
 		};
 		
-		void UpdateTip(void);
+		void UpdateTip();
 		void LoadTips(entry_ref ref);
 
-		entry_ref GetTipsFile(void);
+		entry_ref GetTipsFile();
 		tLink* GetLinkAt(BPoint point);
 		const char* GetArtworkTitle(BString category);
 

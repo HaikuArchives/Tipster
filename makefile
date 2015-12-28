@@ -30,14 +30,15 @@ APP_MIME_SIG =
 #	same name (source.c or source.cpp) are included from different directories.
 #	Also note that spaces in folder names do not work well with this Makefile.
 SRCS = \
-	 Tipster/Tipster.cpp  \
 	 Tipster/App.cpp  \
 	 Tipster/MainWindow.cpp  \
+	 Tipster/Tipster.cpp  \
 
 
 #	Specify the resource definition files to use. Full or relative paths can be
 #	used.
 RDEFS = \
+	 Tipster/Tipster.rdef  \
 
 
 #	Specify the resource files to use. Full or relative paths can be used.
@@ -47,6 +48,8 @@ RSRCS = \
 
 # End Pe/Eddie support.
 # @<-src@ 
+#%}
+
 #%}
 
 #%}

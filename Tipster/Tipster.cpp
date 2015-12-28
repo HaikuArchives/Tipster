@@ -8,6 +8,7 @@
 
 #include <Application.h>
 #include <Catalog.h>
+#include <ControlLook.h>
 #include <Directory.h>
 #include <Entry.h>
 #include <File.h>
@@ -27,8 +28,6 @@ enum
 	M_CHECK_TIME = 'cktm',
 	UPDATE_ICON = 'upin'
 };
-
-#define BROWSER_MIME_WEBPOSITIVE "application/x-vnd.Haiku-WebPositive"
 
 
 Tipster::Tipster()
@@ -63,7 +62,7 @@ Tipster::AttachedToWindow()
 	linkStyle.count = 1;
 	linkStyle.runs[0].offset = 0;
 	linkStyle.runs[0].font = linkfont;
-	linkStyle.runs[0].color = make_color(0,0,255);
+	linkStyle.runs[0].color = make_color(0, 0, 255);
 
 	messenger = new BMessenger(this->Parent());
 	UpdateTip();
@@ -106,14 +105,11 @@ void
 Tipster::OpenURL(BString* url)
 {
 	char *argv[2];
-	BString app;
-
-	app = BROWSER_MIME_WEBPOSITIVE;
-
 	argv[0] = (char*)url->String();
 	argv[1] = 0;
 
-	status_t status = be_roster->Launch( app.String(), 1, argv );
+	status_t status = be_roster->Launch(
+		"application/x-vnd.Be.URL.http", 1, argv);
 }
 
 
@@ -161,6 +157,10 @@ Tipster::UpdateTip()
 	messenger->SendMessage(&message);
 	
 	fTime = system_time();
+	
+	static const float spacing = be_control_look->DefaultLabelSpacing();
+	TruncateString(&fUpdatedList.StringAt(1), B_TRUNCATE_END,
+		Frame().Width() - 16 - spacing * 4);
 }
 
 
@@ -213,15 +213,14 @@ Tipster::LoadTips(entry_ref ref)
 const char * 
 Tipster::GetArtworkTitle(BString category)
 {
-	if (category == "GUI") {
-		return "App_About";
-	}
-	else if (category == "Terminal") {
+	if (category == "GUI")
+		return "Misc_Deskbar_Group";
+	else if (category == "Terminal")
 		return "App_Terminal";
-	}
-	else if (category == "Preferences") {
-		return "App_Workspaces";
-	}
-	
-	return "Alert_Info";
+	else if (category == "Preferences")
+		return "App_Deskbar";
+	else if (category == "Application")
+		return "App_Generic_2";
+	else if (category == "Miscellaneous")
+		return "Alert_Idea";
 }

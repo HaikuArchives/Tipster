@@ -23,7 +23,7 @@ Preferences
 Accelerate your workflow by creating keyboard shortcuts with the Shortcuts preferences.
 https://www.haiku-os.org/docs/userguide/en/keyboard-shortcuts.html
 %
-Appliction
+Application
 Set an audio file for "Vision Nick Notification" in the Sounds preferences to get a ring every time your name's being said in the IRC client Vision.
 https://www.haiku-os.org/docs/userguide/en/applications/vision.html
 %

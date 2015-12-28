@@ -8,6 +8,7 @@
 #include "Tipster.h"
 
 #include <Button.h>
+#include <Resources.h>
 #include <SplitView.h>
 #include <View.h>
 #include <Window.h>
@@ -29,9 +30,11 @@ class MainWindow : public BWindow
 
 		Tipster* fTipsterView;
 		
-		BButton* icon;
-		BString* url;
-		BBitmap* icon_bitmap;
+		BButton* fIcon;
+		BString* fURL;
+		BBitmap* fIconBitmap;
+		
+		BResources* fResources;
 };
 
 #endif

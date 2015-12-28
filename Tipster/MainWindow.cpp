@@ -7,15 +7,18 @@
 #include "MainWindow.h"
 
 #include <Application.h>
+#include <Bitmap.h>
 #include <ControlLook.h>
 #include <GroupLayout.h>
 #include <GroupLayoutBuilder.h>
+#include <IconUtils.h>
 #include <LayoutBuilder.h>
 #include <Menu.h>
 #include <MenuBar.h>
 #include <MenuItem.h>
 #include <Messenger.h>
 #include <Path.h>
+#include <Resources.h>
 #include <stdio.h>
 #include <TranslationUtils.h>
 
@@ -36,7 +39,8 @@ MainWindow::MainWindow(void)
 {
 	BuildLayout();
 	
-	url = new BString();
+	fURL = new BString();
+	fResources = BApplication::AppResources();
 }
 
 
@@ -61,23 +65,16 @@ MainWindow::BuildLayout(void)
 	
 	fTipsterViewContainer->SetLayout(layout);
 	
-	icon = new BButton("icon", "", new BMessage(OPEN_URL));
-	icon->SetFlat(true);
-	
-	static const float spacing = be_control_look->DefaultItemSpacing() / 2;
-	fMainSplitView = 
-		BLayoutBuilder::Split<>(B_HORIZONTAL)
-			.AddGroup(B_VERTICAL)
-				.Add(icon)
-			.End()
-			.AddGroup(B_VERTICAL)
-				.Add(fTipsterViewContainer)
-			.End()
-		.View();
+	fIcon = new BButton("icon", "", new BMessage(OPEN_URL));
+	fIcon->SetFlat(true);
 	
 	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
 		.Add(fMenuBar)
-		.Add(fMainSplitView);
+		.AddGroup(B_HORIZONTAL)
+			.Add(fIcon)
+			.Add(fTipsterViewContainer)
+		.End()
+		.AddGlue();
 }
 
 
@@ -98,41 +95,49 @@ MainWindow::MessageReceived(BMessage* msg)
 		{
 			BAboutWindow* about = new BAboutWindow("Tipster",
 				"application/x-vnd.tipster");
-			
 			about->AddDescription("An application to show usability tips \
 for Haiku");
 			about->AddCopyright(2015, "Vale Tolpegin");
 			
 			about->Show();
-			
 			break;
 		}
 		case UPDATE_ICON:
 		{
-			status_t status = msg->FindString("url", url);
+			status_t status = msg->FindString("url", fURL);
 			
 			if (status == B_OK) {
 				BString artwork;
-				
 				msg->FindString("artwork", &artwork);
 				
-				BPath path("artwork");
-				path.Append(artwork);
+				size_t size;
+				const uint8* iconData = (const uint8*)
+					fResources->LoadResource('VICN', artwork.String(),
+					&size);
 				
-				icon_bitmap = BTranslationUtils::GetBitmap(path.Path());
-				
-				icon->SetIcon(icon_bitmap);
+				if (size > 0) {
+					fIconBitmap = new BBitmap(BRect(0, 0, 64, 64), 0,
+						B_RGBA32);
+					
+					status_t iconStatus = BIconUtils::GetVectorIcon(
+						iconData, size, fIconBitmap);
+					
+					if (iconStatus == B_OK) {
+						fIcon->SetIcon(fIconBitmap);
+						
+						delete iconData;
+					} else
+						printf("Icon did not load properly\n");
+				} else
+					printf("Icon did not load properly\n");
 			}
-			
 			break;
 		}
 		case OPEN_URL:
 		{
-			fTipsterView->OpenURL(url);
-			
+			fTipsterView->OpenURL(fURL);	
 			break;
 		}
-		
 		default:
 			BWindow::MessageReceived(msg);
 			break;
