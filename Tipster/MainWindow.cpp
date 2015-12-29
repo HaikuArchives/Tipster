@@ -34,8 +34,8 @@ enum
 
 MainWindow::MainWindow(void)
 	:
-	BWindow(BRect(100,100,900,200), "Tipster", B_TITLED_WINDOW,
-		B_ASYNCHRONOUS_CONTROLS)
+	BWindow(BRect(100,100,740,200), "Tipster", B_TITLED_WINDOW,
+		B_ASYNCHRONOUS_CONTROLS | B_NOT_V_RESIZABLE)
 {
 	BuildLayout();
 	

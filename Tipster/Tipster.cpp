@@ -181,10 +181,6 @@ Tipster::UpdateTip()
 	fMessenger->SendMessage(&message);
 	
 	fTime = system_time();
-	
-	static const float spacing = be_control_look->DefaultLabelSpacing();
-	TruncateString(&tipInfoList.StringAt(1), B_TRUNCATE_END,
-		Frame().Width() - 16 - spacing * 4);
 }
 
 

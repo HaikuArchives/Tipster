@@ -1,5 +1,5 @@
 Tipster
-Welcome to Tipster! Click on the icon to get more information on a tip.
+Welcome to Tipster! Click on the icon to the left of a tip to get more information. Click on the text to go to the next tip.
 http://www.github.com/HaikuArchives/Tipster
 %
 Terminal
