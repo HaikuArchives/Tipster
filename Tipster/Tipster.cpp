@@ -38,7 +38,6 @@ Tipster::Tipster()
 	SetStylable(true);
 	
 	fTipsList = BStringList();
-	fIntroductionTip = new BString();
 	
 	SetText("");
 }
@@ -76,7 +75,6 @@ Tipster::AddBeginningTip()
 	BString link = introductionTipList.StringAt(2);
 	
 	Insert(introductionTipList.StringAt(1));
-	Insert("\n\n<-- Click on the icon to open the URL");
 	
 	BString additionalTip("%\n");
 	additionalTip.Append(introductionTipList.StringAt(0).String());
@@ -84,10 +82,8 @@ Tipster::AddBeginningTip()
 	additionalTip.Append(introductionTipList.StringAt(1).String());
 	additionalTip.Append("\n");
 	additionalTip.Append(link);
-	fIntroductionTip = new BString(additionalTip.String());
 	
 	fTipsList.Remove(0);
-	fTipsList.Add(additionalTip);
 	
 	BMessage message(UPDATE_ICON);
 	message.AddString("url", link);
@@ -163,10 +159,6 @@ Tipster::UpdateTip()
 	if (fTipsList.IsEmpty()) {
 		entry_ref ref = GetTipsFile();
 		LoadTips(ref);
-
-		fTipsList.Remove(0);
-		BString introductionTip(fIntroductionTip->String());
-		fTipsList.Add(introductionTip);
 	}
 	
 	SetText("");

@@ -37,7 +37,6 @@ class Tipster : public BTextView
 		int32			fTipsLength;
 
 		BString*		fRandomTip;
-		BString*		fIntroductionTip;
 
 		bigtime_t		fTime;
 		BMessageRunner* fRunner;
