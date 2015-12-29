@@ -1,3 +1,6 @@
+Tipster
+Welcome to Tipster! Click on the icon to the left of a tip to get more information. Click on the text to go to the next tip.
+http://www.github.com/HaikuArchives/Tipster
 %
 Terminal
 Open a file, path, or URL in Terminal by clicking on it while holding the ALT key.
@@ -23,7 +26,7 @@ Preferences
 Accelerate your workflow by creating keyboard shortcuts with the Shortcuts preferences.
 https://www.haiku-os.org/docs/userguide/en/keyboard-shortcuts.html
 %
-Appliction
+Application
 Set an audio file for "Vision Nick Notification" in the Sounds preferences to get a ring every time your name's being said in the IRC client Vision.
 https://www.haiku-os.org/docs/userguide/en/applications/vision.html
 %

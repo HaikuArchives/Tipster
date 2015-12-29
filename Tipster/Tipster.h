@@ -14,27 +14,34 @@
 class Tipster : public BTextView
 {
 	public:
-		Tipster(void);
-		
-		bool QuitRequested(void);
-		
-		void MouseDown(BPoint pt);
-		void MessageReceived(BMessage *msg);
-		void AttachedToWindow();
-	
-	private:
-		void UpdateTip(void);
-		void LoadTips(entry_ref ref);
+		Tipster();
 
-		entry_ref GetTipsFile(void);
+		bool			QuitRequested();
 
-		uint32 fTipNumber;
-		BStringList fTipsList;
-		
-		BString *fRandomTip;
-		
-		bigtime_t fTime;
-		BMessageRunner *fRunner;
+		void 			MouseDown(BPoint pt);
+		void 			MessageReceived(BMessage* msg);
+		void 			AttachedToWindow();
+
+		void			OpenURL(BString* url);
+
+	private:		
+		void			UpdateTip();
+		void			LoadTips(entry_ref ref);
+		void			AddBeginningTip();
+
+		entry_ref		GetTipsFile();
+		const char*		GetArtworkTitle(BString category);
+
+		uint32			fTipNumber;
+		BStringList 	fTipsList;
+		int32			fTipsLength;
+
+		BString*		fRandomTip;
+
+		bigtime_t		fTime;
+		BMessageRunner* fRunner;
+
+		BMessenger*		fMessenger;
 };
 
 #endif

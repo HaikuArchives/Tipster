@@ -8,12 +8,15 @@
 
 #include <Application.h>
 #include <Catalog.h>
+#include <ControlLook.h>
 #include <Directory.h>
 #include <Entry.h>
 #include <File.h>
 #include <FindDirectory.h>
+#include <Messenger.h>
 #include <Path.h>
 #include <PathFinder.h>
+#include <Roster.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <StringList.h>
@@ -22,7 +25,8 @@
 enum
 {
 	M_UPDATE_TIP = 'uptp',
-	M_CHECK_TIME = 'cktm'
+	M_CHECK_TIME = 'cktm',
+	UPDATE_ICON = 'upin'
 };
 
 
@@ -30,12 +34,12 @@ Tipster::Tipster()
 	:
 	BTextView("TipView")
 {
+	MakeEditable(false);
+	SetStylable(true);
+	
 	fTipsList = BStringList();
 	
 	SetText("");
-	UpdateTip();
-	
-	MakeEditable(false);
 }
 
 
@@ -52,7 +56,42 @@ Tipster::AttachedToWindow()
 	BMessage message(M_CHECK_TIME);
 	fRunner = new BMessageRunner(this, &message, 1000000);
 
+	fMessenger = new BMessenger(this->Parent());
+	
+	AddBeginningTip();
+
 	BTextView::AttachedToWindow();
+}
+
+
+void
+Tipster::AddBeginningTip()
+{
+	entry_ref ref = GetTipsFile();
+	LoadTips(ref);
+	
+	BStringList introductionTipList;
+	fTipsList.StringAt(0).Split("\n", false, introductionTipList);
+	BString link = introductionTipList.StringAt(2);
+	
+	Insert(introductionTipList.StringAt(1));
+	
+	BString additionalTip("%\n");
+	additionalTip.Append(introductionTipList.StringAt(0).String());
+	additionalTip.Append("\n");
+	additionalTip.Append(introductionTipList.StringAt(1).String());
+	additionalTip.Append("\n");
+	additionalTip.Append(link);
+	
+	fTipsList.Remove(0);
+	
+	BMessage message(UPDATE_ICON);
+	message.AddString("url", link);
+	message.AddString("artwork",
+		GetArtworkTitle(introductionTipList.StringAt(0)));
+	fMessenger->SendMessage(&message);
+	
+	fTime = system_time();
 }
 
 
@@ -85,6 +124,19 @@ Tipster::MessageReceived(BMessage* msg)
 }
 
 
+//Written by PulkoMandy
+void
+Tipster::OpenURL(BString* url)
+{
+	char *argv[2];
+	argv[0] = (char*)url->String();
+	argv[1] = 0;
+
+	status_t status = be_roster->Launch(
+		"application/x-vnd.Be.URL.http", 1, argv);
+}
+
+
 void
 Tipster::MouseDown(BPoint pt)
 {
@@ -104,8 +156,33 @@ Tipster::MouseDown(BPoint pt)
 void
 Tipster::UpdateTip()
 {
-	entry_ref ref = GetTipsFile();
-	LoadTips(ref);
+	if (fTipsList.IsEmpty()) {
+		entry_ref ref = GetTipsFile();
+		LoadTips(ref);
+		
+		fTipsList.Remove(0);
+	}
+	
+	SetText("");
+	fTipNumber = random() % fTipsList.CountStrings();
+	
+	BStringList tipInfoList;
+	fTipsList.StringAt(fTipNumber).Split("\n", false, tipInfoList);
+	tipInfoList.Remove(0);
+	
+	BString link = tipInfoList.StringAt(2);
+
+	Insert(tipInfoList.StringAt(1));
+	
+	fTipsList.Remove(fTipNumber);
+	
+	BMessage message(UPDATE_ICON);
+	message.AddString("url", link);
+	message.AddString("artwork",
+		GetArtworkTitle(tipInfoList.StringAt(0)));
+	fMessenger->SendMessage(&message);
+	
+	fTime = system_time();
 }
 
 
@@ -116,9 +193,9 @@ Tipster::GetTipsFile()
 	BStringList paths;
 	
 	status_t status = BPathFinder::FindPaths(B_FIND_PATH_DATA_DIRECTORY,
-		"tipster-tips.txt", paths);
+		"tipster-tips.txt", B_FIND_PATH_EXISTING_ONLY, paths);
 	
-	if (!paths.IsEmpty() && status == B_OK) {	
+	if (!paths.IsEmpty() && status == B_OK) {
 		for (int32 i = 0; i < paths.CountStrings(); i++) {
 			BEntry data_entry(paths.StringAt(i).String());
 			data_entry.GetRef(&ref);
@@ -152,14 +229,20 @@ Tipster::LoadTips(entry_ref ref)
 	fTips.UnlockBuffer(size);
 
 	fTips.Split("\n%\n", false, fTipsList);
-	fTipNumber = random() % fTipsList.CountStrings();
+}
+
+
+const char * 
+Tipster::GetArtworkTitle(BString category)
+{
+	if (category == "GUI")
+		return "GUI";
+	else if (category == "Terminal")
+		return "Terminal";
+	else if (category == "Preferences")
+		return "Preferences";
+	else if (category == "Application")
+		return "Application";
 	
-	BStringList fUpdatedList;
-	fTipsList.StringAt(fTipNumber).Split("\n", false, fUpdatedList);
-	fUpdatedList.Remove(0);
-	
-	BString text(fUpdatedList.Join("\n"));
-	SetText(text.String());
-	
-	fTime = system_time();
+	return "Miscellaneous";
 }
