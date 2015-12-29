@@ -159,6 +159,8 @@ Tipster::UpdateTip()
 	if (fTipsList.IsEmpty()) {
 		entry_ref ref = GetTipsFile();
 		LoadTips(ref);
+		
+		fTipsList.Remove(0);
 	}
 	
 	SetText("");
