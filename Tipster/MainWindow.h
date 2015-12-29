@@ -19,20 +19,20 @@ class MainWindow : public BWindow
 	public:
 		MainWindow(void);
 		
-		bool QuitRequested(void);
-		void MessageReceived(BMessage* msg);
+		bool		QuitRequested(void);
+		void		MessageReceived(BMessage* msg);
 
 	private:
-		void BuildLayout(void);
+		void		BuildLayout(void);
 		
-		BView* fTipsterViewContainer;
+		BView*		fTipsterViewContainer;
 		BSplitView* fMainSplitView;
 
-		Tipster* fTipsterView;
+		Tipster*	fTipsterView;
 		
-		BButton* fIcon;
-		BString* fURL;
-		BBitmap* fIconBitmap;
+		BButton*	fIcon;
+		BString*	fURL;
+		BBitmap*	fIconBitmap;
 		
 		BResources* fResources;
 };

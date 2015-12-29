@@ -56,16 +56,8 @@ Tipster::AttachedToWindow()
 {
 	BMessage message(M_CHECK_TIME);
 	fRunner = new BMessageRunner(this, &message, 1000000);
-	
-	BFont linkfont(be_plain_font);
-	linkfont.SetFace(B_UNDERSCORE_FACE);
-	
-	linkStyle.count = 1;
-	linkStyle.runs[0].offset = 0;
-	linkStyle.runs[0].font = linkfont;
-	linkStyle.runs[0].color = make_color(0, 0, 255);
 
-	messenger = new BMessenger(this->Parent());
+	fMessenger = new BMessenger(this->Parent());
 	
 	AddBeginningTip();
 
@@ -77,48 +69,34 @@ void
 Tipster::AddBeginningTip()
 {
 	entry_ref ref = GetTipsFile();
+	LoadTips(ref);
 	
-	BFile file(&ref, B_READ_ONLY);
-	if (file.InitCheck() != B_OK)
-		return;
-
-	BString fTip;
-	off_t size = 0;
-	file.GetSize(&size);
+	BStringList introductionTipList;
+	fTipsList.StringAt(0).Split("\n", false, introductionTipList);
+	BString link = introductionTipList.StringAt(2);
 	
-	char* buf = fTip.LockBuffer(size);
-	file.Read(buf, size);
-	fTip.UnlockBuffer(size);
-	
-	BStringList fUpdatedList;
-	fTip.Split("\n", false, fUpdatedList);
-	BString link = fUpdatedList.StringAt(2);
-	
-	Insert(fUpdatedList.StringAt(1));
+	Insert(introductionTipList.StringAt(1));
 	Insert("\n\n<-- Click on the icon to open the URL");
 	
 	BString additionalTip("%\n");
-	additionalTip.Append(fUpdatedList.StringAt(0).String());
+	additionalTip.Append(introductionTipList.StringAt(0).String());
 	additionalTip.Append("\n");
-	additionalTip.Append(fUpdatedList.StringAt(1).String());
+	additionalTip.Append(introductionTipList.StringAt(1).String());
 	additionalTip.Append("\n");
 	additionalTip.Append(link);
 	fIntroductionTip = new BString(additionalTip.String());
 	
+	fTipsList.Remove(0);
+	fTipsList.Add(additionalTip);
+	
 	BMessage message(UPDATE_ICON);
 	message.AddString("url", link);
 	message.AddString("artwork",
-		GetArtworkTitle(fUpdatedList.StringAt(0)));
-	messenger->SendMessage(&message);
+		GetArtworkTitle(introductionTipList.StringAt(0)));
+	fMessenger->SendMessage(&message);
 	
 	fTime = system_time();
 }
-
-
-/*void
-Tipster::OnResize()
-{
-}*/	
 
 
 void
@@ -185,31 +163,35 @@ Tipster::UpdateTip()
 	if (fTipsList.IsEmpty()) {
 		entry_ref ref = GetTipsFile();
 		LoadTips(ref);
+
+		fTipsList.Remove(0);
+		BString introductionTip(fIntroductionTip->String());
+		fTipsList.Add(introductionTip);
 	}
 	
 	SetText("");
 	fTipNumber = random() % fTipsList.CountStrings();
 	
-	BStringList fUpdatedList;
-	fTipsList.StringAt(fTipNumber).Split("\n", false, fUpdatedList);
-	fUpdatedList.Remove(0);
+	BStringList tipInfoList;
+	fTipsList.StringAt(fTipNumber).Split("\n", false, tipInfoList);
+	tipInfoList.Remove(0);
 	
-	BString link = fUpdatedList.StringAt(2);
+	BString link = tipInfoList.StringAt(2);
 
-	Insert(fUpdatedList.StringAt(1));
+	Insert(tipInfoList.StringAt(1));
 	
 	fTipsList.Remove(fTipNumber);
 	
 	BMessage message(UPDATE_ICON);
 	message.AddString("url", link);
 	message.AddString("artwork",
-		GetArtworkTitle(fUpdatedList.StringAt(0)));
-	messenger->SendMessage(&message);
+		GetArtworkTitle(tipInfoList.StringAt(0)));
+	fMessenger->SendMessage(&message);
 	
 	fTime = system_time();
 	
 	static const float spacing = be_control_look->DefaultLabelSpacing();
-	TruncateString(&fUpdatedList.StringAt(1), B_TRUNCATE_END,
+	TruncateString(&tipInfoList.StringAt(1), B_TRUNCATE_END,
 		Frame().Width() - 16 - spacing * 4);
 }
 
@@ -257,10 +239,6 @@ Tipster::LoadTips(entry_ref ref)
 	fTips.UnlockBuffer(size);
 
 	fTips.Split("\n%\n", false, fTipsList);
-	fTipsList.Remove(0);
-	
-	BString additionalTip(fIntroductionTip->String());
-	fTipsList.Add(additionalTip);
 }
 
 

@@ -16,53 +16,33 @@ class Tipster : public BTextView
 	public:
 		Tipster();
 
-		bool QuitRequested();
+		bool			QuitRequested();
 
-		void MouseDown(BPoint pt);
-		void MessageReceived(BMessage *msg);
-		void AttachedToWindow();
+		void 			MouseDown(BPoint pt);
+		void 			MessageReceived(BMessage* msg);
+		void 			AttachedToWindow();
 
-		void OpenURL(BString* url);
+		void			OpenURL(BString* url);
 
-	private:
-		struct tLink {
-			const int32 linkoffset;
-			const int32 linklen;
-			const BString target;
+	private:		
+		void			UpdateTip();
+		void			LoadTips(entry_ref ref);
+		void			AddBeginningTip();
 
-			tLink(int32 off, int32 len, BString trg)
-				:
-				linkoffset(off),
-				linklen(len),
-				target(trg)
-			{
-			}
-		};
-		
-		void UpdateTip();
-		void LoadTips(entry_ref ref);
-		void AddBeginningTip();
+		entry_ref		GetTipsFile();
+		const char*		GetArtworkTitle(BString category);
 
-		entry_ref GetTipsFile();
-		tLink* GetLinkAt(BPoint point);
-		const char* GetArtworkTitle(BString category);
+		uint32			fTipNumber;
+		BStringList 	fTipsList;
+		int32			fTipsLength;
 
-		BList links;
-		BList fTipsUsed;
+		BString*		fRandomTip;
+		BString*		fIntroductionTip;
 
-		uint32 fTipNumber;
-		BStringList fTipsList;
-		int32 fTipsLength;
+		bigtime_t		fTime;
+		BMessageRunner* fRunner;
 
-		BString* fRandomTip;
-		BString* fIntroductionTip;
-
-		bigtime_t fTime;
-		BMessageRunner *fRunner;
-
-		BMessenger* messenger;
-
-		text_run_array linkStyle;
+		BMessenger*		fMessenger;
 };
 
 #endif
