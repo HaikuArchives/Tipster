@@ -6,42 +6,42 @@
 #define TIPSTER_H
 
 #include <MessageRunner.h>
-#include <TextView.h>
 #include <String.h>
 #include <StringList.h>
+#include <TextView.h>
 
 
 class Tipster : public BTextView
 {
-	public:
-		Tipster();
+public:
+	Tipster();
 
-		bool			QuitRequested();
+	bool			QuitRequested();
 
-		void 			MouseDown(BPoint pt);
-		void 			MessageReceived(BMessage* msg);
-		void 			AttachedToWindow();
+	void 			MouseDown(BPoint pt);
+	void 			MessageReceived(BMessage* msg);
+	void 			AttachedToWindow();
 
-		void			OpenURL(BString* url);
+	void			OpenURL(BString* url);
 
-	private:		
-		void			UpdateTip();
-		void			LoadTips(entry_ref ref);
-		void			AddBeginningTip();
+private:
+	void			UpdateTip();
+	void			LoadTips(entry_ref ref);
+	void			AddBeginningTip();
 
-		entry_ref		GetTipsFile();
-		const char*		GetArtworkTitle(BString category);
+	entry_ref		GetTipsFile();
+	const char*		GetArtworkTitle(BString category);
 
-		uint32			fTipNumber;
-		BStringList 	fTipsList;
-		int32			fTipsLength;
+	uint32			fTipNumber;
+	BStringList 	fTipsList;
+	int32			fTipsLength;
 
-		BString*		fRandomTip;
+	BString*		fRandomTip;
 
-		bigtime_t		fTime;
-		BMessageRunner* fRunner;
+	bigtime_t		fTime;
+	BMessageRunner* fRunner;
 
-		BMessenger*		fMessenger;
+	BMessenger*		fMessenger;
 };
 
 #endif

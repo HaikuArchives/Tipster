@@ -19,10 +19,11 @@
 #include <Messenger.h>
 #include <Path.h>
 #include <Resources.h>
-#include <stdio.h>
 #include <TranslationUtils.h>
 
 #include <private/interface/AboutWindow.h>
+
+#include <stdio.h>
 
 enum
 {
@@ -32,42 +33,42 @@ enum
 };
 
 
-MainWindow::MainWindow(void)
+MainWindow::MainWindow()
 	:
 	BWindow(BRect(100,100,740,200), "Tipster", B_TITLED_WINDOW,
 		B_ASYNCHRONOUS_CONTROLS | B_NOT_V_RESIZABLE)
 {
 	BuildLayout();
-	
+
 	fURL = new BString();
 	fResources = BApplication::AppResources();
 }
 
 
 void
-MainWindow::BuildLayout(void)
-{	
+MainWindow::BuildLayout()
+{
 	BMenuBar* fMenuBar = new BMenuBar("menubar");
 	BMenu* fTipsterMenu = new BMenu("Tipster");
-	
+
 	fTipsterMenu->AddItem(new BMenuItem("About", new BMessage(SHOW_ABOUT)));
-	
+
 	fMenuBar->AddItem(fTipsterMenu);
-	
+
 	fTipsterViewContainer = new BView("tipster_container",
 		B_SUPPORTS_LAYOUT);
-	
+
 	fTipsterView = new Tipster();
 	fTipsterViewContainer->AddChild(fTipsterView);
-	
+
 	BGroupLayout* layout = new BGroupLayout(B_VERTICAL);
 	layout->SetInsets(10,0,10,0);
-	
+
 	fTipsterViewContainer->SetLayout(layout);
-	
+
 	fIcon = new BButton("icon", "", new BMessage(OPEN_URL));
 	fIcon->SetFlat(true);
-	
+
 	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
 		.Add(fMenuBar)
 		.AddGroup(B_HORIZONTAL)
@@ -79,7 +80,7 @@ MainWindow::BuildLayout(void)
 
 
 bool
-MainWindow::QuitRequested(void)
+MainWindow::QuitRequested()
 {
 	be_app->PostMessage(B_QUIT_REQUESTED);
 	return true;
@@ -95,43 +96,41 @@ MainWindow::MessageReceived(BMessage* msg)
 		{
 			BAboutWindow* about = new BAboutWindow("Tipster",
 				"application/x-vnd.tipster");
-			about->AddDescription("An application to show usability tips \
-for Haiku");
+			about->AddDescription("An application to show usability tips "
+						"for Haiku");
 			about->AddCopyright(2015, "Vale Tolpegin");
-			
 			about->Show();
 			break;
 		}
 		case UPDATE_ICON:
 		{
 			status_t status = msg->FindString("url", fURL);
-			
+
 			if (status == B_OK) {
 				BString artwork;
 				msg->FindString("artwork", &artwork);
-				
+
 				size_t size;
 				const uint8* iconData = (const uint8*)
 					fResources->LoadResource('VICN', artwork.String(),
 					&size);
-				
+
 				if (size > 0) {
 					fIconBitmap = new BBitmap(BRect(0, 0, 64, 64), 0,
 						B_RGBA32);
-					
+
 					status_t iconStatus = BIconUtils::GetVectorIcon(
 						iconData, size, fIconBitmap);
-					
-					if (iconStatus == B_OK) {
+
+					if (iconStatus == B_OK)
 						fIcon->SetIcon(fIconBitmap);
-					}
 				}
 			}
 			break;
 		}
 		case OPEN_URL:
 		{
-			fTipsterView->OpenURL(fURL);	
+			fTipsterView->OpenURL(fURL);
 			break;
 		}
 		default:
