@@ -31,6 +31,8 @@ public:
 private:
 	void			LoadTips(entry_ref ref);
 	void			AddBeginningTip();
+	void			DisplayTip(BString* tip);
+	void			_Init();
 
 	entry_ref		GetTipsFile();
 	const char*		GetArtworkTitle(BString category);
@@ -47,6 +49,8 @@ private:
 	bigtime_t		fDelay;
 	BMessageRunner* fRunner;
 	BMessenger*		fMessenger;
+
+	bool			fReplicated;
 };
 
 #endif

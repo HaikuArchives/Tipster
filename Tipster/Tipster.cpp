@@ -41,8 +41,26 @@ Tipster::Tipster()
 	fTipsList = BStringList();
 	fCurrentTip = new BString("");
 	fDelay = 60000000;
+	fReplicated = false;
 
 	SetText("");
+}
+
+
+Tipster::Tipster(BMessage* archive)
+	:
+	BTextView(archive)
+{
+	fReplicated = true;
+
+	_Init(archive);
+}
+
+
+void
+Tipster::_Init(BMessage *settings)
+{
+
 }
 
 
@@ -170,29 +188,35 @@ Tipster::UpdateTip()
 		fTipsList.Remove(0);
 	}
 
-	fPreviousTip = new BString(fCurrentTip->String());
-
-	SetText("");
 	fTipNumber = random() % fTipsList.CountStrings();
 
+	DisplayTip(new BString(fTipsList.StringAt(fTipNumber)));
+
+	fPreviousTip = new BString(fCurrentTip->String());
+	fCurrentTip = new BString(fTipsList.StringAt(fTipNumber));
+	fTipsList.Remove(fTipNumber);
+
+	fTime = system_time();
+}
+
+
+void
+Tipster::DisplayTip(BString* tip)
+{
 	BStringList tipInfoList;
-	fTipsList.StringAt(fTipNumber).Split("\n", false, tipInfoList);
+	BString(tip->String()).Split("\n", false, tipInfoList);
 	tipInfoList.Remove(0);
 
 	BString link = tipInfoList.StringAt(2);
 
+	SetText("");
 	Insert(tipInfoList.StringAt(1));
-
-	fCurrentTip = new BString(fTipsList.StringAt(fTipNumber));
-	fTipsList.Remove(fTipNumber);
 
 	BMessage message(UPDATE_ICON);
 	message.AddString("url", link);
 	message.AddString("artwork",
-		GetArtworkTitle(tipInfoList.StringAt(0)));
+	GetArtworkTitle(tipInfoList.StringAt(0)));
 	fMessenger->SendMessage(&message);
-
-	fTime = system_time();
 }
 
 
@@ -200,20 +224,7 @@ void
 Tipster::DisplayPreviousTip()
 {
 	if (fPreviousTip != NULL) {
-		BStringList tipInfoList;
-		BString(fPreviousTip->String()).Split("\n", false, tipInfoList);
-		tipInfoList.Remove(0);
-
-		BString link = tipInfoList.StringAt(2);
-
-		SetText("");
-		Insert(tipInfoList.StringAt(1));
-
-		BMessage message(UPDATE_ICON);
-		message.AddString("url", link);
-		message.AddString("artwork",
-			GetArtworkTitle(tipInfoList.StringAt(0)));
-		fMessenger->SendMessage(&message);
+		DisplayTip(fPreviousTip);
 
 		fTime = system_time();
 	}
