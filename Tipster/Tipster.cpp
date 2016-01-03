@@ -39,8 +39,18 @@ Tipster::Tipster()
 	SetStylable(true);
 
 	fTipsList = BStringList();
+	fCurrentTip = new BString("");
+	fDelay = 60000000;
 
 	SetText("");
+}
+
+
+void
+Tipster::SetDelay(bigtime_t delay)
+{
+	fDelay = delay;
+	fTime = system_time();
 }
 
 
@@ -55,8 +65,7 @@ void
 Tipster::AttachedToWindow()
 {
 	BMessage message(M_CHECK_TIME);
-	fRunner = new BMessageRunner(this, &message, 1000000);
-
+	fRunner = new BMessageRunner(this, message, 1000000);
 	fMessenger = new BMessenger(this->Parent());
 
 	AddBeginningTip();
@@ -103,7 +112,7 @@ Tipster::MessageReceived(BMessage* msg)
 	{
 		case M_CHECK_TIME:
 		{
-			if (fTime + 60000000 < system_time())
+			if (fTime + fDelay < system_time())
 			{
 				//Update the tip every 60 seconds
 				UpdateTip();
@@ -161,6 +170,8 @@ Tipster::UpdateTip()
 		fTipsList.Remove(0);
 	}
 
+	fPreviousTip = new BString(fCurrentTip->String());
+
 	SetText("");
 	fTipNumber = random() % fTipsList.CountStrings();
 
@@ -172,6 +183,7 @@ Tipster::UpdateTip()
 
 	Insert(tipInfoList.StringAt(1));
 
+	fCurrentTip = new BString(fTipsList.StringAt(fTipNumber));
 	fTipsList.Remove(fTipNumber);
 
 	BMessage message(UPDATE_ICON);
@@ -181,6 +193,30 @@ Tipster::UpdateTip()
 	fMessenger->SendMessage(&message);
 
 	fTime = system_time();
+}
+
+
+void
+Tipster::DisplayPreviousTip()
+{
+	if (fPreviousTip != NULL) {
+		BStringList tipInfoList;
+		BString(fPreviousTip->String()).Split("\n", false, tipInfoList);
+		tipInfoList.Remove(0);
+
+		BString link = tipInfoList.StringAt(2);
+
+		SetText("");
+		Insert(tipInfoList.StringAt(1));
+
+		BMessage message(UPDATE_ICON);
+		message.AddString("url", link);
+		message.AddString("artwork",
+			GetArtworkTitle(tipInfoList.StringAt(0)));
+		fMessenger->SendMessage(&message);
+
+		fTime = system_time();
+	}
 }
 
 

@@ -2,8 +2,6 @@
  * Copyright 2015 Vale Tolpegin <valetolpegin@gmail.com>
  * All rights reserved. Distributed under the terms of the MIT license.
  */
-
-
 #include "MainWindow.h"
 
 #include <Application.h>
@@ -29,7 +27,13 @@ enum
 {
 	SHOW_ABOUT = 'swat',
 	UPDATE_ICON = 'upin',
-	OPEN_URL = 'opur'
+	OPEN_URL = 'opur',
+	NEXT_TIP = 'nxtp',
+	PREVIOUS_TIP = 'pvtp',
+	DELAY_30_S = 'd30s',
+	DELAY_1_M = 'd1mn',
+	DELAY_2_M = 'd2mn',
+	DELAY_5_M = 'd5mn',
 };
 
 
@@ -49,10 +53,28 @@ void
 MainWindow::BuildLayout()
 {
 	BMenuBar* fMenuBar = new BMenuBar("menubar");
+
 	BMenu* fTipsterMenu = new BMenu("Tipster");
+	BMenu* fTipMenu = new BMenu("Tip");
+
+	BMenu* fDelaySubMenu = new BMenu("Delay");
 
 	fTipsterMenu->AddItem(new BMenuItem("About", new BMessage(SHOW_ABOUT)));
 
+	fTipMenu->AddItem(new BMenuItem("Previous Tip",
+		new BMessage(PREVIOUS_TIP)));
+	fTipMenu->AddItem(new BMenuItem("Next Tip", new BMessage(NEXT_TIP)));
+	fDelaySubMenu->AddItem(new BMenuItem("30 Seconds",
+		new BMessage(DELAY_30_S)));
+	fDelaySubMenu->AddItem(new BMenuItem("1 Minute",
+		new BMessage(DELAY_1_M)));
+	fDelaySubMenu->AddItem(new BMenuItem("2 Minutes",
+		new BMessage(DELAY_2_M)));
+	fDelaySubMenu->AddItem(new BMenuItem("5 Minutes",
+		new BMessage(DELAY_5_M)));
+	fTipMenu->AddItem(fDelaySubMenu);
+
+	fMenuBar->AddItem(fTipMenu);
 	fMenuBar->AddItem(fTipsterMenu);
 
 	fTipsterViewContainer = new BView("tipster_container",
@@ -131,6 +153,36 @@ MainWindow::MessageReceived(BMessage* msg)
 		case OPEN_URL:
 		{
 			fTipsterView->OpenURL(fURL);
+			break;
+		}
+		case NEXT_TIP:
+		{
+			fTipsterView->UpdateTip();
+			break;
+		}
+		case PREVIOUS_TIP:
+		{
+			fTipsterView->DisplayPreviousTip();
+			break;
+		}
+		case DELAY_30_S:
+		{
+			fTipsterView->SetDelay(30000000);
+			break;
+		}
+		case DELAY_1_M:
+		{
+			fTipsterView->SetDelay(60000000);
+			break;
+		}
+		case DELAY_2_M:
+		{
+			fTipsterView->SetDelay(120000000);
+			break;
+		}
+		case DELAY_5_M:
+		{
+			fTipsterView->SetDelay(300000000);
 			break;
 		}
 		default:

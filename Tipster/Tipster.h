@@ -24,8 +24,11 @@ public:
 
 	void			OpenURL(BString* url);
 
-private:
+	void			SetDelay(bigtime_t delay);
 	void			UpdateTip();
+	void			DisplayPreviousTip();
+
+private:
 	void			LoadTips(entry_ref ref);
 	void			AddBeginningTip();
 
@@ -37,10 +40,12 @@ private:
 	int32			fTipsLength;
 
 	BString*		fRandomTip;
+	BString*		fPreviousTip;
+	BString*		fCurrentTip;
 
 	bigtime_t		fTime;
+	bigtime_t		fDelay;
 	BMessageRunner* fRunner;
-
 	BMessenger*		fMessenger;
 };
 
