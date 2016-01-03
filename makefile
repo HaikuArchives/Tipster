@@ -1,4 +1,4 @@
-## Haiku Generic Makefile v2.6 ## 
+## Haiku Generic Makefile v2.6 ##
 
 ## Fill in this file to specify the project being created, and the referenced
 ## Makefile-Engine will do all of the hard work for you. This handles any
@@ -16,14 +16,14 @@ TARGET_DIR = Tipster
 TYPE = APP
 
 # 	If you plan to use localization, specify the application's MIME signature.
-APP_MIME_SIG =
+APP_MIME_SIG = application/x-vnd.tipster
 
 #	The following lines tell Pe and Eddie where the SRCS, RDEFS, and RSRCS are
 #	so that Pe and Eddie can fill them in for you.
 #%{
-# @src->@ 
+# @src->@
 
-#	Specify the source files to use. Full paths or paths relative to the 
+#	Specify the source files to use. Full paths or paths relative to the
 #	Makefile can be included. All files, regardless of directory, will have
 #	their object files created in the common object directory. Note that this
 #	means this Makefile will not work correctly if two source files with the
@@ -47,7 +47,7 @@ RSRCS = \
 
 
 # End Pe/Eddie support.
-# @<-src@ 
+# @<-src@
 #%}
 
 #%}

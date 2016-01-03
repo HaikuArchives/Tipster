@@ -12,18 +12,21 @@
 class App : public BApplication
 {
 	public:
-		App(void);
+		App();
 };
 
-App::App(void)
-	: BApplication("application/x-vnd.tipster")
+
+App::App()
+	:
+	BApplication("application/x-vnd.tipster")
 {
 	MainWindow* win = new MainWindow();
-	
 	win->Show();
 }
 
-int main(void)
+
+int
+main()
 {
 	App app;
 	app.Run();

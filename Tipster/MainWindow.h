@@ -16,25 +16,25 @@
 
 class MainWindow : public BWindow
 {
-	public:
-		MainWindow(void);
-		
-		bool		QuitRequested(void);
-		void		MessageReceived(BMessage* msg);
+public:
+				MainWindow();
 
-	private:
-		void		BuildLayout(void);
-		
-		BView*		fTipsterViewContainer;
-		BSplitView* fMainSplitView;
+	bool		QuitRequested();
+	void		MessageReceived(BMessage* msg);
 
-		Tipster*	fTipsterView;
-		
-		BButton*	fIcon;
-		BString*	fURL;
-		BBitmap*	fIconBitmap;
-		
-		BResources* fResources;
+private:
+	void		BuildLayout();
+
+	BView*		fTipsterViewContainer;
+	BSplitView* fMainSplitView;
+
+	Tipster*	fTipsterView;
+
+	BButton*	fIcon;
+	BString*	fURL;
+	BBitmap*	fIconBitmap;
+
+	BResources* fResources;
 };
 
 #endif
