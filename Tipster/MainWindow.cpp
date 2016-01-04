@@ -5,18 +5,13 @@
 #include "MainWindow.h"
 
 #include <Application.h>
-#include <Bitmap.h>
 #include <ControlLook.h>
 #include <GroupLayout.h>
 #include <GroupLayoutBuilder.h>
-#include <IconUtils.h>
 #include <LayoutBuilder.h>
 #include <Menu.h>
 #include <MenuBar.h>
 #include <MenuItem.h>
-#include <Messenger.h>
-#include <Path.h>
-#include <Resources.h>
 #include <TranslationUtils.h>
 
 #include <private/interface/AboutWindow.h>
@@ -76,9 +71,7 @@ MainWindow::BuildLayout()
 
 	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
 		.Add(fMenuBar)
-		.AddGroup(B_HORIZONTAL)
-			.Add(fTipsterView)
-		.End()
+		.Add(fTipsterView)
 		.AddGlue();
 }
 
