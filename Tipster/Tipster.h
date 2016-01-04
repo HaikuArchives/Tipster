@@ -11,10 +11,10 @@
 #include <String.h>
 #include <StringList.h>
 #include <TextView.h>
-#include <View.h>
+#include <GroupView.h>
 
 
-class Tipster : public BView
+class Tipster : public BGroupView
 {
 public:
 	Tipster();
@@ -40,7 +40,6 @@ private:
 	void			LoadTips(entry_ref ref);
 	void			AddBeginningTip();
 	void			DisplayTip(BString* tip);
-	void			_BuildLayout();
 	void			UpdateIcon(BString artwork, BString url);
 
 	entry_ref		GetTipsFile();
@@ -64,7 +63,6 @@ private:
 	bigtime_t		fTime;
 	bigtime_t		fDelay;
 	BMessageRunner* fRunner;
-	BMessenger*		fMessenger;
 
 	bool			fReplicated;
 };

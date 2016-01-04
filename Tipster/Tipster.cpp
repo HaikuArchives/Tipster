@@ -37,7 +37,7 @@ enum
 
 Tipster::Tipster()
 	:
-	BView("TipView", B_SUPPORTS_LAYOUT, new BGroupLayout(B_VERTICAL))
+	BGroupView("TipView")
 {
 	fTipsList = BStringList();
 	fCurrentTip = new BString("");
@@ -54,17 +54,6 @@ Tipster::Tipster()
 	fIcon = new BButton("icon", "", new BMessage(OPEN_URL));
 	fIcon->SetFlat(true);
 	
-	BGroupLayout* layout = new BGroupLayout(B_VERTICAL);
-	layout->SetInsets(10,0,10,0);
-	SetLayout(layout);
-	
-	_BuildLayout();
-}
-
-
-void
-Tipster::_BuildLayout()
-{
 	AddChild(fIcon);
 	AddChild(fTipsterTextView);
 }
@@ -72,7 +61,7 @@ Tipster::_BuildLayout()
 
 Tipster::Tipster(BMessage* archive)
 	:
-	BView(archive)
+	BGroupView(archive)
 {
 	fReplicated = true;
 }
@@ -116,12 +105,11 @@ Tipster::AttachedToWindow()
 {
 	BMessage message(M_CHECK_TIME);
 	fRunner = new BMessageRunner(this, message, 1000000);
-	fMessenger = new BMessenger(this->Parent());
 	fResources = BApplication::AppResources();
 
 	AddBeginningTip();
 
-	BView::AttachedToWindow();
+	BGroupView::AttachedToWindow();
 }
 
 
@@ -136,13 +124,6 @@ Tipster::AddBeginningTip()
 	BString link = introductionTipList.StringAt(2);
 
 	fTipsterTextView->Insert(introductionTipList.StringAt(1));
-
-	BString additionalTip("%\n");
-	additionalTip.Append(introductionTipList.StringAt(0).String());
-	additionalTip.Append("\n");
-	additionalTip.Append(introductionTipList.StringAt(1).String());
-	additionalTip.Append("\n");
-	additionalTip.Append(link);
 
 	fTipsList.Remove(0);
 	
@@ -169,6 +150,8 @@ Tipster::MessageReceived(BMessage* msg)
 		}
 		case OPEN_URL:
 		{
+			printf("IN OPENURL");
+			
 			OpenURL(fURL);
 			break;
 		}
