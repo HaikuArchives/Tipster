@@ -33,9 +33,8 @@ public:
 	void			SetDelay(bigtime_t delay);
 	void			UpdateTip();
 	void			DisplayPreviousTip();
-	
+
 	static			BArchivable* Instantiate(BMessage* data);
-	
 	status_t		Archive(BMessage* data, bool deep = true) const;
 
 private:
@@ -54,12 +53,12 @@ private:
 	BString*		fRandomTip;
 	BString*		fPreviousTip;
 	BString*		fCurrentTip;
-	
+
 	TipsterText*	fTipsterTextView;
 	BButton*		fIcon;
 	BString*		fURL;
 	BBitmap*		fIconBitmap;
-	
+
 	BResources*		fResources;
 
 	bigtime_t		fTime;

@@ -11,7 +11,8 @@
 #include <Catalog.h>
 #include <ControlLook.h>
 #include <Directory.h>
-#include <Entry.h> 
+#include <Dragger.h>
+#include <Entry.h>
 #include <File.h>
 #include <FindDirectory.h>
 #include <GroupLayout.h>
@@ -44,12 +45,11 @@ Tipster::Tipster()
 	fDelay = 60000000;
 	fReplicated = false;
 	fURL = new BString("");
-	
+
 	fTipsterTextView = new TipsterText();
-	
 	fIcon = new BButton("icon", "", new BMessage(OPEN_URL));
 	fIcon->SetFlat(true);
-	
+
 	AddChild(fIcon);
 	AddChild(fTipsterTextView);
 }
@@ -60,17 +60,70 @@ Tipster::Tipster(BMessage* archive)
 	BGroupView(archive)
 {
 	fReplicated = true;
+	fTipsList = BStringList();
+
+	fIconBitmap = new BBitmap(archive);
+	archive->FindString("Tipster::text", fCurrentTip);
+	archive->FindInt64("Tipster::delay", fDelay);
+	archive->FindString("Tipster::url", fURL);
+
+	fTipsterTextView = new TipsterText();
+	fIcon = new BButton("icon", "", new BMessage(OPEN_URL));
+	fIcon->SetFlat(true);
+	fIcon->SetIcon(fIconBitmap);
+
+	AddChild(fIcon);
+	AddChild(fTipsterTextView);
 }
 
 
 status_t
-Tipster::Archive(BMessage *data, bool deep) const
+Tipster::Archive(BMessage* data, bool deep) const
 {
 	status_t status = BView::Archive(data, deep);
-	
-	//TO DO: ADD DATA HERE
-	
-	return status;
+	if (status != B_OK) {
+		printf("Could not archive\n");
+
+		return status;
+	}
+
+	status = data->AddString("add_on", "application/x-vnd.tipster");
+	if (status != B_OK) {
+		printf("Could not add APP_SIG\n");
+
+		return status;
+	}
+
+	status = data->AddInt64("Tipster::delay", fDelay);
+	if (status != B_OK) {
+		printf("Could not save the delay\n");
+
+		return status;
+	}
+
+	status = data->AddString("Tipster::url", fURL->String());
+	if (status != B_OK) {
+		printf("Could not save the url\n");
+
+		return status;
+	}
+
+	status = data->AddString("Tipster::text", fCurrentTip->String());
+	if (status != B_OK) {
+		printf("Could not save the current tip's text\n");
+
+		return status;
+	}
+
+	if (fIconBitmap) {
+		fIconBitmap->Lock();
+		fIconBitmap->Archive(data);
+		fIconBitmap->Unlock();
+	}
+
+	data->AddString("class", "Tipster");
+
+	return B_OK;
 }
 
 
@@ -104,8 +157,12 @@ Tipster::AttachedToWindow()
 	fResources = BApplication::AppResources();
 
 	AddBeginningTip();
-	
+
 	fIcon->SetTarget(this);
+
+	BDragger* dragger = new BDragger(Frame(), this,
+		B_FOLLOW_RIGHT | B_FOLLOW_BOTTOM);
+	AddChild(dragger);
 
 	BGroupView::AttachedToWindow();
 }
@@ -124,7 +181,7 @@ Tipster::AddBeginningTip()
 	fTipsterTextView->Insert(introductionTipList.StringAt(1));
 
 	fTipsList.Remove(0);
-	
+
 	UpdateIcon(BString(GetArtworkTitle(
 		introductionTipList.StringAt(0))), link);
 
@@ -149,7 +206,7 @@ Tipster::MessageReceived(BMessage* msg)
 		case OPEN_URL:
 		{
 			printf("IN OPENURL");
-			
+
 			OpenURL(fURL);
 			break;
 		}
@@ -210,7 +267,7 @@ Tipster::UpdateIcon(BString artwork, BString url)
 		if (iconStatus == B_OK)
 			fIcon->SetIcon(fIconBitmap);
 	}
-	
+
 	fURL = new BString(url.String());
 }
 
