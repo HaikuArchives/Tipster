@@ -45,11 +45,7 @@ Tipster::Tipster()
 	fReplicated = false;
 	fURL = new BString("");
 	
-	fTipsterTextView = new BTextView("tipster_textview");
-	fTipsterTextView->SetText("");
-	
-	fTipsterTextView->MakeEditable(false);
-	fTipsterTextView->SetStylable(true);
+	fTipsterTextView = new TipsterText();
 	
 	fIcon = new BButton("icon", "", new BMessage(OPEN_URL));
 	fIcon->SetFlat(true);
@@ -108,6 +104,8 @@ Tipster::AttachedToWindow()
 	fResources = BApplication::AppResources();
 
 	AddBeginningTip();
+	
+	fIcon->SetTarget(this);
 
 	BGroupView::AttachedToWindow();
 }
@@ -185,7 +183,6 @@ Tipster::OpenURL(BString* url)
 void
 Tipster::MouseDown(BPoint pt)
 {
-	printf("In mousedown\n");
 	BPoint temp;
 	uint32 buttons;
 	GetMouse(&temp, &buttons);

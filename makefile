@@ -33,6 +33,7 @@ SRCS = \
 	 Tipster/App.cpp  \
 	 Tipster/MainWindow.cpp  \
 	 Tipster/Tipster.cpp  \
+	 Tipster/TipsterText.cpp  \
 
 
 #	Specify the resource definition files to use. Full or relative paths can be
@@ -48,6 +49,8 @@ RSRCS = \
 
 # End Pe/Eddie support.
 # @<-src@
+#%}
+
 #%}
 
 #%}

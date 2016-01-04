@@ -5,6 +5,8 @@
 #ifndef TIPSTER_H
 #define TIPSTER_H
 
+#include "TipsterText.h"
+
 #include <Button.h>
 #include <MessageRunner.h>
 #include <Resources.h>
@@ -53,7 +55,7 @@ private:
 	BString*		fPreviousTip;
 	BString*		fCurrentTip;
 	
-	BTextView*		fTipsterTextView;
+	TipsterText*	fTipsterTextView;
 	BButton*		fIcon;
 	BString*		fURL;
 	BBitmap*		fIconBitmap;
