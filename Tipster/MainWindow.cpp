@@ -77,16 +77,17 @@ MainWindow::BuildLayout()
 	fMenuBar->AddItem(fTipMenu);
 	fMenuBar->AddItem(fTipsterMenu);
 
-	fTipsterViewContainer = new BView("tipster_container",
-		B_SUPPORTS_LAYOUT);
+	//fTipsterViewContainer = new BView("tipster_container",
+	//	B_SUPPORTS_LAYOUT);
 
 	fTipsterView = new Tipster();
-	fTipsterViewContainer->AddChild(fTipsterView);
+	//fTipsterViewContainer->AddChild(fTipsterView);
 
 	BGroupLayout* layout = new BGroupLayout(B_VERTICAL);
 	layout->SetInsets(10,0,10,0);
 
-	fTipsterViewContainer->SetLayout(layout);
+	fTipsterView->SetLayout(layout);
+	//fTipsterViewContainer->SetLayout(layout);
 
 	fIcon = new BButton("icon", "", new BMessage(OPEN_URL));
 	fIcon->SetFlat(true);
@@ -95,7 +96,8 @@ MainWindow::BuildLayout()
 		.Add(fMenuBar)
 		.AddGroup(B_HORIZONTAL)
 			.Add(fIcon)
-			.Add(fTipsterViewContainer)
+			//.Add(fTipsterViewContainer)
+			.Add(fTipsterView)
 		.End()
 		.AddGlue();
 }

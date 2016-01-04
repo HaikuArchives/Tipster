@@ -9,12 +9,14 @@
 #include <String.h>
 #include <StringList.h>
 #include <TextView.h>
+#include <View.h>
 
 
-class Tipster : public BTextView
+class Tipster : public BView
 {
 public:
 	Tipster();
+	Tipster(BMessage* archive);
 
 	bool			QuitRequested();
 
@@ -27,12 +29,18 @@ public:
 	void			SetDelay(bigtime_t delay);
 	void			UpdateTip();
 	void			DisplayPreviousTip();
+	
+	static			BArchivable* Instantiate(BMessage* data);
+	
+	status_t		Archive(BMessage* data, bool deep = true) const;
 
 private:
 	void			LoadTips(entry_ref ref);
 	void			AddBeginningTip();
 	void			DisplayTip(BString* tip);
-	void			_Init();
+	void			_Init(BMessage* settings);
+	
+	BTextView*		fTipsterTextView;
 
 	entry_ref		GetTipsFile();
 	const char*		GetArtworkTitle(BString category);

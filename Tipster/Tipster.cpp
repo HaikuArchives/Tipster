@@ -33,23 +33,26 @@ enum
 
 Tipster::Tipster()
 	:
-	BTextView("TipView")
+	BView("TipView", B_SUPPORTS_LAYOUT)
 {
-	MakeEditable(false);
-	SetStylable(true);
-
 	fTipsList = BStringList();
 	fCurrentTip = new BString("");
 	fDelay = 60000000;
 	fReplicated = false;
-
-	SetText("");
+	
+	fTipsterTextView = new BTextView("tipster_textview");
+	fTipsterTextView->SetText("");
+	
+	fTipsterTextView->MakeEditable(false);
+	fTipsterTextView->SetStylable(true);
+	
+	AddChild(fTipsterTextView);
 }
 
 
 Tipster::Tipster(BMessage* archive)
 	:
-	BTextView(archive)
+	BView(archive)
 {
 	fReplicated = true;
 
@@ -60,7 +63,25 @@ Tipster::Tipster(BMessage* archive)
 void
 Tipster::_Init(BMessage *settings)
 {
+	//TO DO: ADD INIT CODE
+}
 
+
+status_t
+Tipster::Archive(BMessage *data, bool deep) const
+{
+	status_t status = BView::Archive(data, deep);
+	
+	//TO DO: ADD DATA HERE
+	
+	return status;
+}
+
+
+BArchivable*
+Tipster::Instantiate(BMessage *data)
+{
+	return new Tipster(data);
 }
 
 
@@ -88,7 +109,7 @@ Tipster::AttachedToWindow()
 
 	AddBeginningTip();
 
-	BTextView::AttachedToWindow();
+	BView::AttachedToWindow();
 }
 
 
@@ -102,7 +123,7 @@ Tipster::AddBeginningTip()
 	fTipsList.StringAt(0).Split("\n", false, introductionTipList);
 	BString link = introductionTipList.StringAt(2);
 
-	Insert(introductionTipList.StringAt(1));
+	fTipsterTextView->Insert(introductionTipList.StringAt(1));
 
 	BString additionalTip("%\n");
 	additionalTip.Append(introductionTipList.StringAt(0).String());
@@ -144,7 +165,7 @@ Tipster::MessageReceived(BMessage* msg)
 		}
 		default:
 		{
-			BTextView::MessageReceived(msg);
+			BView::MessageReceived(msg);
 			break;
 		}
 	}
@@ -167,6 +188,7 @@ Tipster::OpenURL(BString* url)
 void
 Tipster::MouseDown(BPoint pt)
 {
+	printf("In mousedown\n");
 	BPoint temp;
 	uint32 buttons;
 	GetMouse(&temp, &buttons);
@@ -209,13 +231,13 @@ Tipster::DisplayTip(BString* tip)
 
 	BString link = tipInfoList.StringAt(2);
 
-	SetText("");
-	Insert(tipInfoList.StringAt(1));
+	fTipsterTextView->SetText("");
+	fTipsterTextView->Insert(tipInfoList.StringAt(1));
 
 	BMessage message(UPDATE_ICON);
 	message.AddString("url", link);
 	message.AddString("artwork",
-	GetArtworkTitle(tipInfoList.StringAt(0)));
+		GetArtworkTitle(tipInfoList.StringAt(0)));
 	fMessenger->SendMessage(&message);
 }
 
