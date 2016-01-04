@@ -61,18 +61,24 @@ Tipster::Tipster(BMessage* archive)
 {
 	fReplicated = true;
 	fTipsList = BStringList();
+	//fIconBitmap = new BBitmap(BRect(0, 0, 64, 64), 0, B_RGBA32);
 
-	fIconBitmap = new BBitmap(archive);
+	fCurrentTip = new BString("");
+	fURL = new BString("");
+	fDelay = 60000000;
+
+	//fIconBitmap = new BBitmap(archive);
 	archive->FindString("Tipster::text", fCurrentTip);
 	archive->FindInt64("Tipster::delay", fDelay);
 	archive->FindString("Tipster::url", fURL);
 
 	fTipsterTextView = new TipsterText();
-	fIcon = new BButton("icon", "", new BMessage(OPEN_URL));
-	fIcon->SetFlat(true);
-	fIcon->SetIcon(fIconBitmap);
+	fTipsterTextView->SetText(fCurrentTip->String());
+	//fIcon = new BButton("icon", "", new BMessage(OPEN_URL));
+	//fIcon->SetFlat(true);
+	//fIcon->SetIcon(fIconBitmap);
 
-	AddChild(fIcon);
+	//AddChild(fIcon);
 	AddChild(fTipsterTextView);
 }
 
