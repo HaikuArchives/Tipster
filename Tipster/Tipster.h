@@ -44,7 +44,7 @@ private:
 	void			UpdateIcon(BString artwork, BString url);
 
 	entry_ref		GetTipsFile();
-	const char*		GetArtworkTitle(BString category);
+	void			GetArtworkTitle(BString category);
 
 	uint32			fTipNumber;
 	BStringList 	fTipsList;
@@ -58,6 +58,7 @@ private:
 	BButton*		fIcon;
 	BString*		fURL;
 	BBitmap*		fIconBitmap;
+	BString*		fArtworkTitle;
 
 	BResources*		fResources;
 

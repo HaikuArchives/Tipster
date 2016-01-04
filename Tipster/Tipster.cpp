@@ -45,6 +45,7 @@ Tipster::Tipster()
 	fDelay = 60000000;
 	fReplicated = false;
 	fURL = new BString("");
+	fArtworkTitle = new BString("");
 
 	fTipsterTextView = new TipsterText();
 	fIcon = new BButton("icon", "", new BMessage(OPEN_URL));
@@ -61,24 +62,27 @@ Tipster::Tipster(BMessage* archive)
 {
 	fReplicated = true;
 	fTipsList = BStringList();
-	//fIconBitmap = new BBitmap(BRect(0, 0, 64, 64), 0, B_RGBA32);
+	fIconBitmap = new BBitmap(BRect(0, 0, 64, 64), 0, B_RGBA32);
 
 	fCurrentTip = new BString("");
 	fURL = new BString("");
+	fArtworkTitle = new BString("");
 	fDelay = 60000000;
 
-	//fIconBitmap = new BBitmap(archive);
+	fIconBitmap = new BBitmap(archive);
 	archive->FindString("Tipster::text", fCurrentTip);
 	archive->FindInt64("Tipster::delay", fDelay);
 	archive->FindString("Tipster::url", fURL);
+	archive->FindString("Tipster::artwork", fArtworkTitle);
 
 	fTipsterTextView = new TipsterText();
 	fTipsterTextView->SetText(fCurrentTip->String());
-	//fIcon = new BButton("icon", "", new BMessage(OPEN_URL));
-	//fIcon->SetFlat(true);
-	//fIcon->SetIcon(fIconBitmap);
 
-	//AddChild(fIcon);
+	fIcon = new BButton("icon", "", new BMessage(OPEN_URL));
+	fIcon->SetFlat(true);
+	UpdateIcon(fArtworkTitle->String(), fURL->String());
+
+	AddChild(fIcon);
 	AddChild(fTipsterTextView);
 }
 
@@ -121,10 +125,11 @@ Tipster::Archive(BMessage* data, bool deep) const
 		return status;
 	}
 
-	if (fIconBitmap) {
-		fIconBitmap->Lock();
-		fIconBitmap->Archive(data);
-		fIconBitmap->Unlock();
+	status = data->AddString("Tipster::artwork", fArtworkTitle->String());
+	if (status != B_OK) {
+		printf("Could not save the artwork title\n");
+
+		return status;
 	}
 
 	data->AddString("class", "Tipster");
@@ -188,8 +193,8 @@ Tipster::AddBeginningTip()
 
 	fTipsList.Remove(0);
 
-	UpdateIcon(BString(GetArtworkTitle(
-		introductionTipList.StringAt(0))), link);
+	GetArtworkTitle(introductionTipList.StringAt(0));
+	UpdateIcon(BString(fArtworkTitle->String()), link);
 
 	fTime = system_time();
 }
@@ -312,7 +317,8 @@ Tipster::DisplayTip(BString* tip)
 	fTipsterTextView->SetText("");
 	fTipsterTextView->Insert(tipInfoList.StringAt(1));
 
-	UpdateIcon(GetArtworkTitle(tipInfoList.StringAt(0)), link);
+	GetArtworkTitle(tipInfoList.StringAt(0));
+	UpdateIcon(BString(fArtworkTitle->String()), link);
 }
 
 
@@ -373,17 +379,17 @@ Tipster::LoadTips(entry_ref ref)
 }
 
 
-const char *
+void
 Tipster::GetArtworkTitle(BString category)
 {
 	if (category == "GUI")
-		return "GUI";
+		fArtworkTitle->SetTo("GUI");
 	else if (category == "Terminal")
-		return "Terminal";
+		fArtworkTitle->SetTo("Terminal");
 	else if (category == "Preferences")
-		return "Preferences";
+		fArtworkTitle->SetTo("Preferences");
 	else if (category == "Application")
-		return "Application";
-
-	return "Miscellaneous";
+		fArtworkTitle->SetTo("Application");
+	else
+		fArtworkTitle->SetTo("Miscellaneous");
 }
