@@ -5,7 +5,9 @@
 #ifndef TIPSTER_H
 #define TIPSTER_H
 
+#include <Button.h>
 #include <MessageRunner.h>
+#include <Resources.h>
 #include <String.h>
 #include <StringList.h>
 #include <TextView.h>
@@ -38,9 +40,8 @@ private:
 	void			LoadTips(entry_ref ref);
 	void			AddBeginningTip();
 	void			DisplayTip(BString* tip);
-	void			_Init(BMessage* settings);
-	
-	BTextView*		fTipsterTextView;
+	void			_BuildLayout();
+	void			UpdateIcon(BString artwork, BString url);
 
 	entry_ref		GetTipsFile();
 	const char*		GetArtworkTitle(BString category);
@@ -52,6 +53,13 @@ private:
 	BString*		fRandomTip;
 	BString*		fPreviousTip;
 	BString*		fCurrentTip;
+	
+	BTextView*		fTipsterTextView;
+	BButton*		fIcon;
+	BString*		fURL;
+	BBitmap*		fIconBitmap;
+	
+	BResources*		fResources;
 
 	bigtime_t		fTime;
 	bigtime_t		fDelay;

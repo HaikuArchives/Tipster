@@ -7,12 +7,15 @@
 #include "Tipster.h"
 
 #include <Application.h>
+#include <Bitmap.h>
 #include <Catalog.h>
 #include <ControlLook.h>
 #include <Directory.h>
-#include <Entry.h>
+#include <Entry.h> 
 #include <File.h>
 #include <FindDirectory.h>
+#include <GroupLayout.h>
+#include <IconUtils.h>
 #include <Messenger.h>
 #include <Path.h>
 #include <PathFinder.h>
@@ -25,6 +28,7 @@
 
 enum
 {
+	OPEN_URL = 'opur',
 	M_UPDATE_TIP = 'uptp',
 	M_CHECK_TIME = 'cktm',
 	UPDATE_ICON = 'upin'
@@ -33,12 +37,13 @@ enum
 
 Tipster::Tipster()
 	:
-	BView("TipView", B_SUPPORTS_LAYOUT)
+	BView("TipView", B_SUPPORTS_LAYOUT, new BGroupLayout(B_VERTICAL))
 {
 	fTipsList = BStringList();
 	fCurrentTip = new BString("");
 	fDelay = 60000000;
 	fReplicated = false;
+	fURL = new BString("");
 	
 	fTipsterTextView = new BTextView("tipster_textview");
 	fTipsterTextView->SetText("");
@@ -46,6 +51,21 @@ Tipster::Tipster()
 	fTipsterTextView->MakeEditable(false);
 	fTipsterTextView->SetStylable(true);
 	
+	fIcon = new BButton("icon", "", new BMessage(OPEN_URL));
+	fIcon->SetFlat(true);
+	
+	BGroupLayout* layout = new BGroupLayout(B_VERTICAL);
+	layout->SetInsets(10,0,10,0);
+	SetLayout(layout);
+	
+	_BuildLayout();
+}
+
+
+void
+Tipster::_BuildLayout()
+{
+	AddChild(fIcon);
 	AddChild(fTipsterTextView);
 }
 
@@ -55,15 +75,6 @@ Tipster::Tipster(BMessage* archive)
 	BView(archive)
 {
 	fReplicated = true;
-
-	_Init(archive);
-}
-
-
-void
-Tipster::_Init(BMessage *settings)
-{
-	//TO DO: ADD INIT CODE
 }
 
 
@@ -106,6 +117,7 @@ Tipster::AttachedToWindow()
 	BMessage message(M_CHECK_TIME);
 	fRunner = new BMessageRunner(this, message, 1000000);
 	fMessenger = new BMessenger(this->Parent());
+	fResources = BApplication::AppResources();
 
 	AddBeginningTip();
 
@@ -133,12 +145,9 @@ Tipster::AddBeginningTip()
 	additionalTip.Append(link);
 
 	fTipsList.Remove(0);
-
-	BMessage message(UPDATE_ICON);
-	message.AddString("url", link);
-	message.AddString("artwork",
-		GetArtworkTitle(introductionTipList.StringAt(0)));
-	fMessenger->SendMessage(&message);
+	
+	UpdateIcon(BString(GetArtworkTitle(
+		introductionTipList.StringAt(0))), link);
 
 	fTime = system_time();
 }
@@ -156,6 +165,11 @@ Tipster::MessageReceived(BMessage* msg)
 				//Update the tip every 60 seconds
 				UpdateTip();
 			}
+			break;
+		}
+		case OPEN_URL:
+		{
+			OpenURL(fURL);
 			break;
 		}
 		case M_UPDATE_TIP:
@@ -201,6 +215,27 @@ Tipster::MouseDown(BPoint pt)
 
 
 void
+Tipster::UpdateIcon(BString artwork, BString url)
+{
+	size_t size;
+	const uint8* iconData = (const uint8*)
+		fResources->LoadResource('VICN', artwork.String(), &size);
+
+	if (size > 0) {
+		fIconBitmap = new BBitmap(BRect(0, 0, 64, 64), 0, B_RGBA32);
+
+		status_t iconStatus = BIconUtils::GetVectorIcon(
+			iconData, size, fIconBitmap);
+
+		if (iconStatus == B_OK)
+			fIcon->SetIcon(fIconBitmap);
+	}
+	
+	fURL = new BString(url.String());
+}
+
+
+void
 Tipster::UpdateTip()
 {
 	if (fTipsList.IsEmpty()) {
@@ -234,11 +269,7 @@ Tipster::DisplayTip(BString* tip)
 	fTipsterTextView->SetText("");
 	fTipsterTextView->Insert(tipInfoList.StringAt(1));
 
-	BMessage message(UPDATE_ICON);
-	message.AddString("url", link);
-	message.AddString("artwork",
-		GetArtworkTitle(tipInfoList.StringAt(0)));
-	fMessenger->SendMessage(&message);
+	UpdateIcon(GetArtworkTitle(tipInfoList.StringAt(0)), link);
 }
 
 

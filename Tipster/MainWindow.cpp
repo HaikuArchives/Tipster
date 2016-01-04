@@ -26,8 +26,6 @@
 enum
 {
 	SHOW_ABOUT = 'swat',
-	UPDATE_ICON = 'upin',
-	OPEN_URL = 'opur',
 	NEXT_TIP = 'nxtp',
 	PREVIOUS_TIP = 'pvtp',
 	DELAY_30_S = 'd30s',
@@ -43,9 +41,6 @@ MainWindow::MainWindow()
 		B_ASYNCHRONOUS_CONTROLS | B_NOT_V_RESIZABLE)
 {
 	BuildLayout();
-
-	fURL = new BString();
-	fResources = BApplication::AppResources();
 }
 
 
@@ -77,26 +72,11 @@ MainWindow::BuildLayout()
 	fMenuBar->AddItem(fTipMenu);
 	fMenuBar->AddItem(fTipsterMenu);
 
-	//fTipsterViewContainer = new BView("tipster_container",
-	//	B_SUPPORTS_LAYOUT);
-
 	fTipsterView = new Tipster();
-	//fTipsterViewContainer->AddChild(fTipsterView);
-
-	BGroupLayout* layout = new BGroupLayout(B_VERTICAL);
-	layout->SetInsets(10,0,10,0);
-
-	fTipsterView->SetLayout(layout);
-	//fTipsterViewContainer->SetLayout(layout);
-
-	fIcon = new BButton("icon", "", new BMessage(OPEN_URL));
-	fIcon->SetFlat(true);
 
 	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
 		.Add(fMenuBar)
 		.AddGroup(B_HORIZONTAL)
-			.Add(fIcon)
-			//.Add(fTipsterViewContainer)
 			.Add(fTipsterView)
 		.End()
 		.AddGlue();
@@ -124,37 +104,6 @@ MainWindow::MessageReceived(BMessage* msg)
 						"for Haiku");
 			about->AddCopyright(2015, "Vale Tolpegin");
 			about->Show();
-			break;
-		}
-		case UPDATE_ICON:
-		{
-			status_t status = msg->FindString("url", fURL);
-
-			if (status == B_OK) {
-				BString artwork;
-				msg->FindString("artwork", &artwork);
-
-				size_t size;
-				const uint8* iconData = (const uint8*)
-					fResources->LoadResource('VICN', artwork.String(),
-					&size);
-
-				if (size > 0) {
-					fIconBitmap = new BBitmap(BRect(0, 0, 64, 64), 0,
-						B_RGBA32);
-
-					status_t iconStatus = BIconUtils::GetVectorIcon(
-						iconData, size, fIconBitmap);
-
-					if (iconStatus == B_OK)
-						fIcon->SetIcon(fIconBitmap);
-				}
-			}
-			break;
-		}
-		case OPEN_URL:
-		{
-			fTipsterView->OpenURL(fURL);
 			break;
 		}
 		case NEXT_TIP:
