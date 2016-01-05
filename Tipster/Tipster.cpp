@@ -53,6 +53,13 @@ Tipster::Tipster()
 
 	AddChild(fIcon);
 	AddChild(fTipsterTextView);
+	
+	BRect rect(Bounds());
+	rect.top = rect.bottom - 7;
+	rect.left = rect.right - 7;
+	BDragger* dragger = new BDragger(rect, this,
+		B_FOLLOW_RIGHT | B_FOLLOW_BOTTOM);
+	AddChild(dragger);
 }
 
 
@@ -172,18 +179,10 @@ Tipster::AttachedToWindow()
 	fResources->SetToImage((void *)&Tipster::Instantiate);
 
 	if (!fReplicated) {
-		BRect rect(Bounds());
-		rect.top = rect.bottom - 7;
-		rect.left = rect.right - 7;
-	
-		//BDragger* dragger = new BDragger(rect, this,
-		//	B_FOLLOW_RIGHT | B_FOLLOW_BOTTOM);
-		//AddChild(dragger);
-	
 		fIcon->SetTarget(this);
-		
+
 		AddBeginningTip();
-	} else {
+	} else {		
 		fTipsterTextView = 
 			static_cast<TipsterText*>(BGroupView::FindView("TipsterTextView"));
 		fIcon = static_cast<BButton*>(BGroupView::FindView("iconview"));

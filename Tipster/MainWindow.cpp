@@ -69,18 +69,10 @@ MainWindow::BuildLayout()
 	fMenuBar->AddItem(fTipsterMenu);
 
 	fTipsterView = new Tipster();
-	
-	BRect rect(Bounds());
-	rect.top = rect.bottom - 7;
-	rect.left = rect.right - 7;
-	
-	BDragger* dragger = new BDragger(rect, fTipsterView,
-		B_FOLLOW_RIGHT | B_FOLLOW_BOTTOM);
 
 	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
 		.Add(fMenuBar)
 		.Add(fTipsterView)
-		.Add(dragger)
 		.AddGlue();
 }
 
