@@ -42,7 +42,7 @@ Tipster::Tipster()
 {
 	fTipsList = BStringList();
 	fCurrentTip = new BString("");
-	fDelay = 60000000;
+	fDelay = 10000000;
 	fReplicated = false;
 	fURL = new BString("");
 	fArtworkTitle = new BString("");
@@ -60,35 +60,49 @@ Tipster::Tipster(BMessage* archive)
 	:
 	BGroupView(archive)
 {
+	printf("In Tipster()...\n");
+	
 	fReplicated = true;
 	fTipsList = BStringList();
 	fIconBitmap = new BBitmap(BRect(0, 0, 64, 64), 0, B_RGBA32);
-	fResources = BApplication::AppResources();
 
 	fCurrentTip = new BString("");
 	fURL = new BString("");
 	fArtworkTitle = new BString("");
-	fDelay = 60000000;
+	fDelay = 10000000;
 
 	fIconBitmap = new BBitmap(archive);
-	archive->FindString("Tipster::text", fCurrentTip);
-	archive->FindInt64("Tipster::delay", fDelay);
-	archive->FindString("Tipster::url", fURL);
-	archive->FindString("Tipster::artwork", fArtworkTitle);
+	if (archive->FindString("Tipster::text", fCurrentTip) != B_OK)
+		printf("error finding text...\n");
+
+	if (archive->FindInt64("Tipster::delay", fDelay) != B_OK)
+		printf("error finding delay...\n");
+
+	if (archive->FindString("Tipster::url", fURL) != B_OK)
+		printf("error finding url...\n");
+
+	if (archive->FindString("Tipster::artwork", fArtworkTitle) != B_OK)
+		printf("error finding artwork...\n");
+		
+	printf("Data:\n");
+	printf("\tTip = %s\n", fCurrentTip->String());
+	printf("\tDelay = %ld\n", fDelay);
+	printf("\tURL = %s\n", fURL->String());
+	printf("\tArtwork = %s\n", fArtworkTitle->String());
 
 	fTipsterTextView = new TipsterText();
-	fTipsterTextView->Insert(fCurrentTip->String());
+
+	printf("Created fTipsterTextView...\n");
 
 	fIcon = new BButton("icon", "", new BMessage(OPEN_URL));
 	fIcon->SetFlat(true);
-	UpdateIcon(fArtworkTitle->String(), fURL->String());
-	fIcon->SetTarget(this);
 	
-	BMessage message(M_CHECK_TIME);
-	fRunner = new BMessageRunner(this, message, 1000000);
+	printf("Created fIcon & set it up...\n");
 
 	AddChild(fIcon);
 	AddChild(fTipsterTextView);
+	
+	printf("Children added...Returning...\n");
 }
 
 
@@ -168,18 +182,29 @@ Tipster::QuitRequested()
 void
 Tipster::AttachedToWindow()
 {
+	printf("In attached to window...\n");
+	
 	BMessage message(M_CHECK_TIME);
 	fRunner = new BMessageRunner(this, message, 1000000);
 	fResources = BApplication::AppResources();
-
-	AddBeginningTip();
-
-	fIcon->SetTarget(this);
-
-	BDragger* dragger = new BDragger(Frame(), this,
+	
+	BRect rect(Bounds());
+	rect.top = rect.bottom - 10;
+	rect.left = rect.right - 15;
+	
+	BDragger* dragger = new BDragger(rect, this,
 		B_FOLLOW_RIGHT | B_FOLLOW_BOTTOM);
 	AddChild(dragger);
+	
+	fIcon->SetTarget(this);
 
+	if (!fReplicated) {		
+		AddBeginningTip();
+	} else {
+		UpdateIcon(fArtworkTitle->String(), fURL->String());
+		DisplayTip(fCurrentTip);
+	}
+	
 	BGroupView::AttachedToWindow();
 }
 
@@ -292,21 +317,32 @@ void
 Tipster::UpdateTip()
 {
 	if (fTipsList.IsEmpty()) {
+		printf("fTipsList is empty...Getting tips\n");
 		entry_ref ref = GetTipsFile();
 		LoadTips(ref);
 
 		fTipsList.Remove(0);
 	}
 
+	printf("Getting tip & displaying\n");
+	
+	printf("String list size: %i\n", fTipsList.CountStrings());
+	
 	fTipNumber = random() % fTipsList.CountStrings();
 
 	DisplayTip(new BString(fTipsList.StringAt(fTipNumber)));
+	
+	printf("Displayed tips...\n");
 
 	fPreviousTip = new BString(fCurrentTip->String());
 	fCurrentTip = new BString(fTipsList.StringAt(fTipNumber));
 	fTipsList.Remove(fTipNumber);
+	
+	printf("Updating tip information...\n");
 
 	fTime = system_time();
+	
+	printf("Got time...\n");
 }
 
 
