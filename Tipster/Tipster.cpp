@@ -53,6 +53,14 @@ Tipster::Tipster()
 
 	AddChild(fIcon);
 	AddChild(fTipsterTextView);
+
+	BRect rect(Bounds());
+	rect.top = rect.bottom - 7;
+	rect.left = rect.right - 7;
+	
+	BDragger* dragger = new BDragger(rect, this,
+		B_FOLLOW_RIGHT | B_FOLLOW_BOTTOM);
+	AddChild(dragger);
 }
 
 
@@ -60,18 +68,14 @@ Tipster::Tipster(BMessage* archive)
 	:
 	BGroupView(archive)
 {
-	printf("In Tipster()...\n");
-	
 	fReplicated = true;
 	fTipsList = BStringList();
 	fIconBitmap = new BBitmap(BRect(0, 0, 64, 64), 0, B_RGBA32);
-
 	fCurrentTip = new BString("");
 	fURL = new BString("");
 	fArtworkTitle = new BString("");
 	fDelay = 10000000;
 
-	fIconBitmap = new BBitmap(archive);
 	if (archive->FindString("Tipster::text", fCurrentTip) != B_OK)
 		printf("error finding text...\n");
 
@@ -83,33 +87,17 @@ Tipster::Tipster(BMessage* archive)
 
 	if (archive->FindString("Tipster::artwork", fArtworkTitle) != B_OK)
 		printf("error finding artwork...\n");
-		
-	printf("Data:\n");
-	printf("\tTip = %s\n", fCurrentTip->String());
-	printf("\tDelay = %ld\n", fDelay);
-	printf("\tURL = %s\n", fURL->String());
-	printf("\tArtwork = %s\n", fArtworkTitle->String());
 
-	fTipsterTextView = new TipsterText();
-
-	printf("Created fTipsterTextView...\n");
-
-	fIcon = new BButton("icon", "", new BMessage(OPEN_URL));
-	fIcon->SetFlat(true);
-	
-	printf("Created fIcon & set it up...\n");
-
-	AddChild(fIcon);
-	AddChild(fTipsterTextView);
-	
-	printf("Children added...Returning...\n");
+	fTipsterTextView = 
+		dynamic_cast<TipsterText*>(BGroupView::FindView("TipsterTextView"));
+	fIcon = dynamic_cast<BButton*>(BGroupView::FindView("icon"));
 }
 
 
 status_t
 Tipster::Archive(BMessage* data, bool deep) const
 {
-	status_t status = BView::Archive(data, deep);
+	status_t status = BGroupView::Archive(data, deep);
 	if (status != B_OK) {
 		printf("Could not archive\n");
 
@@ -182,23 +170,13 @@ Tipster::QuitRequested()
 void
 Tipster::AttachedToWindow()
 {
-	printf("In attached to window...\n");
-	
 	BMessage message(M_CHECK_TIME);
 	fRunner = new BMessageRunner(this, message, 1000000);
 	fResources = BApplication::AppResources();
-	
-	BRect rect(Bounds());
-	rect.top = rect.bottom - 10;
-	rect.left = rect.right - 15;
-	
-	BDragger* dragger = new BDragger(rect, this,
-		B_FOLLOW_RIGHT | B_FOLLOW_BOTTOM);
-	AddChild(dragger);
-	
-	fIcon->SetTarget(this);
 
-	if (!fReplicated) {		
+	if (!fReplicated) {
+		fIcon->SetTarget(this);
+		
 		AddBeginningTip();
 	} else {
 		UpdateIcon(fArtworkTitle->String(), fURL->String());
