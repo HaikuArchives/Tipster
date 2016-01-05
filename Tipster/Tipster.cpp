@@ -63,6 +63,7 @@ Tipster::Tipster(BMessage* archive)
 	fReplicated = true;
 	fTipsList = BStringList();
 	fIconBitmap = new BBitmap(BRect(0, 0, 64, 64), 0, B_RGBA32);
+	fResources = BApplication::AppResources();
 
 	fCurrentTip = new BString("");
 	fURL = new BString("");
@@ -76,11 +77,15 @@ Tipster::Tipster(BMessage* archive)
 	archive->FindString("Tipster::artwork", fArtworkTitle);
 
 	fTipsterTextView = new TipsterText();
-	fTipsterTextView->SetText(fCurrentTip->String());
+	fTipsterTextView->Insert(fCurrentTip->String());
 
 	fIcon = new BButton("icon", "", new BMessage(OPEN_URL));
 	fIcon->SetFlat(true);
 	UpdateIcon(fArtworkTitle->String(), fURL->String());
+	fIcon->SetTarget(this);
+	
+	BMessage message(M_CHECK_TIME);
+	fRunner = new BMessageRunner(this, message, 1000000);
 
 	AddChild(fIcon);
 	AddChild(fTipsterTextView);
