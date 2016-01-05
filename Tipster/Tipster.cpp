@@ -22,6 +22,7 @@
 #include <PathFinder.h>
 #include <Roster.h>
 #include <StringList.h>
+#include <TextControl.h>
 #include <TranslationUtils.h>
 
 #include <stdio.h>
@@ -48,7 +49,7 @@ Tipster::Tipster()
 	fArtworkTitle = new BString("");
 
 	fTipsterTextView = new TipsterText();
-	fIcon = new BButton("icon", "", new BMessage(OPEN_URL));
+	fIcon = new BButton("iconview", "", new BMessage(OPEN_URL));
 	fIcon->SetFlat(true);
 
 	AddChild(fIcon);
@@ -68,6 +69,8 @@ Tipster::Tipster(BMessage* archive)
 	:
 	BGroupView(archive)
 {
+	archive->PrintToStream();
+	
 	fReplicated = true;
 	fTipsList = BStringList();
 	fIconBitmap = new BBitmap(BRect(0, 0, 64, 64), 0, B_RGBA32);
@@ -88,9 +91,13 @@ Tipster::Tipster(BMessage* archive)
 	if (archive->FindString("Tipster::artwork", fArtworkTitle) != B_OK)
 		printf("error finding artwork...\n");
 
-	fTipsterTextView = 
-		dynamic_cast<TipsterText*>(BGroupView::FindView("TipsterTextView"));
-	fIcon = dynamic_cast<BButton*>(BGroupView::FindView("icon"));
+	BRect rect(Bounds());
+	rect.top = rect.bottom - 7;
+	rect.left = rect.right - 7;
+	
+	BDragger* dragger = new BDragger(rect, this,
+		B_FOLLOW_RIGHT | B_FOLLOW_BOTTOM);
+	AddChild(dragger);
 }
 
 
@@ -148,6 +155,14 @@ Tipster::Archive(BMessage* data, bool deep) const
 BArchivable*
 Tipster::Instantiate(BMessage *data)
 {
+	if (!validate_instantiation(data, "Tipster")) {
+		printf("Could not complete instantiation...\n");
+		
+		return NULL;
+	}
+	
+	printf("Instantiation validated...\n");
+	
 	return new Tipster(data);
 }
 
@@ -172,13 +187,18 @@ Tipster::AttachedToWindow()
 {
 	BMessage message(M_CHECK_TIME);
 	fRunner = new BMessageRunner(this, message, 1000000);
-	fResources = BApplication::AppResources();
+	fResources = new BResources();
+	fResources->SetToImage((void *)&Tipster::Instantiate);
 
 	if (!fReplicated) {
 		fIcon->SetTarget(this);
 		
 		AddBeginningTip();
 	} else {
+		fTipsterTextView = 
+			static_cast<TipsterText*>(BGroupView::FindView("TipsterTextView"));
+		fIcon = static_cast<BButton*>(BGroupView::FindView("iconview"));
+	
 		UpdateIcon(fArtworkTitle->String(), fURL->String());
 		DisplayTip(fCurrentTip);
 	}
@@ -276,8 +296,8 @@ Tipster::UpdateIcon(BString artwork, BString url)
 	size_t size;
 	const uint8* iconData = (const uint8*)
 		fResources->LoadResource('VICN', artwork.String(), &size);
-
-	if (size > 0) {
+	
+	if (size > 0) {		
 		fIconBitmap = new BBitmap(BRect(0, 0, 64, 64), 0, B_RGBA32);
 
 		status_t iconStatus = BIconUtils::GetVectorIcon(
@@ -295,32 +315,21 @@ void
 Tipster::UpdateTip()
 {
 	if (fTipsList.IsEmpty()) {
-		printf("fTipsList is empty...Getting tips\n");
 		entry_ref ref = GetTipsFile();
 		LoadTips(ref);
 
 		fTipsList.Remove(0);
 	}
 
-	printf("Getting tip & displaying\n");
-	
-	printf("String list size: %i\n", fTipsList.CountStrings());
-	
 	fTipNumber = random() % fTipsList.CountStrings();
 
 	DisplayTip(new BString(fTipsList.StringAt(fTipNumber)));
-	
-	printf("Displayed tips...\n");
 
 	fPreviousTip = new BString(fCurrentTip->String());
 	fCurrentTip = new BString(fTipsList.StringAt(fTipNumber));
 	fTipsList.Remove(fTipNumber);
-	
-	printf("Updating tip information...\n");
 
 	fTime = system_time();
-	
-	printf("Got time...\n");
 }
 
 

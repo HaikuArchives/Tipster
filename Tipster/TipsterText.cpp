@@ -26,6 +26,39 @@ TipsterText::TipsterText()
 }
 
 
+TipsterText::TipsterText(BMessage* data)
+	:
+	BTextView(data)
+{
+	SetText("");
+	
+	MakeEditable(false);
+	SetStylable(true);
+}
+
+
+BArchivable*
+TipsterText::Instantiate(BMessage *data)
+{
+	if (!validate_instantiation(data, "TipsterText")) {
+		printf("Could not complete instantiation...\n");
+		
+		return NULL;
+	}
+	
+	printf("Instantiation validated...\n");
+	
+	return new TipsterText(data);
+}
+
+
+status_t
+TipsterText::Archive(BMessage* data, bool deep) const
+{
+	return B_OK;
+}
+
+
 void
 TipsterText::AttachedToWindow()
 {

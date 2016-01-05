@@ -13,9 +13,13 @@ class TipsterText : public BTextView
 {
 public:
 	TipsterText();
+	TipsterText(BMessage* data);
 
 	void			MouseDown(BPoint pt);
 	void 			AttachedToWindow();
+	
+	static			BArchivable* Instantiate(BMessage* data);
+	status_t		Archive(BMessage* data, bool deep = true) const;
 	
 private:
 	BMessenger*		fMessenger;
