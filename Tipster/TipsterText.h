@@ -19,7 +19,6 @@ public:
 	void 			AttachedToWindow();
 	
 	static			BArchivable* Instantiate(BMessage* data);
-	status_t		Archive(BMessage* data, bool deep = true) const;
 	
 private:
 	BMessenger*		fMessenger;

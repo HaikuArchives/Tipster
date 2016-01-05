@@ -22,7 +22,6 @@
 #include <PathFinder.h>
 #include <Roster.h>
 #include <StringList.h>
-#include <TextControl.h>
 #include <TranslationUtils.h>
 
 #include <stdio.h>
@@ -54,14 +53,6 @@ Tipster::Tipster()
 
 	AddChild(fIcon);
 	AddChild(fTipsterTextView);
-
-	BRect rect(Bounds());
-	rect.top = rect.bottom - 7;
-	rect.left = rect.right - 7;
-	
-	BDragger* dragger = new BDragger(rect, this,
-		B_FOLLOW_RIGHT | B_FOLLOW_BOTTOM);
-	AddChild(dragger);
 }
 
 
@@ -69,8 +60,6 @@ Tipster::Tipster(BMessage* archive)
 	:
 	BGroupView(archive)
 {
-	archive->PrintToStream();
-	
 	fReplicated = true;
 	fTipsList = BStringList();
 	fIconBitmap = new BBitmap(BRect(0, 0, 64, 64), 0, B_RGBA32);
@@ -90,14 +79,6 @@ Tipster::Tipster(BMessage* archive)
 
 	if (archive->FindString("Tipster::artwork", fArtworkTitle) != B_OK)
 		printf("error finding artwork...\n");
-
-	BRect rect(Bounds());
-	rect.top = rect.bottom - 7;
-	rect.left = rect.right - 7;
-	
-	BDragger* dragger = new BDragger(rect, this,
-		B_FOLLOW_RIGHT | B_FOLLOW_BOTTOM);
-	AddChild(dragger);
 }
 
 
@@ -191,6 +172,14 @@ Tipster::AttachedToWindow()
 	fResources->SetToImage((void *)&Tipster::Instantiate);
 
 	if (!fReplicated) {
+		BRect rect(Bounds());
+		rect.top = rect.bottom - 7;
+		rect.left = rect.right - 7;
+	
+		//BDragger* dragger = new BDragger(rect, this,
+		//	B_FOLLOW_RIGHT | B_FOLLOW_BOTTOM);
+		//AddChild(dragger);
+	
 		fIcon->SetTarget(this);
 		
 		AddBeginningTip();
@@ -198,6 +187,7 @@ Tipster::AttachedToWindow()
 		fTipsterTextView = 
 			static_cast<TipsterText*>(BGroupView::FindView("TipsterTextView"));
 		fIcon = static_cast<BButton*>(BGroupView::FindView("iconview"));
+		fIcon->SetTarget(this);
 	
 		UpdateIcon(fArtworkTitle->String(), fURL->String());
 		DisplayTip(fCurrentTip);
@@ -244,8 +234,6 @@ Tipster::MessageReceived(BMessage* msg)
 		}
 		case OPEN_URL:
 		{
-			printf("IN OPENURL");
-
 			OpenURL(fURL);
 			break;
 		}

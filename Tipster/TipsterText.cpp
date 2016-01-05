@@ -52,13 +52,6 @@ TipsterText::Instantiate(BMessage *data)
 }
 
 
-status_t
-TipsterText::Archive(BMessage* data, bool deep) const
-{
-	return B_OK;
-}
-
-
 void
 TipsterText::AttachedToWindow()
 {
