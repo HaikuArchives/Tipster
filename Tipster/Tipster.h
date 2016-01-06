@@ -21,6 +21,7 @@ class Tipster : public BGroupView
 public:
 	Tipster();
 	Tipster(BMessage* archive);
+	~Tipster();
 
 	bool			QuitRequested();
 

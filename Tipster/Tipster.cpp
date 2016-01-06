@@ -94,6 +94,24 @@ Tipster::Tipster(BMessage* archive)
 }
 
 
+Tipster::~Tipster()
+{
+	delete fRandomTip;
+	delete fPreviousTip;
+	delete fCurrentTip;
+	
+	delete fTipsterTextView;
+	delete fIcon;
+	delete fURL;
+	delete fIconBitmap;
+	delete fArtworkTitle;
+	
+	delete fResources;
+	
+	delete fRunner;
+}
+
+
 status_t
 Tipster::Archive(BMessage* data, bool deep) const
 {
@@ -149,12 +167,8 @@ BArchivable*
 Tipster::Instantiate(BMessage *data)
 {
 	if (!validate_instantiation(data, "Tipster")) {
-		printf("Could not complete instantiation...\n");
-		
 		return NULL;
 	}
-	
-	printf("Instantiation validated...\n");
 	
 	return new Tipster(data);
 }
