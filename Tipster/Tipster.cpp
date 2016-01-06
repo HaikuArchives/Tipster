@@ -17,6 +17,7 @@
 #include <FindDirectory.h>
 #include <GroupLayout.h>
 #include <IconUtils.h>
+#include <LayoutBuilder.h>
 #include <Messenger.h>
 #include <Path.h>
 #include <PathFinder.h>
@@ -50,16 +51,20 @@ Tipster::Tipster()
 	fTipsterTextView = new TipsterText();
 	fIcon = new BButton("iconview", "", new BMessage(OPEN_URL));
 	fIcon->SetFlat(true);
-
-	AddChild(fIcon);
-	AddChild(fTipsterTextView);
 	
 	BRect rect(Bounds());
 	rect.top = rect.bottom - 7;
 	rect.left = rect.right - 7;
 	BDragger* dragger = new BDragger(rect, this,
 		B_FOLLOW_RIGHT | B_FOLLOW_BOTTOM);
-	AddChild(dragger);
+
+	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
+		.AddGroup(B_HORIZONTAL)
+			.Add(fIcon)
+			.Add(fTipsterTextView)
+		.End()
+		.AddStrut(0.0f)
+		.Add(dragger);
 }
 
 
