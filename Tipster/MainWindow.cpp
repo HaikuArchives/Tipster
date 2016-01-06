@@ -28,6 +28,7 @@ enum
 	DELAY_1_M = 'd1mn',
 	DELAY_2_M = 'd2mn',
 	DELAY_5_M = 'd5mn',
+	MSG_QUIT = 'quit'
 };
 
 
@@ -51,6 +52,7 @@ MainWindow::BuildLayout()
 	BMenu* fDelaySubMenu = new BMenu("Delay");
 
 	fTipsterMenu->AddItem(new BMenuItem("About", new BMessage(SHOW_ABOUT)));
+	fTipsterMenu->AddItem(new BMenuItem("Quit", new BMessage(MSG_QUIT)));
 
 	fTipMenu->AddItem(new BMenuItem("Previous Tip",
 		new BMessage(PREVIOUS_TIP)));
@@ -128,6 +130,11 @@ MainWindow::MessageReceived(BMessage* msg)
 		case DELAY_5_M:
 		{
 			fTipsterView->SetDelay(300000000);
+			break;
+		}
+		case MSG_QUIT:
+		{
+			be_app->PostMessage(B_QUIT_REQUESTED);
 			break;
 		}
 		default:
