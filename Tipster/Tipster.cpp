@@ -25,6 +25,8 @@
 #include <StringList.h>
 #include <TranslationUtils.h>
 
+#include <private/interface/AboutWindow.h>
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -43,7 +45,7 @@ Tipster::Tipster()
 {
 	fTipsList = BStringList();
 	fCurrentTip = new BString("");
-	fDelay = 10000000;
+	fDelay = 60000000;
 	fReplicated = false;
 	fURL = new BString("");
 	fArtworkTitle = new BString("");
@@ -76,7 +78,7 @@ Tipster::Tipster(BMessage* archive)
 	fCurrentTip = new BString("");
 	fURL = new BString("");
 	fArtworkTitle = new BString("");
-	fDelay = 10000000;
+	fDelay = 60000000;
 
 	if (archive->FindString("Tipster::text", fCurrentTip) != B_OK)
 		printf("error finding text...\n");
@@ -190,6 +192,7 @@ Tipster::AttachedToWindow()
 			static_cast<TipsterText*>(BGroupView::FindView("TipsterTextView"));
 		fIcon = static_cast<BButton*>(BGroupView::FindView("iconview"));
 		fIcon->SetTarget(this);
+		fIcon->SetFlat(true);
 	
 		UpdateIcon(fArtworkTitle->String(), fURL->String());
 		DisplayTip(fCurrentTip);
@@ -242,6 +245,16 @@ Tipster::MessageReceived(BMessage* msg)
 		case M_UPDATE_TIP:
 		{
 			UpdateTip();
+			break;
+		}
+		case B_ABOUT_REQUESTED:
+		{
+			BAboutWindow* about = new BAboutWindow("Tipster",
+				"application/x-vnd.tipster");
+			about->AddDescription("An application to show usability tips "
+						"for Haiku");
+			about->AddCopyright(2015, "Vale Tolpegin");
+			about->Show();
 			break;
 		}
 		default:
