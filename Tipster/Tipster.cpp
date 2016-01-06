@@ -57,14 +57,12 @@ Tipster::Tipster()
 	rect.left = rect.right - 7;
 	BDragger* dragger = new BDragger(rect, this,
 		B_FOLLOW_RIGHT | B_FOLLOW_BOTTOM);
-
-	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
-		.AddGroup(B_HORIZONTAL)
-			.Add(fIcon)
-			.Add(fTipsterTextView)
-		.End()
-		.AddStrut(0.0f)
-		.Add(dragger);
+	dragger->SetExplicitMinSize(BSize(7,7));
+	
+	BGroupLayout* layout = (BGroupLayout*)GetLayout();
+	layout->AddView(fIcon);
+	layout->AddView(fTipsterTextView);
+	layout->AddView(dragger, 0.01);
 }
 
 

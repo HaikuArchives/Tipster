@@ -8,6 +8,7 @@
 #include "TipsterText.h"
 
 #include <Button.h>
+#include <Dragger.h>
 #include <MessageRunner.h>
 #include <Resources.h>
 #include <String.h>
