@@ -24,10 +24,7 @@ enum
 	SHOW_ABOUT = 'swat',
 	NEXT_TIP = 'nxtp',
 	PREVIOUS_TIP = 'pvtp',
-	DELAY_30_S = 'd30s',
-	DELAY_1_M = 'd1mn',
-	DELAY_2_M = 'd2mn',
-	DELAY_5_M = 'd5mn',
+	DELAY = 'dely',
 	MSG_QUIT = 'quit'
 };
 
@@ -57,14 +54,23 @@ MainWindow::BuildLayout()
 	fTipMenu->AddItem(new BMenuItem("Previous Tip",
 		new BMessage(PREVIOUS_TIP)));
 	fTipMenu->AddItem(new BMenuItem("Next Tip", new BMessage(NEXT_TIP)));
-	fDelaySubMenu->AddItem(new BMenuItem("30 Seconds",
-		new BMessage(DELAY_30_S)));
-	fDelaySubMenu->AddItem(new BMenuItem("1 Minute",
-		new BMessage(DELAY_1_M)));
-	fDelaySubMenu->AddItem(new BMenuItem("2 Minutes",
-		new BMessage(DELAY_2_M)));
-	fDelaySubMenu->AddItem(new BMenuItem("5 Minutes",
-		new BMessage(DELAY_5_M)));
+	
+	BMessage* delay30s_message = new BMessage(DELAY);
+	delay30s_message->AddInt32("delay", 30000000);
+	fDelaySubMenu->AddItem(new BMenuItem("30 Seconds", delay30s_message));
+	
+	BMessage* delay1m_message = new BMessage(DELAY);
+	delay1m_message->AddInt32("delay", 60000000);
+	fDelaySubMenu->AddItem(new BMenuItem("1 Minute", delay1m_message));
+		
+	BMessage* delay2m_message = new BMessage(DELAY);
+	delay2m_message->AddInt32("delay", 120000000);
+	fDelaySubMenu->AddItem(new BMenuItem("2 Minutes", delay2m_message));
+	
+	BMessage* delay5m_message = new BMessage(DELAY);
+	delay5m_message->AddInt32("delay", 300000000);
+	fDelaySubMenu->AddItem(new BMenuItem("5 Minutes", delay5m_message));
+	
 	fTipMenu->AddItem(fDelaySubMenu);
 
 	fMenuBar->AddItem(fTipMenu);
@@ -112,24 +118,12 @@ MainWindow::MessageReceived(BMessage* msg)
 			fTipsterView->DisplayPreviousTip();
 			break;
 		}
-		case DELAY_30_S:
+		case DELAY:
 		{
-			fTipsterView->SetDelay(30000000);
-			break;
-		}
-		case DELAY_1_M:
-		{
-			fTipsterView->SetDelay(60000000);
-			break;
-		}
-		case DELAY_2_M:
-		{
-			fTipsterView->SetDelay(120000000);
-			break;
-		}
-		case DELAY_5_M:
-		{
-			fTipsterView->SetDelay(300000000);
+			int32 delay = 60000000;
+			msg->FindInt32("delay", &delay);
+			
+			fTipsterView->SetDelay(delay);
 			break;
 		}
 		case MSG_QUIT:
