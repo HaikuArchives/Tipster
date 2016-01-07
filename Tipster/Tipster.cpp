@@ -49,6 +49,7 @@ Tipster::Tipster()
 	fReplicated = false;
 	fURL = new BString("");
 	fArtworkTitle = new BString("");
+	fPreviousTip = new BString("");
 
 	fTipsterTextView = new TipsterText();
 	fIcon = new BButton("iconview", "", new BMessage(OPEN_URL));
@@ -76,6 +77,7 @@ Tipster::Tipster(BMessage* archive)
 	fTipsList = BStringList();
 	fIconBitmap = new BBitmap(BRect(0, 0, 64, 64), 0, B_RGBA32);
 	fCurrentTip = new BString("");
+	fPreviousTip = new BString("");
 	fURL = new BString("");
 	fArtworkTitle = new BString("");
 	fDelay = 60000000;
