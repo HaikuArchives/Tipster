@@ -50,6 +50,7 @@ Tipster::Tipster()
 	fURL = new BString("");
 	fArtworkTitle = new BString("");
 	fPreviousTip = new BString("");
+	fRandomTip = new BString("");
 
 	fTipsterTextView = new TipsterText();
 	fIcon = new BButton("iconview", "", new BMessage(OPEN_URL));
@@ -81,6 +82,7 @@ Tipster::Tipster(BMessage* archive)
 	fURL = new BString("");
 	fArtworkTitle = new BString("");
 	fDelay = 60000000;
+	fRandomTip = new BString("");
 
 	if (archive->FindString("Tipster::text", fCurrentTip) != B_OK)
 		printf("error finding text...\n");
