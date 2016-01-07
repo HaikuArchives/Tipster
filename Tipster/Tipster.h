@@ -51,7 +51,6 @@ private:
 	BStringList 	fTipsList;
 	int32			fTipsLength;
 
-	BString*		fRandomTip;
 	BString*		fPreviousTip;
 	BString*		fCurrentTip;
 
