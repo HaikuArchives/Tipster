@@ -51,30 +51,30 @@ MainWindow::BuildLayout()
 	fTipsterMenu->AddItem(new BMenuItem("About", new BMessage(SHOW_ABOUT)));
 	fTipsterMenu->AddItem(new BMenuItem("Quit", new BMessage(MSG_QUIT)));
 
-	fTipMenu->AddItem(new BMenuItem("Previous Tip",
+	fTipMenu->AddItem(new BMenuItem("Previous tip",
 		new BMessage(PREVIOUS_TIP)));
-	fTipMenu->AddItem(new BMenuItem("Next Tip", new BMessage(NEXT_TIP)));
+	fTipMenu->AddItem(new BMenuItem("Next tip", new BMessage(NEXT_TIP)));
 	
 	BMessage* delay30s_message = new BMessage(DELAY);
 	delay30s_message->AddInt32("delay", 30000000);
-	fDelaySubMenu->AddItem(new BMenuItem("30 Seconds", delay30s_message));
+	fDelaySubMenu->AddItem(new BMenuItem("30 seconds", delay30s_message));
 	
 	BMessage* delay1m_message = new BMessage(DELAY);
 	delay1m_message->AddInt32("delay", 60000000);
-	fDelaySubMenu->AddItem(new BMenuItem("1 Minute", delay1m_message));
+	fDelaySubMenu->AddItem(new BMenuItem("1 minute", delay1m_message));
 		
 	BMessage* delay2m_message = new BMessage(DELAY);
 	delay2m_message->AddInt32("delay", 120000000);
-	fDelaySubMenu->AddItem(new BMenuItem("2 Minutes", delay2m_message));
+	fDelaySubMenu->AddItem(new BMenuItem("2 minutes", delay2m_message));
 	
 	BMessage* delay5m_message = new BMessage(DELAY);
 	delay5m_message->AddInt32("delay", 300000000);
-	fDelaySubMenu->AddItem(new BMenuItem("5 Minutes", delay5m_message));
+	fDelaySubMenu->AddItem(new BMenuItem("5 minutes", delay5m_message));
 	
 	fTipMenu->AddItem(fDelaySubMenu);
 
-	fMenuBar->AddItem(fTipMenu);
 	fMenuBar->AddItem(fTipsterMenu);
+	fMenuBar->AddItem(fTipMenu);
 
 	fTipsterView = new Tipster();
 

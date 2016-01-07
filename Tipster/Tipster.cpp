@@ -41,7 +41,7 @@ enum
 
 Tipster::Tipster()
 	:
-	BGroupView("TipView")
+	BGroupView("Tipster")
 {
 	fTipsList = BStringList();
 	fCurrentTip = new BString("");
