@@ -2,23 +2,17 @@
  * Copyright 2015 Vale Tolpegin <valetolpegin@gmail.com>
  * All rights reserved. Distributed under the terms of the MIT license.
  */
-
-
 #include "MainWindow.h"
 
 #include <Application.h>
-#include <Bitmap.h>
 #include <ControlLook.h>
+#include <Dragger.h>
 #include <GroupLayout.h>
 #include <GroupLayoutBuilder.h>
-#include <IconUtils.h>
 #include <LayoutBuilder.h>
 #include <Menu.h>
 #include <MenuBar.h>
 #include <MenuItem.h>
-#include <Messenger.h>
-#include <Path.h>
-#include <Resources.h>
 #include <TranslationUtils.h>
 
 #include <private/interface/AboutWindow.h>
@@ -28,8 +22,10 @@
 enum
 {
 	SHOW_ABOUT = 'swat',
-	UPDATE_ICON = 'upin',
-	OPEN_URL = 'opur'
+	NEXT_TIP = 'nxtp',
+	PREVIOUS_TIP = 'pvtp',
+	DELAY = 'dely',
+	MSG_QUIT = 'quit'
 };
 
 
@@ -39,9 +35,6 @@ MainWindow::MainWindow()
 		B_ASYNCHRONOUS_CONTROLS | B_NOT_V_RESIZABLE)
 {
 	BuildLayout();
-
-	fURL = new BString();
-	fResources = BApplication::AppResources();
 }
 
 
@@ -49,32 +42,45 @@ void
 MainWindow::BuildLayout()
 {
 	BMenuBar* fMenuBar = new BMenuBar("menubar");
+
 	BMenu* fTipsterMenu = new BMenu("Tipster");
+	BMenu* fTipMenu = new BMenu("Tip");
+
+	BMenu* fDelaySubMenu = new BMenu("Delay");
 
 	fTipsterMenu->AddItem(new BMenuItem("About", new BMessage(SHOW_ABOUT)));
+	fTipsterMenu->AddItem(new BMenuItem("Quit", new BMessage(MSG_QUIT)));
+
+	fTipMenu->AddItem(new BMenuItem("Previous tip",
+		new BMessage(PREVIOUS_TIP)));
+	fTipMenu->AddItem(new BMenuItem("Next tip", new BMessage(NEXT_TIP)));
+	
+	BMessage* delay30s_message = new BMessage(DELAY);
+	delay30s_message->AddInt32("delay", 30000000);
+	fDelaySubMenu->AddItem(new BMenuItem("30 seconds", delay30s_message));
+	
+	BMessage* delay1m_message = new BMessage(DELAY);
+	delay1m_message->AddInt32("delay", 60000000);
+	fDelaySubMenu->AddItem(new BMenuItem("1 minute", delay1m_message));
+		
+	BMessage* delay2m_message = new BMessage(DELAY);
+	delay2m_message->AddInt32("delay", 120000000);
+	fDelaySubMenu->AddItem(new BMenuItem("2 minutes", delay2m_message));
+	
+	BMessage* delay5m_message = new BMessage(DELAY);
+	delay5m_message->AddInt32("delay", 300000000);
+	fDelaySubMenu->AddItem(new BMenuItem("5 minutes", delay5m_message));
+	
+	fTipMenu->AddItem(fDelaySubMenu);
 
 	fMenuBar->AddItem(fTipsterMenu);
-
-	fTipsterViewContainer = new BView("tipster_container",
-		B_SUPPORTS_LAYOUT);
+	fMenuBar->AddItem(fTipMenu);
 
 	fTipsterView = new Tipster();
-	fTipsterViewContainer->AddChild(fTipsterView);
-
-	BGroupLayout* layout = new BGroupLayout(B_VERTICAL);
-	layout->SetInsets(10,0,10,0);
-
-	fTipsterViewContainer->SetLayout(layout);
-
-	fIcon = new BButton("icon", "", new BMessage(OPEN_URL));
-	fIcon->SetFlat(true);
 
 	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
 		.Add(fMenuBar)
-		.AddGroup(B_HORIZONTAL)
-			.Add(fIcon)
-			.Add(fTipsterViewContainer)
-		.End()
+		.Add(fTipsterView)
 		.AddGlue();
 }
 
@@ -102,35 +108,27 @@ MainWindow::MessageReceived(BMessage* msg)
 			about->Show();
 			break;
 		}
-		case UPDATE_ICON:
+		case NEXT_TIP:
 		{
-			status_t status = msg->FindString("url", fURL);
-
-			if (status == B_OK) {
-				BString artwork;
-				msg->FindString("artwork", &artwork);
-
-				size_t size;
-				const uint8* iconData = (const uint8*)
-					fResources->LoadResource('VICN', artwork.String(),
-					&size);
-
-				if (size > 0) {
-					fIconBitmap = new BBitmap(BRect(0, 0, 64, 64), 0,
-						B_RGBA32);
-
-					status_t iconStatus = BIconUtils::GetVectorIcon(
-						iconData, size, fIconBitmap);
-
-					if (iconStatus == B_OK)
-						fIcon->SetIcon(fIconBitmap);
-				}
-			}
+			fTipsterView->UpdateTip();
 			break;
 		}
-		case OPEN_URL:
+		case PREVIOUS_TIP:
 		{
-			fTipsterView->OpenURL(fURL);
+			fTipsterView->DisplayPreviousTip();
+			break;
+		}
+		case DELAY:
+		{
+			int32 delay = 60000000;
+			msg->FindInt32("delay", &delay);
+			
+			fTipsterView->SetDelay(delay);
+			break;
+		}
+		case MSG_QUIT:
+		{
+			be_app->PostMessage(B_QUIT_REQUESTED);
 			break;
 		}
 		default:

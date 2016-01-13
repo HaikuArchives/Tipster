@@ -7,10 +7,6 @@
 
 #include "Tipster.h"
 
-#include <Button.h>
-#include <Resources.h>
-#include <SplitView.h>
-#include <View.h>
 #include <Window.h>
 
 
@@ -25,16 +21,7 @@ public:
 private:
 	void		BuildLayout();
 
-	BView*		fTipsterViewContainer;
-	BSplitView* fMainSplitView;
-
 	Tipster*	fTipsterView;
-
-	BButton*	fIcon;
-	BString*	fURL;
-	BBitmap*	fIconBitmap;
-
-	BResources* fResources;
 };
 
 #endif

@@ -5,16 +5,23 @@
 #ifndef TIPSTER_H
 #define TIPSTER_H
 
+#include "TipsterText.h"
+
+#include <Button.h>
 #include <MessageRunner.h>
+#include <Resources.h>
 #include <String.h>
 #include <StringList.h>
 #include <TextView.h>
+#include <GroupView.h>
 
 
-class Tipster : public BTextView
+class Tipster : public BGroupView
 {
 public:
 	Tipster();
+	Tipster(BMessage* archive);
+	~Tipster();
 
 	bool			QuitRequested();
 
@@ -24,24 +31,42 @@ public:
 
 	void			OpenURL(BString* url);
 
-private:
+	void			SetDelay(bigtime_t delay);
 	void			UpdateTip();
+	void			DisplayPreviousTip();
+
+	static			BArchivable* Instantiate(BMessage* data);
+	status_t		Archive(BMessage* data, bool deep = true) const;
+
+private:
 	void			LoadTips(entry_ref ref);
 	void			AddBeginningTip();
+	void			DisplayTip(BString* tip);
+	void			UpdateIcon(BString artwork, BString url);
 
 	entry_ref		GetTipsFile();
-	const char*		GetArtworkTitle(BString category);
+	void			GetArtworkTitle(BString category);
 
 	uint32			fTipNumber;
 	BStringList 	fTipsList;
 	int32			fTipsLength;
 
-	BString*		fRandomTip;
+	BString*		fPreviousTip;
+	BString*		fCurrentTip;
+
+	TipsterText*	fTipsterTextView;
+	BButton*		fIcon;
+	BString*		fURL;
+	BBitmap*		fIconBitmap;
+	BString*		fArtworkTitle;
+
+	BResources*		fResources;
 
 	bigtime_t		fTime;
+	bigtime_t		fDelay;
 	BMessageRunner* fRunner;
 
-	BMessenger*		fMessenger;
+	bool			fReplicated;
 };
 
 #endif

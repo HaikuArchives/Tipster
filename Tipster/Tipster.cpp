@@ -7,12 +7,17 @@
 #include "Tipster.h"
 
 #include <Application.h>
+#include <Bitmap.h>
 #include <Catalog.h>
 #include <ControlLook.h>
 #include <Directory.h>
+#include <Dragger.h>
 #include <Entry.h>
 #include <File.h>
 #include <FindDirectory.h>
+#include <GroupLayout.h>
+#include <IconUtils.h>
+#include <LayoutBuilder.h>
 #include <Messenger.h>
 #include <Path.h>
 #include <PathFinder.h>
@@ -20,11 +25,14 @@
 #include <StringList.h>
 #include <TranslationUtils.h>
 
+#include <private/interface/AboutWindow.h>
+
 #include <stdio.h>
 #include <stdlib.h>
 
 enum
 {
+	OPEN_URL = 'opur',
 	M_UPDATE_TIP = 'uptp',
 	M_CHECK_TIME = 'cktm',
 	UPDATE_ICON = 'upin'
@@ -33,14 +41,145 @@ enum
 
 Tipster::Tipster()
 	:
-	BTextView("TipView")
+	BGroupView("Tipster")
 {
-	MakeEditable(false);
-	SetStylable(true);
-
 	fTipsList = BStringList();
+	fCurrentTip = new BString("");
+	fDelay = 60000000;
+	fReplicated = false;
+	fURL = new BString("");
+	fArtworkTitle = new BString("");
+	fPreviousTip = new BString("");
 
-	SetText("");
+	fTipsterTextView = new TipsterText();
+	fIcon = new BButton("iconview", "", new BMessage(OPEN_URL));
+	fIcon->SetFlat(true);
+	
+	BRect rect(Bounds());
+	rect.top = rect.bottom - 7;
+	rect.left = rect.right - 7;
+	BDragger* dragger = new BDragger(rect, this,
+		B_FOLLOW_RIGHT | B_FOLLOW_BOTTOM);
+	dragger->SetExplicitMinSize(BSize(7,7));
+	
+	BGroupLayout* layout = (BGroupLayout*)GetLayout();
+	layout->AddView(fIcon);
+	layout->AddView(fTipsterTextView);
+	layout->AddView(dragger, 0.01);
+}
+
+
+Tipster::Tipster(BMessage* archive)
+	:
+	BGroupView(archive)
+{
+	fReplicated = true;
+	fTipsList = BStringList();
+	fIconBitmap = new BBitmap(BRect(0, 0, 64, 64), 0, B_RGBA32);
+	fCurrentTip = new BString("");
+	fPreviousTip = new BString("");
+	fURL = new BString("");
+	fArtworkTitle = new BString("");
+	fDelay = 60000000;
+
+	if (archive->FindString("Tipster::text", fCurrentTip) != B_OK)
+		printf("error finding text...\n");
+
+	if (archive->FindInt64("Tipster::delay", fDelay) != B_OK)
+		printf("error finding delay...\n");
+
+	if (archive->FindString("Tipster::url", fURL) != B_OK)
+		printf("error finding url...\n");
+
+	if (archive->FindString("Tipster::artwork", fArtworkTitle) != B_OK)
+		printf("error finding artwork...\n");
+}
+
+
+Tipster::~Tipster()
+{
+	delete fPreviousTip;
+	delete fCurrentTip;
+	
+	delete fTipsterTextView;
+	delete fIcon;
+	delete fURL;
+	delete fIconBitmap;
+	delete fArtworkTitle;
+	
+	delete fResources;
+	
+	delete fRunner;
+}
+
+
+status_t
+Tipster::Archive(BMessage* data, bool deep) const
+{
+	status_t status = BGroupView::Archive(data, deep);
+	if (status != B_OK) {
+		printf("Could not archive\n");
+
+		return status;
+	}
+
+	status = data->AddString("add_on", "application/x-vnd.tipster");
+	if (status != B_OK) {
+		printf("Could not add APP_SIG\n");
+
+		return status;
+	}
+
+	status = data->AddInt64("Tipster::delay", fDelay);
+	if (status != B_OK) {
+		printf("Could not save the delay\n");
+
+		return status;
+	}
+
+	status = data->AddString("Tipster::url", fURL->String());
+	if (status != B_OK) {
+		printf("Could not save the url\n");
+
+		return status;
+	}
+
+	status = data->AddString("Tipster::text", fCurrentTip->String());
+	if (status != B_OK) {
+		printf("Could not save the current tip's text\n");
+
+		return status;
+	}
+
+	status = data->AddString("Tipster::artwork", fArtworkTitle->String());
+	if (status != B_OK) {
+		printf("Could not save the artwork title\n");
+
+		return status;
+	}
+
+	data->AddString("class", "Tipster");
+
+	return B_OK;
+}
+
+
+BArchivable*
+Tipster::Instantiate(BMessage *data)
+{
+	if (!validate_instantiation(data, "Tipster")) {
+		return NULL;
+	}
+	
+	return new Tipster(data);
+}
+
+
+void
+Tipster::SetDelay(bigtime_t delay)
+{
+	fDelay = delay;
+	fTime = system_time();
 }
 
 
@@ -55,13 +194,26 @@ void
 Tipster::AttachedToWindow()
 {
 	BMessage message(M_CHECK_TIME);
-	fRunner = new BMessageRunner(this, &message, 1000000);
+	fRunner = new BMessageRunner(this, message, 1000000);
+	fResources = new BResources();
+	fResources->SetToImage((void *)&Tipster::Instantiate);
 
-	fMessenger = new BMessenger(this->Parent());
+	if (!fReplicated) {
+		fIcon->SetTarget(this);
 
-	AddBeginningTip();
-
-	BTextView::AttachedToWindow();
+		AddBeginningTip();
+	} else {		
+		fTipsterTextView = 
+			static_cast<TipsterText*>(BGroupView::FindView("TipsterTextView"));
+		fIcon = static_cast<BButton*>(BGroupView::FindView("iconview"));
+		fIcon->SetTarget(this);
+		fIcon->SetFlat(true);
+	
+		UpdateIcon(fArtworkTitle->String(), fURL->String());
+		DisplayTip(fCurrentTip);
+	}
+	
+	BGroupView::AttachedToWindow();
 }
 
 
@@ -75,22 +227,12 @@ Tipster::AddBeginningTip()
 	fTipsList.StringAt(0).Split("\n", false, introductionTipList);
 	BString link = introductionTipList.StringAt(2);
 
-	Insert(introductionTipList.StringAt(1));
-
-	BString additionalTip("%\n");
-	additionalTip.Append(introductionTipList.StringAt(0).String());
-	additionalTip.Append("\n");
-	additionalTip.Append(introductionTipList.StringAt(1).String());
-	additionalTip.Append("\n");
-	additionalTip.Append(link);
+	fTipsterTextView->Insert(introductionTipList.StringAt(1));
 
 	fTipsList.Remove(0);
 
-	BMessage message(UPDATE_ICON);
-	message.AddString("url", link);
-	message.AddString("artwork",
-		GetArtworkTitle(introductionTipList.StringAt(0)));
-	fMessenger->SendMessage(&message);
+	GetArtworkTitle(introductionTipList.StringAt(0));
+	UpdateIcon(BString(fArtworkTitle->String()), link);
 
 	fTime = system_time();
 }
@@ -103,11 +245,16 @@ Tipster::MessageReceived(BMessage* msg)
 	{
 		case M_CHECK_TIME:
 		{
-			if (fTime + 60000000 < system_time())
+			if (fTime + fDelay < system_time())
 			{
 				//Update the tip every 60 seconds
 				UpdateTip();
 			}
+			break;
+		}
+		case OPEN_URL:
+		{
+			OpenURL(fURL);
 			break;
 		}
 		case M_UPDATE_TIP:
@@ -115,9 +262,19 @@ Tipster::MessageReceived(BMessage* msg)
 			UpdateTip();
 			break;
 		}
+		case B_ABOUT_REQUESTED:
+		{
+			BAboutWindow* about = new BAboutWindow("Tipster",
+				"application/x-vnd.tipster");
+			about->AddDescription("An application to show usability tips "
+						"for Haiku");
+			about->AddCopyright(2015, "Vale Tolpegin");
+			about->Show();
+			break;
+		}
 		default:
 		{
-			BTextView::MessageReceived(msg);
+			BView::MessageReceived(msg);
 			break;
 		}
 	}
@@ -152,6 +309,27 @@ Tipster::MouseDown(BPoint pt)
 
 
 void
+Tipster::UpdateIcon(BString artwork, BString url)
+{
+	size_t size;
+	const uint8* iconData = (const uint8*)
+		fResources->LoadResource('VICN', artwork.String(), &size);
+	
+	if (size > 0) {		
+		fIconBitmap = new BBitmap(BRect(0, 0, 64, 64), 0, B_RGBA32);
+
+		status_t iconStatus = BIconUtils::GetVectorIcon(
+			iconData, size, fIconBitmap);
+
+		if (iconStatus == B_OK)
+			fIcon->SetIcon(fIconBitmap);
+	}
+
+	fURL = new BString(url.String());
+}
+
+
+void
 Tipster::UpdateTip()
 {
 	if (fTipsList.IsEmpty()) {
@@ -161,26 +339,43 @@ Tipster::UpdateTip()
 		fTipsList.Remove(0);
 	}
 
-	SetText("");
 	fTipNumber = random() % fTipsList.CountStrings();
 
+	DisplayTip(new BString(fTipsList.StringAt(fTipNumber)));
+
+	fPreviousTip = new BString(fCurrentTip->String());
+	fCurrentTip = new BString(fTipsList.StringAt(fTipNumber));
+	fTipsList.Remove(fTipNumber);
+
+	fTime = system_time();
+}
+
+
+void
+Tipster::DisplayTip(BString* tip)
+{
 	BStringList tipInfoList;
-	fTipsList.StringAt(fTipNumber).Split("\n", false, tipInfoList);
+	BString(tip->String()).Split("\n", false, tipInfoList);
 	tipInfoList.Remove(0);
 
 	BString link = tipInfoList.StringAt(2);
 
-	Insert(tipInfoList.StringAt(1));
+	fTipsterTextView->SetText("");
+	fTipsterTextView->Insert(tipInfoList.StringAt(1));
 
-	fTipsList.Remove(fTipNumber);
+	GetArtworkTitle(tipInfoList.StringAt(0));
+	UpdateIcon(BString(fArtworkTitle->String()), link);
+}
 
-	BMessage message(UPDATE_ICON);
-	message.AddString("url", link);
-	message.AddString("artwork",
-		GetArtworkTitle(tipInfoList.StringAt(0)));
-	fMessenger->SendMessage(&message);
 
-	fTime = system_time();
+void
+Tipster::DisplayPreviousTip()
+{
+	if (fPreviousTip != NULL) {
+		DisplayTip(fPreviousTip);
+
+		fTime = system_time();
+	}
 }
 
 
@@ -230,17 +425,17 @@ Tipster::LoadTips(entry_ref ref)
 }
 
 
-const char *
+void
 Tipster::GetArtworkTitle(BString category)
 {
 	if (category == "GUI")
-		return "GUI";
+		fArtworkTitle->SetTo("GUI");
 	else if (category == "Terminal")
-		return "Terminal";
+		fArtworkTitle->SetTo("Terminal");
 	else if (category == "Preferences")
-		return "Preferences";
+		fArtworkTitle->SetTo("Preferences");
 	else if (category == "Application")
-		return "Application";
-
-	return "Miscellaneous";
+		fArtworkTitle->SetTo("Application");
+	else
+		fArtworkTitle->SetTo("Miscellaneous");
 }
