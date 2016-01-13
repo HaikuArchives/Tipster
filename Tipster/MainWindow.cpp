@@ -5,6 +5,7 @@
 #include "MainWindow.h"
 
 #include <Application.h>
+#include <Catalog.h>
 #include <ControlLook.h>
 #include <Dragger.h>
 #include <GroupLayout.h>
@@ -29,9 +30,12 @@ enum
 };
 
 
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "MainWindow"
+
 MainWindow::MainWindow()
 	:
-	BWindow(BRect(100,100,740,200), "Tipster", B_TITLED_WINDOW,
+	BWindow(BRect(100,100,740,200), B_TRANSLATE_SYSTEM_NAME("Tipster"), B_TITLED_WINDOW,
 		B_ASYNCHRONOUS_CONTROLS | B_NOT_V_RESIZABLE)
 {
 	BuildLayout();
@@ -43,33 +47,40 @@ MainWindow::BuildLayout()
 {
 	BMenuBar* fMenuBar = new BMenuBar("menubar");
 
-	BMenu* fTipsterMenu = new BMenu("Tipster");
-	BMenu* fTipMenu = new BMenu("Tip");
+	BMenu* fTipsterMenu = new BMenu(B_TRANSLATE("Tipster"));
+	BMenu* fTipMenu = new BMenu(B_TRANSLATE("Tip"));
 
-	BMenu* fDelaySubMenu = new BMenu("Delay");
+	BMenu* fDelaySubMenu = new BMenu(B_TRANSLATE("Delay"));
 
-	fTipsterMenu->AddItem(new BMenuItem("About", new BMessage(SHOW_ABOUT)));
-	fTipsterMenu->AddItem(new BMenuItem("Quit", new BMessage(MSG_QUIT)));
+	fTipsterMenu->AddItem(new BMenuItem(B_TRANSLATE("About"),
+		new BMessage(SHOW_ABOUT)));
+	fTipsterMenu->AddItem(new BMenuItem(B_TRANSLATE("Quit"),
+		new BMessage(MSG_QUIT)));
 
-	fTipMenu->AddItem(new BMenuItem("Previous tip",
+	fTipMenu->AddItem(new BMenuItem(B_TRANSLATE("Previous tip"),
 		new BMessage(PREVIOUS_TIP)));
-	fTipMenu->AddItem(new BMenuItem("Next tip", new BMessage(NEXT_TIP)));
+	fTipMenu->AddItem(new BMenuItem(B_TRANSLATE("Next tip"),
+		new BMessage(NEXT_TIP)));
 	
 	BMessage* delay30s_message = new BMessage(DELAY);
 	delay30s_message->AddInt32("delay", 30000000);
-	fDelaySubMenu->AddItem(new BMenuItem("30 seconds", delay30s_message));
+	fDelaySubMenu->AddItem(new BMenuItem(B_TRANSLATE("30 seconds"),
+		delay30s_message));
 	
 	BMessage* delay1m_message = new BMessage(DELAY);
 	delay1m_message->AddInt32("delay", 60000000);
-	fDelaySubMenu->AddItem(new BMenuItem("1 minute", delay1m_message));
+	fDelaySubMenu->AddItem(new BMenuItem(B_TRANSLATE("1 minute"),
+		delay1m_message));
 		
 	BMessage* delay2m_message = new BMessage(DELAY);
 	delay2m_message->AddInt32("delay", 120000000);
-	fDelaySubMenu->AddItem(new BMenuItem("2 minutes", delay2m_message));
+	fDelaySubMenu->AddItem(new BMenuItem(B_TRANSLATE("2 minutes"),
+		delay2m_message));
 	
 	BMessage* delay5m_message = new BMessage(DELAY);
 	delay5m_message->AddInt32("delay", 300000000);
-	fDelaySubMenu->AddItem(new BMenuItem("5 minutes", delay5m_message));
+	fDelaySubMenu->AddItem(new BMenuItem(B_TRANSLATE("5 minutes"),
+		delay5m_message));
 	
 	fTipMenu->AddItem(fDelaySubMenu);
 
@@ -100,10 +111,10 @@ MainWindow::MessageReceived(BMessage* msg)
 	{
 		case SHOW_ABOUT:
 		{
-			BAboutWindow* about = new BAboutWindow("Tipster",
+			BAboutWindow* about = new BAboutWindow(B_TRANSLATE("Tipster"),
 				"application/x-vnd.tipster");
-			about->AddDescription("An application to show usability tips "
-						"for Haiku");
+			about->AddDescription(B_TRANSLATE("An application to show "
+						"usability tips for Haiku"));
 			about->AddCopyright(2015, "Vale Tolpegin");
 			about->Show();
 			break;

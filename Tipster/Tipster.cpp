@@ -18,6 +18,7 @@
 #include <GroupLayout.h>
 #include <IconUtils.h>
 #include <LayoutBuilder.h>
+#include <LocaleRoster.h>
 #include <Messenger.h>
 #include <Path.h>
 #include <PathFinder.h>
@@ -379,26 +380,54 @@ Tipster::DisplayPreviousTip()
 }
 
 
+static bool
+getLocalTipsFile(entry_ref &ref, const char *language = NULL )	// = "en"
+{
+	BStringList paths;
+	BString localTipsFile("tipster-tips");
+
+	if (language != NULL)
+	{
+		localTipsFile += '-';
+		localTipsFile += language;
+	}
+
+	localTipsFile += ".txt";
+
+	status_t status = BPathFinder::FindPaths(B_FIND_PATH_DATA_DIRECTORY,
+		localTipsFile, B_FIND_PATH_EXISTING_ONLY, paths);
+
+	if (!paths.IsEmpty() && status == B_OK) {
+		BEntry data_entry(paths.StringAt(0).String());
+		data_entry.GetRef(&ref);
+
+		return true;
+	}
+
+	BEntry entry(localTipsFile);
+	entry.GetRef(&ref);
+
+	return entry.Exists();
+}
+
+
 entry_ref
 Tipster::GetTipsFile()
 {
 	entry_ref ref;
-	BStringList paths;
+	BMessage message;
+	BLocaleRoster *roster = BLocaleRoster::Default();
 
-	status_t status = BPathFinder::FindPaths(B_FIND_PATH_DATA_DIRECTORY,
-		"tipster-tips.txt", B_FIND_PATH_EXISTING_ONLY, paths);
+	if (roster->GetPreferredLanguages(&message) == B_OK)
+	{
+		const char *language;
 
-	if (!paths.IsEmpty() && status == B_OK) {
-		for (int32 i = 0; i < paths.CountStrings(); i++) {
-			BEntry data_entry(paths.StringAt(i).String());
-			data_entry.GetRef(&ref);
-
-			return ref;
-		}
+		for (int32 i = 0; (language = message.GetString("language", i, NULL)) != NULL; i++)
+			if (getLocalTipsFile(ref, language))
+				return ref;
 	}
 
-	BEntry entry("tipster-tips.txt");
-	entry.GetRef(&ref);
+	getLocalTipsFile(ref);
 
 	return ref;
 }
