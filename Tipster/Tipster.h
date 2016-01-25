@@ -47,6 +47,9 @@ private:
 	entry_ref		GetTipsFile();
 	void			GetArtworkTitle(BString category);
 
+	status_t		_SaveSettings();
+	status_t		_LoadSettings();
+
 	uint32			fTipNumber;
 	BStringList 	fTipsList;
 	int32			fTipsLength;
