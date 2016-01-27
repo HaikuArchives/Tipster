@@ -36,7 +36,8 @@ enum
 	OPEN_URL = 'opur',
 	M_UPDATE_TIP = 'uptp',
 	M_CHECK_TIME = 'cktm',
-	UPDATE_ICON = 'upin'
+	UPDATE_ICON = 'upin',
+	MSG_SAVE_SETTINGS = 'svse'
 };
 
 
@@ -55,18 +56,20 @@ Tipster::Tipster()
 	fTipsterTextView = new TipsterText();
 	fIcon = new BButton("iconview", "", new BMessage(OPEN_URL));
 	fIcon->SetFlat(true);
-	
+
 	BRect rect(Bounds());
 	rect.top = rect.bottom - 7;
 	rect.left = rect.right - 7;
 	BDragger* dragger = new BDragger(rect, this,
 		B_FOLLOW_RIGHT | B_FOLLOW_BOTTOM);
 	dragger->SetExplicitMinSize(BSize(7,7));
-	
+
 	BGroupLayout* layout = (BGroupLayout*)GetLayout();
 	layout->AddView(fIcon);
 	layout->AddView(fTipsterTextView);
 	layout->AddView(dragger, 0.01);
+
+	_LoadSettings();
 }
 
 
@@ -101,15 +104,15 @@ Tipster::~Tipster()
 {
 	delete fPreviousTip;
 	delete fCurrentTip;
-	
+
 	delete fTipsterTextView;
 	delete fIcon;
 	delete fURL;
 	delete fIconBitmap;
 	delete fArtworkTitle;
-	
+
 	delete fResources;
-	
+
 	delete fRunner;
 }
 
@@ -171,7 +174,7 @@ Tipster::Instantiate(BMessage *data)
 	if (!validate_instantiation(data, "Tipster")) {
 		return NULL;
 	}
-	
+
 	return new Tipster(data);
 }
 
@@ -181,6 +184,8 @@ Tipster::SetDelay(bigtime_t delay)
 {
 	fDelay = delay;
 	fTime = system_time();
+
+	_SaveSettings();
 }
 
 
@@ -203,18 +208,70 @@ Tipster::AttachedToWindow()
 		fIcon->SetTarget(this);
 
 		AddBeginningTip();
-	} else {		
-		fTipsterTextView = 
+	} else {
+		fTipsterTextView =
 			static_cast<TipsterText*>(BGroupView::FindView("TipsterTextView"));
 		fIcon = static_cast<BButton*>(BGroupView::FindView("iconview"));
 		fIcon->SetTarget(this);
 		fIcon->SetFlat(true);
-	
+
 		UpdateIcon(fArtworkTitle->String(), fURL->String());
 		DisplayTip(fCurrentTip);
 	}
-	
+
 	BGroupView::AttachedToWindow();
+}
+
+status_t
+Tipster::_SaveSettings()
+{
+	BPath p;
+	BFile f;
+	BMessage m(MSG_SAVE_SETTINGS);
+
+	if (find_directory(B_USER_SETTINGS_DIRECTORY, &p) != B_OK)
+		return B_ERROR;
+	p.Append("Tipster");
+
+	f.SetTo(p.Path(), B_WRITE_ONLY | B_CREATE_FILE | B_ERASE_FILE);
+	if (f.InitCheck() != B_OK)
+		return B_ERROR;
+
+	status_t status = m.AddInt64("delay", fDelay);
+	if (status != B_OK)
+		return B_ERROR;
+
+	if (m.Flatten(&f) != B_OK)
+		return B_ERROR;
+
+	return B_OK;
+}
+
+
+status_t
+Tipster::_LoadSettings()
+{
+	BPath p;
+	BFile f;
+	BMessage m(MSG_SAVE_SETTINGS);
+
+	if (find_directory(B_USER_SETTINGS_DIRECTORY, &p) != B_OK)
+		return B_ERROR;
+	p.Append("Tipster");
+
+	f.SetTo(p.Path(), B_READ_ONLY);
+	if (f.InitCheck() != B_OK)
+		return B_ERROR;
+
+	if (m.Unflatten(&f) != B_OK)
+		return B_ERROR;
+
+	if (m.FindInt64("delay", &fDelay) != B_OK)
+		return B_ERROR;
+
+	fTime = system_time();
+
+	return B_OK;
 }
 
 
@@ -315,8 +372,8 @@ Tipster::UpdateIcon(BString artwork, BString url)
 	size_t size;
 	const uint8* iconData = (const uint8*)
 		fResources->LoadResource('VICN', artwork.String(), &size);
-	
-	if (size > 0) {		
+
+	if (size > 0) {
 		fIconBitmap = new BBitmap(BRect(0, 0, 64, 64), 0, B_RGBA32);
 
 		status_t iconStatus = BIconUtils::GetVectorIcon(
