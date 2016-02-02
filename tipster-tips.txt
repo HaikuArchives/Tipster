@@ -69,3 +69,23 @@ https://www.haiku-os.org/docs/userguide/en/desktop-applets/processcontroller.htm
 Terminal
 In Terminal you can select any text with the mouse and insert it at the prompt with a right-click.
 https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#hints
+%
+Miscellaneous
+Holding the SHIFT key while booting enters the boot loader options. Among other settings, it lets you boot to a specific historic state of Haiku.
+https://www.haiku-os.org/docs/userguide/en/bootloader.html
+%
+Miscellaneous
+Open the "Find..." panel from the Deskbar (or ALT + F) to find any file or folder on your system. Besides searching for a name, you can also apply more sophisticated search patterns using Haiku's attributes.
+https://www.haiku-os.org/docs/userguide/en/queries.html
+%
+GUI
+Some app's interface elements can be embedded in the Desktop by dragging a tiny hand from them to the Desktop. Replicatable apps are e.g. Tipster, ActivityMonitor and Workspaces.
+https://www.haiku-os.org/docs/userguide/en/gui.html#replicants
+%
+Preferences
+To match the keymap to your physical keyboard, you can choose one from a list in the Keymap preferences. You can also make keys switch places by dragging them around.
+https://www.haiku-os.org/docs/userguide/en/preferences/keymap.html
+%
+GUI
+You can easily move windows between workspaces by dragging them around in the Workspaces applet. Switching through workspaces is even faster with the keycombo CTRL + ALT + cursor keys.
+https://www.haiku-os.org/docs/userguide/en/workspaces.html
