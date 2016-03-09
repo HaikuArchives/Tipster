@@ -31,7 +31,7 @@ Set an audio file for "Vision Nick Notification" in the Sounds preferences to ge
 https://www.haiku-os.org/docs/userguide/en/applications/vision.html
 %
 Application
-The tab key does command and path completion in the Terminal and nickname completion in Vision. Just start typing and press tab to find a match.
+The TAB key does command and path completion in the Terminal and nickname completion in Vision. Just start typing and press TAB to find a match.
 
 %
 Miscellaneous
@@ -39,7 +39,7 @@ The Haiku source is an excellent resource for examples of the Haiku API in actio
 http://xref.plausible.coop/source/
 %
 Miscellaneous
-Quickly tap CTRL + Tab to switch between two applications, hold the key combo to see all running apps in the Twitcher.
+Quickly tap CTRL + TAB to switch between two applications, hold the key combo to see all running apps in the Twitcher.
 https://www.haiku-os.org/docs/userguide/en/twitcher.html
 %
 Preferences

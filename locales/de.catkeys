@@ -1,0 +1,14 @@
+1	German	application/x-vnd.tipster	1865710205
+30 seconds	MainWindow		30 Sekunden
+5 minutes	MainWindow		5 Minuten
+2 minutes	MainWindow		2 Minuten
+Quit	MainWindow		Beenden
+An application to show usability tips for Haiku.	MainWindow		Eine Anwendung zum Anzeigen von Tips zur Benutzung von Haiku.
+Tipster	System name		Tipster
+Tip	MainWindow		Tipp
+1 minute	MainWindow		1 Minute
+Next tip	MainWindow		Nächster Tipp
+Tipster	MainWindow		Tipster
+Delay	MainWindow		Verzögerung
+About	MainWindow		Über
+Previous tip	MainWindow		Voriger Tipp

@@ -114,7 +114,7 @@ MainWindow::MessageReceived(BMessage* msg)
 			BAboutWindow* about = new BAboutWindow(B_TRANSLATE("Tipster"),
 				"application/x-vnd.tipster");
 			about->AddDescription(B_TRANSLATE("An application to show "
-						"usability tips for Haiku"));
+						"usability tips for Haiku."));
 			about->AddCopyright(2015, "Vale Tolpegin");
 			about->Show();
 			break;
