@@ -1,5 +1,22 @@
 resource app_signature "application/x-vnd.tipster";
 
+resource app_flags B_SINGLE_LAUNCH;
+
+resource app_version {
+	major  = 0,
+	middle = 1,
+	minor  = 0,
+
+	/* 0 = development	1 = alpha			2 = beta
+	   3 = gamma		4 = golden master	5 = final */
+	variety = 2,
+
+	internal = 0,
+
+	short_info = "An app to show usability tips",
+	long_info  = "An application to show usability tips."
+};
+
 resource vector_icon {
 	$"6E636966090500040054020006023BF30E382DD2BB75033F220A49642A46D5CC"
 	$"00227AFFFF0025E5020006023A56A43629D9BB9B013FE5A94A9B3E32FBB50000"

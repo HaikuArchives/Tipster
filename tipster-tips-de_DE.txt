@@ -1,0 +1,91 @@
+Tipster
+Willkommen zum Tipster! Ein Klick aufs Icon links zeigt weitere Infos. Ein Klick auf den Text springt zum nächsten Tip.
+http://www.github.com/HaikuArchives/Tipster
+%
+Terminal
+Um eine Datei, Pfad oder URL vom Terminal aus zu öffnen, klickt man einfach bei gedrückter ALT Taste darauf.
+https://www.haiku-os.org/docs/userguide/de/applications/terminal.html#shortcuts
+%
+GUI
+Fenster lassen sich stapeln bzw. aneinanderheften, indem man bei gedrückter OPT Taste ihre Titelreiter bzw. Fensterrahmen aufeinander zieht.
+https://www.haiku-os.org/docs/userguide/de/gui.html#move-resize
+%
+GUI
+Hält man die Tasten ALT + STRG gedrückt, lassen sich Fenster bequem verschieben (linke Maustaste) und in der Größe verändern (rechte Maustaste).
+https://www.haiku-os.org/docs/userguide/de/gui.html#move-resize
+%
+GUI
+Durch Workspaces - virtuelle Arbeitsflächen - kann man seine Arbeit auf bis zu 32 Desktops verteilen.
+https://www.haiku-os.org/docs/userguide/de/workspaces.html
+%
+GUI
+Per Rechtsklick auf einen Titelreiter (oder irgendwo wenn man ALT + STRG gedrückt hat) wird ein Fenster in den Hintergrund geschickt, ein Doppelklick minimiert es in die Deskbar.
+https://www.haiku-os.org/docs/userguide/de/gui.html
+%
+Preferences
+Durch Anlegen eigener Tastenkürzel in den Shortcuts Einstellungen lässt sich der Arbeitsfluss weiter beschleunigen.
+https://www.haiku-os.org/docs/userguide/de/keyboard-shortcuts.html
+%
+Application
+Ordnet man eine Klangdatei der "Vision Nick Notification" in den Sounds Einstellungen zu, bekommt man jedesmal ein Ping wenn der eigene Name im IRC Client Vision auftaucht.
+https://www.haiku-os.org/docs/userguide/de/applications/vision.html
+%
+Application
+Per Tabulatortaste werden im Terminal Befehle und Pfade vervollständigt und in Vision Benutzernamen. Einfach anfangen zu tippen und TAB drücken.
+
+%
+Miscellaneous
+Haikus Sourcecode ist eine hervorragende Quelle für Beispiele zum Einsatz der Haiku API. Er lässt sich für Infos zu benötigten Klassen auch einfach durchsuchen.
+http://xref.plausible.coop/source/
+%
+Miscellaneous
+Schnelles Antippen von STRG + TAB wechselt zwischen zwei Anwendungen. Hält man das Tastenkürzel länger gedrückt, werden alle laufenden Anwendungen im Twitcher angezeigt.
+https://www.haiku-os.org/docs/userguide/de/twitcher.html
+%
+Preferences
+Bei aktiviertem "Filtern während der Eingabe" zeigt Tracker nur die für einen interessanten Dateien.
+https://www.haiku-os.org/docs/userguide/de/tracker.html#tracker-preferences
+%
+Preferences
+Wer meint unbedingt die Tastaturbelegung von Linux/Windows nutzen zu müssen (ALT <-> STRG), kann sie und anderes mehr in den Keymap Einstellungen ändern.
+https://www.haiku-os.org/docs/userguide/de/preferences/keymap.html
+%
+Terminal
+Lässt man eine Datei aufs Terminalfenster fallen, wird deren Pfad eingefügt. Macht man das mit der rechten Maustaste, erhält man weitere nützliche Aktionen.
+https://www.haiku-os.org/docs/userguide/de/applications/terminal.html#hints
+%
+Terminal
+Im Terminal öffnet der Befehl "open" jede Art Datei in deren bevorzugten Anwendung. Mit "." und ".." wird der aktuelle bzw. übergeordnete Ordner im Tracker geöffnet.
+https://www.haiku-os.org/docs/userguide/de/applications/terminal.html#hints
+%
+Miscellaneous
+Ist ein bestimmtes Programm nicht im HaikuDepot, kann es sein, dass man erst ein bestimmtes Repository hinzufügen muss. Siehe die WebPositive Lesezeichen unter "Software".
+
+%
+Miscellaneous
+Verbraucht ein Programm alle CPU Resourcen, kann man dessen Priorität über den ProcessController in der Deskbar verringern.
+https://www.haiku-os.org/docs/userguide/de/desktop-applets/processcontroller.html
+%
+Terminal
+Im Terminal lässt sich Text mit der Maus markieren und dann per Rechtsklick am Prompt einfügen.
+https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#hints
+%
+Miscellaneous
+Hält man beim Hochfahren die SHIFT Taste gedrückt, gelangt man in die Boot Loader Optionen. Neben allen möglichen Einstellungen kann man von dort aus auch  vergangene Haiku-Stände finden und booten.
+https://www.haiku-os.org/docs/userguide/de/bootloader.html
+%
+Miscellaneous
+Mit dem "Suchen..." Fenster aus der Deskbar (oder ALT + F) lässt sich jede Datei und jeder Ordner im System finden. Neben der Suche nach Dateinamen, lassen sich auch komplexere Suchkriterien mittels Haikus Attribute zusammenstellen.
+https://www.haiku-os.org/docs/userguide/de/queries.html
+%
+GUI
+Einige grafischen Elemente mancher Anwendungen lassen sich in den Desktop integrieren, indem man deren kleines Handsymbol auf ihn zieht. Solche Replikanten bieten z.B. Tipster,  ActivityMonitor und Workspaces.
+https://www.haiku-os.org/docs/userguide/de/gui.html#replicants
+%
+Preferences
+Um die Tastaturbelegung an die physische Tastatur anzupassen, kann man eine aus einer Liste in den Keymap Einstellugen wählen. Tasten lassen sich durch Drag'n'Drop auch tauschen.
+https://www.haiku-os.org/docs/userguide/de/preferences/keymap.html
+%
+GUI
+Fenster lassen sich einfach auf andere Arbeitsflächen verschieben, indem man sie im Workspaces Applet herumzieht. Zwischen Arbeitsflächen hin- und herzuschalten ist mit dem Tastenkürzel STRG + ALT + Pfeiltasten sogar noch schneller.
+https://www.haiku-os.org/docs/userguide/de/workspaces.html
