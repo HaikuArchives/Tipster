@@ -6,7 +6,6 @@
 
 # The name of the binary.
 NAME = Tipster
-TARGET_DIR = Tipster
 
 # The type of binary, must be one of:
 #	APP:	Application
@@ -30,22 +29,20 @@ APP_MIME_SIG = application/x-vnd.tipster
 #	same name (source.c or source.cpp) are included from different directories.
 #	Also note that spaces in folder names do not work well with this Makefile.
 SRCS = \
-	 Tipster/App.cpp  \
-	 Tipster/MainWindow.cpp  \
-	 Tipster/Tipster.cpp  \
-	 Tipster/TipsterText.cpp  \
+	 source/App.cpp  \
+	 source/MainWindow.cpp  \
+	 source/Tipster.cpp  \
+	 source/TipsterText.cpp  \
 
 
 #	Specify the resource definition files to use. Full or relative paths can be
 #	used.
-RDEFS = \
-	 Tipster/Tipster.rdef  \
+RDEFS = source/Tipster.rdef
 
 
 #	Specify the resource files to use. Full or relative paths can be used.
 #	Both RDEFS and RSRCS can be utilized in the same Makefile.
-RSRCS = \
-
+RSRCS =
 
 # End Pe/Eddie support.
 # @<-src@

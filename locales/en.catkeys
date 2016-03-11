@@ -1,14 +1,13 @@
-1	English	application/x-vnd.tipster	1865710205
+1	English	application/x-vnd.tipster	2518152396
 30 seconds	MainWindow		30 seconds
 5 minutes	MainWindow		5 minutes
-An application to show usability tips for Haiku.	MainWindow		An application to show usability tips for Haiku.
 2 minutes	MainWindow		2 minutes
 Quit	MainWindow		Quit
+An application to show usability tips for Haiku.	About		An application to show usability tips for Haiku.
 Tipster	System name		Tipster
 Tip	MainWindow		Tip
 1 minute	MainWindow		1 minute
 Next tip	MainWindow		Next tip
-Tipster	MainWindow		Tipster
 Delay	MainWindow		Delay
 About	MainWindow		About
 Previous tip	MainWindow		Previous tip
