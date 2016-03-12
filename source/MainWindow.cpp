@@ -47,7 +47,7 @@ MainWindow::BuildLayout()
 {
 	BMenuBar* fMenuBar = new BMenuBar("menubar");
 
-	BMenu* fTipsterMenu = new BMenu(B_TRANSLATE("Tipster"));
+	BMenu* fTipsterMenu = new BMenu(B_TRANSLATE_SYSTEM_NAME("Tipster"));
 	BMenu* fTipMenu = new BMenu(B_TRANSLATE("Tip"));
 
 	BMenu* fDelaySubMenu = new BMenu(B_TRANSLATE("Delay"));
@@ -104,6 +104,9 @@ MainWindow::QuitRequested()
 }
 
 
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "About"
+
 void
 MainWindow::MessageReceived(BMessage* msg)
 {
@@ -111,7 +114,7 @@ MainWindow::MessageReceived(BMessage* msg)
 	{
 		case SHOW_ABOUT:
 		{
-			BAboutWindow* about = new BAboutWindow(B_TRANSLATE("Tipster"),
+			BAboutWindow* about = new BAboutWindow(B_TRANSLATE_SYSTEM_NAME("Tipster"),
 				"application/x-vnd.tipster");
 			about->AddDescription(B_TRANSLATE("An application to show "
 						"usability tips for Haiku."));

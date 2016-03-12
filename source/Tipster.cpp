@@ -296,6 +296,9 @@ Tipster::AddBeginningTip()
 }
 
 
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "About"
+
 void
 Tipster::MessageReceived(BMessage* msg)
 {
@@ -303,8 +306,7 @@ Tipster::MessageReceived(BMessage* msg)
 	{
 		case M_CHECK_TIME:
 		{
-			if (fTime + fDelay < system_time())
-			{
+			if (fTime + fDelay < system_time()) {
 				//Update the tip every 60 seconds
 				UpdateTip();
 			}
@@ -322,10 +324,10 @@ Tipster::MessageReceived(BMessage* msg)
 		}
 		case B_ABOUT_REQUESTED:
 		{
-			BAboutWindow* about = new BAboutWindow("Tipster",
+			BAboutWindow* about = new BAboutWindow(B_TRANSLATE_SYSTEM_NAME("Tipster"),
 				"application/x-vnd.tipster");
-			about->AddDescription("An application to show usability tips "
-						"for Haiku");
+			about->AddDescription(B_TRANSLATE("An application to show "
+				"usability tips for Haiku."));
 			about->AddCopyright(2015, "Vale Tolpegin");
 			about->Show();
 			break;
@@ -438,17 +440,14 @@ Tipster::DisplayPreviousTip()
 
 
 static bool
-getLocalTipsFile(entry_ref &ref, const char *language = NULL )	// = "en"
+getLocalTipsFile(entry_ref &ref, const char *language = "en")
 {
 	BStringList paths;
-	BString localTipsFile("tipster-tips");
+	BString localTipsFile("Tipster/tips-");
 
-	if (language != NULL)
-	{
-		localTipsFile += '-';
-		localTipsFile += language;
-	}
+	printf("Preferred language(s): %s\n", language);
 
+	localTipsFile += language;
 	localTipsFile += ".txt";
 
 	status_t status = BPathFinder::FindPaths(B_FIND_PATH_DATA_DIRECTORY,
@@ -475,15 +474,13 @@ Tipster::GetTipsFile()
 	BMessage message;
 	BLocaleRoster *roster = BLocaleRoster::Default();
 
-	if (roster->GetPreferredLanguages(&message) == B_OK)
-	{
+	if (roster->GetPreferredLanguages(&message) == B_OK) {
 		const char *language;
 
 		for (int32 i = 0; (language = message.GetString("language", i, NULL)) != NULL; i++)
 			if (getLocalTipsFile(ref, language))
 				return ref;
 	}
-
 	getLocalTipsFile(ref);
 
 	return ref;
