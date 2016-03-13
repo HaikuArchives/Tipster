@@ -11,7 +11,7 @@
 
 enum
 {
-	M_UPDATE_TIP = 'uptp'
+	UPDATE_TIP = 'uptp'
 };
 
 
@@ -20,7 +20,7 @@ TipsterText::TipsterText()
 	BTextView("TipsterTextView")
 {
 	SetText("");
-	
+
 	MakeEditable(false);
 	SetStylable(true);
 }
@@ -31,7 +31,7 @@ TipsterText::TipsterText(BMessage* data)
 	BTextView(data)
 {
 	SetText("");
-	
+
 	MakeEditable(false);
 	SetStylable(true);
 }
@@ -64,14 +64,14 @@ TipsterText::AttachedToWindow()
 
 
 void
-TipsterText::MouseDown(BPoint pt)
+TipsterText::MouseDown(BPoint point)
 {
 	BPoint temp;
 	uint32 buttons;
 	GetMouse(&temp, &buttons);
 
 	if (Bounds().Contains(temp)) {
-		BMessage message(M_UPDATE_TIP);
+		BMessage message(UPDATE_TIP);
 		
 		fMessenger->SendMessage(&message);
 	}

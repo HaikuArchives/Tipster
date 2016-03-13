@@ -8,24 +8,24 @@
 #include "TipsterText.h"
 
 #include <Button.h>
+#include <GroupView.h>
 #include <MessageRunner.h>
 #include <Resources.h>
 #include <String.h>
 #include <StringList.h>
 #include <TextView.h>
-#include <GroupView.h>
 
 
 class Tipster : public BGroupView
 {
 public:
-	Tipster();
-	Tipster(BMessage* archive);
-	~Tipster();
+					Tipster();
+					Tipster(BMessage* archive);
+					~Tipster();
 
 	bool			QuitRequested();
 
-	void 			MouseDown(BPoint pt);
+	void 			MouseDown(BPoint point);
 	void 			MessageReceived(BMessage* msg);
 	void 			AttachedToWindow();
 
