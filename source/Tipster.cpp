@@ -341,6 +341,9 @@ Tipster::MessageReceived(BMessage* message)
 void
 Tipster::OpenURL(BString* url)
 {
+	if (url->IsEmpty())
+		return;
+
 	char *argv[2];
 	argv[0] = (char*)url->String();
 	argv[1] = 0;
