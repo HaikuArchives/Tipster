@@ -2,8 +2,6 @@
  * Copyright 2015 Vale Tolpegin <valetolpegin@gmail.com>
  * All rights reserved. Distributed under the terms of the MIT license.
  */
-
-
 #include "Tipster.h"
 
 #include <Application.h>
@@ -34,11 +32,13 @@
 enum
 {
 	OPEN_URL = 'opur',
-	M_UPDATE_TIP = 'uptp',
-	M_CHECK_TIME = 'cktm',
+	UPDATE_TIP = 'uptp',
+	CHECK_TIME = 'cktm',
 	UPDATE_ICON = 'upin',
-	MSG_SAVE_SETTINGS = 'svse'
+	SAVE_SETTINGS = 'svse'
 };
+
+const float kDraggerSize = 7.0f;
 
 
 Tipster::Tipster()
@@ -55,19 +55,23 @@ Tipster::Tipster()
 
 	fTipsterTextView = new TipsterText();
 	fIcon = new BButton("iconview", "", new BMessage(OPEN_URL));
-	fIcon->SetFlat(true);
 
 	BRect rect(Bounds());
-	rect.top = rect.bottom - 7;
-	rect.left = rect.right - 7;
+	rect.top = rect.bottom - kDraggerSize;
+	rect.left = rect.right - kDraggerSize;
 	BDragger* dragger = new BDragger(rect, this,
 		B_FOLLOW_RIGHT | B_FOLLOW_BOTTOM);
-	dragger->SetExplicitMinSize(BSize(7,7));
+	dragger->SetExplicitMinSize(BSize(kDraggerSize, kDraggerSize));
 
-	BGroupLayout* layout = (BGroupLayout*)GetLayout();
-	layout->AddView(fIcon);
-	layout->AddView(fTipsterTextView);
-	layout->AddView(dragger, 0.01);
+	BLayoutBuilder::Group<>(this, B_HORIZONTAL, 0)
+		.AddGroup(B_HORIZONTAL)
+			.SetInsets(-2, -2, 0, -2)
+			.Add(fIcon)
+			.End()
+		.AddStrut(be_control_look->DefaultItemSpacing())
+		.Add(fTipsterTextView)
+		.Add(dragger, 0.01)
+		.End();
 
 	_LoadSettings();
 }
@@ -123,42 +127,36 @@ Tipster::Archive(BMessage* data, bool deep) const
 	status_t status = BGroupView::Archive(data, deep);
 	if (status != B_OK) {
 		printf("Could not archive\n");
-
 		return status;
 	}
 
 	status = data->AddString("add_on", "application/x-vnd.tipster");
 	if (status != B_OK) {
 		printf("Could not add APP_SIG\n");
-
 		return status;
 	}
 
 	status = data->AddInt64("Tipster::delay", fDelay);
 	if (status != B_OK) {
 		printf("Could not save the delay\n");
-
 		return status;
 	}
 
 	status = data->AddString("Tipster::url", fURL->String());
 	if (status != B_OK) {
 		printf("Could not save the url\n");
-
 		return status;
 	}
 
 	status = data->AddString("Tipster::text", fCurrentTip->String());
 	if (status != B_OK) {
 		printf("Could not save the current tip's text\n");
-
 		return status;
 	}
 
 	status = data->AddString("Tipster::artwork", fArtworkTitle->String());
 	if (status != B_OK) {
 		printf("Could not save the artwork title\n");
-
 		return status;
 	}
 
@@ -171,9 +169,8 @@ Tipster::Archive(BMessage* data, bool deep) const
 BArchivable*
 Tipster::Instantiate(BMessage *data)
 {
-	if (!validate_instantiation(data, "Tipster")) {
+	if (!validate_instantiation(data, "Tipster"))
 		return NULL;
-	}
 
 	return new Tipster(data);
 }
@@ -199,7 +196,7 @@ Tipster::QuitRequested()
 void
 Tipster::AttachedToWindow()
 {
-	BMessage message(M_CHECK_TIME);
+	BMessage message(CHECK_TIME);
 	fRunner = new BMessageRunner(this, message, 1000000);
 	fResources = new BResources();
 	fResources->SetToImage((void *)&Tipster::Instantiate);
@@ -213,7 +210,6 @@ Tipster::AttachedToWindow()
 			static_cast<TipsterText*>(BGroupView::FindView("TipsterTextView"));
 		fIcon = static_cast<BButton*>(BGroupView::FindView("iconview"));
 		fIcon->SetTarget(this);
-		fIcon->SetFlat(true);
 
 		UpdateIcon(fArtworkTitle->String(), fURL->String());
 		DisplayTip(fCurrentTip);
@@ -225,23 +221,23 @@ Tipster::AttachedToWindow()
 status_t
 Tipster::_SaveSettings()
 {
-	BPath p;
-	BFile f;
-	BMessage m(MSG_SAVE_SETTINGS);
+	BPath path;
+	BFile file;
+	BMessage message(SAVE_SETTINGS);
 
-	if (find_directory(B_USER_SETTINGS_DIRECTORY, &p) != B_OK)
+	if (find_directory(B_USER_SETTINGS_DIRECTORY, &path) != B_OK)
 		return B_ERROR;
-	p.Append("Tipster");
+	path.Append("Tipster");
 
-	f.SetTo(p.Path(), B_WRITE_ONLY | B_CREATE_FILE | B_ERASE_FILE);
-	if (f.InitCheck() != B_OK)
+	file.SetTo(path.Path(), B_WRITE_ONLY | B_CREATE_FILE | B_ERASE_FILE);
+	if (file.InitCheck() != B_OK)
 		return B_ERROR;
 
-	status_t status = m.AddInt64("delay", fDelay);
+	status_t status = message.AddInt64("delay", fDelay);
 	if (status != B_OK)
 		return B_ERROR;
 
-	if (m.Flatten(&f) != B_OK)
+	if (message.Flatten(&file) != B_OK)
 		return B_ERROR;
 
 	return B_OK;
@@ -251,22 +247,22 @@ Tipster::_SaveSettings()
 status_t
 Tipster::_LoadSettings()
 {
-	BPath p;
-	BFile f;
-	BMessage m(MSG_SAVE_SETTINGS);
+	BPath path;
+	BFile file;
+	BMessage message(SAVE_SETTINGS);
 
-	if (find_directory(B_USER_SETTINGS_DIRECTORY, &p) != B_OK)
+	if (find_directory(B_USER_SETTINGS_DIRECTORY, &path) != B_OK)
 		return B_ERROR;
-	p.Append("Tipster");
+	path.Append("Tipster");
 
-	f.SetTo(p.Path(), B_READ_ONLY);
-	if (f.InitCheck() != B_OK)
-		return B_ERROR;
-
-	if (m.Unflatten(&f) != B_OK)
+	file.SetTo(path.Path(), B_READ_ONLY);
+	if (file.InitCheck() != B_OK)
 		return B_ERROR;
 
-	if (m.FindInt64("delay", &fDelay) != B_OK)
+	if (message.Unflatten(&file) != B_OK)
+		return B_ERROR;
+
+	if (message.FindInt64("delay", &fDelay) != B_OK)
 		return B_ERROR;
 
 	fTime = system_time();
@@ -300,11 +296,11 @@ Tipster::AddBeginningTip()
 #define B_TRANSLATION_CONTEXT "About"
 
 void
-Tipster::MessageReceived(BMessage* msg)
+Tipster::MessageReceived(BMessage* message)
 {
-	switch (msg->what)
+	switch (message->what)
 	{
-		case M_CHECK_TIME:
+		case CHECK_TIME:
 		{
 			if (fTime + fDelay < system_time()) {
 				//Update the tip every 60 seconds
@@ -317,7 +313,7 @@ Tipster::MessageReceived(BMessage* msg)
 			OpenURL(fURL);
 			break;
 		}
-		case M_UPDATE_TIP:
+		case UPDATE_TIP:
 		{
 			UpdateTip();
 			break;
@@ -334,7 +330,7 @@ Tipster::MessageReceived(BMessage* msg)
 		}
 		default:
 		{
-			BView::MessageReceived(msg);
+			BView::MessageReceived(message);
 			break;
 		}
 	}
@@ -345,6 +341,9 @@ Tipster::MessageReceived(BMessage* msg)
 void
 Tipster::OpenURL(BString* url)
 {
+	if (url->IsEmpty())
+		return;
+
 	char *argv[2];
 	argv[0] = (char*)url->String();
 	argv[1] = 0;
@@ -355,7 +354,7 @@ Tipster::OpenURL(BString* url)
 
 
 void
-Tipster::MouseDown(BPoint pt)
+Tipster::MouseDown(BPoint point)
 {
 	BPoint temp;
 	uint32 buttons;

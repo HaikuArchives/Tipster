@@ -35,8 +35,8 @@ enum
 
 MainWindow::MainWindow()
 	:
-	BWindow(BRect(100,100,740,200), B_TRANSLATE_SYSTEM_NAME("Tipster"), B_TITLED_WINDOW,
-		B_ASYNCHRONOUS_CONTROLS | B_NOT_V_RESIZABLE)
+	BWindow(BRect(100, 100, 740, 190), B_TRANSLATE_SYSTEM_NAME("Tipster"),
+		B_TITLED_WINDOW, B_ASYNCHRONOUS_CONTROLS | B_NOT_V_RESIZABLE)
 {
 	BuildLayout();
 }
@@ -108,9 +108,9 @@ MainWindow::QuitRequested()
 #define B_TRANSLATION_CONTEXT "About"
 
 void
-MainWindow::MessageReceived(BMessage* msg)
+MainWindow::MessageReceived(BMessage* message)
 {
-	switch(msg->what)
+	switch(message->what)
 	{
 		case SHOW_ABOUT:
 		{
@@ -135,7 +135,7 @@ MainWindow::MessageReceived(BMessage* msg)
 		case DELAY:
 		{
 			int32 delay = 60000000;
-			msg->FindInt32("delay", &delay);
+			message->FindInt32("delay", &delay);
 			
 			fTipsterView->SetDelay(delay);
 			break;
@@ -146,7 +146,7 @@ MainWindow::MessageReceived(BMessage* msg)
 			break;
 		}
 		default:
-			BWindow::MessageReceived(msg);
+			BWindow::MessageReceived(message);
 			break;
 	}
 }

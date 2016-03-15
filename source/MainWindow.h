@@ -16,7 +16,7 @@ public:
 				MainWindow();
 
 	bool		QuitRequested();
-	void		MessageReceived(BMessage* msg);
+	void		MessageReceived(BMessage* message);
 
 private:
 	void		BuildLayout();

@@ -12,10 +12,10 @@
 class TipsterText : public BTextView
 {
 public:
-	TipsterText();
-	TipsterText(BMessage* data);
+					TipsterText();
+					TipsterText(BMessage* data);
 
-	void			MouseDown(BPoint pt);
+	void			MouseDown(BPoint point);
 	void 			AttachedToWindow();
 	
 	static			BArchivable* Instantiate(BMessage* data);
