@@ -392,25 +392,33 @@ Tipster::UpdateIcon(BString artwork, BString url)
 void
 Tipster::UpdateTip()
 {
+	//Ayush updated this method
 	if (fTipsList.IsEmpty()) {
 		entry_ref ref = GetTipsFile();
 		LoadTips(ref);
 
 		fTipsList.Remove(0);
 	}
+	
+	if(ind==storepast.CountStrings()-1){
+		fTipNumber = random() % fTipsList.CountStrings();
 
-	fTipNumber = random() % fTipsList.CountStrings();
+		DisplayTip(new BString(fTipsList.StringAt(fTipNumber)));
 
-	DisplayTip(new BString(fTipsList.StringAt(fTipNumber)));
+		fPreviousTip = new BString(fCurrentTip->String());
+		fCurrentTip = new BString(fTipsList.StringAt(fTipNumber));
 
-	fPreviousTip = new BString(fCurrentTip->String());
-	fCurrentTip = new BString(fTipsList.StringAt(fTipNumber));
+		ind=storepast.CountStrings();
+		storepast.Add(fCurrentTip->String());
 
-	//adding following two lines (Ayush)
-	ind=storepast.CountStrings()-1;
-	storepast.Add(fCurrentTip->String());
-
-	fTipsList.Remove(fTipNumber);
+		fTipsList.Remove(fTipNumber);
+	}
+	
+	else{
+		ind++;
+		DisplayTip(new BString(storepast.StringAt(ind)));
+	}
+	
 	fTime = system_time();
 }
 
@@ -436,11 +444,10 @@ void
 Tipster::DisplayPreviousTip()
 {
 //Ayush updated this method to incorporate multiple previous (more stable)
-
 	if (storepast.StringAt(ind) != NULL) {
+		ind--;
 		DisplayTip(new BString(storepast.StringAt(ind)));
 		fTime = system_time();
-		ind--; //to go previous multiple times
 	}
 }
 
@@ -451,7 +458,7 @@ getLocalTipsFile(entry_ref &ref, const char *language = "en")
 	BStringList paths;
      // Ayush Agarwal Bug #13
 	 //change folder name of tips to Tipster then change path below
-	BString localTipsFile("../Tipster/tips-");
+	BString localTipsFile("Tipster/tips-");
 
 	printf("Preferred language(s): %s\n", language);
 
