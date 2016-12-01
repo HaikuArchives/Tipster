@@ -389,7 +389,6 @@ Tipster::UpdateIcon(BString artwork, BString url)
 	fURL = new BString(url.String());
 }
 
-static int ind; //holds index of last tip in storepast (Ayush)
 void
 Tipster::UpdateTip()
 {
@@ -442,9 +441,6 @@ Tipster::DisplayPreviousTip()
 		DisplayTip(new BString(storepast.StringAt(ind)));
 		fTime = system_time();
 		ind--; //to go previous multiple times
-		if(ind==-1){
-			cout<< "Back at the Beginning" <<endl;
-		}	
 	}
 }
 
@@ -453,9 +449,9 @@ static bool
 getLocalTipsFile(entry_ref &ref, const char *language = "en")
 {
 	BStringList paths;
-      	 // Ayush Agarwal Bug #13
+     // Ayush Agarwal Bug #13
 	 //change folder name of tips to Tipster then change path below
-	BString localTipsFile("./../Tipster/tips-");
+	BString localTipsFile("../Tipster/tips-");
 
 	printf("Preferred language(s): %s\n", language);
 
