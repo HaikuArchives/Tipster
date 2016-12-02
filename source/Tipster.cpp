@@ -52,6 +52,7 @@ Tipster::Tipster()
 	fURL = new BString("");
 	fArtworkTitle = new BString("");
 	fPreviousTip = new BString("");
+	ind=0;
 
 	fTipsterTextView = new TipsterText();
 	fIcon = new BButton("iconview", "", new BMessage(OPEN_URL));
