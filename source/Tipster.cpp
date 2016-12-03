@@ -1,9 +1,9 @@
-/*
+*
  * Copyright 2015 Vale Tolpegin <valetolpegin@gmail.com>
  * All rights reserved. Distributed under the terms of the MIT license.
  */
 #include "Tipster.h"
-
+#include <iostream>
 #include <Application.h>
 #include <Bitmap.h>
 #include <Catalog.h>
@@ -270,6 +270,7 @@ Tipster::_LoadSettings()
 	return B_OK;
 }
 
+static BStringList storepast; //holds all previous tips as a history of tips
 
 void
 Tipster::AddBeginningTip()
@@ -283,6 +284,7 @@ Tipster::AddBeginningTip()
 
 	fTipsterTextView->Insert(introductionTipList.StringAt(1));
 
+	storepast.Add(introductionTipList.StringAt(1));
 	fTipsList.Remove(0);
 
 	GetArtworkTitle(introductionTipList.StringAt(0));
@@ -387,7 +389,7 @@ Tipster::UpdateIcon(BString artwork, BString url)
 	fURL = new BString(url.String());
 }
 
-
+static int ind; //holds index of last tip in storepast (Ayush)
 void
 Tipster::UpdateTip()
 {
@@ -404,8 +406,12 @@ Tipster::UpdateTip()
 
 	fPreviousTip = new BString(fCurrentTip->String());
 	fCurrentTip = new BString(fTipsList.StringAt(fTipNumber));
-	fTipsList.Remove(fTipNumber);
 
+	//adding following two lines (Ayush)
+	ind=storepast.CountStrings()-1;
+	storepast.Add(fCurrentTip->String());
+
+	fTipsList.Remove(fTipNumber);
 	fTime = system_time();
 }
 
@@ -430,10 +436,15 @@ Tipster::DisplayTip(BString* tip)
 void
 Tipster::DisplayPreviousTip()
 {
-	if (fPreviousTip != NULL) {
-		DisplayTip(fPreviousTip);
+//Ayush updated this method to incorporate multiple previous (more stable)
 
+	if (storepast.StringAt(ind) != NULL) {
+		DisplayTip(new BString(storepast.StringAt(ind)));
 		fTime = system_time();
+		ind--; //to go previous multiple times
+		if(ind==-1){
+			cout<< "Back at the Beginning" <<endl;
+		}	
 	}
 }
 
@@ -442,7 +453,9 @@ static bool
 getLocalTipsFile(entry_ref &ref, const char *language = "en")
 {
 	BStringList paths;
-	BString localTipsFile("Tipster/tips-");
+      	 // Ayush Agarwal Bug #13
+	 //change folder name of tips to Tipster then change path below
+	BString localTipsFile("./../Tipster/tips-");
 
 	printf("Preferred language(s): %s\n", language);
 
