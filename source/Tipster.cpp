@@ -1,8 +1,11 @@
 /*
  * Copyright 2015 Vale Tolpegin <valetolpegin@gmail.com>
+ * Copyright 2016 Ayush Agarwal <ayush94582@yahoo.com>
  * All rights reserved. Distributed under the terms of the MIT license.
  */
 #include "Tipster.h"
+
+#include <iostream>
 
 #include <Application.h>
 #include <Bitmap.h>
@@ -52,6 +55,7 @@ Tipster::Tipster()
 	fURL = new BString("");
 	fArtworkTitle = new BString("");
 	fPreviousTip = new BString("");
+	tipindex = 0;
 
 	fTipsterTextView = new TipsterText();
 	fIcon = new BButton("iconview", "", new BMessage(OPEN_URL));
@@ -270,6 +274,7 @@ Tipster::_LoadSettings()
 	return B_OK;
 }
 
+static BStringList storepast; //holds all previous tips as a history of tips
 
 void
 Tipster::AddBeginningTip()
@@ -283,6 +288,7 @@ Tipster::AddBeginningTip()
 
 	fTipsterTextView->Insert(introductionTipList.StringAt(1));
 
+	storepast.Add(introductionTipList.StringAt(1));
 	fTipsList.Remove(0);
 
 	GetArtworkTitle(introductionTipList.StringAt(0));
@@ -387,7 +393,6 @@ Tipster::UpdateIcon(BString artwork, BString url)
 	fURL = new BString(url.String());
 }
 
-
 void
 Tipster::UpdateTip()
 {
@@ -397,15 +402,25 @@ Tipster::UpdateTip()
 
 		fTipsList.Remove(0);
 	}
+	
+	if (tipindex == storepast.CountStrings() - 1) {
+		fTipNumber = random() % fTipsList.CountStrings();
 
-	fTipNumber = random() % fTipsList.CountStrings();
+		DisplayTip(new BString(fTipsList.StringAt(fTipNumber)));
 
-	DisplayTip(new BString(fTipsList.StringAt(fTipNumber)));
+		fPreviousTip = new BString(fCurrentTip->String());
+		fCurrentTip = new BString(fTipsList.StringAt(fTipNumber));
 
-	fPreviousTip = new BString(fCurrentTip->String());
-	fCurrentTip = new BString(fTipsList.StringAt(fTipNumber));
-	fTipsList.Remove(fTipNumber);
-
+		tipindex = storepast.CountStrings();
+		storepast.Add(fCurrentTip->String());
+		fTipsList.Remove(fTipNumber);
+	}
+	
+	else {
+		tipindex++;
+		DisplayTip(new BString(storepast.StringAt(tipindex)));
+	}
+	
 	fTime = system_time();
 }
 
@@ -430,9 +445,9 @@ Tipster::DisplayTip(BString* tip)
 void
 Tipster::DisplayPreviousTip()
 {
-	if (fPreviousTip != NULL) {
-		DisplayTip(fPreviousTip);
-
+	if (storepast.StringAt(tipindex) != NULL) {
+		tipindex--;
+		DisplayTip(new BString(storepast.StringAt(tipindex)));
 		fTime = system_time();
 	}
 }
