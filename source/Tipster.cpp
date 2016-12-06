@@ -1,9 +1,12 @@
 /*
  * Copyright 2015 Vale Tolpegin <valetolpegin@gmail.com>
+ * Copyright 2016 Ayush Agarwal <ayush94582@yahoo.com>
  * All rights reserved. Distributed under the terms of the MIT license.
  */
 #include "Tipster.h"
+
 #include <iostream>
+
 #include <Application.h>
 #include <Bitmap.h>
 #include <Catalog.h>
@@ -393,7 +396,6 @@ Tipster::UpdateIcon(BString artwork, BString url)
 void
 Tipster::UpdateTip()
 {
-	//Ayush updated this method
 	if (fTipsList.IsEmpty()) {
 		entry_ref ref = GetTipsFile();
 		LoadTips(ref);
@@ -444,7 +446,6 @@ Tipster::DisplayTip(BString* tip)
 void
 Tipster::DisplayPreviousTip()
 {
-//Ayush updated this method to incorporate multiple previous (more stable)
 	if (storepast.StringAt(ind) != NULL) {
 		ind--;
 		DisplayTip(new BString(storepast.StringAt(ind)));
@@ -457,8 +458,7 @@ static bool
 getLocalTipsFile(entry_ref &ref, const char *language = "en")
 {
 	BStringList paths;
-     // Ayush Agarwal Bug #13
-	 //change folder name of tips to Tipster then change path below
+	
 	BString localTipsFile("Tipster/tips-");
 
 	printf("Preferred language(s): %s\n", language);
