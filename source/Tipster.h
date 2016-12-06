@@ -34,7 +34,7 @@ public:
 	void			SetDelay(bigtime_t delay);
 	void			UpdateTip();
 	void			DisplayPreviousTip();
-	int				ind;
+	int				tipindex;
 
 	static			BArchivable* Instantiate(BMessage* data);
 	status_t		Archive(BMessage* data, bool deep = true) const;
