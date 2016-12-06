@@ -55,7 +55,7 @@ Tipster::Tipster()
 	fURL = new BString("");
 	fArtworkTitle = new BString("");
 	fPreviousTip = new BString("");
-	ind=0;
+	tipindex = 0;
 
 	fTipsterTextView = new TipsterText();
 	fIcon = new BButton("iconview", "", new BMessage(OPEN_URL));
@@ -403,7 +403,7 @@ Tipster::UpdateTip()
 		fTipsList.Remove(0);
 	}
 	
-	if(ind==storepast.CountStrings()-1){
+	if (tipindex == storepast.CountStrings() - 1) {
 		fTipNumber = random() % fTipsList.CountStrings();
 
 		DisplayTip(new BString(fTipsList.StringAt(fTipNumber)));
@@ -411,15 +411,14 @@ Tipster::UpdateTip()
 		fPreviousTip = new BString(fCurrentTip->String());
 		fCurrentTip = new BString(fTipsList.StringAt(fTipNumber));
 
-		ind=storepast.CountStrings();
+		tipindex = storepast.CountStrings();
 		storepast.Add(fCurrentTip->String());
-
 		fTipsList.Remove(fTipNumber);
 	}
 	
-	else{
-		ind++;
-		DisplayTip(new BString(storepast.StringAt(ind)));
+	else {
+		tipindex++;
+		DisplayTip(new BString(storepast.StringAt(tipindex)));
 	}
 	
 	fTime = system_time();
@@ -446,9 +445,9 @@ Tipster::DisplayTip(BString* tip)
 void
 Tipster::DisplayPreviousTip()
 {
-	if (storepast.StringAt(ind) != NULL) {
-		ind--;
-		DisplayTip(new BString(storepast.StringAt(ind)));
+	if (storepast.StringAt(tipindex) != NULL) {
+		tipindex--;
+		DisplayTip(new BString(storepast.StringAt(tipindex)));
 		fTime = system_time();
 	}
 }
@@ -458,7 +457,6 @@ static bool
 getLocalTipsFile(entry_ref &ref, const char *language = "en")
 {
 	BStringList paths;
-	
 	BString localTipsFile("Tipster/tips-");
 
 	printf("Preferred language(s): %s\n", language);
