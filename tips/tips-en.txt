@@ -32,7 +32,6 @@ https://www.haiku-os.org/docs/userguide/en/applications/vision.html
 %
 Application
 The TAB key does command and path completion in the Terminal and nickname completion in Vision. Just start typing and press TAB to find a match.
-
 %
 Miscellaneous
 The Haiku source is an excellent resource for examples of the Haiku API in action. Search it for your favourite class.
@@ -60,7 +59,6 @@ https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#hints
 %
 Miscellaneous
 If your favourite program is missing from HaikuDepot, you may have to add another repository. See WebPositive's bookmarks under "Software".
-
 %
 Miscellaneous
 If a some program consumes all of your CPU resources, try lowering its priority through ProcessController in your Deskbar.
@@ -89,3 +87,20 @@ https://www.haiku-os.org/docs/userguide/en/preferences/keymap.html
 GUI
 You can easily move windows between workspaces by dragging them around in the Workspaces applet. Switching through workspaces is even faster with the keycombo CTRL + ALT + cursor keys.
 https://www.haiku-os.org/docs/userguide/en/workspaces.html
+%
+Terminal
+Press CTRL R and start to enter a command and you'll be provided with the first match from the bash history. Keep pressing CTRL R until you find the right command line and press ENTER to execute it.
+https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#shortcuts
+%
+GUI
+Use keyboard's PgUp/PgDown and Home/End to quickly navigate the context menu in a very crowded folder.
+https://www.haiku-os.org/docs/userguide/en/tracker.html
+%
+Miscellaneous
+You can open a document with an already running app by dragging its icon onto the apps' enty in the Deskbar.
+%
+Miscellaneous
+Hold down the right ALT+SHIFT+CRTL and click a program in the Deskbar to kill it.
+%
+Miscellaneous
+Toggle between the last two Workspaces used — hold down the Alt key and tap ~ (that’s Alt+tilde — tilde is the squiggle character next to your 1 key).
