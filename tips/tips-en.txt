@@ -89,23 +89,23 @@ You can easily move windows between workspaces by dragging them around in the Wo
 https://www.haiku-os.org/docs/userguide/en/workspaces.html
 %
 Terminal
-Press CTRL + R and start to enter a command and you'll be provided with the first match from the bash history. Keep pressing CTRL R until you find the right command line and press ENTER to execute it.
+Press CTRL + R and start to enter a command and you'll be provided with the first match from the bash history. Keep pressing CTRL + R until you find the right command line and press ENTER to execute it.
 https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#shortcuts
 %
 GUI
-Use keyboard's Page↑/ Page↓ and Home/End to quickly navigate the context menu in a very crowded folder.
+Use keyboard's Page↑ / Page↓ and Home/End to quickly navigate the context menu in a very crowded folder.
 https://www.haiku-os.org/docs/userguide/en/tracker.html
 %
 Miscellaneous
-You can open a document with an already running app by dragging its icon onto the apps entry in the Deskbar.
+You can open a document with an already running app by dragging its icon onto the app's entry in the Deskbar.
 %
 Miscellaneous
-Hold down the right ALT+SHIFT+CTRL and click a program in the Deskbar to kill it this is called Vulcan Death Grip .
+Hold down the right ALT + SHIFT + CTRL and click a program in the Deskbar to kill it. This is called Vulcan Death Grip.
 %
 Miscellaneous
 You can switch back and forth between two workspaces with ALT + ~ (the actual key depends on the keymap you're using - it is the key below ESC).
 %
 GUI
-Use SHIFT while scrolling with the mouse wheel Tracker (window and context menu) to do a page-wise scrolling.
+Hold SHIFT while scrolling with the mouse wheel to do page-wise scrolling in Tracker windows and drill-downsubmenus.
 https://www.haiku-os.org/docs/userguide/en/tracker.html
 %
