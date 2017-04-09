@@ -34,7 +34,6 @@ public:
 	void			SetDelay(bigtime_t delay);
 	void			UpdateTip();
 	void			DisplayPreviousTip();
-
 	static			BArchivable* Instantiate(BMessage* data);
 	status_t		Archive(BMessage* data, bool deep = true) const;
 
@@ -51,13 +50,16 @@ private:
 	status_t		_LoadSettings();
 
 	uint32			fTipNumber;
-	BStringList 	fTipsList;
+	BStringList 		fTipsList;
 	int32			fTipsLength;
-
+	int32			fTipIndex;
+	int 			fRandomSeq1[50];
+	int 			fRandomSeq2[50];
+	
 	BString*		fPreviousTip;
 	BString*		fCurrentTip;
 
-	TipsterText*	fTipsterTextView;
+	TipsterText*		fTipsterTextView;
 	BButton*		fIcon;
 	BString*		fURL;
 	BBitmap*		fIconBitmap;
@@ -67,7 +69,7 @@ private:
 
 	bigtime_t		fTime;
 	bigtime_t		fDelay;
-	BMessageRunner* fRunner;
+	BMessageRunner* 	fRunner;
 
 	bool			fReplicated;
 };

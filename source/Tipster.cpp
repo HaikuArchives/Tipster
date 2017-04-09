@@ -3,6 +3,7 @@
  * All rights reserved. Distributed under the terms of the MIT license.
  */
 #include "Tipster.h"
+#include "Shuffle.h"
 
 #include <Application.h>
 #include <Bitmap.h>
@@ -29,6 +30,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
 enum
 {
 	OPEN_URL = 'opur',
@@ -46,6 +48,8 @@ Tipster::Tipster()
 	BGroupView("Tipster")
 {
 	fTipsList = BStringList();
+	fTipsLength = 0;
+	fTipIndex = -1;
 	fCurrentTip = new BString("");
 	fDelay = 60000000;
 	fReplicated = false;
@@ -282,8 +286,11 @@ Tipster::AddBeginningTip()
 	BString link = introductionTipList.StringAt(2);
 
 	fTipsterTextView->Insert(introductionTipList.StringAt(1));
-
 	fTipsList.Remove(0);
+	fTipsLength = fTipsList.CountStrings();
+
+	CreateRandomSeq(fRandomSeq1, fTipsLength);
+	CreateRandomSeq(fRandomSeq2, fTipsLength);
 
 	GetArtworkTitle(introductionTipList.StringAt(0));
 	UpdateIcon(BString(fArtworkTitle->String()), link);
@@ -391,21 +398,17 @@ Tipster::UpdateIcon(BString artwork, BString url)
 void
 Tipster::UpdateTip()
 {
-	if (fTipsList.IsEmpty()) {
-		entry_ref ref = GetTipsFile();
-		LoadTips(ref);
-
-		fTipsList.Remove(0);
+	fTipIndex++;
+	if (fTipIndex == 2 * fTipsLength) {
+		fRandomSeq1 = fRandomSeq2;
+		CreateRandomSeq(fRandomSeq2, fTipsLength);
+		fTipIndex = fTipsLength;
 	}
 
-	fTipNumber = random() % fTipsList.CountStrings();
-
-	DisplayTip(new BString(fTipsList.StringAt(fTipNumber)));
-
-	fPreviousTip = new BString(fCurrentTip->String());
-	fCurrentTip = new BString(fTipsList.StringAt(fTipNumber));
-	fTipsList.Remove(fTipNumber);
-
+	if (fTipIndex >= fTipsLength)
+		DisplayTip(new BString(fTipsList.StringAt(fRandomSeq2[fTipIndex % fTipsLength])));
+	else
+		DisplayTip(new BString(fTipsList.StringAt(fRandomSeq1[fTipIndex])));
 	fTime = system_time();
 }
 
@@ -430,8 +433,12 @@ Tipster::DisplayTip(BString* tip)
 void
 Tipster::DisplayPreviousTip()
 {
-	if (fPreviousTip != NULL) {
-		DisplayTip(fPreviousTip);
+	if (fTipIndex-1 != -1) {
+		fTipIndex--;
+		if (fTipIndex >= fTipsLength)
+			DisplayTip(new BString(fTipsList.StringAt(fRandomSeq2[fTipIndex % fTipsLength])));
+		else
+			DisplayTip(new BString(fTipsList.StringAt(fRandomSeq1[fTipIndex])));
 
 		fTime = system_time();
 	}

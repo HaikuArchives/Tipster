@@ -33,7 +33,7 @@ SRCS = \
 	 source/MainWindow.cpp  \
 	 source/Tipster.cpp  \
 	 source/TipsterText.cpp  \
-
+	 source/Shuffle.cpp  \
 
 #	Specify the resource definition files to use. Full or relative paths can be
 #	used.
