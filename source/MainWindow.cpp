@@ -2,6 +2,7 @@
  * Copyright 2015 Vale Tolpegin <valetolpegin@gmail.com>
  * All rights reserved. Distributed under the terms of the MIT license.
  */
+#include "AboutTipster.h"
 #include "MainWindow.h"
 
 #include <Application.h>
@@ -114,11 +115,7 @@ MainWindow::MessageReceived(BMessage* message)
 	{
 		case SHOW_ABOUT:
 		{
-			BAboutWindow* about = new BAboutWindow(B_TRANSLATE_SYSTEM_NAME("Tipster"),
-				"application/x-vnd.tipster");
-			about->AddDescription(B_TRANSLATE("An application to show "
-						"usability tips for Haiku."));
-			about->AddCopyright(2015, "Vale Tolpegin");
+			BAboutWindow* about = new AboutTipster();
 			about->Show();
 			break;
 		}
