@@ -217,7 +217,8 @@ Tipster::AttachedToWindow()
 		fIcon->SetTarget(this);
 
 		UpdateIcon(fArtworkTitle->String(), fURL->String());
-		DisplayTip(fCurrentTip);
+		//DisplayTip(fCurrentTip);
+		AddBeginningTip();
 	}
 
 	BGroupView::AttachedToWindow();
