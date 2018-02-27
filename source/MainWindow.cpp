@@ -12,7 +12,6 @@
 #include <GroupLayout.h>
 #include <GroupLayoutBuilder.h>
 #include <LayoutBuilder.h>
-#include <Menu.h>
 #include <MenuBar.h>
 #include <MenuItem.h>
 #include <TranslationUtils.h>
@@ -51,7 +50,7 @@ MainWindow::BuildLayout()
 	BMenu* fTipsterMenu = new BMenu(B_TRANSLATE_SYSTEM_NAME("Tipster"));
 	BMenu* fTipMenu = new BMenu(B_TRANSLATE("Tip"));
 
-	BMenu* fDelaySubMenu = new BMenu(B_TRANSLATE("Delay"));
+	fDelaySubMenu = new BMenu(B_TRANSLATE("Delay"));
 
 	fTipsterMenu->AddItem(new BMenuItem(B_TRANSLATE("About"),
 		new BMessage(SHOW_ABOUT)));
@@ -133,7 +132,17 @@ MainWindow::MessageReceived(BMessage* message)
 		{
 			int32 delay = 60000000;
 			message->FindInt32("delay", &delay);
-			
+
+			int32 index = delay / 60000000;
+			if (index > fDelaySubMenu->CountItems() - 1)
+				index = fDelaySubMenu->CountItems() - 1;
+
+			fDelaySubMenu->ItemAt(index)->SetMarked(true);
+			for (int i = 0; i < fDelaySubMenu->CountItems(); i++) {
+				if (i != index)
+					fDelaySubMenu->ItemAt(i)->SetMarked(false);
+			}
+
 			fTipsterView->SetDelay(delay);
 			break;
 		}
