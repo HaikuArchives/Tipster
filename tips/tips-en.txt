@@ -61,7 +61,7 @@ Miscellaneous
 If your favourite program is missing from HaikuDepot, you may have to add another repository. See WebPositive's bookmarks under "Software".
 %
 Miscellaneous
-If a some program consumes all of your CPU resources, try lowering its priority through ProcessController in your Deskbar.
+If some program consumes all of your CPU resources, try lowering its priority through ProcessController in your Deskbar.
 https://www.haiku-os.org/docs/userguide/en/desktop-applets/processcontroller.html
 %
 Terminal
