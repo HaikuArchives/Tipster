@@ -7,6 +7,7 @@
 
 #include "Tipster.h"
 
+#include <Menu.h>
 #include <Window.h>
 
 
@@ -22,6 +23,7 @@ private:
 	void		BuildLayout();
 
 	Tipster*	fTipsterView;
+	BMenu* 		fDelaySubMenu;
 };
 
 #endif

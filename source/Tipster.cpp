@@ -34,6 +34,7 @@
 
 enum
 {
+	DELAY = 'dely',		// defined in MainWindow.cpp
 	OPEN_URL = 'opur',
 	UPDATE_TIP = 'uptp',
 	CHECK_TIME = 'cktm',
@@ -207,8 +208,11 @@ Tipster::AttachedToWindow()
 	fResources->SetToImage((void *)&Tipster::Instantiate);
 
 	if (!fReplicated) {
-		fIcon->SetTarget(this);
+		BMessage* delay = new BMessage(DELAY);
+		delay->AddInt32("delay", fDelay);
+		Looper()->PostMessage(delay);
 
+		fIcon->SetTarget(this);
 		AddBeginningTip();
 	} else {
 		fTipsterTextView =
