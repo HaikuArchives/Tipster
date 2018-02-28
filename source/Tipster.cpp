@@ -36,7 +36,6 @@ enum
 {
 	OPEN_URL = 'opur',
 	UPDATE_TIP = 'uptp',
-	CHECK_TIME = 'cktm',
 	UPDATE_ICON = 'upin',
 	SAVE_SETTINGS = 'svse'
 };
@@ -57,27 +56,27 @@ Tipster::Tipster()
 	fURL = new BString("");
 	fArtworkTitle = new BString("");
 	fPreviousTip = new BString("");
+	fRunner = NULL;
 
 	fTipsterTextView = new TipsterText();
 	fIcon = new BButton("iconview", "", new BMessage(OPEN_URL));
 
-	BRect rect(Bounds());
-	rect.top = rect.bottom - kDraggerSize;
-	rect.left = rect.right - kDraggerSize;
-	BDragger* dragger = new BDragger(rect, this,
-		B_FOLLOW_RIGHT | B_FOLLOW_BOTTOM);
-	dragger->SetExplicitMinSize(BSize(kDraggerSize, kDraggerSize));
+	BDragger* dragger = new BDragger(this);
 
 	BLayoutBuilder::Group<>(this, B_HORIZONTAL, 0)
-		.AddGroup(B_HORIZONTAL)
 			.SetInsets(-2, -2, 0, -2)
 			.Add(fIcon)
-			.End()
-		.AddStrut(be_control_look->DefaultItemSpacing())
-		.Add(fTipsterTextView)
-		.Add(dragger, 0.01)
+			.AddStrut(be_control_look->DefaultItemSpacing())
+			.AddGroup(B_VERTICAL,0)
+				.Add(fTipsterTextView)
+				.AddGroup(B_HORIZONTAL, 0)
+					.AddGlue()
+					.Add(dragger)
+					.End()
+				.End()
 		.End();
-
+	dragger->SetExplicitMinSize(BSize(kDraggerSize, kDraggerSize));
+	dragger->SetExplicitMaxSize(BSize(kDraggerSize, kDraggerSize));
 	_LoadSettings();
 }
 
@@ -94,11 +93,12 @@ Tipster::Tipster(BMessage* archive)
 	fURL = new BString("");
 	fArtworkTitle = new BString("");
 	fDelay = 60000000;
+	fRunner = NULL;
 
 	if (archive->FindString("Tipster::text", fCurrentTip) != B_OK)
 		printf("error finding text...\n");
 
-	if (archive->FindInt64("Tipster::delay", fDelay) != B_OK)
+	if (archive->FindInt64("Tipster::delay", &fDelay) != B_OK)
 		printf("error finding delay...\n");
 
 	if (archive->FindString("Tipster::url", fURL) != B_OK)
@@ -185,8 +185,7 @@ void
 Tipster::SetDelay(bigtime_t delay)
 {
 	fDelay = delay;
-	fTime = system_time();
-
+	_ResetTimer();
 	_SaveSettings();
 }
 
@@ -201,8 +200,7 @@ Tipster::QuitRequested()
 void
 Tipster::AttachedToWindow()
 {
-	BMessage message(CHECK_TIME);
-	fRunner = new BMessageRunner(this, message, 1000000);
+
 	fResources = new BResources();
 	fResources->SetToImage((void *)&Tipster::Instantiate);
 
@@ -271,9 +269,18 @@ Tipster::_LoadSettings()
 	if (message.FindInt64("delay", &fDelay) != B_OK)
 		return B_ERROR;
 
-	fTime = system_time();
+	_ResetTimer();
 
 	return B_OK;
+}
+
+
+void
+Tipster::_ResetTimer()
+{
+	BMessage message(UPDATE_TIP);
+	delete fRunner;
+	fRunner = new BMessageRunner(this, message, fDelay);
 }
 
 
@@ -297,7 +304,7 @@ Tipster::AddBeginningTip()
 	GetArtworkTitle(introductionTipList.StringAt(0));
 	UpdateIcon(BString(fArtworkTitle->String()), link);
 
-	fTime = system_time();
+	_ResetTimer();
 }
 
 
@@ -309,14 +316,6 @@ Tipster::MessageReceived(BMessage* message)
 {
 	switch (message->what)
 	{
-		case CHECK_TIME:
-		{
-			if (fTime + fDelay < system_time()) {
-				//Update the tip every 60 seconds
-				UpdateTip();
-			}
-			break;
-		}
 		case OPEN_URL:
 		{
 			OpenURL(fURL);
@@ -407,7 +406,7 @@ Tipster::UpdateTip()
 		DisplayTip(new BString(fTipsList.StringAt(fRandomSeq2[fTipIndex % fTipsLength])));
 	else
 		DisplayTip(new BString(fTipsList.StringAt(fRandomSeq1[fTipIndex])));
-	fTime = system_time();
+	_ResetTimer();
 }
 
 
@@ -438,7 +437,7 @@ Tipster::DisplayPreviousTip()
 		else
 			DisplayTip(new BString(fTipsList.StringAt(fRandomSeq1[fTipIndex])));
 
-		fTime = system_time();
+		_ResetTimer();
 	}
 }
 

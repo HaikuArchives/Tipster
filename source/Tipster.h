@@ -32,6 +32,7 @@ public:
 	void			OpenURL(BString* url);
 
 	void			SetDelay(bigtime_t delay);
+	bigtime_t		Delay() {return fDelay;};
 	void			UpdateTip();
 	void			DisplayPreviousTip();
 	static			BArchivable* Instantiate(BMessage* data);
@@ -48,6 +49,7 @@ private:
 
 	status_t		_SaveSettings();
 	status_t		_LoadSettings();
+	void			_ResetTimer();
 
 	uint32			fTipNumber;
 	BStringList 		fTipsList;
@@ -67,7 +69,6 @@ private:
 
 	BResources*		fResources;
 
-	bigtime_t		fTime;
 	bigtime_t		fDelay;
 	BMessageRunner* 	fRunner;
 
