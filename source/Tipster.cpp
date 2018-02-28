@@ -99,7 +99,7 @@ Tipster::Tipster(BMessage* archive)
 	if (archive->FindString("Tipster::text", fCurrentTip) != B_OK)
 		printf("error finding text...\n");
 
-	if (archive->FindInt64("Tipster::delay", fDelay) != B_OK)
+	if (archive->FindInt64("Tipster::delay", &fDelay) != B_OK)
 		printf("error finding delay...\n");
 
 	if (archive->FindString("Tipster::url", fURL) != B_OK)
