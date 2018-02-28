@@ -96,7 +96,7 @@ MainWindow::AddDelaySubMenuItem(bigtime_t delay, const char *label)
 {
 	BMenuItem* menuItem;
 	BMessage* delayMessage = new BMessage(DELAY);
-	delayMessage->AddInt32("delay", delay);
+	delayMessage->AddInt64("delay", delay);
 	fDelaySubMenu->AddItem(menuItem = new BMenuItem(label, delayMessage));
 	menuItem->SetMarked(delay == fTipsterView->Delay());
 }
@@ -136,8 +136,8 @@ MainWindow::MessageReceived(BMessage* message)
 		}
 		case DELAY:
 		{
-			int32 delay = 60000000;
-			message->FindInt32("delay", &delay);
+			int64 delay = 60000000;
+			message->FindInt64("delay", &delay);
 
 			fTipsterView->SetDelay(delay);
 			break;
