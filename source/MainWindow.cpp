@@ -86,8 +86,6 @@ MainWindow::BuildLayout()
 	AddDelaySubMenuItem(300000000, B_TRANSLATE("5 minutes"));
 
 	fDelaySubMenu->SetRadioMode(true);
-
-	GetLayout()->SetExplicitMinSize(BSize(740, B_SIZE_UNSET));
 }
 
 

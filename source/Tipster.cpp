@@ -60,7 +60,6 @@ Tipster::Tipster()
 
 	fTipsterTextView = new TipsterText();
 	fIcon = new BButton("iconview", "", new BMessage(OPEN_URL));
-	fIcon->SetFlat(true);
 
 	BDragger* dragger = new BDragger(this);
 
@@ -214,7 +213,7 @@ Tipster::AttachedToWindow()
 			static_cast<TipsterText*>(BGroupView::FindView("TipsterTextView"));
 		fIcon = static_cast<BButton*>(BGroupView::FindView("iconview"));
 		fIcon->SetTarget(this);
-		fIcon->SetFlat(true);
+
 		UpdateIcon(fArtworkTitle->String(), fURL->String());
 		//DisplayTip(fCurrentTip);
 		AddBeginningTip();
