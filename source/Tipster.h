@@ -49,6 +49,7 @@ private:
 
 	status_t		_SaveSettings();
 	status_t		_LoadSettings();
+	void			_ResetTimer();
 
 	uint32			fTipNumber;
 	BStringList 		fTipsList;
@@ -68,7 +69,6 @@ private:
 
 	BResources*		fResources;
 
-	bigtime_t		fTime;
 	bigtime_t		fDelay;
 	BMessageRunner* 	fRunner;
 
