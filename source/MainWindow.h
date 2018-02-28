@@ -7,6 +7,7 @@
 
 #include "Tipster.h"
 
+#include <Menu.h>
 #include <Window.h>
 
 
@@ -20,8 +21,10 @@ public:
 
 private:
 	void		BuildLayout();
+	void	 	AddDelaySubMenuItem(bigtime_t delay, const char *label);
 
 	Tipster*	fTipsterView;
+	BMenu* 		fDelaySubMenu;
 };
 
 #endif

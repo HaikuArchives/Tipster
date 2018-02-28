@@ -32,6 +32,7 @@ public:
 	void			OpenURL(BString* url);
 
 	void			SetDelay(bigtime_t delay);
+	bigtime_t		Delay() {return fDelay;};
 	void			UpdateTip();
 	void			DisplayPreviousTip();
 	static			BArchivable* Instantiate(BMessage* data);

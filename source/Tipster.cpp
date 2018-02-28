@@ -60,24 +60,24 @@ Tipster::Tipster()
 
 	fTipsterTextView = new TipsterText();
 	fIcon = new BButton("iconview", "", new BMessage(OPEN_URL));
+	fIcon->SetFlat(true);
 
-	BRect rect(Bounds());
-	rect.top = rect.bottom - kDraggerSize;
-	rect.left = rect.right - kDraggerSize;
-	BDragger* dragger = new BDragger(rect, this,
-		B_FOLLOW_RIGHT | B_FOLLOW_BOTTOM);
-	dragger->SetExplicitMinSize(BSize(kDraggerSize, kDraggerSize));
+	BDragger* dragger = new BDragger(this);
 
 	BLayoutBuilder::Group<>(this, B_HORIZONTAL, 0)
-		.AddGroup(B_HORIZONTAL)
 			.SetInsets(-2, -2, 0, -2)
 			.Add(fIcon)
-			.End()
-		.AddStrut(be_control_look->DefaultItemSpacing())
-		.Add(fTipsterTextView)
-		.Add(dragger, 0.01)
+			.AddStrut(be_control_look->DefaultItemSpacing())
+			.AddGroup(B_VERTICAL,0)
+				.Add(fTipsterTextView)
+				.AddGroup(B_HORIZONTAL, 0)
+					.AddGlue()
+					.Add(dragger)
+					.End()
+				.End()
 		.End();
-
+	dragger->SetExplicitMinSize(BSize(kDraggerSize, kDraggerSize));
+	dragger->SetExplicitMaxSize(BSize(kDraggerSize, kDraggerSize));
 	_LoadSettings();
 }
 
@@ -215,7 +215,7 @@ Tipster::AttachedToWindow()
 			static_cast<TipsterText*>(BGroupView::FindView("TipsterTextView"));
 		fIcon = static_cast<BButton*>(BGroupView::FindView("iconview"));
 		fIcon->SetTarget(this);
-
+		fIcon->SetFlat(true);
 		UpdateIcon(fArtworkTitle->String(), fURL->String());
 		//DisplayTip(fCurrentTip);
 		AddBeginningTip();

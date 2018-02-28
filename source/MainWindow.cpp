@@ -37,7 +37,8 @@ enum
 MainWindow::MainWindow()
 	:
 	BWindow(BRect(100, 100, 740, 190), B_TRANSLATE_SYSTEM_NAME("Tipster"),
-		B_TITLED_WINDOW, B_ASYNCHRONOUS_CONTROLS | B_NOT_V_RESIZABLE)
+		B_TITLED_WINDOW, B_ASYNCHRONOUS_CONTROLS | B_NOT_V_RESIZABLE
+		| B_AUTO_UPDATE_SIZE_LIMITS)
 {
 	BuildLayout();
 }
@@ -51,7 +52,7 @@ MainWindow::BuildLayout()
 	BMenu* fTipsterMenu = new BMenu(B_TRANSLATE_SYSTEM_NAME("Tipster"));
 	BMenu* fTipMenu = new BMenu(B_TRANSLATE("Tip"));
 
-	BMenu* fDelaySubMenu = new BMenu(B_TRANSLATE("Delay"));
+	fDelaySubMenu = new BMenu(B_TRANSLATE("Delay"));
 
 	fTipsterMenu->AddItem(new BMenuItem(B_TRANSLATE("About"),
 		new BMessage(SHOW_ABOUT)));
@@ -63,25 +64,6 @@ MainWindow::BuildLayout()
 	fTipMenu->AddItem(new BMenuItem(B_TRANSLATE("Next tip"),
 		new BMessage(NEXT_TIP)));
 	
-	BMessage* delay30s_message = new BMessage(DELAY);
-	delay30s_message->AddInt32("delay", 30000000);
-	fDelaySubMenu->AddItem(new BMenuItem(B_TRANSLATE("30 seconds"),
-		delay30s_message));
-	
-	BMessage* delay1m_message = new BMessage(DELAY);
-	delay1m_message->AddInt32("delay", 60000000);
-	fDelaySubMenu->AddItem(new BMenuItem(B_TRANSLATE("1 minute"),
-		delay1m_message));
-		
-	BMessage* delay2m_message = new BMessage(DELAY);
-	delay2m_message->AddInt32("delay", 120000000);
-	fDelaySubMenu->AddItem(new BMenuItem(B_TRANSLATE("2 minutes"),
-		delay2m_message));
-	
-	BMessage* delay5m_message = new BMessage(DELAY);
-	delay5m_message->AddInt32("delay", 300000000);
-	fDelaySubMenu->AddItem(new BMenuItem(B_TRANSLATE("5 minutes"),
-		delay5m_message));
 	
 	fTipMenu->AddItem(fDelaySubMenu);
 
@@ -94,6 +76,27 @@ MainWindow::BuildLayout()
 		.Add(fMenuBar)
 		.Add(fTipsterView)
 		.AddGlue();
+
+	// After the creation of Tipster because we need the delay
+	// time saved in the settings
+
+	AddDelaySubMenuItem(30000000, B_TRANSLATE("30 seconds"));
+	AddDelaySubMenuItem(60000000, B_TRANSLATE("1 minute"));
+	AddDelaySubMenuItem(120000000, B_TRANSLATE("2 minutes"));
+	AddDelaySubMenuItem(300000000, B_TRANSLATE("5 minutes"));
+
+	fDelaySubMenu->SetRadioMode(true);
+}
+
+
+void
+MainWindow::AddDelaySubMenuItem(bigtime_t delay, const char *label)
+{
+	BMenuItem* menuItem;
+	BMessage* delayMessage = new BMessage(DELAY);
+	delayMessage->AddInt32("delay", delay);
+	fDelaySubMenu->AddItem(menuItem = new BMenuItem(label, delayMessage));
+	menuItem->SetMarked(delay == fTipsterView->Delay());
 }
 
 
@@ -133,7 +136,7 @@ MainWindow::MessageReceived(BMessage* message)
 		{
 			int32 delay = 60000000;
 			message->FindInt32("delay", &delay);
-			
+
 			fTipsterView->SetDelay(delay);
 			break;
 		}
