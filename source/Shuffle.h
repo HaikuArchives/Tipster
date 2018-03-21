@@ -8,11 +8,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <vector>
 
-
-void Swap(int* a, int* b);
-void Randomize(int* arr, int n);
-void CreateRandomSeq(int* arr, int len);
+void Randomize(std::vector<int> &arr);
+void CreateRandomSeq(std::vector<int> &arr, int len);
 
 #endif
 
