@@ -5,31 +5,24 @@
 #include "Shuffle.h"
 
 
-void 
-Swap(int* a, int* b)
-{
-	int temp = *a;
-	*a = *b;
-	*b = temp;
-}
-
+// don't use random_shuffle deprecated in the future...
 
 void 
-Randomize(int* arr, int n)
+Randomize(std::vector<int> &arr, int n)
 {
 	srand ( time(NULL) );
 
 	for(int i = n - 1; i > 0; i--) {
 		int j = rand() % (i+1);
-		Swap(&arr[i], &arr[j]);
+		std::swap(arr[i], arr[j]);
 	}
 }
 
 
 void
-CreateRandomSeq(int* arr, int len)
+CreateRandomSeq(std::vector<int> &arr, int len)
 {
 	for(int i = 0; i < len; ++i)
-		arr[i] = i;
+		arr.push_back(i);
 	Randomize(arr, len);
 }
