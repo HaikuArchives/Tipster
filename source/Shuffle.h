@@ -10,7 +10,7 @@
 #include <time.h>
 #include <vector>
 
-void Randomize(int* arr, int n);
+void Randomize(std::vector<int> &arr);
 void CreateRandomSeq(std::vector<int> &arr, int len);
 
 #endif
