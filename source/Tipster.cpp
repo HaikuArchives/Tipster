@@ -480,9 +480,14 @@ Tipster::GetTipsFile()
 	if (roster->GetPreferredLanguages(&message) == B_OK) {
 		const char *language;
 
-		for (int32 i = 0; (language = message.GetString("language", i, NULL)) != NULL; i++)
+		for (int32 i = 0; (language = message.GetString("language", i, NULL))
+				!= NULL; i++) {
 			if (getLocalTipsFile(ref, language))
 				return ref;
+			else if (getLocalTipsFile(ref, BString(language,
+					BString(language).FindFirst("_"))))
+				return ref;
+		}
 	}
 	getLocalTipsFile(ref);
 
