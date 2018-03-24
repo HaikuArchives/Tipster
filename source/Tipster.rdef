@@ -3,7 +3,7 @@ resource app_signature "application/x-vnd.tipster";
 resource app_flags B_SINGLE_LAUNCH;
 
 resource app_version {
-	major  = 0,
+	major  = 1,
 	middle = 1,
 	minor  = 0,
 

@@ -19,9 +19,10 @@ AboutTipster::AboutTipster()
 		"usability tips for Haiku."));
 	const char* extraCopyrights[] = {
 		"2016 Hannah Pan",
-		"2016 Humdinger",
+		"2016-2018 Humdinger",
 		"2017 Akshay Agarwal",
 		"2017 vanishakesswani",
+		"2018 Janus"
 		NULL
 	};
 	const char* authors[] = {
