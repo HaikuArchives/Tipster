@@ -395,6 +395,9 @@ Tipster::UpdateIcon(BString artwork, BString url)
 void
 Tipster::UpdateTip()
 {
+	if (fTipsLength <= 0)
+		return;
+
 	fTipIndex++;
 	if (fTipIndex == 2 * fTipsLength) {
 		fRandomSeq1 = fRandomSeq2;
@@ -429,6 +432,9 @@ Tipster::DisplayTip(BString* tip)
 void
 Tipster::DisplayPreviousTip()
 {
+	if (fTipsLength <= 0)
+		return;
+
 	if (fTipIndex-1 != -1) {
 		fTipIndex--;
 		if (fTipIndex >= fTipsLength)
@@ -511,7 +517,7 @@ Tipster::LoadTips(entry_ref ref)
 	file.Read(buf, size);
 	fTips.UnlockBuffer(size);
 
-	fTips.Split("\n%\n", false, fTipsList);
+	fTips.Split("\n%\n", true, fTipsList);
 }
 
 
