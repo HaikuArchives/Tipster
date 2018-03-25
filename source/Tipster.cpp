@@ -415,7 +415,6 @@ Tipster::DisplayTip(BString* tip)
 {
 	BStringList tipInfoList;
 	BString(tip->String()).Split("\n", false, tipInfoList);
-	tipInfoList.Remove(0);
 
 	BString link = tipInfoList.StringAt(2);
 
