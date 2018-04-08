@@ -4,31 +4,31 @@ http://www.github.com/HaikuArchives/Tipster
 %
 Terminal
 Apri un file, percorso o URL nel Terminale cliccandolo mentre tieni premuto il tasto ALT.
-https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#shortcuts
+https://www.haiku-os.org/docs/userguide/it/applications/terminal.html#shortcuts
 %
 GUI
 "Stack and tile" le finestre tenendo premuto il tasto OPT avvicinando i bordi delle fineste o sovrapponendo le barre dei titoli.
-https://www.haiku-os.org/docs/userguide/en/gui.html#move-resize
+https://www.haiku-os.org/docs/userguide/it/gui.html#move-resize
 %
 GUI
 Tenendo premuto i tasti ALT + CTRL puoi muovere facilmente le finestre (tasto sinistro del mouse) e ridimensionarle (tasto destro del mouse).
-https://www.haiku-os.org/docs/userguide/en/gui.html#move-resize
+https://www.haiku-os.org/docs/userguide/it/gui.html#move-resize
 %
 GUI
 Usa i Workspace - desktop virtuali - per suddividere il tuo lavoro in massimo 32 desktop.
-https://www.haiku-os.org/docs/userguide/en/workspaces.html
+https://www.haiku-os.org/docs/userguide/it/workspaces.html
 %
 GUI
 Un Click con il tasto desto sulla barra del titolo della finestra (o ovunque tenendo premuti i tasti ALT + CTRL) la mandera dietro le altre finestre, un doppio click la minimizerà nella Deskbar.
-https://www.haiku-os.org/docs/userguide/en/gui.html
+https://www.haiku-os.org/docs/userguide/it/gui.html
 %
 Preferences
 Accelera il tuo flusso di lavoro creando scorciatoie con i tasti mediante Shortcuts nelle preferenze.
-https://www.haiku-os.org/docs/userguide/en/keyboard-shortcuts.html
+https://www.haiku-os.org/docs/userguide/it/keyboard-shortcuts.html
 %
 Application
 Imposta un file audio per "Vision Nick Notification" nelle preferenze Suoni per sentire un segnale sonoro ogni volta che il tuo nome viene menzionato nel IRC client Vision.
-https://www.haiku-os.org/docs/userguide/en/applications/vision.html
+https://www.haiku-os.org/docs/userguide/it/applications/vision.html
 %
 Application
 Il tasto TAB completa commandi e percorsi nel Terminale e nickname in Vision. Comincia a digitare e premi TAB per trovare una corrispondenza.
@@ -39,73 +39,73 @@ http://xref.plausible.coop/source/
 %
 Miscellaneous
 Premere rapidamente CTRL + TAB per passare da un'applicazione ad un'altra e viceversa, tenere premuta la combinazione di tasti per vedere tutte le applicazioni attive nel Twitcher.
-https://www.haiku-os.org/docs/userguide/en/twitcher.html
+https://www.haiku-os.org/docs/userguide/it/twitcher.html
 %
 Preferences
-Con il filtro istantaneo, il Tracker mostrerà solo i file di tuoi interesse.
-https://www.haiku-os.org/docs/userguide/en/tracker.html#tracker-preferences
+Con il filtro istantaneo, il Tracker mostrerà solo i file di tuo interesse.
+https://www.haiku-os.org/docs/userguide/it/tracker.html#tracker-preferences
 %
 Preferences
 Se pensi di dover usare la mappatura della scorciatoia dei tasti Linux/Windows (ALT <-> CTRL), puoi cambiarla con Keymap nelle preferenze.
-https://www.haiku-os.org/docs/userguide/en/preferences/keymap.html
+https://www.haiku-os.org/docs/userguide/it/preferences/keymap.html
 %
 Terminal
 Trascinando un file nel Terminale verrà inserito il suo percorso, facendolo con il tasto destro del mouse verranno offerte altre azioni utili.
-https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#hints
+https://www.haiku-os.org/docs/userguide/it/applications/terminal.html#hints
 %
 Terminal
 Nel Terminale il comando "open" apre qualsiasi file con la sua applicazione associata. Con "." e ".." apre la cartella corrente/genitore nel Tracker.
-https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#hints
+https://www.haiku-os.org/docs/userguide/it/applications/terminal.html#hints
 %
 Miscellaneous
 Se il tuo programma preferito non è presente in HaikuDepot, potresti dover aggiungere un altro repository. Vedi i segnalibri di WebPositive sotto "Software".
 %
 Miscellaneous
 Se un programma consuma tutte le risorse della CPU, prova ad abbassare la sua priorità attraverso ProcessController nella Deskbar.
-https://www.haiku-os.org/docs/userguide/en/desktop-applets/processcontroller.html
+https://www.haiku-os.org/docs/userguide/it/desktop-applets/processcontroller.html
 %
 Terminal
 Nel Terminale puoi selezionare qualsiasi testo con il mouse e inserirlo nella posizione del prompt cliccando il tasto destro del mouse.
-https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#hints
+https://www.haiku-os.org/docs/userguide/it/applications/terminal.html#hints
 %
 Miscellaneous
-Tenendo premuto il tasto SHIFT durane il boot permette di entrare nelle opzioni del boot loader. Tra i vari settaggi, potrai scegliere di bootare il sistema in un particolare stato storico di Haiku.
-https://www.haiku-os.org/docs/userguide/en/bootloader.html
+Tenere premuto il tasto SHIFT durane il boot permette di entrare nelle opzioni del boot loader. Tra i vari settaggi, potrai scegliere di bootare il sistema in un particolare stato storico di Haiku.
+https://www.haiku-os.org/docs/userguide/it/bootloader.html
 %
 Miscellaneous
 Apri il pannello "Trova..." dalla Deskbar (o ALT + F) per trovare qualsiasi file o cartella nel tuo sistema. Oltre a cercare per nome, puoi utilizzare pattern di ricerca più sofisticati usando gli attributi di Haiku.
-https://www.haiku-os.org/docs/userguide/en/queries.html
+https://www.haiku-os.org/docs/userguide/it/queries.html
 %
 GUI
 Elementi grafici di alcune applicazioni possono essere incorporati nel Desktop trascinando la piccola mano presente nell'elemento sul Desktop. Applicazioni replicabili sono per esempio Tipster, ActivityMonitor e Workspaces.
-https://www.haiku-os.org/docs/userguide/en/gui.html#replicants
+https://www.haiku-os.org/docs/userguide/it/gui.html#replicants
 %
 Preferences
 Per far corrispondere la mappatura dei tasti alla tua tastiera fisica, puoi sceglierne una dalla lista in Keymap nel preferenze. Puoi anche scambiare il posto dei tasti trascinandoli in giro.
-https://www.haiku-os.org/docs/userguide/en/preferences/keymap.html
+https://www.haiku-os.org/docs/userguide/it/preferences/keymap.html
 %
 GUI
 Puoi facilmente muovere le finestre tra workspace trascinandole nell'applet Workspaces. Passare da un workspace ad un altro è anche più veloce con la combinazione CTRL + ALT + tasti cursore.
-https://www.haiku-os.org/docs/userguide/en/workspaces.html
+https://www.haiku-os.org/docs/userguide/it/workspaces.html
 %
 Terminal
 Premi CTRL + R e inizia a inserire un comando ti verrà fornita la prima corrispondenza presente nella cronologia della bash. Continua a premere CTRL + R fino a quando non troverai la riga di comando che desideri e premi ENTER per eseguirla.
-https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#shortcuts
+https://www.haiku-os.org/docs/userguide/it/applications/terminal.html#shortcuts
 %
 GUI
-Usa i tasti Pagina su/Pagina giù e Inizio/Fine per navigare velocemente i menu contestuali in una cartella molto affollata.
-https://www.haiku-os.org/docs/userguide/en/tracker.html
+Usa i tasti Pagina su/Pagina giù per navigare velocemente i menu contestuali a cascata di una cartella molto affollata.
+https://www.haiku-os.org/docs/userguide/it/tracker.html
 %
 Miscellaneous
 Puoi aprire un documento con un'applicazione già attiva trascinando la sua icona sull'applicazione presente nella Deskbar.
 %
 Miscellaneous
-Tieni premuto ALT destro + SHIFT + CTRL e clicca un programma nella Deskbar per Killarlo. Questa è chiamata Presa Vulcaniana.
+Tieni premuto ALT sinistro + SHIFT + CTRL e clicca un programma nella Deskbar per Killarlo. Questa è chiamata Presa Vulcaniana.
 %
 Miscellaneous
 Puoi passare da un worspace ad un altro con la combinazione ALT + ~ (l'effettivo tasto dipende dalla mappatura dei tasti che stai usando - è il tasto sotto ESC).
 %
 GUI
-Tieni premuto SHIFT scorrendo la rotella del mouse per ottenere lo scrolling dell'intera pagine nelle finestre del Tracker e nei sottomenu a cascata.
-https://www.haiku-os.org/docs/userguide/en/tracker.html
+Tieni premuto SHIFT scorrendo la rotella del mouse per ottenere lo scrolling dell'intera pagine nelle finestre del Tracker e nei menu contestuali a cascata.
+https://www.haiku-os.org/docs/userguide/it/tracker.html
 %
