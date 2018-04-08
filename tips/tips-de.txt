@@ -32,7 +32,6 @@ https://www.haiku-os.org/docs/userguide/de/applications/vision.html
 %
 Application
 Per Tabulatortaste werden im Terminal Befehle und Pfade vervollständigt und in Vision Benutzernamen. Einfach anfangen zu tippen und TAB drücken.
-
 %
 Miscellaneous
 Haikus Sourcecode ist eine hervorragende Quelle für Beispiele zum Einsatz der Haiku API. Er lässt sich für Infos zu benötigten Klassen auch einfach durchsuchen.
@@ -60,7 +59,6 @@ https://www.haiku-os.org/docs/userguide/de/applications/terminal.html#hints
 %
 Miscellaneous
 Ist ein bestimmtes Programm nicht im HaikuDepot, kann es sein, dass man erst ein bestimmtes Repository hinzufügen muss. Siehe die WebPositive Lesezeichen unter "Software".
-
 %
 Miscellaneous
 Verbraucht ein Programm alle CPU Resourcen, kann man dessen Priorität über den ProcessController in der Deskbar verringern.
@@ -68,7 +66,7 @@ https://www.haiku-os.org/docs/userguide/de/desktop-applets/processcontroller.htm
 %
 Terminal
 Im Terminal lässt sich Text mit der Maus markieren und dann per Rechtsklick am Prompt einfügen.
-https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#hints
+https://www.haiku-os.org/docs/userguide/de/applications/terminal.html#hints
 %
 Miscellaneous
 Hält man beim Hochfahren die SHIFT Taste gedrückt, gelangt man in die Boot Loader Optionen. Neben allen möglichen Einstellungen kann man von dort aus auch  vergangene Haiku-Stände finden und booten.
@@ -89,3 +87,29 @@ https://www.haiku-os.org/docs/userguide/de/preferences/keymap.html
 GUI
 Fenster lassen sich einfach auf andere Arbeitsflächen verschieben, indem man sie im Workspaces Applet herumzieht. Zwischen Arbeitsflächen hin- und herzuschalten ist mit dem Tastenkürzel STRG + ALT + Pfeiltasten sogar noch schneller.
 https://www.haiku-os.org/docs/userguide/de/workspaces.html
+%
+Terminal
+Press CTRL + R and start to enter a command and you'll be provided with the first match from the bash history. Keep pressing CTRL + R until you find the right command line and press ENTER to execute it.
+https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#shortcuts
+%
+Terminal
+Drückt man STRG + R und beginnt mit der Eingabe eines Befehls, wird die letzte passende Zeile aus dem Bash Verlauf angeboten. Nun kann man STRG + R so lange drücken, bis man die gewünschte Befehlszeile hat und sie per ENTER ausführen.
+https://www.haiku-os.org/docs/userguide/de/applications/terminal.html#shortcuts
+%
+GUI
+Mit den Bild↑ / Bild↓ Tasten lässt sich schnell seitenweise durch das Navigations-Kontextmenü eines vollen Ordners scrollen.
+https://www.haiku-os.org/docs/userguide/de/tracker.html
+%
+Miscellaneous
+Eine Datei lässt sich mit einer bereits laufenden Anwendung öffnen, indem man sie auf das Icon der Anwendung in der Deskbar zieht.
+%
+Miscellaneous
+Eine Anwendung lässt sich killen, indem man links SHIFT + STRG + ALT hält, während man auf die Anwendung in der Deskbar klickt. Spock's sogenannter 'Vulcan Death Grip'.
+%
+Miscellaneous
+Mittels ALT + ~ lässt sich zwischen zwei Arbeitsflächen hin- und herwechseln (die Taste hängt von dem benutzten Tastaturlayout ab - es ist die Taste unter ESC).
+%
+GUI
+Hält man in Tracker-Fenstern oder in Navigations-Kontextmenüs die SHIF Taste beim Scrollen mit dem Mausrad, wird seitenweise gescrollt.
+https://www.haiku-os.org/docs/userguide/de/tracker.html
+%
