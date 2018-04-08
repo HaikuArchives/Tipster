@@ -93,19 +93,19 @@ Press CTRL + R and start to enter a command and you'll be provided with the firs
 https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#shortcuts
 %
 GUI
-Use keyboard's Page↑ / Page↓ and Home/End to quickly navigate the context menu in a very crowded folder.
+Use the Page / Page keys to page-wise scroll in the drill-down context menu of a very crowded folder.
 https://www.haiku-os.org/docs/userguide/en/tracker.html
 %
 Miscellaneous
 You can open a document with an already running app by dragging its icon onto the app's entry in the Deskbar.
 %
 Miscellaneous
-Hold down the right ALT + SHIFT + CTRL and click a program in the Deskbar to kill it. This is called Vulcan Death Grip.
+Hold down the left ALT + SHIFT + CTRL and click a program in the Deskbar to kill it. This is called Vulcan Death Grip.
 %
 Miscellaneous
 You can switch back and forth between two workspaces with ALT + ~ (the actual key depends on the keymap you're using - it is the key below ESC).
 %
 GUI
-Hold SHIFT while scrolling with the mouse wheel to do page-wise scrolling in Tracker windows and drill-down submenus.
+Hold SHIFT while scrolling with the mouse wheel to do page-wise scrolling in Tracker windows and drill-down context menus.
 https://www.haiku-os.org/docs/userguide/en/tracker.html
 %
