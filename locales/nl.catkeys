@@ -1,0 +1,13 @@
+1	Dutch	application/x-vnd.tipster	2518152396
+30 seconds	MainWindow		30 seconden
+5 minutes	MainWindow		5 minuten
+2 minutes	MainWindow		2 minuten
+Quit	MainWindow		Afsluiten
+Tip	MainWindow		Tip
+1 minute	MainWindow		1 minuut
+Next tip	MainWindow		Volgende tip
+Delay	MainWindow		Vertraging
+About	MainWindow		Over
+Previous tip	MainWindow		Vorige tip
+An application to show usability tips for Haiku.	About		Een toepassing die handige tips toont voor Haiku
+Tipster	System name		Tipster

@@ -1,0 +1,13 @@
+1	French	application/x-vnd.tipster	2518152396
+30 seconds	MainWindow		30 secondes
+5 minutes	MainWindow		5 minutes
+2 minutes	MainWindow		2 minutes
+Quit	MainWindow		Quitter
+Tip	MainWindow		Conseil
+1 minute	MainWindow		1 minute
+Next tip	MainWindow		Conseil suivant
+Delay	MainWindow		Délai
+About	MainWindow		À propos de
+Previous tip	MainWindow		Conseil précédent
+An application to show usability tips for Haiku.	About		Une application qui affiche des conseils d'utilisation pour Haiku.
+Tipster	System name		Conseiller

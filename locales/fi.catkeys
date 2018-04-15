@@ -1,0 +1,13 @@
+1	Finnish	application/x-vnd.tipster	2518152396
+30 seconds	MainWindow		30 sekuntia
+5 minutes	MainWindow		5 minuuttia
+2 minutes	MainWindow		2 minuuttia
+Quit	MainWindow		Poistu
+Tip	MainWindow		Vihje
+1 minute	MainWindow		1 minuutti
+Next tip	MainWindow		Seuraava vihje
+Delay	MainWindow		Viive
+About	MainWindow		Ohjelmasta
+Previous tip	MainWindow		Edellinen vihje
+An application to show usability tips for Haiku.	About		Sovellus käytettävyysvihjeiden näyttämiseen Haikussa.
+Tipster	System name		Vihjeet
