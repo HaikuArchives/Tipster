@@ -9,7 +9,7 @@ resource app_version {
 
 	/* 0 = development	1 = alpha			2 = beta
 	   3 = gamma		4 = golden master	5 = final */
-	variety = 2,
+	variety = 5,
 
 	internal = 0,
 
