@@ -1,110 +1,110 @@
-Tipster
-Witaj w Tipster! Kliknij w ikonê po lewej stronie wskazówki, ¿eby uzyskaæ informacje. Kliknij w tekst, ¿eby przejœæ do nastêpnej wskazówki.
+ï»¿Tipster
+Witaj w Tipster! Kliknij w ikonÄ™ po lewej stronie wskazÃ³wki, Å¼eby uzyskaÄ‡ informacje. Kliknij tekst, Å¼eby przejÅ›Ä‡ do nastÄ™pnej wskazÃ³wki.
 http://www.github.com/HaikuArchives/Tipster
 %
 Terminal
-Otwórz plik, œcie¿kê, lub URL w Terminalu, klikaj¹c na niego i przytrzymuj¹c klawisz ALT.
+OtwÃ³rz plik, Å›cieÅ¼kÄ™ lub URL w Terminalu, klikajÄ…c na niego i przytrzymujÄ…c klawisz ALT.
 https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#shortcuts
 %
 GUI
-Uk³adaj i ³¹cz okna, przytrzymuj¹c klawisz OPT i przesuwaj¹c ich krawêdzie lub tytu³y okienek jedn¹ obok drugiej.
+UkÅ‚adaj i Å‚Ä…cz okna, przytrzymujÄ…c klawisz OPT i przesuwajÄ…c ich krawÄ™dzie lub tytuÅ‚y okienek jedne obok drugich.
 https://www.haiku-os.org/docs/userguide/en/gui.html#move-resize
 %
 GUI
-Przytrzymuj¹c klawisze ALT + CTRL mo¿esz wygodnie przesuwaæ okna (lewy przycisk myszy) i zmieniaæ ich rozmiar (prawy przycisk myszy).
+PrzytrzymujÄ…c klawisze ALT + CTRL moÅ¼esz wygodnie przesuwaÄ‡ okna (lewy przycisk myszy) i zmieniaÄ‡ ich rozmiar (prawy przycisk myszy).
 https://www.haiku-os.org/docs/userguide/en/gui.html#move-resize
 %
 GUI
-U¿yj Workspaces - wirtualnych pulpitów - ¿eby podzieliæ twoj¹ pracê a¿ do 32 przestrzeni roboczych.
+UÅ¼yj Workspaces â€“ wirtualnych pulpitÃ³w â€“ Å¼eby podzieliÄ‡ twojÄ… pracÄ™ aÅ¼ na 32 przestrzenie robocze.
 https://www.haiku-os.org/docs/userguide/en/workspaces.html
 %
 GUI
-Klikaj¹c prawym przyciskiem na zak³adkê okna (lub gdziekolwiek przytrzymuj¹c klawisze ALT + CTRL), okno przeniesie siê do ty³u, a klikaj¹c dwa razy lewym przyciskiem myszy, mo¿emy zminimalizowaæ okno do paska zadañ.
+KlikniÄ™cie prawym przyciskiem na zakÅ‚adkÄ™ okna (lub gdziekolwiek przytrzymujÄ…c klawisze ALT + CTRL), przeniesie okno na spÃ³d, a dwukrotne klikniÄ™cie lewym przyciskiem myszy, pozwala zminimalizowaÄ‡ okno do Deskbara.
 https://www.haiku-os.org/docs/userguide/en/gui.html
 %
 Preferencje
-Usprawnij swoj¹ pracê tworz¹c w³asne skróty klawiszowe w Preferencjach skrótów klawiszowych. (Shortcut Preferences)
+Usprawnij swojÄ… pracÄ™ tworzÄ…c wÅ‚asne skrÃ³ty klawiszowe w panelu preferencji Shortcuts.
 https://www.haiku-os.org/docs/userguide/en/keyboard-shortcuts.html
 %
 Aplikacja
-Ustaw plik dzwiêkowy dla "Vision Nick Notification" w ustawieniach dŸwiêku aby otrzymywaæ powiadomienie za ka¿dym razem kiedy ktoœ napisze twoje imiê w kliencie IRC.
+Ustaw plik dzwiÄ™kowy dla â€Vision Nick Notificationâ€ w ustawieniach dÅºwiÄ™ku, aby otrzymywaÄ‡ powiadomienie za kaÅ¼dym razem, kiedy ktoÅ› napisze twoje imiÄ™ w kliencie IRC.
 https://www.haiku-os.org/docs/userguide/en/applications/vision.html
 %
 Aplikacja
-Przycisk TAB dokañcza komendy i œcie¿ki w Terminalu oraz nicki w aplikacji Vision. Po prostu zacznij pisaæ i u¿yj klawisza TAB aby dopasowaæ.
+Przycisk TAB uzupeÅ‚nia komendy i Å›cieÅ¼ki w Terminalu oraz nicki w aplikacji Vision. Po prostu zacznij pisaÄ‡ i uÅ¼yj klawisza TAB, aby znaleÅºÄ‡ dopasowanie.
 %
-Ró¿ne
-ród³o systemu Haiku jest dobrym miejscem przyk³adów u¿ycia API Haiku. Przeszukaj go dla swojej ulubionej klasy.
+RÃ³Å¼ne
+Kod ÅºrÃ³dÅ‚owy systemu Haiku jest dobrym miejscem przykÅ‚adÃ³w wykorzystania API Haiku. Przeszukaj go pod kÄ…tem swojej ulubionej klasy.
 http://xref.plausible.coop/source/
 %
-Ró¿ne
-Szybko naciœnij CTRL + TAB, ¿eby prze³¹czyæ siê pomiêdzy dwiema aplikacjami. Przytrzymaj d³u¿ej t¹ kombinacjê klawiszy, ¿eby zobaczyæ wszystkie dzia³aj¹ce aplikacje w Twitcher.
+RÃ³Å¼ne
+Szybko naciÅ›nij CTRL + TAB, Å¼eby przeÅ‚Ä…czyÄ‡ siÄ™ pomiÄ™dzy dwiema aplikacjami. Przytrzymaj tÄ™ kombinacjÄ™ klawiszy dÅ‚uÅ¼ej, aby zobaczyÄ‡ wszystkie dziaÅ‚ajÄ…ce aplikacje w Twitcher.
 https://www.haiku-os.org/docs/userguide/en/twitcher.html
 %
 Preferencje
-Dziêki filtrowaniu z wyprzedzeniem Tracker wyœwietla tylko te pliki, którymi jesteœ zainteresowany.
+DziÄ™ki filtrowaniu z wyprzedzeniem Tracker wyÅ›wietla tylko te pliki, ktÃ³re ciÄ™ interesujÄ….
 https://www.haiku-os.org/docs/userguide/en/tracker.html#tracker-preferences
 %
 Preferencje
-Jeœli uwa¿asz, ¿e wolisz korzystaæ z gorszego uk³adu klawiszy skrótów Linux/Windows (ALT <-> CTRL) mo¿esz zmeniæ to i parê innych rzeczy w Preferencjach uk³adu klawiszy. (Keymap preferences)
+JeÅ›li wolisz korzystaÄ‡ z gorszego ukÅ‚adu klawiszy skrÃ³tÃ³w Linux/Windows (ALT <-> CTRL) moÅ¼esz zmieniÄ‡ to i parÄ™ innych rzeczy w panelu preferencji Keymap.
 https://www.haiku-os.org/docs/userguide/en/preferences/keymap.html
 %
 Terminal
-Upuszczaj¹c plik do Terminala, mo¿na wstawiæ do niego jego œcie¿kê. Robi¹c to przy u¿yciu prawego przycisku myszy mamy do dyspozycji jeszcze inne u¿yteczne czynnoœci. 
+Upuszczenie pliku w Terminalu wstawia jego peÅ‚nÄ… Å›cieÅ¼kÄ™, to samo przy uÅ¼yciu prawego przycisku myszy daje do dyspozycje jeszcze inne uÅ¼yteczne czynnoÅ›ci.
 https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#hints
 %
 Terminal
-W terminalu, komenda "open" otwiera dowolny plik z jego domyœln¹ aplikacj¹. Dopisuj¹c "."/".." otwiera folder bie¿¹cy/nadrzêdny w aplikacji Tracker.
+W Terminalu, komenda â€openâ€ otwiera dowolny plik korzystajÄ…c z przypisanej do niego aplikacji. Z â€.â€ oraz â€..â€ otwiera bieÅ¼Ä…cy/nadrzÄ™dny katalog w aplikacji Tracker.
 https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#hints
 %
-Ró¿ne
-Jeœli twój ulubiony program jest niedostêpny w HaikuDepot, mo¿liwe ¿e bêdziesz musia³ dodaæ kolejne repozytorium. Zobacz zak³adkê "Software" w aplikacji WebPositive. 
+RÃ³Å¼ne
+JeÅ›li twÃ³j ulubiony program jest niedostÄ™pny w HaikuDepot, moÅ¼liwe Å¼e konieczne bÄ™dzie dodanie kolejnego repozytorium. Zobacz zakÅ‚adkÄ™ â€Softwareâ€ w aplikacji WebPositive. 
 %
-Ró¿ne
-Jeœli jakiœ program ma du¿e u¿ycie procesora, spróbuj obni¿yæ jego priorytet u¿ywaj¹c narzêdzia ProcessController w pasku zadañ.
+RÃ³Å¼ne
+JeÅ›li jakiÅ› program wykorzystuje zbyt wiele czasu procesora, sprÃ³buj obniÅ¼yÄ‡ jego priorytet uÅ¼ywajÄ…c narzÄ™dzia ProcessController w Deskbarze.
 https://www.haiku-os.org/docs/userguide/en/desktop-applets/processcontroller.html
 %
 Terminal
-W Terminalu mo¿esz zaznaczyæ dowolny tekst myszk¹ i wkleiæ go prawym przyciskiem myszy.
+W Terminalu moÅ¼esz zaznaczyÄ‡ dowolny tekst myszkÄ… i wkleiÄ‡ go prawym przyciskiem myszy.
 https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#hints
 %
-Ró¿ne
-Przytrzymuj¹c klawisz SHIFT podczas uruchamiania systemu, mo¿na przejœæ do opcji boot loader. Wœród innych ustawieñ znajduje siê opcja uruchomienia systemu do konkretnego historycznego stanu Haiku.
+RÃ³Å¼ne
+PrzytrzymujÄ…c klawisz SHIFT podczas uruchamiania systemu, moÅ¼esz dostaÄ‡ siÄ™ do opcji moduÅ‚u rozruchu. Znajduje siÄ™ tam, miÄ™dzy innymi, opcja uruchomienia systemu z konkretnym, poprzednim stanem.
 https://www.haiku-os.org/docs/userguide/en/bootloader.html
 %
-Ró¿ne
-Otwórz panel "Find..." z paska zadañ (albo wciœnij ALT + F), ¿eby znaleŸæ dowolny plik lub folder w systemie. Oprócz wyszukiwania po nazwie mo¿na u¿yæ innych metod za pomoc¹ atrybutów Haiku.
+RÃ³Å¼ne
+OtwÃ³rz panel â€ZnajdÅº...â€ z Deskbara (albo wciÅ›nij ALT + F), Å¼eby znaleÅºÄ‡ dowolny plik lub katalog w systemie. OprÃ³cz wyszukiwania po nazwie moÅ¼na konstruowaÄ‡ bardziej skomplikowane zapytania korzystajÄ…c z atrybutÃ³w systemu plikÃ³w Haiku.
 https://www.haiku-os.org/docs/userguide/en/queries.html
 %
 GUI
-Elementy interfejsu niektórych aplikacji mog¹ zostaæ przypiête do pulpitu, poprzez przeci¹gniêcie ma³ej r¹czki z aplikacji na pulpit. Mo¿na tak zrobiæ na przyk³ad w aplikacji Tipster, ActivityMonitor i Workspaces.
+Elementy interfejsu niektÃ³rych aplikacji mogÄ… zostaÄ‡ przypiÄ™te do pulpitu, poprzez przeciÄ…gniÄ™cie maÅ‚ej rÄ…czki z aplikacji na pulpit. MoÅ¼na tak zrobiÄ‡ na przykÅ‚ad w aplikacji Tipster, ActivityMonitor i Workspaces.
 https://www.haiku-os.org/docs/userguide/en/gui.html#replicants
 %
 Preferencje
-Aby dopasowaæ uk³ad klawiatury do twojej fizycznej klawiatury, mo¿esz po prostu wybraæ jednen z dostêpnych w zak³adce Keymap preferences. Mo¿esz równie¿ zamieniaæ niektóre klawisze miejscami przeci¹gaj¹c je.
+Aby dopasowaÄ‡ ukÅ‚ad klawiatury do twojej fizycznej klawiatury, moÅ¼esz po prostu wybraÄ‡ jeden z dostÄ™pnych ukÅ‚adÃ³w w panelu preferencji Keymap. MoÅ¼esz rÃ³wnieÅ¼ zamieniaÄ‡ niektÃ³re klawisze miejscami przeciÄ…gajÄ…c je.
 https://www.haiku-os.org/docs/userguide/en/preferences/keymap.html
 %
 GUI
-Mo¿esz ³atwo przesuwaæ okienka pomiêdzy obszarami roboczymi, przeci¹gaj¹c je w aplecie Workspaces. Prze³¹czanie pomiêdzy obszarami roboczymi jest jeszcze szybsze przy u¿yciu kombinacji klawiszy CTRL + ALT + cursor keys.
+MoÅ¼esz Å‚atwo przesuwaÄ‡ okna pomiÄ™dzy obszarami roboczymi, przeciÄ…gajÄ…c je w aplecie Workspaces. PrzeÅ‚Ä…czanie pomiÄ™dzy obszarami roboczymi jest jeszcze szybsze przy uÅ¼yciu kombinacji klawiszy CTRL + ALT + strzaÅ‚ki.
 https://www.haiku-os.org/docs/userguide/en/workspaces.html
 %
 Terminal
-Naciœnij CTRL + R i zacznij wpisywaæ polecenie, a otrzymasz pierwsze dopasowanie z historii wprowadzanych komend. Naciskaj CTRL + R, a¿ znajdziesz w³aœciw¹ liniê komend i naciœnij ENTER aby j¹ wykonaæ.
+NaciÅ›nij CTRL + R i zacznij wpisywaÄ‡ polecenie, a otrzymasz pierwsze dopasowanie z historii wprowadzanych komend. Naciskaj CTRL + R, aÅ¼ znajdziesz wÅ‚aÅ›ciwÄ… komendÄ™ i naciÅ›nij ENTER aby jÄ… wykonaÄ‡.
 https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#shortcuts
 %
 GUI
-U¿yj klawiszy PageUp/PageDown, ¿eby przewijaæ strony w rozwijanym menu bardzo zat³oczonego folderu.
+UÅ¼yj klawiszy PageUp/PageDown, Å¼eby przewijaÄ‡ strony w rozwijanym menu bardzo zatÅ‚oczonego katalogu.
 %
-Ró¿ne
-Mo¿esz otworzyæ dokument z uruchomion¹ ju¿ aplikacj¹, przeci¹gaj¹c jego ikonê na pasek zadañ.
+RÃ³Å¼ne
+MoÅ¼esz otworzyÄ‡ dokument w uruchomionej juÅ¼ aplikacji, przeciÄ…gajÄ…c jego ikonÄ™ na wpis aplikacji w Deskbarze.
 %
-Ró¿ne
-Przytrzymaj lewy ALT + SHIFT + CTRL i kliknij program na pasku zadañ aby zakoñczyæ jego proces. Ta operacja nazywana jest "Vulcan Death Grip". 
+RÃ³Å¼ne
+Przytrzymaj lewy ALT + SHIFT + CTRL i kliknij program w Deskbarze, aby go zabiÄ‡. Ta operacja nazywana jest â€Vulcan Death Gripâ€. 
 %
-Ró¿ne
-Mo¿esz prze³¹czaæ siê pomiedzy dwoma obszarami roboczymi, u¿ywaj¹c skrótu ALT + ~ (klawisz zale¿y od u¿ywanego uk³adu klawiatury - to jest klawisz pod ESC na klawiaturze).
+RÃ³Å¼ne
+MoÅ¼esz przeÅ‚Ä…czaÄ‡ siÄ™ pomiedzy dwoma obszarami roboczymi, uÅ¼ywajÄ…c skrÃ³tu ALT + ~ (klawisz zaleÅ¼y od uÅ¼ywanego ukÅ‚adu klawiatury â€“ jest to klawisz pod ESC na klawiaturze).
 %
 GUI
-Przytrzymaj SHIFT podczas przewijania scrollem, ¿eby przewijaæ strony w oknach Tracker i w rozwijanych menu.
+Przytrzymaj SHIFT podczas przewijania rolkÄ… myszy, Å¼eby przewijaÄ‡ strony w oknach Tracker i w rozwijanych menu.
 https://www.haiku-os.org/docs/userguide/en/tracker.html
 %
