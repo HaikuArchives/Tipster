@@ -1,0 +1,13 @@
+1	Russian	application/x-vnd.tipster	2518152396
+30 seconds	MainWindow		30 секунд
+5 minutes	MainWindow		5 минут
+2 minutes	MainWindow		2 минуты
+Quit	MainWindow		Выйти
+Tip	MainWindow		Подсказка
+1 minute	MainWindow		1 минута
+Next tip	MainWindow		Следующая подсказка
+Delay	MainWindow		Отложить
+About	MainWindow		Прервать
+Previous tip	MainWindow		Предыдущая подсказка
+An application to show usability tips for Haiku.	About		Приложение, показывающее советы по использованию Haiku.
+Tipster	System name		Tipster

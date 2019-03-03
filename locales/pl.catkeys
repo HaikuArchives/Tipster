@@ -1,0 +1,13 @@
+1	Polish	application/x-vnd.tipster	2518152396
+30 seconds	MainWindow		30 sekund
+5 minutes	MainWindow		5 minut
+2 minutes	MainWindow		2 minuty
+Quit	MainWindow		Zakończ
+Tip	MainWindow		Porada
+1 minute	MainWindow		1 minuta
+Next tip	MainWindow		Następna porada
+Delay	MainWindow		Opóźnienie
+About	MainWindow		O programie
+Previous tip	MainWindow		Poprzednia porada
+An application to show usability tips for Haiku.	About		Aplikacja wyświetlająca porady usprawniające pracę z Haiku
+Tipster	System name		Tipster

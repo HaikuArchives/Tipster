@@ -1,0 +1,13 @@
+1	Ukrainian	application/x-vnd.tipster	2518152396
+30 seconds	MainWindow		30 секунд
+5 minutes	MainWindow		5 хвилин
+2 minutes	MainWindow		2 хвилини
+Quit	MainWindow		Вийти
+Tip	MainWindow		Порада
+1 minute	MainWindow		1 хвилина
+Next tip	MainWindow		Наступна порада
+Delay	MainWindow		Затримка
+About	MainWindow		Про
+Previous tip	MainWindow		Попередня порада
+An application to show usability tips for Haiku.	About		Програма, яка показує поради щодо зручності використання Haiku
+Tipster	System name		Tipster

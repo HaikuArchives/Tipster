@@ -1,0 +1,13 @@
+1	Swedish	application/x-vnd.tipster	2518152396
+30 seconds	MainWindow		30 sekunder
+5 minutes	MainWindow		5 minuter
+2 minutes	MainWindow		2 minuter
+Quit	MainWindow		Avsluta
+Tip	MainWindow		Tips
+1 minute	MainWindow		1 minut
+Next tip	MainWindow		Nästa tips
+Delay	MainWindow		Fördröjning
+About	MainWindow		Om
+Previous tip	MainWindow		Föregående tips
+An application to show usability tips for Haiku.	About		Ett program för att visa användartips i Haiku.
+Tipster	System name		Tipster
