@@ -18,10 +18,10 @@ make bindcatalogs
 Tipster looks for its tip files in one of the data directories:
 
 ```
-/boot/home/config/non-packaged/data/Tipster/tips/
-/boot/home/config/data/Tipster/tips/
-/boot/system/non-packaged/data/Tipster/tips/
-/boot/system/data/Tipster/tips/
+/boot/home/config/non-packaged/data/Tipster/
+/boot/home/config/data/Tipster/
+/boot/system/non-packaged/data/Tipster/
+/boot/system/data/Tipster/
 ```
 
 A recipe for Tipster is available at [HaikuPorts](https://github.com/haikuports/haikuports/wiki), a ready-made package is installable with HaikuDepot.
