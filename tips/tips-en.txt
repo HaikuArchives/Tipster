@@ -110,7 +110,7 @@ Hold SHIFT while scrolling with the mouse wheel to do page-wise scrolling in Tra
 https://www.haiku-os.org/docs/userguide/en/tracker.html
 %
 GUI
-You can quickly minimize an active window by using CTRL + ALT + M, and minimize all windows of that application by using CTRL + ALT + H.
+Quickly minimize an active window by using CTRL + ALT + M, and minimize all windows of that application with CTRL + ALT + H.
 https://www.haiku-os.org/docs/userguide/en/keyboard-shortcuts.html
 %
 Miscellaneous
