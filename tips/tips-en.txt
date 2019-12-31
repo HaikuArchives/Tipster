@@ -122,7 +122,7 @@ The Deskbar can be moved to all corners as well as the top or bottom of the scre
 https://www.haiku-os.org/docs/userguide/en/deskbar.html
 %
 Preferences
-The Deskbar preferences allows you to change the icon size, auto-hide the taskbar, hide application names, and a lot more.
+The Deskbar preferences allow you to change icon size, auto-hide the Deskbar, hide application names, and more.
 https://www.haiku-os.org/docs/userguide/en/deskbar.html
 %
 Terminal
