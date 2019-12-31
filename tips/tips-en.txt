@@ -126,5 +126,5 @@ The Deskbar preferences allow you to change icon size, auto-hide the Deskbar, hi
 https://www.haiku-os.org/docs/userguide/en/deskbar.html
 %
 Terminal
-In addition to the UNIX ps/kill combo, Haiku lets you kill an app by using kill appname.
+In addition to using the UNIX ps/kill combo with an app's process ID, Haiku lets you kill an app with 'kill appname'.
 %
