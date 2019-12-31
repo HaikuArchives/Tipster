@@ -118,7 +118,7 @@ Quickly switch to another workspace by pressing ALT + Fx (Fx being the function 
 https://www.haiku-os.org/docs/userguide/en/keyboard-shortcuts.html
 %
 Preferences
-The Deskbar can be moved to all corners as well as the top or bottom of the screen, and also folded to a more compact layout by gripping and dragging the knobby area on the tray. 
+The Deskbar can be moved to all corners as well as the top or bottom of the screen by grabbing the knobbly widget beside the clock. It can be folded to a more compact layout by dragging the widget onto the tray. 
 https://www.haiku-os.org/docs/userguide/en/deskbar.html
 %
 Preferences
