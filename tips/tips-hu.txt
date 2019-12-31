@@ -1,0 +1,130 @@
+Tipster
+Üdvözöl a Tipster! További információkért kattints a baloldali ikonra, vagy kattints a szövegre, hogy lásd a következő tippet.
+http://www.github.com/HaikuArchives/Tipster
+%
+Terminál
+Nyiss meg fájlt, elérési utat, vagy URL-t a Terminálban egy kattintásra az ALT billentyű nyomva tartása közben.
+https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#shortcuts
+%
+GUI
+Kapcsolj össze ablakokat az OPT billentyű lenyomával miközben az egyik ablak keretét a másik ablak keretéhez húzod.
+https://www.haiku-os.org/docs/userguide/en/gui.html#move-resize
+%
+GUI
+Az ALT és a CTRL billentyűk együttes lenyomásával kényelmesen mozgathatod (bal klikk) vagy méretezheted az ablakokat (jobb klikk).
+https://www.haiku-os.org/docs/userguide/en/gui.html#move-resize
+%
+GUI
+Use Workspaces - virtual desktops - to spread your work to up to 32 desktops.
+https://www.haiku-os.org/docs/userguide/en/workspaces.html
+%
+GUI
+Right-clicking window tabs (or anywhere while holding ALT + CTRL keys) will send a window to the back, double-clicking minimizes it to the Deskbar.
+https://www.haiku-os.org/docs/userguide/en/gui.html
+%
+Preferences
+Accelerate your workflow by creating keyboard shortcuts with the Shortcuts preferences.
+https://www.haiku-os.org/docs/userguide/en/keyboard-shortcuts.html
+%
+Application
+Set an audio file for "Vision Nick Notification" in the Sounds preferences to get a ring every time your name's being said in the IRC client Vision.
+https://www.haiku-os.org/docs/userguide/en/applications/vision.html
+%
+Application
+The TAB key does command and path completion in the Terminal and nickname completion in Vision. Just start typing and press TAB to find a match.
+%
+Miscellaneous
+The Haiku source is an excellent resource for examples of the Haiku API in action. Search it for your favourite class.
+http://xref.plausible.coop/source/
+%
+Miscellaneous
+Quickly tap CTRL + TAB to switch between two applications, hold the key combo to see all running apps in the Twitcher.
+https://www.haiku-os.org/docs/userguide/en/twitcher.html
+%
+Preferences
+With type-ahead filtering, Tracker only displays the files you're interested in.
+https://www.haiku-os.org/docs/userguide/en/tracker.html#tracker-preferences
+%
+Preferences
+If you think you must use the inferior Linux/Windows shortcut key mapping (ALT <-> CTRL), you can change that and more with the Keymap preferences.
+https://www.haiku-os.org/docs/userguide/en/preferences/keymap.html
+%
+Terminal
+Dropping a file into Terminal inserts the path to it, doing that with the right mouse-button offers other useful actions.
+https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#hints
+%
+Terminal
+In Terminal, the "open" command opens any file with its preferred application. With "." and ".." it opens the current/parent folder in Tracker.
+https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#hints
+%
+Miscellaneous
+If your favourite program is missing from HaikuDepot, you may have to add another repository. See WebPositive's bookmarks under "Software".
+%
+Miscellaneous
+If some program consumes all of your CPU resources, try lowering its priority through ProcessController in your Deskbar.
+https://www.haiku-os.org/docs/userguide/en/desktop-applets/processcontroller.html
+%
+Terminal
+In Terminal you can select any text with the mouse and insert it at the prompt with a right-click.
+https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#hints
+%
+Miscellaneous
+Holding the SHIFT key while booting enters the boot loader options. Among other settings, it lets you boot to a specific historic state of Haiku.
+https://www.haiku-os.org/docs/userguide/en/bootloader.html
+%
+Miscellaneous
+Open the "Find..." panel from the Deskbar (or ALT + F) to find any file or folder on your system. Besides searching for a name, you can also apply more sophisticated search patterns using Haiku's attributes.
+https://www.haiku-os.org/docs/userguide/en/queries.html
+%
+GUI
+Some app's interface elements can be embedded in the Desktop by dragging a tiny hand from them to the Desktop. Replicatable apps are e.g. Tipster, ActivityMonitor and Workspaces.
+https://www.haiku-os.org/docs/userguide/en/gui.html#replicants
+%
+Preferences
+To match the keymap to your physical keyboard, you can choose one from a list in the Keymap preferences. You can also make keys switch places by dragging them around.
+https://www.haiku-os.org/docs/userguide/en/preferences/keymap.html
+%
+GUI
+You can easily move windows between workspaces by dragging them around in the Workspaces applet. Switching through workspaces is even faster with the keycombo CTRL + ALT + cursor keys.
+https://www.haiku-os.org/docs/userguide/en/workspaces.html
+%
+Terminal
+Press CTRL + R and start to enter a command and you'll be provided with the first match from the bash history. Keep pressing CTRL + R until you find the right command line and press ENTER to execute it.
+https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#shortcuts
+%
+GUI
+Use the Page / Page keys to page-wise scroll in the drill-down context menu of a very crowded folder.
+https://www.haiku-os.org/docs/userguide/en/tracker.html
+%
+Miscellaneous
+You can open a document with an already running app by dragging its icon onto the app's entry in the Deskbar.
+%
+Miscellaneous
+Hold down the left ALT + SHIFT + CTRL and click a program in the Deskbar to kill it. This is called Vulcan Death Grip.
+%
+Miscellaneous
+You can switch back and forth between two workspaces with ALT + ~ (the actual key depends on the keymap you're using - it is the key below ESC).
+%
+GUI
+Hold SHIFT while scrolling with the mouse wheel to do page-wise scrolling in Tracker windows and drill-down context menus.
+https://www.haiku-os.org/docs/userguide/en/tracker.html
+%
+GUI
+Quickly minimize an active window by using CTRL + ALT + M, and minimize all windows of that application with CTRL + ALT + H.
+https://www.haiku-os.org/docs/userguide/en/keyboard-shortcuts.html
+%
+Miscellaneous
+Quickly switch to another workspace by pressing ALT + Fx (Fx being the function key corresponding to workspace number X), add SHIFT to take the active window with you.
+https://www.haiku-os.org/docs/userguide/en/keyboard-shortcuts.html
+%
+Preferences
+The Deskbar can be moved to all corners as well as the top or bottom of the screen by grabbing the knobbly widget beside the clock. It can be folded to a more compact layout by dragging the widget onto the tray. 
+https://www.haiku-os.org/docs/userguide/en/deskbar.html
+%
+Preferences
+The Deskbar preferences allow you to change icon size, auto-hide the Deskbar, hide application names, and more.
+https://www.haiku-os.org/docs/userguide/en/deskbar.html
+%
+Terminal
+In addition to using the UNIX ps/kill combo with an app's process ID, Haiku lets you kill an app with 'kill appname'.
+%
