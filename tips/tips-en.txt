@@ -114,7 +114,7 @@ Quickly minimize an active window by using CTRL + ALT + M, and minimize all wind
 https://www.haiku-os.org/docs/userguide/en/keyboard-shortcuts.html
 %
 Miscellaneous
-Quickly switching to another workspace by pressing ALT + Fx (with Fx being the function key corresponding to workspace number X), add SHIFT to bring the active window with you.
+Quickly switch to another workspace by pressing ALT + Fx (Fx being the function key corresponding to workspace number X), add SHIFT to take the active window with you.
 https://www.haiku-os.org/docs/userguide/en/keyboard-shortcuts.html
 %
 Preferences
