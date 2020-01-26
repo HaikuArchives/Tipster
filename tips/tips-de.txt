@@ -89,10 +89,6 @@ Fenster lassen sich einfach auf andere Arbeitsflächen verschieben, indem man si
 https://www.haiku-os.org/docs/userguide/de/workspaces.html
 %
 Terminal
-Press CTRL + R and start to enter a command and you'll be provided with the first match from the bash history. Keep pressing CTRL + R until you find the right command line and press ENTER to execute it.
-https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#shortcuts
-%
-Terminal
 Drückt man STRG + R und beginnt mit der Eingabe eines Befehls, wird die letzte passende Zeile aus dem Bash Verlauf angeboten. Nun kann man STRG + R so lange drücken, bis man die gewünschte Befehlszeile hat und sie per ENTER ausführen.
 https://www.haiku-os.org/docs/userguide/de/applications/terminal.html#shortcuts
 %
@@ -110,6 +106,25 @@ Miscellaneous
 Mittels ALT + ~ lässt sich zwischen zwei Arbeitsflächen hin- und herwechseln (die Taste hängt von dem benutzten Tastaturlayout ab - es ist die Taste unter ESC).
 %
 GUI
-Hält man in Tracker-Fenstern oder in Navigations-Kontextmenüs die SHIF Taste beim Scrollen mit dem Mausrad, wird seitenweise gescrollt.
+Hält man in Tracker-Fenstern oder in Navigations-Kontextmenüs die SHIFT Taste beim Scrollen mit dem Mausrad, wird seitenweise gescrollt.
 https://www.haiku-os.org/docs/userguide/de/tracker.html
+%
+GUI
+Das aktive Fenster lässt sich mit STRG + ALT + M minimieren, alle Fenster dieser Anwendung mit STRG + ALT + H.
+https://www.haiku-os.org/docs/userguide/de/keyboard-shortcuts.html
+%
+Miscellaneous
+ALT + Fx (Fx ist die der Arbeitsfläche entsprechende Funktionstaste) wechselt zur Arbeitsfläche X. Bei zusätzlich gehaltener SHIFT Taste wird das aktive Fenster mitgenommen.
+https://www.haiku-os.org/docs/userguide/de/keyboard-shortcuts.html
+%
+Preferences
+Die Deskbar kann in alle vier Ecken und auch an den oberen oder unteren Bildschirmrand verschoben werden. Dazu die gepunktete Linie seitlich der Uhr zur gewünschten Position ziehen. Für eine noch kompaktere Darstellung, die gepunktete Linie auf das Deskbar Menü ziehen.
+https://www.haiku-os.org/docs/userguide/de/deskbar.html
+%
+Preferences
+In den Deskbar Einstellungen kann man die Icongröße verändern, die Deskbar automatisch ausblenden, Anwendungsnamen unterdrücken und einiges mehr.
+https://www.haiku-os.org/docs/userguide/de/deskbar.html
+%
+Terminal
+Zum Beenden von Anwendungen lässt sich die UNIX Befehlskombo ps/kill neben der übichen Angabe der Prozeß-ID auch per 'kill Anwendungsname' verwenden.
 %
