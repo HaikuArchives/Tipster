@@ -1,4 +1,4 @@
-## ![Image of Tipster](artwork/Tipster_icon.png)HaikuTipster
+## ![Image of Tipster](artwork/Tipster_icon.png)Tipster
 Tipster is an application to display Haiku usage tips.
 
 It displays brief but informative hints relating to interesting features about Haiku and their usage. It can be embedded as Replicant onto the Desktop and slideshow through the tips at a set interval.
@@ -25,3 +25,7 @@ Tipster looks for its tip files in one of the data directories:
 ```
 
 A recipe for Tipster is available at [HaikuPorts](https://github.com/haikuports/haikuports/wiki), a ready-made package is installable with HaikuDepot.
+
+### Help translating
+
+Translations are done at [Polyglot](https://i18n.kacperkasper.pl). Contributions are very welcome!
