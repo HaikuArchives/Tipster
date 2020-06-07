@@ -31,6 +31,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "Tipster"
 
 enum
 {
@@ -524,13 +526,13 @@ Tipster::LoadTips(entry_ref ref)
 void
 Tipster::GetArtworkTitle(BString category)
 {
-	if (category == "GUI")
+	if (category == B_TRANSLATE("GUI"))
 		fArtworkTitle->SetTo("GUI");
-	else if (category == "Terminal")
+	else if (category == B_TRANSLATE("Terminal"))
 		fArtworkTitle->SetTo("Terminal");
-	else if (category == "Preferences")
+	else if (category == B_TRANSLATE("Preferences"))
 		fArtworkTitle->SetTo("Preferences");
-	else if (category == "Application")
+	else if (category == B_TRANSLATE("Application"))
 		fArtworkTitle->SetTo("Application");
 	else
 		fArtworkTitle->SetTo("Miscellaneous");
