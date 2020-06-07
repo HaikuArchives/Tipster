@@ -526,13 +526,17 @@ Tipster::LoadTips(entry_ref ref)
 void
 Tipster::GetArtworkTitle(BString category)
 {
-	if (category == B_TRANSLATE("GUI"))
+	if (category == B_TRANSLATE_COMMENT("GUI",
+			"Only translate if the categories in the tip file was translated"))
 		fArtworkTitle->SetTo("GUI");
-	else if (category == B_TRANSLATE("Terminal"))
+	else if (category == B_TRANSLATE_COMMENT("Terminal",
+			"Only translate if the categories in the tip file was translated"))
 		fArtworkTitle->SetTo("Terminal");
-	else if (category == B_TRANSLATE("Preferences"))
+	else if (category == B_TRANSLATE_COMMENT("Preferences",
+			"Only translate if the categories in the tip file was translated"))
 		fArtworkTitle->SetTo("Preferences");
-	else if (category == B_TRANSLATE("Application"))
+	else if (category == B_TRANSLATE_COMMENT("Application",
+			"Only translate if the categories in the tip file was translated"))
 		fArtworkTitle->SetTo("Application");
 	else
 		fArtworkTitle->SetTo("Miscellaneous");

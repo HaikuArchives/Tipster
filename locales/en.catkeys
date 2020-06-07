@@ -1,5 +1,5 @@
-1	English	application/x-vnd.tipster	3936646251
-Preferences	About		Preferences
+1	English	application/x-vnd.tipster	994560287
+Preferences	About	Only translate if the categories in the tip file was translated	Preferences
 Tip	MainWindow		Tip
 30 seconds	MainWindow		30 seconds
 About	MainWindow		About
@@ -8,10 +8,10 @@ Delay	MainWindow		Delay
 1 minute	MainWindow		1 minute
 2 minutes	MainWindow		2 minutes
 Tipster	System name		Tipster
-Application	About		Application
 Previous tip	MainWindow		Previous tip
 An application to show usability tips for Haiku.	About		An application to show usability tips for Haiku.
 Quit	MainWindow		Quit
-Terminal	About		Terminal
-GUI	About		GUI
+Application	About	Only translate if the categories in the tip file was translated	Application
 Next tip	MainWindow		Next tip
+Terminal	About	Only translate if the categories in the tip file was translated	Terminal
+GUI	About	Only translate if the categories in the tip file was translated	GUI
