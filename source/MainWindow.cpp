@@ -37,7 +37,7 @@ enum
 MainWindow::MainWindow()
 	:
 	BWindow(BRect(100, 100, 740, 190), B_TRANSLATE_SYSTEM_NAME("Tipster"),
-		B_TITLED_WINDOW, B_ASYNCHRONOUS_CONTROLS | B_NOT_V_RESIZABLE
+		B_TITLED_WINDOW, B_ASYNCHRONOUS_CONTROLS 
 		| B_AUTO_UPDATE_SIZE_LIMITS)
 {
 	BuildLayout();
@@ -75,8 +75,8 @@ MainWindow::BuildLayout()
 	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
 		.Add(fMenuBar)
 		.Add(fTipsterView)
-		.AddGlue();
-
+//		.AddGlue()
+		.End();
 	// After the creation of Tipster because we need the delay
 	// time saved in the settings
 

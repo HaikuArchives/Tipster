@@ -66,11 +66,16 @@ Tipster::Tipster()
 	BDragger* dragger = new BDragger(this);
 
 	BLayoutBuilder::Group<>(this, B_HORIZONTAL, 0)
-			.SetInsets(-2, -2, 0, -2)
-			.Add(fIcon)
+			.SetInsets(1, 1, 1, 1)
+			.AddGroup(B_VERTICAL,0)
+				.Add(fIcon)
+				.AddGlue()
+				.End()
+				
 			.AddStrut(be_control_look->DefaultItemSpacing())
 			.AddGroup(B_VERTICAL,0)
 				.Add(fTipsterTextView)
+				
 				.AddGroup(B_HORIZONTAL, 0)
 					.AddGlue()
 					.Add(dragger)
