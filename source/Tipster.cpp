@@ -34,6 +34,8 @@
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "Tipster"
 
+using namespace std;
+
 enum
 {
 	OPEN_URL = 'opur',
@@ -285,9 +287,12 @@ Tipster::_LoadSettings()
 void
 Tipster::_ResetTimer()
 {
-	BMessage message(UPDATE_TIP);
-	delete fRunner;
-	fRunner = new BMessageRunner(this, message, fDelay);
+	// if delay is set to Off (0), don't send a runner message
+	if (fDelay > 0) {
+			BMessage message(UPDATE_TIP);
+			delete fRunner;
+			fRunner = new BMessageRunner(this, message, fDelay);
+	}
 }
 
 

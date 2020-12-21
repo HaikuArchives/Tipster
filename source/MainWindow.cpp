@@ -84,6 +84,7 @@ MainWindow::BuildLayout()
 	AddDelaySubMenuItem(60000000, B_TRANSLATE("1 minute"));
 	AddDelaySubMenuItem(120000000, B_TRANSLATE("2 minutes"));
 	AddDelaySubMenuItem(300000000, B_TRANSLATE("5 minutes"));
+	AddDelaySubMenuItem(0, B_TRANSLATE("Off"));
 
 	fDelaySubMenu->SetRadioMode(true);
 }
@@ -136,7 +137,6 @@ MainWindow::MessageReceived(BMessage* message)
 		{
 			int64 delay = 60000000;
 			message->FindInt64("delay", &delay);
-
 			fTipsterView->SetDelay(delay);
 			break;
 		}
