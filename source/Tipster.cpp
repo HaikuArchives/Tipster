@@ -34,8 +34,6 @@
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "Tipster"
 
-using namespace std;
-
 enum
 {
 	OPEN_URL = 'opur',
@@ -45,7 +43,6 @@ enum
 };
 
 const float kDraggerSize = 7.0f;
-
 
 Tipster::Tipster()
 	:
@@ -204,7 +201,6 @@ Tipster::QuitRequested()
 {
 	return true;
 }
-
 
 void
 Tipster::AttachedToWindow()
