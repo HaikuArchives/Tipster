@@ -7,6 +7,7 @@
 #include "Shuffle.h"
 
 #include <Application.h>
+#include <Alert.h>
 #include <Bitmap.h>
 #include <Catalog.h>
 #include <ControlLook.h>
@@ -61,6 +62,7 @@ Tipster::Tipster()
 
 	fTipsterTextView = new TipsterText();
 	fIcon = new BButton("iconview", "", new BMessage(OPEN_URL));
+	fIcon -> SetToolTip( B_TRANSLATE("Open the Tipster homepage") );
 
 	BDragger* dragger = new BDragger(this);
 
@@ -70,11 +72,11 @@ Tipster::Tipster()
 				.Add(fIcon)
 				.AddGlue()
 				.End()
-				
+
 			.AddStrut(be_control_look->DefaultItemSpacing())
 			.AddGroup(B_VERTICAL,0)
 				.Add(fTipsterTextView)
-				
+
 				.AddGroup(B_HORIZONTAL, 0)
 					.AddGlue()
 					.Add(dragger)
@@ -283,11 +285,12 @@ Tipster::_LoadSettings()
 void
 Tipster::_ResetTimer()
 {
-	// if delay is set to Off (0), don't send a runner message
 	if (fDelay > 0) {
-			BMessage message(UPDATE_TIP);
-			delete fRunner;
-			fRunner = new BMessageRunner(this, message, fDelay);
+	// if delay is set to Off (0), don't send a runner message
+
+		BMessage message(UPDATE_TIP);
+		delete fRunner;
+		fRunner = new BMessageRunner(this, message, fDelay);
 	}
 }
 
@@ -377,7 +380,6 @@ Tipster::MouseDown(BPoint point)
 			UpdateTip();
 	}
 }
-
 
 void
 Tipster::UpdateIcon(BString artwork, BString url)
@@ -495,9 +497,11 @@ Tipster::GetTipsFile()
 
 		for (int32 i = 0; (language = message.GetString("language", i, NULL))
 				!= NULL; i++) {
-			if (getLocalTipsFile(ref, language))
+							printf("lang: %s \n", language);
+			if (getLocalTipsFile(ref, language)) //
 				return ref;
-			else if (getLocalTipsFile(ref, BString(language,
+			else
+			if (getLocalTipsFile(ref, BString(language,
 					BString(language).FindFirst("_"))))
 				return ref;
 		}

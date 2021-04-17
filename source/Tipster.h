@@ -58,7 +58,7 @@ private:
 	int32			fTipIndex;
 	std::vector<int> fRandomSeq1;
 	std::vector<int> fRandomSeq2;
-	
+
 	BString*		fPreviousTip;
 	BString*		fCurrentTip;
 
