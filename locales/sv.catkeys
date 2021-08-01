@@ -1,13 +1,17 @@
-1	Swedish	application/x-vnd.tipster	2518152396
+1	Swedish	application/x-vnd.tipster	994560287
+1 minute	MainWindow		1 minut
+2 minutes	MainWindow		2 minuter
 30 seconds	MainWindow		30 sekunder
 5 minutes	MainWindow		5 minuter
-2 minutes	MainWindow		2 minuter
+About	MainWindow		Om
+Delay	MainWindow		Fördröjning
+Next tip	MainWindow		Nästa tips
+Previous tip	MainWindow		Föregående tips
 Quit	MainWindow		Avsluta
 Tip	MainWindow		Tips
-1 minute	MainWindow		1 minut
-Next tip	MainWindow		Nästa tips
-Delay	MainWindow		Fördröjning
-About	MainWindow		Om
-Previous tip	MainWindow		Föregående tips
 An application to show usability tips for Haiku.	About		Ett program för att visa användartips i Haiku.
+Application	About	Only translate if the categories in the tip file was translated	Ansökan
+GUI	About	Only translate if the categories in the tip file was translated	GUI
+Preferences	About	Only translate if the categories in the tip file was translated	Inställningar
+Terminal	About	Only translate if the categories in the tip file was translated	Terminal
 Tipster	System name		Tipster

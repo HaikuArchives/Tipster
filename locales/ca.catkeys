@@ -1,0 +1,17 @@
+1	Catalan	application/x-vnd.tipster	994560287
+1 minute	MainWindow		1 minut
+2 minutes	MainWindow		2 minuts
+30 seconds	MainWindow		30 segons
+5 minutes	MainWindow		5 minuts
+About	MainWindow		Quant a
+Delay	MainWindow		Retard
+Next tip	MainWindow		Consell següent
+Previous tip	MainWindow		Consell anterior
+Quit	MainWindow		Surt
+Tip	MainWindow		Consell
+An application to show usability tips for Haiku.	About		Una aplicació per mostrar consells d’usabilitat per al Haiku.
+Application	About	Only translate if the categories in the tip file was translated	Aplicació
+GUI	About	Only translate if the categories in the tip file was translated	IGU
+Preferences	About	Only translate if the categories in the tip file was translated	Preferències
+Terminal	About	Only translate if the categories in the tip file was translated	Terminal
+Tipster	System name		Conseller

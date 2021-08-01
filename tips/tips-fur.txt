@@ -1,0 +1,130 @@
+Tipster
+Benvignûts su Tipster! Fâs clic su pe icone a çampe di un sugjeriment par vê plui informazions. Fâs clic sul test par lâ al prossim sugjeriment.
+http://www.github.com/HaikuArchives/Tipster
+%
+Terminâl
+Vierç un file, percors o URL in Terminâl fasinti clic intant che tu tegnis fracât il tast ALT.
+https://www.haiku-os.org/docs/userguide/fur/applications/terminal.html#shortcuts
+%
+IUG
+Intasse e intassele i barcons tignint fracât il tast OPZ  intant che tu movis dongje i lôr ôrs, o tu metis la lôr lenghete dal titul une sore di chê altre.
+https://www.haiku-os.org/docs/userguide/fur/gui.html#move-resize
+%
+IUG
+Tignint fracât i tascj ALT + CTRL tu puedis spostâ cun convenience i barcons (boton di çampe dal mouse) e ridimensionâju (boton di diestre dal mouse).
+https://www.haiku-os.org/docs/userguide/fur/gui.html#move-resize
+%
+IUG
+Dopre Spazis di lavôr - scritoris virtuâi - par sparniçâ il to lavôr sore di un numar massim di scritoris di 32.
+https://www.haiku-os.org/docs/userguide/fur/workspaces.html
+%
+IUG
+Fasint clic di diestre su lis schedis dai barcons (o di cualsisei bande intant che tu tegnis fracât i tascj ALT + CTRL) al mandarà daûr (di chei altris) un barcon, fasint dopli clic lu minimizarà sul Deskbar.
+https://www.haiku-os.org/docs/userguide/fur/gui.html
+%
+Preferencis
+Acelere il to lavôr creant scurtis di tastiere cu lis preferencis Scurtis.
+https://www.haiku-os.org/docs/userguide/fur/keyboard-shortcuts.html
+%
+Aplicazion
+Stabilìs un file audio par "Vision Nick Notification" intes preferencis Suns par vê une sunarie ogni volte che il to non al ven nomenât tal client IRC Vision.
+https://www.haiku-os.org/docs/userguide/fur/applications/vision.html
+%
+Aplicazion
+Il tast TAB al complete il comant e il percors tal Terminâl e al complete il sorenon in Vision. Al baste tacâ a scrivi e fracâ TAB par cjatâ une corispondence.
+%
+Variis
+Il sorzint di Haiku e je une valide risorse par esemplis de API di Haiku in azion. Cirilu pe to classe preferide.
+http://xref.plausible.coop/source/
+%
+Variis
+Frache svelt CTRL + TAB par passâ tra dôs aplicazions, ten fracât chê cumbinazion di tascj par viodi tal Twitcher dutis lis aplicazions in esecuzion.
+https://www.haiku-os.org/docs/userguide/fur/twitcher.html
+%
+Preferencis
+Cul filtri pe scriture anticipade, Tracker al mostre dome i file che ti interessin.
+https://www.haiku-os.org/docs/userguide/fur/tracker.html#tracker-preferences
+%
+Preferencis
+Se tu pensis di scugnî doprâ la mapadure dai tascj di scurte Linux/Windows, che e je inferiôr (ALT al puest di CTRL), tu puedis cambiâle e fâ altri cu lis preferencis Mape tastiere.
+https://www.haiku-os.org/docs/userguide/fur/preferences/keymap.html
+%
+Terminâl
+Molant un file intal Terminâl al inserìs il percors di chel file, se tu lu fasis cul tast di diestre al ufrìs altris azions utilis.
+https://www.haiku-os.org/docs/userguide/fur/applications/terminal.html#hints
+%
+Terminâl
+Tal Terminâl, il comant "open" al vierç cualsisei file cu la sô aplicazion preferide. Cun "." e ".." al vierç la cartele atuâl/superiôr tal Tracker.
+https://www.haiku-os.org/docs/userguide/fur/applications/terminal.html#hints
+%
+Variis
+Se dal HaikuDepot al mancje il to program preferît, tu podaressis vê di zontâ un altri dipuesit. Viôt i segnelibris di WebPositive sot "Software".
+%
+Variis
+Se cualchi program al dopre dutis lis risorsis de to CPU, prove a sbassâ la sô prioritât cul Controlôr dai procès tal to Deskbar.
+https://www.haiku-os.org/docs/userguide/fur/desktop-applets/processcontroller.html
+%
+Terminâl
+Tal Terminâl tu puedis selezionâ cualsisei test cul mouse e inserîlu te rie di comant cuntun clic di diestre.
+https://www.haiku-os.org/docs/userguide/fur/applications/terminal.html#hints
+%
+Variis
+Tignint fracât il tast MAIUSC intant che si invie il computer, si jentre tes opzions dal boot loader. Tra dutis lis impostazions, ti permet di inviâ il sisteme a un specific stât storic di Haiku.
+https://www.haiku-os.org/docs/userguide/fur/bootloader.html
+%
+Variis
+Vierç il panel "Cjate..." dal Deskbar (o ALT + F) par cjatâ cualsisei file o cartele dal sisteme. Sore a cirî nons, tu puedis ancje aplicâ ricercjis plui sofisticadis doprant i atribûts di Haiku.
+https://www.haiku-os.org/docs/userguide/fur/queries.html
+%
+IUG
+Cualchi element de interface de aplicazion al pues jessi incorporât intal Scritori strissinant sul scritori une piçule mantie, che si cjate su la aplicazion. Lis aplicazions che si puedin replicâ a son p.e. Tipster, VisôrAtivitâts e Spazis di lavôr.
+https://www.haiku-os.org/docs/userguide/fur/gui.html#replicants
+%
+Preferencis
+Par fâ corispuindi la mape de tastiere ae tô tastiere fisiche, tu puedis sielzi une di une liste intes preferencis “Mape tastiere”. Tu puedis ancje scambiâ i tascj strissinantju ator.
+https://www.haiku-os.org/docs/userguide/fur/preferences/keymap.html
+%
+IUG
+Tu puedis spostâ tra i spazis di lavôr i barcons strissinantju ator inte applet Spazis di lavôr. Passâ di un spazi di lavôr a chel altri al è ancjemò plui rapit cu la cumbinazion di tascj CTRL + ALT + tascj cursôr.
+https://www.haiku-os.org/docs/userguide/fur/workspaces.html
+%
+Terminâl
+Frache CTRL + R e scomence a inserî un comant, ti vignarà dade la prime corispondence de cronologjie di bash. Continue a fracâ CTRL + R fintremai che tu cjatis la rie di comant juste e frache INVIE par eseguîle.
+https://www.haiku-os.org/docs/userguide/fur/applications/terminal.html#shortcuts
+%
+GUI
+Dopre i tascj the Pagj↑ / Pagj↓ par scori di pagjine in pagjine intal menù contestuâl par sgarfâ te gjerarchie di une cartele une vore plene.
+https://www.haiku-os.org/docs/userguide/fur/tracker.html
+%
+Variis
+Tu puedis vierzi un document cuntune aplicazion che e je za in esecuzion, strissinant la sô icone sore de vôs de aplicazion tal Deskbar.
+%
+Variis
+Ten fracât i ALT + MAIUSC + CTRL di çampe e fâs clic suntun program tal Deskbar par colpâlu. Cheste e ven clamade Smuarse de Muart Vulcaniche.
+%
+Variis
+Tu puedis lâ indenant e indaûr tra doi spazis di lavôr cun ALT + ~ (il tast efetîf al dipent de mape de tastiere doprade - al è il tast sot di ESC).
+%
+IUG
+Ten fracât MAIUSC intant che tu scoris cu la rudiele dal mouse par eseguî un scoriment di pagjine in pagjine tai barcons di Tracker e tai menù contestuâi par sgarfâ te gjerarchie.
+https://www.haiku-os.org/docs/userguide/fur/tracker.html
+%
+IUG
+Minimize daurman un barcon atîf doprant CTRL + ALT + M, e minimize ducj i barcons di chê aplicazion cun CTRL + ALT + H.
+https://www.haiku-os.org/docs/userguide/fur/keyboard-shortcuts.html
+%
+Variis
+Passe subite a un altri spazi di lavôr fracant ALT + Fx (dulà che Fx al è il tast funzion che al corispuint al spazi di lavôr numar X), zonte MAIUSC par puartâ il barcon atîf cun te.
+https://www.haiku-os.org/docs/userguide/fur/keyboard-shortcuts.html
+%
+Preferencis
+Cjapant la part cui groputs in bande dal orloi, si pues spostâ il Deskbar su ducj i angui e cussì ancje te bande superiôr o inferiôr dal schermi. Al pues jessi striçât intune forme plui compate strissinant i groputs su la guantiere. 
+https://www.haiku-os.org/docs/userguide/fur/deskbar.html
+%
+Preferencis
+Lis preferencis di Deskbar ti permetin di cambiâ la dimension de icone, il platâ in automatic il Deskbar, platâ i nons des aplicazions e altri.
+https://www.haiku-os.org/docs/userguide/fur/deskbar.html
+%
+Terminâl
+Sore a doprâ la cumbinazion ps/kill di UNIX suntun ID di procès des aplicazions, Haiku ti permet di copâ une aplicazion cun 'kill non_aplicazion'.
+%

@@ -1,0 +1,17 @@
+1	Turkish	application/x-vnd.tipster	994560287
+1 minute	MainWindow		1 dakika
+2 minutes	MainWindow		2 dakika
+30 seconds	MainWindow		30 saniye
+5 minutes	MainWindow		5 dakika
+About	MainWindow		Hakkında
+Delay	MainWindow		Gecikme
+Next tip	MainWindow		Sonraki ipucu
+Previous tip	MainWindow		Önceki ipucu
+Quit	MainWindow		Çık
+Tip	MainWindow		İpucu
+An application to show usability tips for Haiku.	About		Haiku'yu kullanırken yararlı olabilecek ipuçları.
+Application	About	Only translate if the categories in the tip file was translated	Uygulama
+GUI	About	Only translate if the categories in the tip file was translated	Grafik arabirim
+Preferences	About	Only translate if the categories in the tip file was translated	Tercihler
+Terminal	About	Only translate if the categories in the tip file was translated	Uçbirim
+Tipster	System name		İpuçları

@@ -1,13 +1,17 @@
-1	Dutch	application/x-vnd.tipster	2518152396
+1	Dutch	application/x-vnd.tipster	994560287
+1 minute	MainWindow		1 minuut
+2 minutes	MainWindow		2 minuten
 30 seconds	MainWindow		30 seconden
 5 minutes	MainWindow		5 minuten
-2 minutes	MainWindow		2 minuten
+About	MainWindow		Over
+Delay	MainWindow		Vertraging
+Next tip	MainWindow		Volgende tip
+Previous tip	MainWindow		Vorige tip
 Quit	MainWindow		Afsluiten
 Tip	MainWindow		Tip
-1 minute	MainWindow		1 minuut
-Next tip	MainWindow		Volgende tip
-Delay	MainWindow		Vertraging
-About	MainWindow		Over
-Previous tip	MainWindow		Vorige tip
 An application to show usability tips for Haiku.	About		Een toepassing die handige tips toont voor Haiku
+Application	About	Only translate if the categories in the tip file was translated	Application
+GUI	About	Only translate if the categories in the tip file was translated	GUI
+Preferences	About	Only translate if the categories in the tip file was translated	Preferences
+Terminal	About	Only translate if the categories in the tip file was translated	Terminal
 Tipster	System name		Tipster

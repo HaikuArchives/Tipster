@@ -1,0 +1,128 @@
+Tipster
+Bine ați venit la Tipster! Apăsați clic pe iconița din stânga unui indiciu pentru a obține mai multe informații. Apăsați clic pe text pentru a merge la următorul indiciu.
+http://www.github.com/HaikuArchives/Tipster
+%
+Terminal
+Deschideți un fișier, o cale, sau un URL în Terminal prin apăsarea clic pe acesta în timp ce țineți apăsată tasta ALT.
+https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#shortcuts
+%
+GUI
+Stivuiește și fragmentează ca dale ferestrele prin menținerea apăsată a tastei OPT în timpul mutării marginilor acestora lângă, sau foaia de titlu una peste alta.
+https://www.haiku-os.org/docs/userguide/en/gui.html#move-resize
+%
+GUI
+Prin menținerea apăsată a tastelor ALT + CTRL puteți să mutați ferestre convenient (butonul stâng al mausului) și să le redimensionați (butonul drept al mausului).
+https://www.haiku-os.org/docs/userguide/en/gui.html#move-resize
+%
+GUI
+Utilizează Workspaces - desktop-uri virtuale - pentru a vă împărți lucrul până la 32 de deskop-uri.
+https://www.haiku-os.org/docs/userguide/en/workspaces.html
+%
+GUI
+Apăsarea clic dreapta pe foile ferestrelor (sau oriunde în timp ce se mențin apăsate tastele ALT + CTRL) va trimite o fereastră în spate, clicul dublu o minimizează la Deskbar.
+https://www.haiku-os.org/docs/userguide/en/gui.html
+%
+Preferințe
+Accelerați fluxul de lucru prin crearea de scurtături de tastatură cu preferințele Shortcuts.
+https://www.haiku-os.org/docs/userguide/en/keyboard-shortcuts.html
+%
+Aplicație
+Stabilește un fișier audio pentru „Înștiințarea de pseudonim Vision” în preferințele Sunete pentru a avea un sunet de fiecare dată când numele dvs. este spus în clientul IRC Vision. https://www.haiku-os.org/docs/userguide/en/applications/vision.html
+%
+Aplicație
+Tasta TAB face completarea comenzii și a căii în Terminal și completarea de pseudonim în Vision. Doar începeți să tastați și apăsați TAB pentru a găsi o potrivire.
+%
+Diverse
+Sursa Haiku este o resursă excelentă pentru exemple ale API Haiku în acțiune. Căutați-o pentru clasa preferată.
+http://xref.plausible.coop/source/
+%
+Diverse
+Apăsați rapid pe CTRL + TAB pentru a comua între două aplicații, mențineți apăsată combinația de taste pentru a vedea toate aplicațiile care rulează în Twitcher.
+https://www.haiku-os.org/docs/userguide/en/twitcher.html
+%
+Preferințe
+Cu filtrarea de tastare înainte, Tracker afișează doar fișierele de care sunteți interesat.
+https://www.haiku-os.org/docs/userguide/en/tracker.html#tracker-preferences
+%
+Preferințe
+Dacă credeți că trebuie să utilizați maparea de taste de scurtături inferioară Linux/Windows (ALT <-> CTRL), puteți să modificați aceasta și mai multe cu preferințele Keymap.
+https://www.haiku-os.org/docs/userguide/en/preferences/keymap.html
+%
+Terminal
+Plasarea unui fișier în Terminal inserează o cale către acesta, dacă se face acest lucru cu butonul drept al mausului se oferă alte acțiuni utile.
+https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#hints
+%
+Terminal
+În Terminal, comanda „open” deschide orice fișier cu aplicația preferată. Cu „.” și „..” se deschide dosarul curent/superior în Tracker.
+https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#hints
+%
+Diverse
+Dacă programul favorit lipsește din HaikuDepot, poate trebuie să adăugați un alt depozit. Consultați marcajele WebPositive sub „Software”.
+%
+Diverse
+Dacă un program vă consumă toate resursele CPU, încercați să-i reduceți prioritatea prin ProcessController de pe Deskbar.
+https://www.haiku-os.org/docs/userguide/en/desktop-applets/processcontroller.html
+%
+Terminal
+În Terminal puteți selecta orice text cu mausul și puteți să-l inserați la prompter cu un clic dreapta.
+https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#hints
+%
+Diverse
+Menținerea apăsată a tastei SHIFT în timpul pornirii sistemului intră în opțiunile de încărcare de boot. Printre ale configurări, vă permite să porniți la o stare specifică istorică a Haiku.
+https://www.haiku-os.org/docs/userguide/en/bootloader.html
+%
+Diverse
+Deschideți panoul „Caută...” de la Deskbar (sau ALT + F) pentru a găsi orice fișier sau dosar de pe sistem. În afara căutării pentru un nume, puteți de asemenea să aplicați mai multe modele de căutare sofisticate utilizând atributele lui Haiku.
+https://www.haiku-os.org/docs/userguide/en/queries.html
+%
+GUI
+Unele elemente de interfață a aplicațiilor pot fi codate în Desktop prin tragerea unei mâini mici de la ele pe Desktop. Aplicațiile care se pot replica sunt de ex. Tipster, ActivityMonitor și Workspaces.
+https://www.haiku-os.org/docs/userguide/en/gui.html#replicants
+%
+Preferințe
+Pentru a potrivi harta de taste cu tastatura fizică, puteți alege una dintre o listă de preferințe Keymap. Puteți, de asemenea, să faceți ca tastele să-și comute locurile prin tragerea lor.
+https://www.haiku-os.org/docs/userguide/en/preferences/keymap.html
+%
+GUI
+Puteți cu ușurință să mutați ferestrele între spațiile de lucru prin tragerea lor în aplicația Workspaces. Comutarea între spații de lucru este și mai rapidă cu combinația de taste CTRL + ALT + tastele de cursor.
+https://www.haiku-os.org/docs/userguide/en/workspaces.html
+%
+Terminal
+Apăsați CTRL + R și începeți să introduceți o comandă și veți fi furnizat cu prima potrivire de la istoricul bash. Mențineți apăsat CTRL + R până când ați găsit linia de comandă potrivită și apăsați ENTER pentru a o executa.
+https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#shortcuts
+%
+GUI
+Utilizați tastele Page / Page pentru derulare pe întreaga pagină în meniul contextual de derulare în jos al unui dosar foarte aglomerat.
+https://www.haiku-os.org/docs/userguide/en/tracker.html
+%
+Diverse
+Puteți deschide un document cu o aplicație care rulează deja prin tragerea iconiței acesteia pe intrarea aplicației în Deskbar.
+%
+Diverse
+Mențineți apăsate tastele ALT stânga + SHIFT + CTRL și apăsați clic pe un program de pe Deskbar pentru a-l omorâ. Aceasta se numește Vulcan Death Grip.
+%
+Diverse
+Puteți comuta înainte și înapoi între două spații de lucru cu ALT + ~ (tasta actuală depinde de harta de taste pe care o utilizați - este tasta sub ESC).
+%
+GUI
+Mențineți apăsată tasta SHIFT în timp ce derulați cu roata mausului pentru a face derulare pe toată pagina în ferestre Tracker și în meniuri contextuale care se derulează în jos. https://www.haiku-os.org/docs/userguide/en/tracker.html
+%
+GUI
+Minimizați rapid o fereastră activă utilizând CTRL + ALT + M, și maximizați toate ferestrele acelei aplicații cu CTRL + ALT + H.
+https://www.haiku-os.org/docs/userguide/en/keyboard-shortcuts.html
+%
+Diverse
+Comutați rapid la un alt spațiu de lucru prin apăsarea ALT + Fx (Fx fiind tasta de funcție corespunzătoare spațiului de lucru cu numărul X), adăugați SHIFT pentru a lua fereastra activă.
+https://www.haiku-os.org/docs/userguide/en/keyboard-shortcuts.html
+%
+Preferințe
+Deskbar-ul poate fi mutat la toate colțurile, precum și în partea de sus sau de jos a ecranului prin apucarea widget-ului butonat de lângă ceas. Poate fi pliat la un aspect mai compact prin tragerea widget-ului în tavă.
+https://www.haiku-os.org/docs/userguide/en/deskbar.html
+%
+Preferințe
+Preferințele Deskbar vă permit să modificați dimensiunea iconițelor, să ascundeți automat Deskbar-ul, să ascundeți numele aplicațiilor, și mai multe.
+https://www.haiku-os.org/docs/userguide/en/deskbar.html
+%
+Terminal
+În adiție de utilizare a combinației UNIX ps/kill cu un ID de proces al unei aplicații, Haiku vă permite să omorâți o aplicație cu „kill numeaplicație”.
+%

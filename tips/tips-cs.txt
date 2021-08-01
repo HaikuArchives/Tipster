@@ -1,0 +1,130 @@
+Tipy
+Výtejte v programu Tipy! Pro více informací klikněte na ikonu vlevo od tipu. Kliknutím na text zobrazíte další tip.
+http://www.github.com/HaikuArchives/Tipster
+%
+Terminál
+Z terminálu lze otevřít soubor, cesta nebo URL přidržením klávesy ALT a kliknutím na ně.
+https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#shortcuts
+%
+GUI
+Stohování a dláždění oken lze během přesování pomocí klávesy OPT, umístěním oken vedle sebe nebo titulků oken přes sebe.
+https://www.haiku-os.org/docs/userguide/en/gui.html#move-resize
+%
+GUI
+Držením kláves ALT + CTRL můžete pohodlně posouvat okna (levým tlačítkem myši) a měnit jejich velikost (pravým tlačítkem myši).
+https://www.haiku-os.org/docs/userguide/en/gui.html#move-resize
+%
+GUI
+Použijte virtuální plochy k rozložení práce až na 32 ploch.
+https://www.haiku-os.org/docs/userguide/en/workspaces.html
+%
+GUI
+Kliknutím pravým tlačítkem na titulek okna, přesune okno na pozadí. Dvojklikem na titulek okna se okno minimalizuje do panelu.
+https://www.haiku-os.org/docs/userguide/en/gui.html
+%
+Možnosti
+Zrychlete si práci přidáním klávesových zkratek v nastaveních.
+https://www.haiku-os.org/docs/userguide/en/keyboard-shortcuts.html
+%
+Aplikace
+Nastavením zvukového souboru pro upozornění "Vision Nick" v nastavení zvuku dosáhnete, že počítač zazvoní pokaždé je vaše jméno zmíněno na IRC v klientu Vision.
+https://www.haiku-os.org/docs/userguide/en/applications/vision.html
+%
+Aplikace
+Klávesou TAB můžete dokončovat příkazy a cesty v terminálu, a také dokončování přezdívek v programu Vision. Jen začněte psát a klávesou TAB najděte shodu.
+%
+Různé
+Zdrojový kód Haiku je výborný zdroj příkladů použití rozhraní. Hledejte vaši oblíbenou třídu.
+http://xref.plausible.coop/source/
+%
+Různé
+Pro rychlé přepnutí aplikací použijte CTRL + TAB. Přidržením těchto kláves uvidíte všechny spuštěné aplikace v okně jménem Twitcher.
+https://www.haiku-os.org/docs/userguide/en/twitcher.html
+%
+Možnosti
+V prohlížeči souborů Tracker můžete začít psát a uvidíte vyfiltrované soubory, které vás zajímají.
+https://www.haiku-os.org/docs/userguide/en/tracker.html#tracker-preferences
+%
+Možnosti
+Pokud si myslíte, že musíte nutně používat Linuxové či Windowsové mapování kláves (ALT <-> CTLR), lze to změnit v nastavení rozložení klávesnice.
+https://www.haiku-os.org/docs/userguide/en/preferences/keymap.html
+%
+Terminál
+Přetažením souboru do okna terminálu, vložíte jeho cestu. Pokud to samé udělaté pravým tlačítkem myši, nabídne se vám více užitečných akcí.
+https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#hints
+%
+Terminál
+V terminálu můžete příkazem "open" otevírat soubory jejich preferovanou aplikací. S použitím "." a ".." otevřete současný/nadřazený adresář v Trackeru.
+https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#hints
+%
+Různé
+Pokud váš oblíbený program chybí v nabídce HaikuDepot, můžete si přidat další repozitář. Koukněte na záložku "Software" v prohlížeci "WebPositive".
+%
+Různé
+Pokud některý program spotřebovává všechny CPU prostředky, zkuste mu snížit prioritu ve správci procesů na panelu.
+https://www.haiku-os.org/docs/userguide/en/desktop-applets/processcontroller.html
+%
+Terminál
+V terminálu můžete vybrat jakýkoli text pomocí myši a opět vložit pravým kliknutím myši.
+https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#hints
+%
+Různé
+Při startu počítače přidržením klávesy SHIFT (na UEFI systémech mezerník) se dostanete do rozšířené nabídky startu systému. Dokonce můžete nastartovat minulé stavy Haiku.
+https://www.haiku-os.org/docs/userguide/en/bootloader.html
+%
+Různé
+Otevřete "Hledat..." z nabídky panelu (nebo ALT + F) k vyhledávání souborů a složek. Kromě klasického hledání podle jména lze vyhledávat více sofistikovaně použitím atributů Haiku.
+https://www.haiku-os.org/docs/userguide/en/queries.html
+%
+GUI
+Některé prvky aplikací (replikanty) lze vložit na plochu přetažením za ručičku. Replikující aplikace jsou např. Tipy, Monitor aktivit a Pracovní plochy.
+https://www.haiku-os.org/docs/userguide/en/gui.html#replicants
+%
+Možnosti
+Aby odpovídalo rozložení klávesnice vaší fyzické klávesnici, můžete zvolit vhodnou ze seznamu nastavení rozložení. Můžete také přetáhnout klávesu na jinou aby si prohodily funkce.
+https://www.haiku-os.org/docs/userguide/en/preferences/keymap.html
+%
+GUI
+Okna můžete přemisťovat mezi virtuálními plochami tažením pomocí apletu pracovních ploch. Přepínání mezi plochami je rychlejší pomocí kombinace kláves CTRL + ALT + šipky.
+https://www.haiku-os.org/docs/userguide/en/workspaces.html
+%
+Terminál
+Stisknutím CTRL + R a napsáním začátku příkazu, hledáte v historii příkazů. Opakovaným stiskem CTRL + R prohledáváte další odpovídající příkazy. Stisknutím ENTER se příkaz vykoná.
+https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#shortcuts
+%
+GUI
+Použijte klávesy Page / Page k poskakování po stránkách v přeplněných adresářích.
+https://www.haiku-os.org/docs/userguide/en/tracker.html
+%
+Různé
+Dokument lze otevřít v již běžící aplikaci přetažením na ikonu aplikace na hlavním panelu.
+%
+Různé
+Přidržením ALT + SHIFT + CTRL a kliknutím na spuštěný program na panelu ho zabije. Tomu se říká vulkánský smrtící úchop.
+%
+Různé
+Klávesami ALT + ~ (pravděpodobně klávesa pod ESC) můžete přepínat mezi posledními pracovními plochami.
+%
+GUI
+Přidržením SHIFT během rolování v Trackeru poskakujete po stránkách.
+https://www.haiku-os.org/docs/userguide/en/tracker.html
+%
+GUI
+Pro minimalizaci aktivního okna použijte CTRL + ALT + M. Pro minimalizování všech oken aplikace CTRL + ALT + H.
+https://www.haiku-os.org/docs/userguide/en/keyboard-shortcuts.html
+%
+Různé
+Rychlé přepnutí pracovních ploch je možné kombinací kláves ALT + Fx (Fx je funkční klávesa, kde x odpovídá číslu plochy). Při kombinaci s klávesou SHIFT přesune na zvolenou plochu aktivní okno.
+https://www.haiku-os.org/docs/userguide/en/keyboard-shortcuts.html
+%
+Možnosti
+Panel na ploše může být přesunut jak do všech rohů tak i na horní či spodní část obrazovky chytnutím za hrbolky vedle hodin. Může být složen do kompaktnějšího rozložení přetažením více do rohu.
+https://www.haiku-os.org/docs/userguide/en/deskbar.html
+%
+Možnosti
+Nastavení panelu vám umožní měnit velikost ikon, automatické schovávání, zobrazovat ikony bez názvů a další.
+https://www.haiku-os.org/docs/userguide/en/deskbar.html
+%
+Terminál
+Kromě použití UNIXového ps/kill s ID procesu Haiku umožňuje zabíjet aplikace pomocí jména 'kill jméno'.
+%

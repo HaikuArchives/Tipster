@@ -1,13 +1,17 @@
-1	Finnish	application/x-vnd.tipster	2518152396
+1	Finnish	application/x-vnd.tipster	994560287
+1 minute	MainWindow		1 minuutti
+2 minutes	MainWindow		2 minuuttia
 30 seconds	MainWindow		30 sekuntia
 5 minutes	MainWindow		5 minuuttia
-2 minutes	MainWindow		2 minuuttia
+About	MainWindow		Ohjelmasta
+Delay	MainWindow		Viive
+Next tip	MainWindow		Seuraava vihje
+Previous tip	MainWindow		Edellinen vihje
 Quit	MainWindow		Poistu
 Tip	MainWindow		Vihje
-1 minute	MainWindow		1 minuutti
-Next tip	MainWindow		Seuraava vihje
-Delay	MainWindow		Viive
-About	MainWindow		Ohjelmasta
-Previous tip	MainWindow		Edellinen vihje
 An application to show usability tips for Haiku.	About		Sovellus käytettävyysvihjeiden näyttämiseen Haikussa.
+Application	About	Only translate if the categories in the tip file was translated	Application
+GUI	About	Only translate if the categories in the tip file was translated	GUI
+Preferences	About	Only translate if the categories in the tip file was translated	Preferences
+Terminal	About	Only translate if the categories in the tip file was translated	Terminal
 Tipster	System name		Vihjeet

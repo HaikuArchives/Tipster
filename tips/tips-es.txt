@@ -22,30 +22,30 @@ GUI
 Haciendo clic derecho sobre la pestaña de una ventana (o en cualquier lado si mantiene pulsado las teclas ALT + CTRL), enviará dicha ventana detrás del resto. Doble clic la minimizará.
 https://www.haiku-os.org/docs/userguide/es/gui.html
 %
-Preferencias
+Preferences
 Facilite su trabajo creando nuevos métodos abreviados de teclado desde la opción Shortcuts en el menú de Preferencias.
 https://www.haiku-os.org/docs/userguide/es/keyboard-shortcuts.html
 %
-Aplicaciones
+Application
 Defina un archivo de audio para el evento "Vision Nick Notification" en las preferencias de sonido para recibir una alarma cada vez que su nombre es mencionado en el cliente de IRC Vision.
 https://www.haiku-os.org/docs/userguide/es/applications/vision.html
 %
-Aplicaciones
+Application
 La tecla TAB permite autocompletar comandos y rutas en Terminal, y sobrenombres en Vision. Sólo comience a escribir y pulse TAB para buscar una coincidencia.
 %
-Varios
+Miscellaneous
 El código fuente de Haiku es un excelente recurso para obtener ejemplos prácticos de la API utilizada. Busque en él a su clase favorita.
 http://xref.plausible.coop/source/
 %
-Varios
+Miscellaneous
 Pulse rápidamente CTRL + TAB para intercambiar entre dos aplicaciones. Mantenga presionadas ambas teclas para visualizar todas las aplicaciones en ejecución.
 https://www.haiku-os.org/docs/userguide/es/twitcher.html
 %
-Preferencias
+Preferences
 Con el filtro de escritura anticipada, Tracker sólo mostrará los archivos que desea visualizar.
 https://www.haiku-os.org/docs/userguide/es/tracker.html#tracker-preferences
 %
-Preferencias
+Preferences
 Si desea utilizar la misma tecla para atajos de teclado que utiliza en Linux/Windows (ALT <-> CTRL), puede modificarlo desde la opción Keymap del menú de preferencias.
 https://www.haiku-os.org/docs/userguide/es/preferences/keymap.html
 %
@@ -57,10 +57,10 @@ Terminal
 Dentro de Terminal, el comando "open" permite abrir cualquier archivo con su aplicación por defecto. Con el parámetro "." y ".." permite abrir la carpeta actual/superior en una ventana de Tracker.
 https://www.haiku-os.org/docs/userguide/es/applications/terminal.html#hints
 %
-Varios
+Miscellaneous
 Si su aplicación favorita no se encuentra en HaikuDepot, quizás deba agregar otros repositorios. Consulte la categoría "Software" en los marcadores del navegador WebPositive.
 %
-Varios
+Miscellaneous
 Si alguna aplicación consume demasiados recursos del CPU, pruebe disminuir su prioridad a través del applet ProcessController existente en el Deskbar.
 https://www.haiku-os.org/docs/userguide/es/desktop-applets/processcontroller.html
 %
@@ -68,11 +68,11 @@ Terminal
 En Terminal puede seleccionar cualquier texto con el ratón, e insertarlo en el cursor haciendo clic con el botón derecho.
 https://www.haiku-os.org/docs/userguide/es/applications/terminal.html#hints
 %
-Varios
+Miscellaneous
 Pulsando la tecla SHIFT durante el inicio del sistema se accede a las menú del cargador de arranque. Entre otras opciones, permite iniciar una versión anterior de Haiku.
 https://www.haiku-os.org/docs/userguide/es/bootloader.html
 %
-Varios
+Miscellaneous
 Abra el menú "Buscar..." en el Deskbar (o pulse ALT + F) para encontrar cualquier archivo o carpeta de su sistema. Además de buscar por nombre, puede incluir criterios de búsqueda más sofisticados mediante el uso de los atributos de archivo disponibles en Haiku.
 https://www.haiku-os.org/docs/userguide/es/queries.html
 %
@@ -80,7 +80,7 @@ GUI
 Algunos elementos de la interfaz de ciertas aplicaciones pueden ser embebidas en el Escritorio.  Para ello, arrastre el manejador (un pequeño ícono parecido a una 'mano' situado usualmente en el extremo inferior derecho) hacia el fondo del Escritorio. Algunas de las aplicaciones que poseen esta funcionalidad son: Tipster, ActivityMonitor y Workspaces.
 https://www.haiku-os.org/docs/userguide/es/gui.html#replicants
 %
-Preferencias
+Preferences
 Para que coincida la distribución del teclado con el teclado físico, seleccione el valor adecuado en la opción Keymap del menú de preferencias. También puede intercambiar el caracter asignado a una decla arrastrando la misma sobre otra.
 https://www.haiku-os.org/docs/userguide/es/preferences/keymap.html
 %
@@ -96,16 +96,35 @@ GUI
 Utilice las teclas Page↑ / Page↓ para desplazarse rápidamente dentro del menú contextual de una carpeta con numerosos archivos.
 https://www.haiku-os.org/docs/userguide/es/tracker.html
 %
-Varios
+Miscellaneous
 Puede abrir un documento en una aplicación en ejecución arrastrando su ícono dentro de la entrada correspondiente del Deskbar.
 %
-Varios
+Miscellaneous
 Mantenga presionados las teclas ALT + SHIFT + CTRL y haga clic en una aplicación en ejecución en el Deskbar para forzar su cierre. Esta es la llamada Llave Mortal Vulcana.
 %
-Varios
+Miscellaneous
 Puede alternar entre entre el anterior y el siguiente escritorio virtual (Workspaces) pulsando la tecla ALT + ~ (la tecla actual depende de la distribución de teclado seleccionada - es la ubicada debajo de la tecla ESC).
 %
 GUI
 Presione la tecla SHIFT mientras utiliza la rueda del ratón para desplazarse por páginas dentro de la ventana del Tracker, y en los menús desplegables.
 https://www.haiku-os.org/docs/userguide/es/tracker.html
+%
+GUI
+Minimice rápidamente una ventana activa pulsando CTRL + ALT + M, y minimice todas las ventanas de dicha aplicación utilizando CTRL + ALT + H.
+https://www.haiku-os.org/docs/userguide/en/keyboard-shortcuts.html
+%
+Misceláneos
+Cambie fácilmente a otro espacio de trabajo pulsando ALT + Fx (siendo Fx la tecla de función correspondiente al número de espacio de trabajo X), agregue SHIFT para llevar consigo la ventana activa.
+https://www.haiku-os.org/docs/userguide/es/keyboard-shortcuts.html
+%
+Preferencias
+El menú Deskbar (barra de escritorio) puede ser desplazado a todas las esquinas, así como también a la parte superior o infoerior de la pantalla. Esto puede realizarse pulsando y arrastrando en el widget punteado que se encuentra al lado del reloj. También puede ser transformado en un modo compacto, arrastrando el widget hacia el botón del menú principal. 
+https://www.haiku-os.org/docs/userguide/es/deskbar.html
+%
+Preferencias
+Las preferencias de la barra de escritorio le permiten cambiar el tamaño de ícono, ocultar automáticamente la barra, ocultar el nombre de las aplicaciones y más.
+https://www.haiku-os.org/docs/userguide/en/deskbar.html
+%
+Terminal
+Además de usar la combinación UNIX ps/kill con un identificador de proceso de una aplicación, Haiku le permite terminar una aplicación con 'kill aplicación'.
 %

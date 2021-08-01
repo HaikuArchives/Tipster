@@ -1,0 +1,17 @@
+1	Czech	application/x-vnd.tipster	994560287
+1 minute	MainWindow		1 minuta
+2 minutes	MainWindow		2 minuty
+30 seconds	MainWindow		30 sekund
+5 minutes	MainWindow		5 minut
+About	MainWindow		O programu
+Delay	MainWindow		Čekání
+Next tip	MainWindow		Další tip
+Previous tip	MainWindow		Předchozí tip
+Quit	MainWindow		Ukončit
+Tip	MainWindow		Tip
+An application to show usability tips for Haiku.	About		Aplikace předhazující tipy používání Haiku.
+Application	About	Only translate if the categories in the tip file was translated	Aplikace
+GUI	About	Only translate if the categories in the tip file was translated	GUI
+Preferences	About	Only translate if the categories in the tip file was translated	Možnosti
+Terminal	About	Only translate if the categories in the tip file was translated	Terminál
+Tipster	System name		Tipy

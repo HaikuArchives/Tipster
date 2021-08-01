@@ -1,0 +1,130 @@
+Conseller
+Benvingut/da al Conseller! Cliqueu a la icona de l'esquerra d'un consell per obtenir-ne més informació. Cliqueu al text per passar al consell següent.
+http://www.github.com/HaikuArchives/Tipster
+%
+Terminal
+Obriu un fitxer, un camí o un URL al Terminal clicant-hi mentre premeu la tecla ALT.
+https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#shortcuts
+%
+IGU
+Apileu les finestres i poseu-les en mosaic mantenint premuda la tecla ALT mentre en moveu les vores o la barra del títol.
+https://www.haiku-os.org/docs/userguide/en/gui.html#move-resize
+%
+IGU
+Mantenint premudes les tecles ALT + CTRL, podeu moure les finestres (botó esquerre del ratolí) i canviar-ne la mida (botó dret del ratolí).
+https://www.haiku-os.org/docs/userguide/en/gui.html#move-resize
+%
+IGU
+Useu els espais de treball (escriptoris virtuals) per distribuir la feina en un màxim de 32 escriptoris.
+https://www.haiku-os.org/docs/userguide/en/workspaces.html
+%
+IGU
+Clicar amb el botó dret a les pestanyes de la finestra (o en qualsevol altre lloc mentre premeu les tecles ALT + CTRL) enviarà la finestra a la part posterior i amb clic doble es minimitzarà a la barra d'escriptori.
+https://www.haiku-os.org/docs/userguide/en/gui.html
+%
+Preferències
+Accelereu el flux de treball creant dreceres de teclat amb les preferències de Dreceres.
+https://www.haiku-os.org/docs/userguide/en/keyboard-shortcuts.html
+%
+Aplicació
+Establiu un fitxer d'àudio per a "Notificació del Vision" a les preferències del so per obtenir un avís sonor cada cop que es digui el vostre nom al client d'IRC Vision.
+https://www.haiku-os.org/docs/userguide/en/applications/vision.html
+%
+Aplicació
+La tecla TAB fa la compleció de l'ordre i del camí al Terminal i del sobrenom al Vision. Simplement comenceu a escriure i premeu TAB per trobar-ne la coincidència.
+%
+Miscel·lània
+El codi del Haiku és un recurs excel·lent per a exemples de l'API del Haiku en acció. Cerqueu-hi la vostra classe preferida.
+http://xref.plausible.coop/source/
+%
+Miscel·lània
+Toqueu ràpidament CTRL + TAB per canviar entre dues aplicacions, mantingueu premuda la combinació de tecles per veure totes les aplicacions en execució al Twitcher.
+https://www.haiku-os.org/docs/userguide/en/twitcher.html
+%
+Preferències
+Amb un filtratge d'anticipació de tecleig, el Rastrejador només mostra els fitxers que us interessen.
+https://www.haiku-os.org/docs/userguide/en/tracker.html#tracker-preferences
+%
+Preferències
+Si creieu que heu d’usar el mapatge de dreceres de Linux / Windows inferior (ALT <-> CTRL), podeu canviar això i molt més amb les preferències del Mapa de tecles.
+https://www.haiku-os.org/docs/userguide/en/preferences/keymap.html
+%
+Terminal
+Si deixeu anar un fitxer al Terminal se n’insereix el camí. Fer-ho amb el botó dret del ratolí ofereix altres accions útils.
+https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#hintsTerminal
+%
+Terminal
+Al Terminal, l'ordre "open" obre qualsevol fitxer amb l'aplicació preferida. Amb "." i ".." obre la carpeta actual o mare al Rastrejador.
+https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#hints
+%
+Miscel·lània
+Si el vostre programa preferit no és al Dipòsit del Haiku, potser haureu d’afegir un altre repositori. Consulteu les adreces d'interès del WebPositive dins de Programari.
+%
+Miscel·lània
+Si algun programa consumeix tots els recursos de la CPU, intenteu reduir-ne la prioritat mitjançant el Controlador de processos de la barra d’escriptori.
+https://www.haiku-os.org/docs/userguide/en/desktop-applets/processcontroller.html
+%
+Terminal
+Al Terminal podeu seleccionar qualsevol text amb el ratolí i inserir-lo a l'indicador amb un clic dret.
+https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#hints
+%
+Miscel·lània
+Mantenir premuda la tecla Maj. durant l’arrencada permet entrar a les opcions del carregador d’arrencada. Entre altres configuracions, us permet arrencar en un estat històric específic del Haiku.
+https://www.haiku-os.org/docs/userguide/en/bootloader.html
+%
+Miscel·lània
+Obriu el plafó Troba... de la barra d'escriptori (o ALT + F) per trobar qualsevol fitxer o carpeta del sistema. A més de cercar un nom, també podeu aplicar patrons de cerca més sofisticats usant els atributs del Haiku.
+https://www.haiku-os.org/docs/userguide/en/queries.html
+%
+IGU
+Alguns elements de la interfície de l'aplicació es poden encastar a l'escriptori arrossegant-ne una petita mà cap a l'escriptori. Les aplicacions que es poden reproduir són, per exemple, el Conseller, el Monitor d'activitat i els Espais de treball.
+https://www.haiku-os.org/docs/userguide/en/gui.html#replicants
+%
+Preferències
+Per fer coincidir el mapa del teclat amb el vostre teclat físic, podeu triar-ne un d'una llista de les preferències del Mapa de tecles. També podeu fer que les tecles canviïn de lloc arrossegant-les.
+https://www.haiku-os.org/docs/userguide/en/preferences/keymap.html
+%
+IGU
+Podeu moure les finestres fàcilment entre els espais de treball arrossegant-les cap a dins de la miniaplicació dels espais de treball. La commutació entre espais és encara més ràpida amb la combinació de CTRL + ALT + fletxes.
+https://www.haiku-os.org/docs/userguide/en/workspaces.html
+%
+Terminal
+Premeu CTRL + R, comenceu a escriure una ordre i se us proporcionarà la primera coincidència de l'historial del Bash. Continueu prement CTRL + R fins a trobar la línia d'ordre correcta i premeu RETORN per executar-la.
+https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#shortcuts
+%
+IGU
+Useu les tecles de pàgina per desplaçar-vos pel menú contextual d'una carpeta d'una gran densitat.
+https://www.haiku-os.org/docs/userguide/en/tracker.html
+%
+Miscel·lània
+Podeu obrir un document amb una aplicació que ja s'executi arrossegant-ne la icona a l'entrada de l'aplicació de la barra d'escriptori.
+%
+Miscel·lània
+Mantingueu premudes les tecles ALT + Maj. + CTRL i cliqueu en un programa de la barra d'escriptori per matar-lo. Això es diu Pessic de mort vulcà.
+%
+Miscel·lània
+Podeu canviar endavant i enrere entre dos espais de treball amb ALT + ~ (la tecla real depèn del mapa de tecles que useu; és la tecla de sota de la d'ESC).
+%
+IGU
+Mantingueu premuda la tecla Maj. mentre moveu la rodeta del ratolí per fer un desplaçament de pàgina a les finestres del Rastrejador i als menús contextuals.
+https://www.haiku-os.org/docs/userguide/en/tracker.html
+%
+IGU
+Minimitzeu ràpidament una finestra activa mitjançant CTRL + ALT + M i minimitzeu totes les finestres de l'aplicació amb CTRL + ALT + H.
+https://www.haiku-os.org/docs/userguide/en/keyboard-shortcuts.html
+%
+Miscel·lània
+Canvieu ràpidament a un altre espai de treball prement ALT + Fx (Fx és la tecla de funció corresponent al número X de l'espai de treball), i afegiu-hi Maj. per endur-vos la finestra activa.
+https://www.haiku-os.org/docs/userguide/en/keyboard-shortcuts.html
+%
+Preferències
+La barra d'escriptori es pot desplaçar a tots els cantons i a la part superior o inferior de la pantalla agafant-ne el giny amb mànec del costat del rellotge. Es pot plegar a un disseny més compacte arrossegant-ne el giny a la safata.
+https://www.haiku-os.org/docs/userguide/en/deskbar.html
+%
+Preferències
+Les preferències de la barra d’escriptori permeten canviar la mida de la icona, amagar-la automàticament, amagar els noms de les aplicacions i molt més.
+https://www.haiku-os.org/docs/userguide/en/deskbar.html
+%
+Terminal
+A més d'usar la combinació ps / kill d'UNIX amb l'ID de procés d'una aplicació, el Haiku us permet matar una aplicació amb "kill nom_d'aplicació".
+%

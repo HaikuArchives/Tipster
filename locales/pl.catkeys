@@ -1,13 +1,17 @@
-1	Polish	application/x-vnd.tipster	2518152396
+1	Polish	application/x-vnd.tipster	994560287
+1 minute	MainWindow		1 minuta
+2 minutes	MainWindow		2 minuty
 30 seconds	MainWindow		30 sekund
 5 minutes	MainWindow		5 minut
-2 minutes	MainWindow		2 minuty
+About	MainWindow		O programie
+Delay	MainWindow		Opóźnienie
+Next tip	MainWindow		Następna porada
+Previous tip	MainWindow		Poprzednia porada
 Quit	MainWindow		Zakończ
 Tip	MainWindow		Porada
-1 minute	MainWindow		1 minuta
-Next tip	MainWindow		Następna porada
-Delay	MainWindow		Opóźnienie
-About	MainWindow		O programie
-Previous tip	MainWindow		Poprzednia porada
 An application to show usability tips for Haiku.	About		Aplikacja wyświetlająca porady usprawniające pracę z Haiku
+Application	About	Only translate if the categories in the tip file was translated	Aplikacja
+GUI	About	Only translate if the categories in the tip file was translated	GUI
+Preferences	About	Only translate if the categories in the tip file was translated	Preferencje
+Terminal	About	Only translate if the categories in the tip file was translated	Terminal
 Tipster	System name		Tipster

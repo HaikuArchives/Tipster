@@ -1,13 +1,17 @@
-1	Romanian	application/x-vnd.tipster	2518152396
+1	Romanian	application/x-vnd.tipster	994560287
+1 minute	MainWindow		1 minut
+2 minutes	MainWindow		2 minute
 30 seconds	MainWindow		30 secunde
 5 minutes	MainWindow		5 minute
-2 minutes	MainWindow		2 minute
+About	MainWindow		Despre
+Delay	MainWindow		Amânare
+Next tip	MainWindow		Următorul sfat
+Previous tip	MainWindow		Precedentul sfat
 Quit	MainWindow		Ieșire
 Tip	MainWindow		Sfat
-1 minute	MainWindow		1 minut
-Next tip	MainWindow		Următorul sfat
-Delay	MainWindow		Amânare
-About	MainWindow		Despre
-Previous tip	MainWindow		Precedentul sfat
 An application to show usability tips for Haiku.	About		O aplicație care arată sfaturi de utilizare pentru Haiku.
+Application	About	Only translate if the categories in the tip file was translated	Aplicație
+GUI	About	Only translate if the categories in the tip file was translated	GUI
+Preferences	About	Only translate if the categories in the tip file was translated	Preferințe
+Terminal	About	Only translate if the categories in the tip file was translated	Terminal
 Tipster	System name		Tipster

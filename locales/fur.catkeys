@@ -1,0 +1,17 @@
+1	Friulian	application/x-vnd.tipster	994560287
+1 minute	MainWindow		1 minût
+2 minutes	MainWindow		2 minûts
+30 seconds	MainWindow		30 seconts
+5 minutes	MainWindow		5 minûts
+About	MainWindow		Informazions
+Delay	MainWindow		Ritart
+Next tip	MainWindow		Sugjeriment sucessîf
+Previous tip	MainWindow		Sugjeriment precedent
+Quit	MainWindow		Jes
+Tip	MainWindow		Sugjeriment
+An application to show usability tips for Haiku.	About		Une aplicazion par mostrâ i sugjeriments sul ûs par Haiku.
+Application	About	Only translate if the categories in the tip file was translated	Aplicazion
+GUI	About	Only translate if the categories in the tip file was translated	IUG
+Preferences	About	Only translate if the categories in the tip file was translated	Preferencis
+Terminal	About	Only translate if the categories in the tip file was translated	Terminâl
+Tipster	System name		Tipster
