@@ -37,7 +37,7 @@ enum
 MainWindow::MainWindow()
 	:
 	BWindow(BRect(100, 100, 740, 190), B_TRANSLATE_SYSTEM_NAME("Tipster"),
-		B_TITLED_WINDOW, B_ASYNCHRONOUS_CONTROLS | B_NOT_V_RESIZABLE
+		B_TITLED_WINDOW, B_ASYNCHRONOUS_CONTROLS
 		| B_AUTO_UPDATE_SIZE_LIMITS)
 {
 	BuildLayout();
@@ -63,8 +63,7 @@ MainWindow::BuildLayout()
 		new BMessage(PREVIOUS_TIP)));
 	fTipMenu->AddItem(new BMenuItem(B_TRANSLATE("Next tip"),
 		new BMessage(NEXT_TIP)));
-	
-	
+
 	fTipMenu->AddItem(fDelaySubMenu);
 
 	fMenuBar->AddItem(fTipsterMenu);
@@ -75,8 +74,8 @@ MainWindow::BuildLayout()
 	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
 		.Add(fMenuBar)
 		.Add(fTipsterView)
-		.AddGlue();
-
+//		.AddGlue()
+		.End();
 	// After the creation of Tipster because we need the delay
 	// time saved in the settings
 
@@ -84,6 +83,7 @@ MainWindow::BuildLayout()
 	AddDelaySubMenuItem(60000000, B_TRANSLATE("1 minute"));
 	AddDelaySubMenuItem(120000000, B_TRANSLATE("2 minutes"));
 	AddDelaySubMenuItem(300000000, B_TRANSLATE("5 minutes"));
+	AddDelaySubMenuItem(0, B_TRANSLATE("Off"));
 
 	fDelaySubMenu->SetRadioMode(true);
 }
@@ -108,14 +108,12 @@ MainWindow::QuitRequested()
 }
 
 
-#undef B_TRANSLATION_CONTEXT
-#define B_TRANSLATION_CONTEXT "About"
-
 void
 MainWindow::MessageReceived(BMessage* message)
 {
-	switch(message->what)
+	switch (message->what)
 	{
+
 		case SHOW_ABOUT:
 		{
 			BAboutWindow* about = new AboutTipster();
@@ -136,8 +134,8 @@ MainWindow::MessageReceived(BMessage* message)
 		{
 			int64 delay = 60000000;
 			message->FindInt64("delay", &delay);
-
 			fTipsterView->SetDelay(delay);
+//			printf("delay: %d \n", delay);
 			break;
 		}
 		case MSG_QUIT:
@@ -147,6 +145,7 @@ MainWindow::MessageReceived(BMessage* message)
 		}
 		default:
 			BWindow::MessageReceived(message);
+			message->PrintToStream();
 			break;
 	}
 }
