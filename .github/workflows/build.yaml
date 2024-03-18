@@ -25,4 +25,4 @@ jobs:
           version: ${{ matrix.config.version }}
           architecture: ${{ matrix.config.architecture }}
           run: |
-            cd src && make && make bindcatalogs
+            make && make bindcatalogs
