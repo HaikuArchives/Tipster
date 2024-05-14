@@ -73,7 +73,7 @@ Hält man beim Hochfahren die SHIFT Taste gedrückt, gelangt man in die Boot Loa
 https://www.haiku-os.org/docs/userguide/de/bootloader.html
 %
 Miscellaneous
-Mit dem "Suchen..." Fenster aus der Deskbar (oder ALT + F) lässt sich jede Datei und jeder Ordner im System finden. Neben der Suche nach Dateinamen, lassen sich auch komplexere Suchkriterien mittels Haikus Attribute zusammenstellen.
+Mit dem "Suchen …" Fenster aus der Deskbar (oder ALT + F) lässt sich jede Datei und jeder Ordner im System finden. Neben der Suche nach Dateinamen, lassen sich auch komplexere Suchkriterien mittels Haikus Attribute zusammenstellen.
 https://www.haiku-os.org/docs/userguide/de/queries.html
 %
 GUI

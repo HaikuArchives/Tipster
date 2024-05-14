@@ -1,0 +1,130 @@
+Tipster
+Tipster'a hoş geldiniz. Daha fazla bilgi almak için soldaki simgeye tıklayın. Sonraki ipucuna geçmek için metne tıklayın.
+http://www.github.com/HaikuArchives/Tipster
+%
+Uçbirim
+Uçbirimde ALT düğmesini basılı tutarken üzerine tıklayarak herhangi bir dosyayı, yolu veya URL'yi açabilirsiniz.
+https://www.haiku-os.org/docs/userguide/tr/applications/terminal.html#shortcuts
+%
+Grafik arabirim
+OPT düğmesini basılı tutarken pencereleri birbirlerinin kenarlarına veya başlıklarına getirerek onları yığabilir veya döşeyebilirsiniz.
+https://www.haiku-os.org/docs/userguide/tr/gui.html#move-resize
+%
+Grafik arabirim
+ALT + CTRL düğmelerini basılı tutarak pencereleri kolaylıkla taşıyabilir (sol fare düğmesi) veya yeniden boyutlandırabilirsiniz (sağ fare düğmesi).
+https://www.haiku-os.org/docs/userguide/tr/gui.html#move-resize
+%
+Grafik arabirim
+Çalışma alanınızı 32 adete kadar sanal masaüstlerine yaymak için Çalışma Alanları'nı kullanın.
+https://www.haiku-os.org/docs/userguide/tr/workspaces.html
+%
+Grafik arabirim
+Pencere başlıklarına sağ tıklamak (veya ALT + CTRL düğmelerini basılı tutarken herhangi bir yere) pencereyi arkaya gönderir; çift tıklamak ise pencereyi simge durumuna küçültür.
+https://www.haiku-os.org/docs/userguide/tr/gui.html
+%
+Tercihler
+Kısayollor tercihlerinden kısayol düğmeleri atayarak çalışma düzeninizi hızlandırın.
+https://www.haiku-os.org/docs/userguide/en/keyboard-shortcuts.html
+%
+Uygulama
+Vision IRC istemcisinde her adınız geçtiğinde bir bildirim almak istiyorsanız Sesler tercihlerinden "Vision Nick Notification" için bir ses dosyası ayarlayın.
+https://www.haiku-os.org/docs/userguide/en/applications/vision.html
+%
+Uygulama
+The TAB (Sekme) düğmesi Uçbirimde komut ve Vision uygulamasında takma ad tamamlaması yapmak için kullanılabilir. Yazmaya başlayın ve uygun bir tamamlama aramak için TAB düğmesine basın.
+%
+Diğer
+Haiku kaynak kodları, Haiku API kullanımı üzerine örnekler görmek için bulunmaz bir kaynaktır. Favori class'ınız için bir göz atın.
+http://xref.plausible.coop/source/
+%
+Diğer
+İki uygulama arasında hızlı geçiş yapmak için CTRL + TAB düğme ikilisine basın; açık olan tüm uygulamaları Seğirtici içinde görmek için basılı tutun.
+https://www.haiku-os.org/docs/userguide/en/twitcher.html
+%
+Tercihler
+Hemen bulan süzme özelliğiyle, İzleyici yalnızca ilgilendiğiniz dosyaları görüntüler.
+https://www.haiku-os.org/docs/userguide/en/tracker.html#tracker-preferences
+%
+Tercihler
+Eğer dandik Linux/Windows kısayol düğme eşlemini kullanmanız gerekiyorsa (ALT <-> CTRL), bunu veya daha fazlasını Klavye Dizilimi tercihlerinden değiştirebilirsiniz.
+https://www.haiku-os.org/docs/userguide/en/preferences/keymap.html
+%
+Uçbirim
+Bir dosyayı sürükleyip Uçbirim'e bırakmak o dosyanın yolunu girer, bunu sağ fare düğmesi ile yapmak başka yararlı eylemleri seçebilmenizi sağlar.
+https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#hints
+%
+Uçbirim
+Uçbirim'de "open" komutu herhangi bir dosyayı yeğlediğiniz uygulama ile açmanızı sağlar. "." ve ".." geçerli klasörü/üst klasörü İzleyici'de açmanıza olanak verir.
+https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#hints
+%
+Diğer
+Favori uygulamanız Haiku Depo'da yoksa başka bir yazılım deposu eklemeniz gerekebilir. WebPositive yer imleri altında "Software" klasörüne bakın.
+%
+Diğer
+Eğer bir program tüm CPU kaynaklarınızı yiyorsa o programın önceliğini Masaüstü Çubuğu'nda bulabileceğiniz İşlem Deneticisi ile düşürmeyi deneyin.
+https://www.haiku-os.org/docs/userguide/en/desktop-applets/processcontroller.html
+%
+Uçbirim
+Uçbirimde herhangi bir metni seçip sağ tıkladığınızda isteme yapıştırır.
+https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#hints
+%
+Diğer
+Önyükleme sırasında SHIFT veya BOŞLUK düğmesini basılı tutmak önyükleme seçeneklerini gösterir. Başka ayarların yanında, buradan Haiku'nun geçmişteki bir durumunu da yükleyebilirsiniz.
+https://www.haiku-os.org/docs/userguide/en/bootloader.html
+%
+Diğer
+Sisteminizdeki herhangi bir dosya veya klasörü bulmak için Masaüstü Çubuğu'ndan "Bul..." panelini açın (veya ALT + F). Bir adı aramanın yanında, Haiku'nun gelişmiş öznitelikler desteğini kullanarak sofistike aramalar da yapabilirsiniz.
+https://www.haiku-os.org/docs/userguide/tr/queries.html
+%
+Grafik arabirim
+Bazı uygulama arabirim ögeleri, köşelerinden tutup sürükleyebileceğiniz ufak bir el simgesi yardımıyla Masaüstü'ne taşınabilir. Bu şekilde yinelenebilen bazı uygulamalara örnek olarak Tipster, Etkinlik Monitörü ve Çalışma Alanları verilebilir.
+https://www.haiku-os.org/docs/userguide/tr/gui.html#replicants
+%
+Tercihler
+Fiziksel klavyenizin yerleşimini tam olarak kullanmak için Klavye Dizilimi tercihlerinden birini seçebilirsiniz. Düğmeleri sürükleyip bırakarak kendi diziliminizi oluşturmanız da olanaklı!
+https://www.haiku-os.org/docs/userguide/tr/preferences/keymap.html
+%
+Grafik arabirim
+Çalışma alanları gerecinde pencereleri alanlar arasında taşıyarak yerlerini değiştirebilirsiniz. CTRL + ALT + imleç kullanarak çok daha hızlı bir biçimde çalışma alanları arasında geçiş yapmanız da olanaklı.
+https://www.haiku-os.org/docs/userguide/tr/workspaces.html
+%
+Uçbirim
+CTRL + R düğmelerine basın ve bir komut girmeye başlayın. Uçbirim, size bash geçmişinizden en yakın eşleşmeyi getirecektir. Doğru eşleşmeyi bulana kadar CTRL + R'a basmayı sürdürün ve çalıştırmak için ENTER'a basın.
+https://www.haiku-os.org/docs/userguide/tr/applications/terminal.html#shortcuts
+%
+Grafik arabirim
+Page Up / Page Down düğmelerini kullanarak kalabalık bir klasörün içinde kaydırma yapabilirsiniz.
+https://www.haiku-os.org/docs/userguide/en/tracker.html
+%
+Diğer
+Bir belgenin simgesini Masaüstü Çubuğu'ndaki uygulama simgesine sürükleyip bırakarak belgeyi sürüklediğiniz uygulama ile açabilirsiniz.
+%
+Diğer
+Bir programı sonlandırmak için ALT + SHIFT + CTRL düğmelerine basın Masaüstü Çubuğu'ndaki uygulama simgesine tıklayın. Bu eylemin adına Vulkan Ölüm Tutuşu denir.
+%
+Diğer
+İki çalışma alanı arasında gidip gelmek için ALT + ~ düğme ikilisini kullanın (bu düğme kullandığınız klavye dizilimine göre değişiklik gösterebilir, normalde ESC düğmesinin altındaki düğmedir).
+%
+Grafik arabirim
+İzleyici pencerelerinde veya açılır menülerde sayfa boyu kaydırma yapmak için fare tekerleğini kaydırırken SHIFT düğmesini basılı tutun.
+https://www.haiku-os.org/docs/userguide/tr/tracker.html
+%
+Grafik arabirim
+Etkin pencereyi hızlıca simge durumuna küçültmek için CTRL + ALT + M ve o uygulamanın tüm pencerelerini simge durumuna küçültmek içinse CTRL + ALT + H kestirmelerini kullanın.
+https://www.haiku-os.org/docs/userguide/tr/keyboard-shortcuts.html
+%
+Diğer
+Başka bir çalışma alanına kolaylıkla geçmek için ALT + Fx kestirme ikilisini kullanın (Fx, çalışma alanı numarasına karşılık gelen işlev düğmesi numarasıdır), etkin pencereyi de o çalışma alanına taşımak için SHIFT düğmesini basılı tutun.
+https://www.haiku-os.org/docs/userguide/tr/keyboard-shortcuts.html
+%
+Tercihler
+Masaüstü Çubuğu ekranın tüm köşelerine ve/veya ekranın alt veya üst kenarına taşınabilir. Taşımak için saatin yanında bulunan tutaca tıklayıp sürükleyin. Daha kompakt bir yerleşime geçmek için tutacı tepsiye doğru sürükleyebilirsiniz.
+https://www.haiku-os.org/docs/userguide/tr/deskbar.html
+%
+Tercihler
+Masaüstü Çubuğu tercihleri, simge boyutunu değiştirmenize, çubuğu ve uygulama adlarını kendiliğinden gösterip/gizlemenize ve daha pek çok fazlasını yapmanıza izin verir.
+https://www.haiku-os.org/docs/userguide/tr/deskbar.html
+%
+Uçbirim
+UNIX ps/kill komutuyla uygulamanın işlem numarasını kullanmanın yanında, Haiku herhangi bir uygulamayı 'kill uygulama-adı' komutuyla doğrudan sonlandırmanıza izin verir.
+%

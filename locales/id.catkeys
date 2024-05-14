@@ -10,8 +10,8 @@ Previous tip	MainWindow		tip sebelumnya
 Quit	MainWindow		Keluar
 Tip	MainWindow		Tip
 An application to show usability tips for Haiku.	About		Aplikasi untuk menunjukkan kiat penggunaan untuk Haiku.
-Application	About	Only translate if the categories in the tip file was translated	Application
+Application	About	Only translate if the categories in the tip file was translated	Aplikasi
 GUI	About	Only translate if the categories in the tip file was translated	GUI
-Preferences	About	Only translate if the categories in the tip file was translated	Preferences
+Preferences	About	Only translate if the categories in the tip file was translated	Preferensi
 Terminal	About	Only translate if the categories in the tip file was translated	Terminal
 Tipster	System name		Tipster

@@ -1,0 +1,17 @@
+1	Chinese (simplified)	application/x-vnd.tipster	994560287
+1 minute	MainWindow		1 分钟
+2 minutes	MainWindow		2 分钟
+30 seconds	MainWindow		30 秒
+5 minutes	MainWindow		5 分钟
+About	MainWindow		关于
+Delay	MainWindow		延迟
+Next tip	MainWindow		下一个提示
+Previous tip	MainWindow		上一个提示
+Quit	MainWindow		退出
+Tip	MainWindow		提示
+An application to show usability tips for Haiku.	About		一个显示 Haiku 实用技巧的应用程序。
+Application	About	Only translate if the categories in the tip file was translated	应用程序
+GUI	About	Only translate if the categories in the tip file was translated	GUI
+Preferences	About	Only translate if the categories in the tip file was translated	首选项
+Terminal	About	Only translate if the categories in the tip file was translated	终端
+Tipster	System name		Tipster

@@ -1,0 +1,17 @@
+1	Norwegian	application/x-vnd.tipster	994560287
+1 minute	MainWindow		1 minutt
+2 minutes	MainWindow		2 minutter
+30 seconds	MainWindow		30 sekunder
+5 minutes	MainWindow		5 minutter
+About	MainWindow		Om
+Delay	MainWindow		Forsinkelse
+Next tip	MainWindow		Neste tips
+Previous tip	MainWindow		Forrige tips
+Quit	MainWindow		Avslutt
+Tip	MainWindow		Tips
+An application to show usability tips for Haiku.	About		En applikasjon for å vise brukertips for Haiku.
+Application	About	Only translate if the categories in the tip file was translated	Applikasjon
+GUI	About	Only translate if the categories in the tip file was translated	GUI
+Preferences	About	Only translate if the categories in the tip file was translated	Innstillinger
+Terminal	About	Only translate if the categories in the tip file was translated	Terminal
+Tipster	System name		Tipster

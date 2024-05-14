@@ -1,0 +1,130 @@
+Tipster
+¡Bienvenido a Tipster! Haga clic en el ícono a la izquierda de un consejo para obtener más información. Haga clic en el texto para ir al siguiente consejo.
+http://www.github.com/HaikuArchives/Tipster
+%
+Terminal
+Abra un archivo, ruta o URL en el Terminal haciendo clic en él mientras presiona la tecla ALT.
+https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#shortcuts
+%
+GUI
+Apile y coloque ventanas en mosaico, manteniendo pulsada la tecla OPT (también llamada "Windows") mientras junta sus bordes lado a lado, o poniendo la pestaña de título una encima de otra.
+https://www.haiku-os.org/docs/userguide/en/gui.html#move-resize
+%
+GUI
+Manteniendo pulsadas las teclas ALT+CTRL puede mover cómodamente las ventanas (clic izquierdo) y cambiar su tamaño (clic derecho).
+https://www.haiku-os.org/docs/userguide/en/gui.html#move-resize
+%
+GUI
+Utilice espacios de trabajo (escritorios virtuales) para distribuir su trabajo en hasta 32 escritorios.
+https://www.haiku-os.org/docs/userguide/en/workspaces.html
+%
+GUI
+Si hace clic derecho en las pestañas de ventanas (o en cualquier lugar, mientras mantiene pulsadas las teclas ALT+ TRL) la ventana se enviará al fondo. Si hace doble clic izquierdo, se minimizará a la barra de escritorio.
+https://www.haiku-os.org/docs/userguide/en/gui.html
+%
+Preferencias
+Acelere su flujo de trabajo creando atajos de teclado con las preferencias de Atajos.
+https://www.haiku-os.org/docs/userguide/en/keyboard-shortcuts.html
+%
+Aplicación
+Configure un archivo de audio para "Notificación de nick en Vision" en las preferencias de Sonidos, para que suene cuando alguien mencione su nick en Vision (cliente IRC de Haiku).
+https://www.haiku-os.org/docs/userguide/en/applications/vision.html
+%
+Aplicación
+La tecla TAB completa comandos y rutas en el Terminal, y nicks en Vision. Simplemente empieza a escribir y pulsa TAB para encontrar una coincidencia.
+%
+Varios
+El código fuente de Haiku es un excelente recurso para encontrar ejemplos de la API Haiku en acción. Busque en él su clase favorita.
+http://xref.plausible.coop/source/
+%
+Varios
+Pulse rápidamente CTRL+TAB para cambiar entre dos aplicaciones. Mantenga pulsada dicha combinación para ver en el Twitcher las aplicaciones en ejecución.
+https://www.haiku-os.org/docs/userguide/en/twitcher.html
+%
+Preferencias
+Con el filtrado por tipo, Tracker sólo muestra los archivos que le interesan.
+https://www.haiku-os.org/docs/userguide/en/tracker.html#tracker-preferences
+%
+Preferencias
+Si prefiere usar la asignación de teclas de acceso rápido estilo Linux/Windows (ALT <-> CTRL), puede cambiar esto y más en las preferencias de Mapa de Teclado.
+https://www.haiku-os.org/docs/userguide/en/preferences/keymap.html
+%
+Terminal
+Al soltar un archivo cualquiera en el Terminal, se inserta el texto de la ruta del mismo. Al hacerlo con clic derecho se ofrecen otras acciones útiles.
+https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#hints
+%
+Terminal
+En el Terminal, el comando "Abrir" abre cualquier archivo con su aplicación preferida. Con "." y ".." puede abrir la carpeta actual/parental en Tracker.
+https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#hints
+%
+Varios
+Si su programa favorito no está en HaikuDepot, puede que deba añadir otro repositorio. Consulte los favoritos de WebPositive en "Software".
+%
+Varios
+Si algún programa consume todos los recursos de CPU, intente bajar su prioridad a través de ProcessController en el Deskbar.
+https://www.haiku-os.org/docs/userguide/en/desktop-applets/processcontroller.html
+%
+Terminal
+En el Terminal puede seleccionar cualquier texto con el ratón, y luego insertarlo en el prompt con un clic derecho.
+https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#hints
+%
+Varios
+Si mantiene pulsado SHIFT mientras el sistema arranca, entrará en las opciones del gestor de arranque de Haiku. Entre otras opciones, esto permite arrancar a un estado anterior específico del sistema.
+https://www.haiku-os.org/docs/userguide/en/bootloader.html
+%
+Varios
+Abra el panel "Buscar..." de la barra de escritorio (o ALT+F) para encontrar cualquier archivo o carpeta del sistema. Además de buscar por nombre, también puede aplicar patrones de búsqueda más sofisticados utilizando los atributos de Haiku.
+https://www.haiku-os.org/docs/userguide/en/queries.html
+%
+GUI
+Los elementos de la interfaz de algunas aplicaciones pueden incrustarse en el Escritorio, arrastrando una pequeña mano desde ellos hacia un espacio vacío del mismo. Algunas apps replicables son, por ejemplo: Tipster, ActivityMonitor y Workspaces.
+https://www.haiku-os.org/docs/userguide/en/gui.html#replicants
+%
+Preferencias
+Para hacer coincidir el Mapa de Teclado con su teclado físico, puede elegir uno de una lista predeterminada en las preferencias de Mapa de Teclado. También puede hacer que las teclas cambien de sitio arrastrándolas con clic izquierdo.
+https://www.haiku-os.org/docs/userguide/en/preferences/keymap.html
+%
+GUI
+Puede mover fácilmente las ventanas entre espacios de trabajo, arrastrándolas en el applet Espacios de trabajo. El cambio entre espacios de trabajo es aún más rápido con el combo de teclas CTRL+ALT+teclas de cursor.
+https://www.haiku-os.org/docs/userguide/en/workspaces.html
+%
+Terminal
+Pulse CTRL+R y empiece a introducir un comando: se le proporcionará la primera coincidencia del historial de bash. Siga pulsando CTRL+R hasta que encuentre la línea de comando correcta, luego pulse ENTER para ejecutarla.
+https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#shortcuts
+%
+GUI
+Utilice las teclas RePág/AvPág para desplazarse en el menú contextual desplegable de una carpeta muy poblada.
+https://www.haiku-os.org/docs/userguide/en/tracker.html
+%
+Varios
+Puede abrir un documento con una aplicación en ejecución, arrastrando su ícono a dicha aplicación en la barra de escritorio.
+%
+Varios
+Mantenga pulsada la tecla izquierda ALT+SHIFT+CTRL y haga clic en un programa en la barra de escritorio para matarlo. Esto se llama "Vulcan Death Grip".
+%
+Varios
+Puede alternar entre dos espacios de trabajo con ALT+ ~ (la tecla real depende del Mapa de Teclado que utilice; generalmente es la que está debajo de ESC).
+%
+GUI
+Mantenga pulsada la tecla SHIFT mientras hace scroll con la rueda del ratón, para desplazarse por las páginas de las ventanas del Tracker y los menús contextuales.
+https://www.haiku-os.org/docs/userguide/en/tracker.html
+%
+GUI
+Minimice rápidamente una ventana activa utilizando CTRL+ALT+M. Minimice todas las ventanas de esa aplicación con CTRL+ALT+H.
+https://www.haiku-os.org/docs/userguide/en/keyboard-shortcuts.html
+%
+Varios
+Cambie rápidamente a otro espacio de trabajo pulsando ALT+Fx (donde Fx es la tecla de función correspondiente al espacio de trabajo número X). Añada SHIFT a la combinación de teclas para "llevarse" la ventana activa al otro espacio.
+https://www.haiku-os.org/docs/userguide/en/keyboard-shortcuts.html
+%
+Preferencias
+El Deskbar puede desplazarse a todas las esquinas, así como a la parte superior o inferior de la pantalla. Esto se hace agarrando el widget con forma de nudo situado junto al reloj. Se puede plegar para obtener un diseño más compacto arrastrando el widget a la bandeja. 
+https://www.haiku-os.org/docs/userguide/en/deskbar.html
+%
+Preferencias
+Las preferencias de la barra de escritorio permiten cambiar el tamaño de los íconos, ocultar automáticamente la barra, ocultar los nombres de las aplicaciones, etc.
+https://www.haiku-os.org/docs/userguide/en/deskbar.html
+%
+Terminal
+Además de usar la combinación UNIX ps/kill con el ID de proceso de una aplicación, Haiku le permite matar una aplicación simplemente con 'kill appname' en el Terminal.
+%

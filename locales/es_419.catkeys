@@ -1,15 +1,15 @@
-1	Spanish	application/x-vnd.tipster	994560287
+1	Spanish (Latin American)	application/x-vnd.tipster	994560287
 1 minute	MainWindow		1 minuto
 2 minutes	MainWindow		2 minutos
 30 seconds	MainWindow		30 segundos
 5 minutes	MainWindow		5 minutos
 About	MainWindow		Acerca de
-Delay	MainWindow		Pausa
-Next tip	MainWindow		Consejo siguiente
-Previous tip	MainWindow		Consejo anterior
+Delay	MainWindow		Intervalo
+Next tip	MainWindow		Siguiente tip
+Previous tip	MainWindow		Tip anterior
 Quit	MainWindow		Salir
-Tip	MainWindow		Consejo
-An application to show usability tips for Haiku.	About		Una aplicación para mostrar sugerencias de uso para Haiku.
+Tip	MainWindow		Tip
+An application to show usability tips for Haiku.	About		Una app que muestra tips de usabilidad para Haiku.
 Application	About	Only translate if the categories in the tip file was translated	Aplicación
 GUI	About	Only translate if the categories in the tip file was translated	GUI
 Preferences	About	Only translate if the categories in the tip file was translated	Preferencias

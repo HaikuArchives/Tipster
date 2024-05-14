@@ -1,0 +1,141 @@
+Tipster
+Välkommen till Tipster! Klicka på ikonen till vänster om ett tips för att få mer information. Klicka på texten för att gå till nästa tips.
+http://www.github.com/HaikuArchives/Tipster
+%
+Terminal
+Öppna en fil, sökväg eller URL i Terminal genom att klicka på den medan du håller ned ALT-tangenten.
+https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#shortcuts
+%
+GUI
+Stapla och placera fönster genom att hålla ner OPT-tangenten medan du flyttar deras kanter bredvid eller titelfliken ovanpå varandra.
+https://www.haiku-os.org/docs/userguide/en/gui.html#move-resize
+%
+GUI
+Genom att hålla ned ALT + CTRL-tangenterna kan du enkelt flytta fönster (vänster musknapp) och ändra storlek på dem (höger musknapp).
+https://www.haiku-os.org/docs/userguide/en/gui.html#move-resize
+%
+
+GUI
+Använd Workspaces - virtuella skrivbord - för att sprida ditt arbete till upp till 32 skrivbord.
+https://www.haiku-os.org/docs/userguide/en/workspaces.html
+%
+GUI
+Om du högerklickar på fönsterflikar (eller var som helst medan du håller ned ALT + CTRL-tangenterna) skickas ett fönster till baksidan, dubbelklickning minimerar det till skrivbordsfältet.
+https://www.haiku-os.org/docs/userguide/en/gui.html
+%
+Inställningar
+Accelerera ditt arbetsflöde genom att skapa kortkommandon med inställningarna för genvägar.
+https://www.haiku-os.org/docs/userguide/en/keyboard-shortcuts.html
+%
+
+Ansökan
+Ställ in en ljudfil för "Vision Nick Notification" i ljudinställningarna för att få en ring varje gång ditt namn sägs i IRC-klienten Vision.
+https://www.haiku-os.org/docs/userguide/en/applications/vision.html
+%
+
+Ansökan
+TAB-tangenten gör kommando- och sökvägskomplettering i terminalen och smeknamnskomplettering i Vision. Börja bara skriva och tryck på TAB för att hitta en matchning.
+%
+Diverse
+Haiku-källan är en utmärkt resurs för exempel på Haiku API i aktion. Sök efter din favoritklass.
+http://xref.plausible.coop/source/
+%
+Diverse
+Tryck snabbt på CTRL + TAB för att växla mellan två applikationer, håll ned tangentkombinationen för att se alla appar som körs i Twitcher.
+https://www.haiku-os.org/docs/userguide/en/twitcher.html
+%
+Preferences
+With type-ahead filtering, Tracker only displays the files you're interested in.
+https://www.haiku-os.org/docs/userguide/en/tracker.html#tracker-preferences
+%
+
+Inställningar
+Om du tror att du måste använda den sämre Linux/Windows genvägstangentmappning (ALT <-> CTRL), kan du ändra det och mer med Keymap-inställningarna.
+https://www.haiku-os.org/docs/userguide/en/preferences/keymap.html
+%
+Terminal
+Att släppa en fil i Terminal infogar sökvägen till den, att göra det med höger musknapp erbjuder andra användbara åtgärder.
+https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#hints
+%
+Terminal
+I Terminal öppnar kommandot "öppna" vilken fil som helst med önskad applikation. Med "." och ".." öppnar den aktuella/överordnade mappen i Tracker.
+https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#hints
+%
+Diverse
+Om ditt favoritprogram saknas från HaikuDepot, kan du behöva lägga till ett annat arkiv. Se WebPositives bokmärken under "Programvara".
+%
+
+Diverse
+Om något program förbrukar alla dina CPU-resurser, försök att sänka dess prioritet genom ProcessController i skrivbordsfältet.
+https://www.haiku-os.org/docs/userguide/en/desktop-applets/processcontroller.html
+%
+Terminal
+I Terminal kan du markera vilken text som helst med musen och infoga den vid prompten med ett högerklick.
+https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#hints
+%
+Diverse
+Håll ned SHIFT-tangenten under uppstart för att öppna starthanterarens alternativ. Bland andra inställningar låter den dig starta upp till ett specifikt historiskt tillstånd av Haiku.
+https://www.haiku-os.org/docs/userguide/en/bootloader.html
+%
+
+Diverse
+Öppna panelen "Sök..." från skrivbordsfältet (eller ALT + F) för att hitta valfri fil eller mapp på ditt system. Förutom att söka efter ett namn kan du också använda mer sofistikerade sökmönster med hjälp av Haikus attribut.
+https://www.haiku-os.org/docs/userguide/en/queries.html
+%
+
+GUI
+Vissa appars gränssnittselement kan bäddas in i skrivbordet genom att dra en liten hand från dem till skrivbordet. Replikerbara appar är t.ex. Tipster, ActivityMonitor och Workspaces.
+https://www.haiku-os.org/docs/userguide/en/gui.html#replicants
+%
+Inställningar
+För att matcha tangentbordet med ditt fysiska tangentbord kan du välja ett från en lista i inställningarna för tangentbord. Du kan också få nycklar att byta plats genom att dra runt dem.
+https://www.haiku-os.org/docs/userguide/en/preferences/keymap.html
+%
+GUI
+Du kan enkelt flytta fönster mellan arbetsytor genom att dra runt dem i Workspaces-appleten. Att växla mellan arbetsytor är ännu snabbare med tangentkombinationen CTRL + ALT + markörtangenterna.
+https://www.haiku-os.org/docs/userguide/en/workspaces.html
+%
+Terminal
+Tryck på CTRL + R och börja ange ett kommando och du kommer att få den första matchningen från bashhistoriken. Fortsätt att trycka på CTRL + R tills du hittar rätt kommandorad och tryck på RETUR för att utföra det.
+https://www.haiku-os.org/docs/userguide/en/applications/terminal.html#shortcuts
+%
+GUI
+Använd sid/sida  tangenterna för att bläddra i snabbmenyn för en mycket trång mapp.
+https://www.haiku-os.org/docs/userguide/en/tracker.html
+%
+Diverse
+Du kan öppna ett dokument med en app som redan körs genom att dra dess ikon till appens post i skrivbordsfältet.
+%
+Diverse
+Håll ned vänster ALT + SHIFT + CTRL och klicka på ett program i skrivbordsfältet för att döda det. Detta kallas Vulcan Death Grip.
+%
+
+Diverse
+Du kan växla fram och tillbaka mellan två arbetsytor med ALT + ~ (den faktiska nyckeln beror på tangentbordet du använder - det är tangenten under ESC).
+%
+GUI
+Håll ned SKIFT medan du rullar med mushjulet för att göra sidvis rullning i Tracker-fönster och snabbmenyer med detaljerad information.
+https://www.haiku-os.org/docs/userguide/en/tracker.html
+%
+GUI
+Minimera snabbt ett aktivt fönster genom att använda CTRL + ALT + M, och minimera alla fönster i det programmet med CTRL + ALT + H.
+https://www.haiku-os.org/docs/userguide/en/keyboard-shortcuts.html
+%
+Diverse
+Växla snabbt till en annan arbetsyta genom att trycka ALT + Fx (Fx är funktionstangenten som motsvarar arbetsytans nummer X), lägg till SHIFT för att ta med dig det aktiva fönstret.
+https://www.haiku-os.org/docs/userguide/en/keyboard-shortcuts.html
+%
+
+Inställningar
+Skrivbordsfältet kan flyttas till alla hörn såväl som till toppen eller botten av skärmen genom att ta tag i den knöliga widgeten bredvid klockan. Den kan vikas till en mer kompakt layout genom att dra widgeten till facket.
+https://www.haiku-os.org/docs/userguide/en/deskbar.html
+%
+
+Inställningar
+Med inställningarna för skrivbordsfältet kan du ändra ikonstorlek, automatiskt dölja skrivbordsfältet, dölja programnamn och mer.
+https://www.haiku-os.org/docs/userguide/en/deskbar.html
+%
+
+Terminal
+Förutom att använda UNIX-kombinationen ps/kill med en apps process-ID, låter Haiku dig döda en app med 'kill appname'.
+%

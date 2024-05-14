@@ -9,7 +9,7 @@ Next tip	MainWindow		Conseil suivant
 Previous tip	MainWindow		Conseil précédent
 Quit	MainWindow		Quitter
 Tip	MainWindow		Conseil
-An application to show usability tips for Haiku.	About		Une application qui affiche des conseils d'utilisation pour Haiku.
+An application to show usability tips for Haiku.	About		Une application qui affiche des conseils d’utilisation pour Haiku.
 Application	About	Only translate if the categories in the tip file was translated	Application
 GUI	About	Only translate if the categories in the tip file was translated	GUI
 Preferences	About	Only translate if the categories in the tip file was translated	Préférences
