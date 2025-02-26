@@ -11,7 +11,9 @@
 
 enum
 {
-	UPDATE_TIP = 'uptp'
+	UPDATE_TIP = 'uptp',
+	NEXT_TIP = 'nxtp',
+	PREVIOUS_TIP = 'pvtp'
 };
 
 
@@ -42,12 +44,12 @@ TipsterText::Instantiate(BMessage *data)
 {
 	if (!validate_instantiation(data, "TipsterText")) {
 		printf("Could not complete instantiation...\n");
-		
+
 		return NULL;
 	}
-	
+
 	printf("Instantiation validated...\n");
-	
+
 	return new TipsterText(data);
 }
 
@@ -56,7 +58,7 @@ void
 TipsterText::AttachedToWindow()
 {
 	fMessenger = new BMessenger(this->Parent());
-	
+
 	SetViewColor(Parent()->ViewColor());
 
 	BTextView::AttachedToWindow();
@@ -71,8 +73,10 @@ TipsterText::MouseDown(BPoint point)
 	GetMouse(&temp, &buttons);
 
 	if (Bounds().Contains(temp)) {
-		BMessage message(UPDATE_TIP);
-		
-		fMessenger->SendMessage(&message);
+		if (buttons == 1)  //left mouse button
+			fMessenger->SendMessage(NEXT_TIP);
+		if (buttons == 2) //right mouse button
+			fMessenger->SendMessage(PREVIOUS_TIP);
+
 	}
 }
